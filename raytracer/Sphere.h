@@ -3,6 +3,8 @@
 
 #pragma once
 
+class Ray;
+
 class Sphere {
 	public:
 		Vector3	m_vPosition;
@@ -11,6 +13,8 @@ class Sphere {
 		Sphere();
 		Sphere(const Vector3 vPosition, float fRadius);
 		~Sphere();
+
+		float intersect(const Ray& r);
 };
 
 #endif
