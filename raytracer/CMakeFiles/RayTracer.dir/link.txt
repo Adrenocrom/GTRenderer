@@ -1,0 +1,2 @@
+/usr/bin/ar cr libRayTracer.a  CMakeFiles/RayTracer.dir/Vector3.cpp.o CMakeFiles/RayTracer.dir/Sphere.cpp.o CMakeFiles/RayTracer.dir/Ray.cpp.o CMakeFiles/RayTracer.dir/LightSource.cpp.o CMakeFiles/RayTracer.dir/main.cpp.o CMakeFiles/RayTracer.dir/GTRenderer.cpp.o
+/usr/bin/ranlib libRayTracer.a

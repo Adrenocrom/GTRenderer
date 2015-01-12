@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+stdio.h
+-
+iostream
+-
+cmath
+-
+Vector3.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
+Sphere.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
+Ray.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
+LightSource.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
+

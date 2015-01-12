@@ -1,0 +1,2 @@
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/GTRenderer.dir
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir
