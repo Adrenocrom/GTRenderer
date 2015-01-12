@@ -9,13 +9,13 @@
 % noproblem	keine Aufgabenstellung
 % notoc			kein Inhaltsverzeichnis
 % twoside		zweiseitig
-\author{Roland Raytracer}
-\title{Titeltext}
-\birthday{1. Januar 1234}
+\author{Josef Schulz}
+\title{Ground-Truth-Renderer für Partikelbasierte Daten}
+\birthday{20. Oktober 1989}
 \placeofbirth{Dresden}
-\matno{123456}
+\matno{3658867}
 
-\betreuer{Dr. B. Spline}
+\betreuer{Dipl-MedienInf. Joachim Staib}
 \bibfiles{literatur}
 \problem{Text der Aufgabenstellung...}
 \copyrighterklaerung{Hier soll jeder Autor die von ihm eingeholten
@@ -23,40 +23,72 @@ Zustimmungen der Copyright-Besitzer angeben bzw. die in Web Press
 Rooms angegebenen generellen Konditionen seiner Text- und
 Bild"ubernahmen zitieren.}
 \acknowledgments{Die Danksagung...}
+
 \begin{document}
-\chapter{ein kapitel}
-\section{eine Grafik}
-\begin{figure}[htbp]
-	\centering
-		\includegraphics{test.png}
-	\caption{beschriftung}
-	\label{fig:diplominf}
-\end{figure}
+\chapter{Einleitung}
+\section{Vorwort}
+	Die Entwicklung des ersten Funktionsfähigen Ray-Tracers wird auf  Arthur Appel, Robert Goldstein und Roger Nagel zurückgeführt. 
+	Diese erzeugten im Jahr 1963 an der University of Maryland, auf einem oszilloskopartigen Bildschirm das erste mit Ray-Tracing berechnete
+	Bild. Viele der Verwendeten Algorithmen worden jedoch schon Jahre zuvor entwickelt. Nach Jahren der Weiterentwicklung von Computern,
+	stehen heute Leistungsfähige Rechenmaschinen zur Verfügung die den Einsatz von Ray-Tracern praktikabel machen.
+	
+	Ein Ray-Tracer ist ein Programm, welches die Wege und die Ausbreitung des Lichtes simuliert. Hierbei kann der Weg des Lichtes, entweder
+	ausgehend von der Lichtquelle, oder ausgehend von der Kamera, der Bildebene nachvollzogen werden.
+	Betrachtet man den zweiten Fall, wird das Bild in Pixel unterteilt. Von jeden Pixel werden Strahlen in die Szene geschossen. An den Stellen,
+	wo diese auf Objekte in der Szene treffen, wird eine Beleuchtungsrechnung durchgeführt. Die ermittelten Lichtintensitäten werden akkumuliert und
+	in Farben übersetzt. Auf diese Weise lassen sich für jeden Pixel des Bildes die Farbwerte bestimmen.
+	
+	Mit einem Ray-Tracer, lassen sich Szenen nach realen physikalischen Modellen beleuchten. Aus diesem Grund ist es ein Verfahren, mit dessen Hilfe
+	sich Ground-Truth Daten erzeugen lassen. Ground-Truth bezeichnet in diesem Falle eine Optimale Lösung, die als Vergleichswert zur Evaluation
+	anderer Verfahren geeignet ist.
+	
+	Im Rahmen dieser Arbeit, wird der Aufbau eines Ray-Tracers beschrieben. Benötigt wird dieser zur realistischen Beleuchtung von Kugelglyphen.
+	Dabei wird aus Partikeldaten eine Dichtefunktion geschätzt, welche die Materialeigenschaften der Kugel an jedem Punkt im Volumen definiert.
+	Der Ray-Tracer, wird hierzu nach und nach erweitert. Zu beginn wird die Beleuchtungsrechnung ausschließlich auf der Oberfläche durchgeführt.
+	Diese wird später auf Volumen erweitert. Ziel dieser Arbeit ist es die Rendergleichung, möglichst Analytisch zu lösen.
+
+\section{Vorbetrachtungen}
+
+\chapter{Datensätze}
+\chapter{Rendergleichung}
+\chapter{Ray-Tracing}
+\chapter{Evaluation}
+
+%\chapter{title}
+%
+%\chapter{ein kapitel}
+%\section{eine Grafik}
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics{test.png}
+%	\caption{beschriftung}
+%	\label{fig:diplominf}
+%\end{figure}
 
 
-\subsection{Etwas Mathe}
-
-\[
-\sum_{i=1}^{100}x_i
-\]
-noch mehr text
-\subsubsection{Verweise auf Literatur}
-So kann ich Literatur aus literatur.bib zitieren: \cite{kochbuch}. 
-
-\paragraph{etwas quelltext}
-
-
-\begin{figure}[htbp]
-\begin{lstlisting}[frame=trbl]
-//comment
-for(int i = 0; i < 100;i++)
-{
-test(i);
-}
-\end{lstlisting}
-\end{figure}
-
-text
-
-\cite*{}
+%\subsection{Etwas Mathe}
+%
+%\[
+%\sum_{i=1}^{100}x_i
+%\]
+%noch mehr text
+%\subsubsection{Verweise auf Literatur}
+%So kann ich Literatur aus literatur.bib zitieren: \cite{kochbuch}. 
+%
+%\paragraph{etwas quelltext}
+%
+%
+%\begin{figure}[htbp]
+%\begin{lstlisting}[frame=trbl]
+%//comment
+%for(int i = 0; i < 100;i++)
+%{
+%test(i);
+%}
+%\end{lstlisting}
+%\end{figure}
+%
+%text
+%
+%\cite*{}
 \end{document}
