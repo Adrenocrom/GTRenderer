@@ -24,5 +24,5 @@ float Sphere::intersect(const Ray& r) {
 	else
 		det = sqrt(det);
 
-	return (t = b - det) > 1e-4 ? t : ((t = b + det) > 1e-4 ? t :0);
+	return (t = b - det) > 1e-4 ? t : ((t = b + det) > 1e-4 ? t : 0);
 }
