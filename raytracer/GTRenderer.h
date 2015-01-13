@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <iostream>
 #include <cmath>
+#include <vector>
+#include <string>
+#include <QImage>
 
 #define FM_MIN(a, b) ((a) < (b) ? (a) : (b)) // Minimum
 #define FM_MAX(a, b) ((a) > (b) ? (a) : (b)) // Maximum
@@ -14,8 +17,12 @@
 #define FM_RAD_TO_DEG(x) ((x) * 57.295779513082320876798154814105f)
 
 #include "Vector3.h"
+#include "Camera.h"
 #include "Sphere.h"
 #include "Ray.h"
+#include "Scene.h"
+#include "Renderer.h"
+#include "RayTracer.h"
 #include "LightSource.h"
 
 #endif

@@ -261,3 +261,32 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Determining if the Q_WS_X11 exist passed with the following output:
+Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2193154526/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2193154526.dir/build.make CMakeFiles/cmTryCompileExec2193154526.dir/build
+make[1]: Betrete Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2193154526.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec2193154526.dir/CheckSymbolExists.cxx.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec2193154526
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2193154526.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec2193154526.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec2193154526 -rdynamic 
+make[1]: Verlasse Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
+
+File /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_X11
+  return ((int*)(&Q_WS_X11))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
