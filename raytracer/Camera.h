@@ -15,7 +15,7 @@ class Camera {
 		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus);
 		~Camera();
 
-		void saveImageToFile(const std::string& str_filename);
+		void saveImageToFile(const char* pcFilename);
 
 };
 

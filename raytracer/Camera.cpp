@@ -23,7 +23,7 @@ Camera::~Camera() {
 	}
 }
 
-void Camera::saveImageToFile(const std::string& str_filename) {
+void Camera::saveImageToFile(const char* pcFilename) {
 	QImage result(m_iWidth, m_iHeight, QImage::Format_RGB32);
 
 	for(int y = 0; y < m_iHeight; ++y) {
@@ -33,4 +33,6 @@ void Camera::saveImageToFile(const std::string& str_filename) {
 												(int)m_ppvSensor[x][y].b));			
 		}
 	}
+
+	result.save(pcFilename);
 }

@@ -10,6 +10,7 @@ include( ${QT_USE_FILE} )
 add_definitions( ${QT_DEFINITIONS} )
 
 add_definitions( "-std=c++11" )
+add_definitions( "-DQT_GUI_LIB" )
 
 include_directories( include . )
 
@@ -25,4 +26,4 @@ add_library( RayTracer	Vector3.cpp
 								GTRenderer.cpp )
 
 add_executable( GTRenderer main.cpp )
-target_link_libraries( GTRenderer RayTracer)
+target_link_libraries( GTRenderer RayTracer ${QT_LIBRARIES})
