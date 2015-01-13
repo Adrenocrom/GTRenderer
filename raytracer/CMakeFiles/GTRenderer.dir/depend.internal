@@ -13,6 +13,7 @@ CMakeFiles/GTRenderer.dir/main.cpp.o
  /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
  /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
  /usr/include/qt4/Qt3Support/q3cstring.h
+ /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/qalgorithms.h
@@ -56,6 +57,7 @@ CMakeFiles/GTRenderer.dir/main.cpp.o
  /usr/include/qt4/QtCore/qiodevice.h
  /usr/include/qt4/QtCore/qiterator.h
  /usr/include/qt4/QtCore/qline.h
+ /usr/include/qt4/QtCore/qlinkedlist.h
  /usr/include/qt4/QtCore/qlist.h
  /usr/include/qt4/QtCore/qmap.h
  /usr/include/qt4/QtCore/qnamespace.h
@@ -63,12 +65,17 @@ CMakeFiles/GTRenderer.dir/main.cpp.o
  /usr/include/qt4/QtCore/qobjectdefs.h
  /usr/include/qt4/QtCore/qpoint.h
  /usr/include/qt4/QtCore/qrect.h
+ /usr/include/qt4/QtCore/qregexp.h
  /usr/include/qt4/QtCore/qscopedpointer.h
  /usr/include/qt4/QtCore/qsize.h
  /usr/include/qt4/QtCore/qstring.h
  /usr/include/qt4/QtCore/qstringbuilder.h
+ /usr/include/qt4/QtCore/qstringlist.h
+ /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qvector.h
+ /usr/include/qt4/QtGui/QColor
  /usr/include/qt4/QtGui/QImage
+ /usr/include/qt4/QtGui/qcolor.h
  /usr/include/qt4/QtGui/qimage.h
  /usr/include/qt4/QtGui/qmacdefines_mac.h
  /usr/include/qt4/QtGui/qmatrix.h

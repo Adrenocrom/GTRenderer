@@ -12,6 +12,7 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: Sphere.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Vector3.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: main.cpp
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/Qt3Support/q3cstring.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/QPoint
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/QPointF
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qalgorithms.h
@@ -55,6 +56,7 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qglobal.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qiodevice.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qiterator.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qline.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qlinkedlist.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qlist.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qmap.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qnamespace.h
@@ -62,12 +64,17 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qobject.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qobjectdefs.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qpoint.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qrect.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qregexp.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qscopedpointer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qsize.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qstring.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qstringbuilder.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qstringlist.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qstringmatcher.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtCore/qvector.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/QColor
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/QImage
+CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/qcolor.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/qimage.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/qmacdefines_mac.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: /usr/include/qt4/QtGui/qmatrix.h

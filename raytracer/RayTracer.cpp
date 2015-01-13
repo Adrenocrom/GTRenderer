@@ -3,5 +3,5 @@
 RayTracer::RayTracer() {
 }
 
-void render(Scene* pScene) {
+void render(Scene* pScene, Camera* pCamera) {
 }

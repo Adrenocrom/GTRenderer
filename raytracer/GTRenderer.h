@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <QImage>
+#include <QColor>
 
 #define FM_MIN(a, b) ((a) < (b) ? (a) : (b)) // Minimum
 #define FM_MAX(a, b) ((a) > (b) ? (a) : (b)) // Maximum

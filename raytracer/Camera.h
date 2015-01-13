@@ -3,14 +3,17 @@
 
 #pragma once
 
-class Image {
+class Camera {
 	public:
-		int m_iWidth;
-		int m_iHeight;
-		Vector3** m_ppvImage;
+		Vector3		m_vPosition;
+		Vector3		m_vFocus;
+		Vector3		m_vDirection;
+		int 			m_iWidth;
+		int 			m_iHeight;
+		Vector3** 	m_ppvSensor;
 
-		Image(int iWidth, int iHeight);
-		~Image();
+		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus);
+		~Camera();
 
 		void saveImageToFile(const std::string& str_filename);
 

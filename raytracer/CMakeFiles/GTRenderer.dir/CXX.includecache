@@ -21,6 +21,8 @@ string
 -
 QImage
 -
+QColor
+-
 Vector3.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
 Camera.h
@@ -58,6 +60,20 @@ GTRenderer.h
 
 /usr/include/qt4/Qt3Support/q3cstring.h
 QtCore/qbytearray.h
+-
+
+/usr/include/qt4/Qt3Support/q3valuelist.h
+QtCore/qalgorithms.h
+-
+QtCore/qdatastream.h
+-
+QtCore/qlinkedlist.h
+-
+QtCore/qlist.h
+-
+iterator
+-
+list
 -
 
 /usr/include/qt4/QtCore/QPoint
@@ -308,6 +324,16 @@ new
 QtCore/qpoint.h
 -
 
+/usr/include/qt4/QtCore/qlinkedlist.h
+QtCore/qiterator.h
+-
+QtCore/qatomic.h
+-
+iterator
+-
+list
+-
+
 /usr/include/qt4/QtCore/qlist.h
 QtCore/qiterator.h
 -
@@ -374,6 +400,12 @@ QtCore/qsize.h
 QtCore/qpoint.h
 -
 
+/usr/include/qt4/QtCore/qregexp.h
+QtCore/qstring.h
+-
+new
+-
+
 /usr/include/qt4/QtCore/qscopedpointer.h
 QtCore/qglobal.h
 -
@@ -410,6 +442,26 @@ QtCore/qmap.h
 string.h
 -
 
+/usr/include/qt4/QtCore/qstringlist.h
+QtCore/qalgorithms.h
+-
+QtCore/qdatastream.h
+-
+QtCore/qlist.h
+-
+QtCore/qregexp.h
+-
+QtCore/qstring.h
+-
+QtCore/qstringmatcher.h
+-
+Qt3Support/q3valuelist.h
+-
+
+/usr/include/qt4/QtCore/qstringmatcher.h
+QtCore/qstring.h
+-
+
 /usr/include/qt4/QtCore/qvector.h
 QtCore/qiterator.h
 -
@@ -434,9 +486,21 @@ QtCore/QPointF
 QtCore/QPoint
 -
 
+/usr/include/qt4/QtGui/QColor
+qcolor.h
+/usr/include/qt4/QtGui/qcolor.h
+
 /usr/include/qt4/QtGui/QImage
 qimage.h
 /usr/include/qt4/QtGui/qimage.h
+
+/usr/include/qt4/QtGui/qcolor.h
+QtGui/qrgb.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qstringlist.h
+-
 
 /usr/include/qt4/QtGui/qimage.h
 QtGui/qtransform.h
