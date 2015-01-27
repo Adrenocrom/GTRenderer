@@ -1,7 +1,7 @@
 #include "GTRenderer.h"
 
 LightSource::LightSource()
-: m_vTotalPower(Vector3(0.0f)) {
+: m_vTotalPower(Vector3(0.0)) {
 
 }
 

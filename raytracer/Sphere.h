@@ -8,13 +8,18 @@ class Ray;
 class Sphere {
 	public:
 		Vector3	m_vPosition;
-		float		m_fRadius;
+		double	m_fRadius;
 	
 		Sphere();
-		Sphere(const Vector3 vPosition, float fRadius);
+		Sphere(const Vector3 vPosition, double fRadius);
 		~Sphere();
 
-		float intersect(const Ray& r);
+		double intersect(const Ray& r);
+		std::pair<double, double> intersect2(const Ray& r);
+
+	private:
+		int CalcQuadricRoots(double a, double b, double c, double* x1, double* x2);
+		double PSgn(double d);
 };
 
 #endif

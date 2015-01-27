@@ -7,8 +7,10 @@ class LightSource;
 
 class Scene {
 	public:
-		std::vector<LightSource> m_vLightSources;
-		std::vector<Sphere>		 m_vSpheres;
+		std::vector<LightSource> 	 m_vLightSources;
+		std::vector<PointLight>	 	 m_vPointLights;
+		std::vector<DirectionLight> m_vDirectionLight;
+		std::vector<Sphere>		 	 m_vSpheres;
 
 		Scene();
 		~Scene();

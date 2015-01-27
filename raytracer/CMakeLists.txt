@@ -19,6 +19,9 @@ add_library( RayTracer	Vector3.cpp
 								Sphere.cpp
 								Ray.cpp
 								LightSource.cpp
+								PointLight.cpp
+								DirectionLight.cpp
+								IntersectionInfo.cpp
 								Scene.cpp
 								Renderer.cpp
 								RayTracer.cpp

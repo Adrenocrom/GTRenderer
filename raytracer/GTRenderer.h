@@ -21,9 +21,12 @@
 #include "Camera.h"
 #include "Sphere.h"
 #include "Ray.h"
+#include "LightSource.h"
+#include "PointLight.h"
+#include "DirectionLight.h"
+#include "IntersectionInfo.h"
 #include "Scene.h"
 #include "Renderer.h"
 #include "RayTracer.h"
-#include "LightSource.h"
 
 #endif

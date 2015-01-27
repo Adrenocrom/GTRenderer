@@ -7,10 +7,10 @@ class LightSource {
 	public:
 		LightSource();
 		LightSource(Vector3 vTotalPower);
-		virtual ~LightSource();
+		virtual ~LightSource() {};
 
 		void setTotalPower(Vector3 vTotalPower);
-	protected:
+	//protected:
 		Vector3 m_vTotalPower;
 };
 

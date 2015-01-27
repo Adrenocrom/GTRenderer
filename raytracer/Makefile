@@ -148,6 +148,30 @@ Camera.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Camera.cpp.s
 .PHONY : Camera.cpp.s
 
+DirectionLight.o: DirectionLight.cpp.o
+.PHONY : DirectionLight.o
+
+# target to build an object file
+DirectionLight.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/DirectionLight.cpp.o
+.PHONY : DirectionLight.cpp.o
+
+DirectionLight.i: DirectionLight.cpp.i
+.PHONY : DirectionLight.i
+
+# target to preprocess a source file
+DirectionLight.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/DirectionLight.cpp.i
+.PHONY : DirectionLight.cpp.i
+
+DirectionLight.s: DirectionLight.cpp.s
+.PHONY : DirectionLight.s
+
+# target to generate assembly for a file
+DirectionLight.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/DirectionLight.cpp.s
+.PHONY : DirectionLight.cpp.s
+
 GTRenderer.o: GTRenderer.cpp.o
 .PHONY : GTRenderer.o
 
@@ -172,6 +196,30 @@ GTRenderer.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/GTRenderer.cpp.s
 .PHONY : GTRenderer.cpp.s
 
+IntersectionInfo.o: IntersectionInfo.cpp.o
+.PHONY : IntersectionInfo.o
+
+# target to build an object file
+IntersectionInfo.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o
+.PHONY : IntersectionInfo.cpp.o
+
+IntersectionInfo.i: IntersectionInfo.cpp.i
+.PHONY : IntersectionInfo.i
+
+# target to preprocess a source file
+IntersectionInfo.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.i
+.PHONY : IntersectionInfo.cpp.i
+
+IntersectionInfo.s: IntersectionInfo.cpp.s
+.PHONY : IntersectionInfo.s
+
+# target to generate assembly for a file
+IntersectionInfo.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.s
+.PHONY : IntersectionInfo.cpp.s
+
 LightSource.o: LightSource.cpp.o
 .PHONY : LightSource.o
 
@@ -195,6 +243,30 @@ LightSource.s: LightSource.cpp.s
 LightSource.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/LightSource.cpp.s
 .PHONY : LightSource.cpp.s
+
+PointLight.o: PointLight.cpp.o
+.PHONY : PointLight.o
+
+# target to build an object file
+PointLight.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/PointLight.cpp.o
+.PHONY : PointLight.cpp.o
+
+PointLight.i: PointLight.cpp.i
+.PHONY : PointLight.i
+
+# target to preprocess a source file
+PointLight.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/PointLight.cpp.i
+.PHONY : PointLight.cpp.i
+
+PointLight.s: PointLight.cpp.s
+.PHONY : PointLight.s
+
+# target to generate assembly for a file
+PointLight.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/PointLight.cpp.s
+.PHONY : PointLight.cpp.s
 
 Ray.o: Ray.cpp.o
 .PHONY : Ray.o
@@ -380,12 +452,21 @@ help:
 	@echo "... Camera.o"
 	@echo "... Camera.i"
 	@echo "... Camera.s"
+	@echo "... DirectionLight.o"
+	@echo "... DirectionLight.i"
+	@echo "... DirectionLight.s"
 	@echo "... GTRenderer.o"
 	@echo "... GTRenderer.i"
 	@echo "... GTRenderer.s"
+	@echo "... IntersectionInfo.o"
+	@echo "... IntersectionInfo.i"
+	@echo "... IntersectionInfo.s"
 	@echo "... LightSource.o"
 	@echo "... LightSource.i"
 	@echo "... LightSource.s"
+	@echo "... PointLight.o"
+	@echo "... PointLight.i"
+	@echo "... PointLight.s"
 	@echo "... Ray.o"
 	@echo "... Ray.i"
 	@echo "... Ray.s"

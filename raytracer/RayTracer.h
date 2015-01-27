@@ -9,6 +9,9 @@ class RayTracer : public Renderer {
 		virtual ~RayTracer() {};
 
 		virtual void render(Scene* pScene, Camera* pCamera) const override;
+
+	
+
 };
 
 #endif
