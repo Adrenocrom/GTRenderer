@@ -36,7 +36,7 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 					double fCosSpec  	= Vector3Dot(ray.m_vDirection, vReflect);
 					std::cout<<(acos(fCosSpec))<<std::endl;
 					double fN = 50;
-					double fK = (0.5 * fCosDiff) + (0.5 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
+					double fK = (0.0 * fCosDiff) + (1.0 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
 
 					//std::cout<<fK<<std::endl;
 					

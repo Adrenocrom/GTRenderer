@@ -14,7 +14,7 @@ int main() {
 
 	tracer->render(&scene, &camera);
 
-	camera.saveImageToFile("image.png");		
+	camera.saveImageToFile("image3.png");		
 
 	return 0;
 }
