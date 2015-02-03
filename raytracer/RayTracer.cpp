@@ -29,14 +29,18 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 					Vector3 lDir	= Vector3Normalize(pos - pScene->m_vPointLights[0].m_vPosition);
 					info.setNormal(normal);
 					
-					double fCosDiff	= Vector3Dot(normal, lDir);
+					double fCosDiff		= Vector3Dot(normal, lDir);
+					double fDoubleScalar	= 2 * Vector3Dot(lDir, normal);
 
-					Vector3 vReflect 	= Vector3Normalize(((2 * Vector3Dot(lDir, normal)) * normal) + lDir);
+					if(fDoubleScalar < 0)
+						fDoubleScalar = 0;
+
+					Vector3 vReflect 	= Vector3Normalize((fDoubleScalar * normal) + lDir);
 
 					double fCosSpec  	= Vector3Dot(ray.m_vDirection, vReflect);
 					std::cout<<(acos(fCosSpec))<<std::endl;
 					double fN = 50;
-					double fK = (0.0 * fCosDiff) + (1.0 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
+					double fK = (0.5 * fCosDiff) + (0.5 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
 
 					//std::cout<<fK<<std::endl;
 					
