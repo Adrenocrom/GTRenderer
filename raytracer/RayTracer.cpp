@@ -21,7 +21,7 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 
 				double t = pScene->m_vSpheres[i].intersect2(ray).first;
 				if(t < 0)	
-					pCamera->m_ppvSensor[x][y] = Vector3(20, 20, 20);
+					pCamera->m_ppvSensor[x][y] += Vector3(0, 0, 0);
 				else {
 					IntersectionInfo info(ray, t);
 					Vector3 pos	   = (vOrigin + t * pCamera->m_vDirection);
@@ -38,9 +38,9 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 					Vector3 vReflect 	= Vector3Normalize((fDoubleScalar * normal) + lDir);
 
 					double fCosSpec  	= Vector3Dot(ray.m_vDirection, vReflect);
-					std::cout<<(acos(fCosSpec))<<std::endl;
-					double fN = 50;
-					double fK = (0.5 * fCosDiff) + (0.5 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
+					//std::cout<<(acos(fCosSpec))<<std::endl;
+					double fN = 30;
+					double fK = (0.7 * fCosDiff) + (0.3 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
 
 					//std::cout<<fK<<std::endl;
 					
