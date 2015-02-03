@@ -12,6 +12,7 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 
 	for(int y = 0; y < pCamera->m_iHeight; ++y) {
 		for(int x = 0; x < pCamera->m_iWidth; ++x) {
+			pCamera->m_ppvSensor[x][y] = Vector3(20, 20, 20);
 
 			// Berechnung der Lokalen Beleuchtung
 			for(int i = 0; i < pScene->m_vSpheres.size(); ++i) {
@@ -25,16 +26,16 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 					IntersectionInfo info(ray, t);
 					Vector3 pos	   = (vOrigin + t * pCamera->m_vDirection);
 					Vector3 normal = Vector3Normalize((pos - pScene->m_vSpheres[i].m_vPosition) + pos);
-					Vector3 lDir	= Vector3Normalize(pScene->m_vPointLights[0].m_vPosition - pos);
+					Vector3 lDir	= Vector3Normalize(pos - pScene->m_vPointLights[0].m_vPosition);
 					info.setNormal(normal);
 					
-					double fCosDiff	= Vector3Dot(normal, -lDir);
+					double fCosDiff	= Vector3Dot(normal, lDir);
 
-					Vector3 vReflect 	= Vector3Normalize(2 * Vector3Dot(-lDir, normal) * normal + lDir);
+					Vector3 vReflect 	= Vector3Normalize(((2 * Vector3Dot(lDir, normal)) * normal) + lDir);
 
 					double fCosSpec  	= Vector3Dot(ray.m_vDirection, vReflect);
 					double fN = 50;
-					double fK = (0.5 * fCosDiff) + (0.5 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
+					double fK = (1.0 * fCosDiff) + (1.0 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
 
 					//std::cout<<fK<<std::endl;
 					

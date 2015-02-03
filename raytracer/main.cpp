@@ -2,8 +2,8 @@
 
 int main() {
 	Sphere first(Vector3(0.0, 0.0, 0.0), 100.0);
-	Sphere second(Vector3(0.0, -4000.0, 0.0), 100.0);
-	PointLight light0(Vector3(0.0, 20.0, 0.0), Vector3(30.0, 220.0, 0.9));
+	Sphere second(Vector3(200.0, 0.0, 100.0), 50.0);
+	PointLight light0(Vector3(0.0, 20000.0, 0.0), Vector3(30.0, 220.0, 0.9));
 	//LightSource test;
 	Scene scene;
 	scene.m_vSpheres.push_back(first);
