@@ -24,20 +24,28 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 				else {
 					IntersectionInfo info(ray, t);
 					Vector3 pos	   = (vOrigin + t * pCamera->m_vDirection);
-					Vector3 normal = Vector3Normalize(pos - pScene->m_vSpheres[i].m_vPosition);
+					Vector3 normal = Vector3Normalize((pos - pScene->m_vSpheres[i].m_vPosition) + pos);
 					Vector3 lDir	= Vector3Normalize(pScene->m_vPointLights[0].m_vPosition - pos);
 					info.setNormal(normal);
 					
-					double fCosDiff	= Vector3Dot(normal, lDir);
+					double fCosDiff	= Vector3Dot(normal, -lDir);
 
-					Vector3 vReflect 	= Vector3Normalize(2 * Vector3Dot(-lDir, normal) * normal + -lDir);
+					Vector3 vReflect 	= Vector3Normalize(2 * Vector3Dot(-lDir, normal) * normal + lDir);
 
 					double fCosSpec  	= Vector3Dot(ray.m_vDirection, vReflect);
-					double fN = 100;
-					double fK = (1.0 * fCosDiff) + (1.0 * ((fN * 2)/(2*FM_PI)) * (fCosSpec*fCosSpec));
+					double fN = 50;
+					double fK = (0.5 * fCosDiff) + (0.5 * ((fN + 2)/(2*FM_PI)) * pow(fCosSpec, 2));
 
-					std::cout<<fK<<std::endl;
+					//std::cout<<fK<<std::endl;
+					
 					pCamera->m_ppvSensor[x][y] = pScene->m_vPointLights[0].m_vTotalPower * fK;
+					
+					if(pCamera->m_ppvSensor[x][y].r < 0) pCamera->m_ppvSensor[x][y].r = 0;
+					if(pCamera->m_ppvSensor[x][y].g < 0) pCamera->m_ppvSensor[x][y].g = 0;
+					if(pCamera->m_ppvSensor[x][y].b < 0) pCamera->m_ppvSensor[x][y].b = 0;
+					if(pCamera->m_ppvSensor[x][y].r > 255) pCamera->m_ppvSensor[x][y].r = 255;
+					if(pCamera->m_ppvSensor[x][y].g > 255) pCamera->m_ppvSensor[x][y].g = 255;
+					if(pCamera->m_ppvSensor[x][y].b > 255) pCamera->m_ppvSensor[x][y].b = 255;
 				}
 					
 			}
