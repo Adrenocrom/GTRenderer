@@ -42,11 +42,10 @@ std::pair<double, double> Sphere::intersect2(const Ray& r) {
  
 	//std::cout<<"T1: "<<t1<<"| T2: "<<t2<<std::endl;
 
-   if (roots > 0)
-		return std::make_pair((t1 >= 0 ? t1 : t2), -1);
- /*     // kleinsterpositiver pos. Wert aus t1, t2
+	if(roots == 1)
+		return std::make_pair(t1, t1);
 	else if(roots == 2)
-		return std::make_pair(t1, t2);*/
+		return std::make_pair(t1, t2);
 	else
 		return std::make_pair(-1, -1);
 }
