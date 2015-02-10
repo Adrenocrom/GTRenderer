@@ -21,6 +21,8 @@ vector
 -
 string
 -
+random
+-
 QImage
 -
 QColor

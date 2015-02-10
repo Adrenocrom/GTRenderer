@@ -17,7 +17,44 @@
 
 \betreuer{Dipl-MedienInf. Joachim Staib}
 \bibfiles{literatur}
-\problem{Text der Aufgabenstellung...}
+\problem{
+Die Darstellung von Partikeldaten mittels Kugelglyphen ist in der wissenschaftlichen Visualisierung
+inzwischen etabliert. Gerade bei dichten Datensätzen stellen kompakte Anordnungen von sehr vielen
+Kugeln jedoch ein Problem für die Erkennbarkeit der zu visualisierenden Vorgänge dar. Eine Möglichkeit, diesem Problem zu begegnen ist es, über Blinn-Phong-Beleuchtung hinausgehende Effekte wie
+globale Schatten oder den Einsatz von Methoden aus dem Volume-Rendering zu integrieren. Durch
+deren Komplexität muss in Echtzeitvisualisierungen jedoch auf teilweise grobe Approximationen zu-
+rückgegriffen werden. Die Einschätzung der Approximationsqualität fällt häufig schwer, da keine Visualisierung des exakten Verfahrens verfügbar ist.
+Ziel dieser Belegarbeit ist die Umsetzung eines CPU-Renderers für Partikeldaten, der eine Reihe
+von erweiterten Visualisierungseffekten unterstützt. Er soll die Grundlage für Ground-Truth-
+Visualisierungen bieten.
+Zunächst soll eine geeignete Softwarearchitektur konzipiert und umgesetzt werden. Die Partikel sollen als mit lichtemittierendem und ?absorbierendem Gas gefüllte Kugeln interpretiert werden. Es sollen anschließend Methoden entwickelt werden, um einen physikalisch plausiblen globalen Schattenwurf und Lichttransport für eine beliebige Anzahl an Punkt- und Richtungslichtquellen zu ermöglichen.
+Die dafür notwendigen Gleichungen für Kugeln mit konstanter Dichte und Emission, sowie linearer
+Absorption, sollen soweit wie möglich analytisch bestimmt und, sobald nicht mehr möglich, mittels
+möglichst exakter numerischer Integratoren ausgewertet werden.
+
+Die Teilaufgaben umfassen:
+
+\begin{itemize}
+\item Umfassende Literaturrecherche zur globalen Beleuchtungsrechnung in der Volumen Visualisierung
+\item Schrittweise Konzeption und Umsetzung einer erweiterbaren Architektur zum Erzeugen von Ground-Truth-Bildern:
+
+	\begin{enumerate}
+		\item Zunächst als Raytracer für opake Kugeln, der globale Schatteneffekte von frei
+		positionierbaren Punkt- und Richtungslichtquellen unterstützt
+		\item Umsetzung eines Renderers, der Kugeln als Volumen nach dem Emissions-Absorptions-Modell rendert, dabei analytische Bestimmung des Volume-Rendering-Integrals, einschließlich Integration direkter Beleuchtung unverdeckter Lichtquellen
+		\item Erweiterung zu verdeckten Lichtquellen und Bestimmung der Lichtstärke- und Farbe
+		für Lichtstrahlen durch verdeckende Kugeln
+	\end{enumerate}
+\item Unterstützung für ein Standardformat wie VRML
+\item Evaluation in Bezug auf Korrektheit, Bildartefakte und (numerische) Grenzfälle
+\end{itemize}
+\newpage
+Optional:
+\begin{itemize}
+\item Unterstützung für Refraktionseffekte
+\item Unterstützung komplexerer Materialtypen
+\end{itemize}
+}
 \copyrighterklaerung{Hier soll jeder Autor die von ihm eingeholten
 Zustimmungen der Copyright-Besitzer angeben bzw. die in Web Press
 Rooms angegebenen generellen Konditionen seiner Text- und
@@ -26,6 +63,22 @@ Bild"ubernahmen zitieren.}
 
 \begin{document}
 \chapter{Einleitung}
+\section{Vorvorwort}
+
+	Die Tiefenwahrnehmung, des Menschen in 2Dimensionalen Bildern basiert auf einem erlernten Physikalischen
+	Verständnis für den Raum, für Licht und Schatten. Wird eine Menge von Kugeln auf eine 
+	Bildebene projiziert ist die Verdeckung ein wesentlicher Indikator für die Tiefe. Bei großen Mengen von Kugeln
+	ist die Erkennung für die Lage dieser ohne Beleuchtungseffekte nur schwer einzuschätzen. Besser wird es,
+	wenn die Wahrnehmung, nicht nur durch Lokale einfache Lichtberechnung, sondern durch eine Globale Gleichung  erzeugt wird, die nach Physikalisch korrekten Prinzipien die Szene ausleuchtet. Da die resultierenden Bilder sich mit unserem Verständnis für die Verteilung im Licht decken. 
+	
+	In dieser Arbeit, soll es darum gehen einen Raytracer herzuleiten, der Kugeln mit einer Konstanten Dichte
+	mittels Volumen-Integral beleuchtet. Da Numerische Methoden zu fehlern neigen und nur schlechte Laufzeiten erreichen,
+	ist es ein Ziel dieser Arbeit das Emission-Absorptionsmodell weites gehend Analytisch zu bestimmen.
+	
+	
+	Im folgenden möchte ich auf bereits Publizierte Arbeiten eingehen und diese im Verhältnis dazu einordnen.
+	  
+
 \section{Vorwort}
 	Die Entwicklung des ersten Funktionsfähigen Ray-Tracers wird auf  Arthur Appel, Robert Goldstein und Roger Nagel zurückgeführt. 
 	Diese erzeugten im Jahr 1963 an der University of Maryland, auf einem oszilloskopartigen Bildschirm das erste mit Ray-Tracing berechnete
@@ -49,10 +102,34 @@ Bild"ubernahmen zitieren.}
 
 \section{Vorbetrachtungen}
 
-\chapter{Datensätze}
-\chapter{Rendergleichung}
-\chapter{Ray-Tracing}
+\section{Raycasting}
+\section{Raytracing}
+\section{Bidirectional Pathtracing}
+
+\chapter{Ray-Caster}
+
+\section{Die Kamera}
+\section{Der Strahl}
+\section{Schnittpunktberechnung}
+\section{Volumen-Integral}
+
+\section{Lokale Bleuchtung}
+\section{Globale Beleuchtung}
+
+\section{Material und Konstanten}
+
+\chapter{Das Programm}
+
+\section{Verwendete Technologien}
+\section{UML-Klassen}
+
+
 \chapter{Evaluation}
+
+\subsection{Analytisches Ende}
+\subsection{Numerische Grenzfälle}
+
+\chapter{Fazit}
 
 %\chapter{title}
 %

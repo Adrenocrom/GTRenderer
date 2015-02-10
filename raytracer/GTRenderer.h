@@ -8,6 +8,7 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <random>
 #include <QImage>
 #include <QColor>
 

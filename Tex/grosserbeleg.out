@@ -1,7 +1,22 @@
 \BOOKMARK [0][-]{chapter.1}{1 Einleitung}{}% 1
-\BOOKMARK [1][-]{section.1.1}{1.1 Vorwort}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{1.2 Vorbetrachtungen}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{2 Datens\344tze}{}% 4
-\BOOKMARK [0][-]{chapter.3}{3 Rendergleichung}{}% 5
-\BOOKMARK [0][-]{chapter.4}{4 Ray-Tracing}{}% 6
-\BOOKMARK [0][-]{chapter.5}{5 Evaluation}{}% 7
+\BOOKMARK [1][-]{section.1.1}{1.1 Vorvorwort}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{1.2 Vorwort}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{1.3 Vorbetrachtungen}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{1.4 Raycasting}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{1.5 Raytracing}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{1.6 Bidirectional Pathtracing}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{2 Ray-Caster}{}% 8
+\BOOKMARK [1][-]{section.2.1}{2.1 Die Kamera}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{2.2 Der Strahl}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{2.3 Schnittpunktberechnung}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.4}{2.4 Volumen-Integral}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.5}{2.5 Lokale Bleuchtung}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.6}{2.6 Globale Beleuchtung}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.7}{2.7 Material und Konstanten}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{3 Das Programm}{}% 16
+\BOOKMARK [1][-]{section.3.1}{3.1 Verwendete Technologien}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{3.2 UML-Klassen}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{4 Evaluation}{}% 19
+\BOOKMARK [1][-]{subsection.4.0.1}{4.0.1 Analytisches Ende}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.0.2}{4.0.2 Numerische Grenzf\344lle}{subsection.4.0.1}% 21
+\BOOKMARK [0][-]{chapter.5}{5 Fazit}{}% 22

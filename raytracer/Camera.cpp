@@ -9,6 +9,8 @@ Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus)
 		m_ppvSensor[x] = new Vector3[m_iHeight];
 	}
 
+	m_fAspect = (double)m_iWidth / (double)m_iHeight;
+
 	m_vDirection = Vector3Normalize(m_vFocus - m_vDirection);
 }
 
@@ -22,6 +24,25 @@ Camera::~Camera() {
 		m_ppvSensor = NULL;
 	}
 }
+
+Ray Camera::getRay(int x, int y) {
+	double bottom  = -1;
+	double top		= 1;
+	double left		= -1;
+	double right	= 1;
+
+	Vector3 vOrigin = Vector3(((double)x) / ((double)m_iWidth),
+									  ((double)y) / ((double)m_iHeight),
+									 m_vPosition.z);
+	vOrigin.x = left + vOrigin.x * (right - left) * m_fAspect;
+	vOrigin.y = top + vOrigin.y * (bottom - top);
+	Vector3 vDirection = Vector3( vOrigin.x,
+											vOrigin.y,
+											1.0 );
+	return Ray(vOrigin, Vector3Normalize(vDirection));
+}
+
+
 
 void Camera::saveImageToFile(const char* pcFilename) {
 	QImage result(m_iWidth, m_iHeight, QImage::Format_RGB32);

@@ -3,6 +3,8 @@
 
 #pragma once
 
+class Ray;
+
 class Camera {
 	public:
 		Vector3		m_vPosition;
@@ -10,13 +12,14 @@ class Camera {
 		Vector3		m_vDirection;
 		int 			m_iWidth;
 		int 			m_iHeight;
+		double		m_fAspect;
 		Vector3** 	m_ppvSensor;
 
 		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus);
 		~Camera();
 
 		void saveImageToFile(const char* pcFilename);
-
+		Ray	getRay(int x, int y);
 };
 
 #endif
