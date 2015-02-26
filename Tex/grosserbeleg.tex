@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg]{cgvpub}
+\documentclass[hyperref,german,beleg,final]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -62,22 +62,64 @@ Bild"ubernahmen zitieren.}
 \acknowledgments{Die Danksagung...}
 
 \begin{document}
+
 \chapter{Einleitung}
+
 \section{Vorvorwort}
 
-	Die Tiefenwahrnehmung, des Menschen in 2Dimensionalen Bildern basiert auf einem erlernten Physikalischen
-	Verständnis für den Raum, für Licht und Schatten. Wird eine Menge von Kugeln auf eine 
-	Bildebene projiziert ist die Verdeckung ein wesentlicher Indikator für die Tiefe. Bei großen Mengen von Kugeln
-	ist die Erkennung für die Lage dieser ohne Beleuchtungseffekte nur schwer einzuschätzen. Besser wird es,
-	wenn die Wahrnehmung, nicht nur durch Lokale einfache Lichtberechnung, sondern durch eine Globale Gleichung  erzeugt wird, die nach Physikalisch korrekten Prinzipien die Szene ausleuchtet. Da die resultierenden Bilder sich mit unserem Verständnis für die Verteilung im Licht decken. 
+	Ein Photon das im inneren der Sonne emittiert wird, ist dem kurzwelligen Spektrum der elektromagnetischen Wellen zugeordnet. Es handelt sich um Gammastrahlung. 
+	Auf seiner langen Reise vom Kern bis zur Korona, 
+	die rund 150.000 Jahre dauert, wird das Photon durch das enorm dichte und
+	heiße Gas der Sonne blau verschoben.
+	Auf den rund 690.000 km, die das Photon durch die Sonne wandert, absorbiert die Sonne
+	einen großen Teil der Energie des Photons. Nachdem es die Sonne verlassen hat, benötigt
+	das Photon weitere 8 Minuten um unsere Erde zu erreichen. 
+	Die Geschichte von der Langen Reise dieses einzelnen Photons ist ein extremes Beispiel
+	für den Vorgang der im Folgenden betrachtet wird.
 	
-	In dieser Arbeit, soll es darum gehen einen Raytracer herzuleiten, der Kugeln mit einer Konstanten Dichte
-	mittels Volumen-Integral beleuchtet. Da Numerische Methoden zu fehlern neigen und nur schlechte Laufzeiten erreichen,
-	ist es ein Ziel dieser Arbeit das Emission-Absorptionsmodell weites gehend Analytisch zu bestimmen.
+	Licht ist im Physikalischen Sinn ein noch nicht gänzlich erfasstes Phänomen.
+	Es zeigen sich Charakteristika von Wellen und von Teilchen, es wird vom
+	Welle-Teilechodualismus gesprochen. Dieses wunderbare Modell ist ein Deckmantel
+	für viele Fragen, die sich im Zusammenhang mit der Ausbreitung des Lichtes in unserer
+	Welt ergeben und noch nicht alle beantwortet sind.
 	
+	Die Optik ist in der Physik die Lehre des Lichtes, sie beschreibt die Ausbreitung des Lichts
+	und die Wechselwirkung mit Materie. In der Optik gibt es verschiedene Modelle, welche die
+	Eigenschaften des Lichtes beschreiben.
 	
-	Im folgenden möchte ich auf bereits Publizierte Arbeiten eingehen und diese im Verhältnis dazu einordnen.
-	  
+	Die Strahlenoptik betrachtet das Licht in Form von Strahlen. Diese Modell approximiert 
+	das Licht als Strahl, der von der Lichtquelle aus in die Welt geschossen wird.
+	Diese Vereinfachung kann genutzt werde, wenn die Größenordnungen der Objekte, welche im
+	Zusammenhang mit Licht betrachtet werden, deutlich über der Wellenlänge des Lichts liegt.
+	Ist dies erfüllt können Typische Welleneigenschaften, wie Beugung und daraus resultierende
+	Interferenz vernachlässigt werden.
+	Für die Berechnung von Schatten, Reflexion und Brechung eignet sich die Strahlenoptik
+	ausgesprochen gut und soll für diese Arbeit Grundlage der Betrachtung sein.
+	Die Lichtstrahlen breiten sich immer nur geradlinig aus, bis sie auf einen Körper treffen und
+	reflektiert, gestreut oder gebrochen werden. Sie können einander durchdringen ohne sich gegenseitig zu beeinflussen. Der Weg des Lichtes lässt sich umkehren, was zur folge hat,
+	dass die Gesetzt auch bei umgekehrter Lichtrichtung gelten.
+	Dieses Prinzip ist essentiell für die Implementierung welche im Folgenden betrachtet wird,
+	da die Strahlen von der Kamera aus in die Welt geschossen werden.
+	
+	Die Beleuchtung einer Computergenerierten Szene wird in vielen Implementierungen, die
+	aus Computerspielen und anderen Visualisierungen bekannt sind stark vereinfacht.
+	Diese Modelle lassen die Landschaften in einem schönen Licht erscheinen, vernachlässigen
+	jedoch Physikalische Gesetzmäßigkeiten, wie die Erhaltung von Energie.
+	Die Berechnung von Schatten welche sich durch den Weg des Lichtes ergeben sollten,
+	werden oftmals nur sehr vereinfacht berechnet, insofern sie vorhanden sind.
+	
+	Für die meisten Anwendungen sind diese Approximationen vollkommen ausreichend.
+	In der Computergrafik hat sich die Repräsentation von Daten mithilfe von Kugelglyphen
+	bewährt. Als Beispiel soll das Modell eines Moleküls dienen.
+	Ein Problem welches sich aus der Projektion auf den Bildschirm ergibt, ist die 
+	Tiefenwahrnehmung des Menschen. Die durch den Computergenerierten Bilder sind in der Regel
+	zweidimensionale Projektionen von dreidimensionalen Szenen. Der Mensch benötigt zur Erkennung
+	von Lagenbeziehungen der Objekte in der Szene weitere Informationen.
+	Im Laufe des Lebens lernt ein Mensch, die Merkmale des Lichtes zu Interpretieren.
+	Auf diese Weise gelingt es einem Betrachter, die Lage der Lichtquelle nur aus einer Objekt
+	Silhouette zu schätzen.
+	Um diese Fähigkeit nutzen zu können wird jedoch eine komplexe Beleuchtung der Szene nötig.
+	
 
 \section{Vorwort}
 	Die Entwicklung des ersten Funktionsfähigen Ray-Tracers wird auf  Arthur Appel, Robert Goldstein und Roger Nagel zurückgeführt. 
