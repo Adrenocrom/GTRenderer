@@ -1,0 +1,54 @@
+\documentclass[]{article}
+
+\begin{document}
+
+
+\section{Richtungslichtquelle}
+
+Die endgültige Lichtintensität, die das Auge erreicht setzt sich zusammen aus: \\
+ 
+$I = I_E + I_B + I_L$
+
+dem emittierten Licht:
+
+$I_E = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot c(v_r(t)) dt $
+
+dem ambienten Licht:
+
+$I_B = \tau(t_n, t_f) \cdot I_b$
+
+$\tau(t_0, t_1) = e^{- \int\limits_{t_0}^{t_1} \sigma (v_r(t)) dt}$ \\
+
+und dem Licht der Einzelnen Lichtquellen. Hier reduziert auf einen einzelnen Strahl der den Sichtstrahl $\underline{r}(t) = \underline{e} + t \cdot \vec{v}$ im Volumen schneidet. (An der Stelle t)
+
+$I_L(t) = \tau(t_n, t) \cdot I_p(t)$
+
+$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \sigma (v_r(s)) ds} \cdot I_p$
+
+$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot v_r(s) ds} \cdot I_p$
+
+$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot \kappa ds} \cdot I_p$
+
+$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot \kappa ds} \cdot I_p$
+
+$I_p(t) = e^{- \lambda \cdot \kappa \cdot \int\limits_{0}^{l(t)} ds} \cdot I_p$
+
+$I_p(t) = e^{- \lambda \cdot \kappa \cdot s} \cdot I_p$
+
+$I_p(t) = e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d(t)>}{<d(t), d(t)>} + \frac{\sqrt{<p(t), d(t)>^2 - <p(t), p(t)> \cdot <d(t), d(t)>}}{<d(t), d(t)>}} \cdot I_p$ \\
+
+mit $d(t) = d$ da es sich um eine Richtungslichtquelle handelt \\
+
+$I_p(t) = e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p$
+
+$I_{L(t)} = \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p$ \\
+
+Daraus ergibt sich $I_L$ für eine Richtungslichtquelle \\
+
+$I_L = \int\limits_{t_n}^{t_f} I_{L(t)} dt $
+
+$I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot I_{p(t)} dt$
+
+$I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p dt$
+
+\end{document}
