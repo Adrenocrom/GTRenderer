@@ -244,6 +244,30 @@ LightSource.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/LightSource.cpp.s
 .PHONY : LightSource.cpp.s
 
+OCTracer.o: OCTracer.cpp.o
+.PHONY : OCTracer.o
+
+# target to build an object file
+OCTracer.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/OCTracer.cpp.o
+.PHONY : OCTracer.cpp.o
+
+OCTracer.i: OCTracer.cpp.i
+.PHONY : OCTracer.i
+
+# target to preprocess a source file
+OCTracer.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/OCTracer.cpp.i
+.PHONY : OCTracer.cpp.i
+
+OCTracer.s: OCTracer.cpp.s
+.PHONY : OCTracer.s
+
+# target to generate assembly for a file
+OCTracer.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/OCTracer.cpp.s
+.PHONY : OCTracer.cpp.s
+
 PointLight.o: PointLight.cpp.o
 .PHONY : PointLight.o
 
@@ -464,6 +488,9 @@ help:
 	@echo "... LightSource.o"
 	@echo "... LightSource.i"
 	@echo "... LightSource.s"
+	@echo "... OCTracer.o"
+	@echo "... OCTracer.i"
+	@echo "... OCTracer.s"
 	@echo "... PointLight.o"
 	@echo "... PointLight.i"
 	@echo "... PointLight.s"

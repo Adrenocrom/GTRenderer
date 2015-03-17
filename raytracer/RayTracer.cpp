@@ -3,8 +3,8 @@
 RayTracer::RayTracer() {
 }
 
-void RayTracer::render(Scene* pScene, Camera* pCamera) const {
-	Vector3 vCamPos = pCamera->m_vPosition;
+void RayTracer::render(Scene* pScene, Camera* pCamera) {
+/*	Vector3 vCamPos = pCamera->m_vPosition;
 	std::vector<PointLight>* pLights = &pScene->m_vPointLights;
 	bool bOverZero = false;
 
@@ -73,5 +73,5 @@ void RayTracer::render(Scene* pScene, Camera* pCamera) const {
 			Y = (Y+1) % 3;
 		}
 	}
-
+*/
 }

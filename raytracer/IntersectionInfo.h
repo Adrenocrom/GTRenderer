@@ -3,16 +3,22 @@
 
 class IntersectionInfo {
 	public:
-		int	  m_iObjectId;		// Object
-		double  m_fLength;
-		Ray	  m_incomingRay;
-		Vector3 m_vNormal;		// Surfacenormal
+		int	  m_iObjectId;
+		Ray	  m_ray;
+		std::vector<Vector3> m_vPositions;
+		std::vector<Vector3> m_vNormals;
+		std::vector<double>	m_vIntersects;
+		std::vector<double>	m_vSegmentLengths;
+		int	  m_iNumIntersects;
 
-		IntersectionInfo(Ray r, double fLength = -1);
+		IntersectionInfo(Ray ray,
+							  std::vector<Vector3> vPositions,
+							  std::vector<Vector3> vNormals,
+							  std::vector<double>  vIntersects,
+							  std::vector<double>  vSegmentLengths,
+							  int iObjectId = -1);
+
 		~IntersectionInfo();
-
-		void setNormal(Vector3 vNormal) {m_vNormal = vNormal;}
-		Vector3 getNormal() {return m_vNormal;}
 };
 
 #endif

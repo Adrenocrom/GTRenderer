@@ -9,7 +9,11 @@ Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus)
 		m_ppvSensor[x] = new Vector3[m_iHeight];
 	}
 
-	m_fAspect = (double)m_iWidth / (double)m_iHeight;
+	m_dAspect = (double)m_iWidth / (double)m_iHeight;
+	m_dWidth	 = 10.0f * m_dAspect;
+	m_dHeight = 10.0f;
+	m_dWStep	 = m_dWidth / (double) m_iWidth;
+	m_dHStep	 = m_dHeight / (double) m_iHeight;
 
 	m_vDirection = Vector3Normalize(m_vFocus - m_vDirection);
 }
@@ -26,20 +30,28 @@ Camera::~Camera() {
 }
 
 Ray Camera::getRay(int x, int y) {
+	/*
+	double dX = x * m_dWStep - (m_dWidth / 2.0);
+	double dY = y * m_dHStep - (m_dHeight / 2.0);
+	Vector3 vO = Vector3(0.0, 0.0, 0.0);
+	Vector3 vF = Vector3(dX, dY, 1.0);
+	return Ray(vO, Vector3Normalize(vF));*/
+
 	double bottom  = -1;
 	double top		= 1;
-	double left		= -1;
-	double right	= 1;
+	double left		= -m_dAspect;
+	double right	= m_dAspect;
+	double xpart, ypart;
 
 	Vector3 vOrigin = Vector3(((double)x) / ((double)m_iWidth),
 									  ((double)y) / ((double)m_iHeight),
 									 m_vPosition.z);
-	vOrigin.x = left + vOrigin.x * (right - left) * m_fAspect;
-	vOrigin.y = top + vOrigin.y * (bottom - top);
+	vOrigin.x = (left + vOrigin.x * (right - left));//* m_dAspect;
+	vOrigin.y =  top  + vOrigin.y * (bottom - top);
 	Vector3 vDirection = Vector3( vOrigin.x,
 											vOrigin.y,
 											1.0 );
-	return Ray(vOrigin, Vector3Normalize(vDirection));
+	return Ray(m_vPosition,  Vector3Normalize(vDirection));
 }
 
 

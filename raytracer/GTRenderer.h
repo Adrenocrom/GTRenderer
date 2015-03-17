@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <list>
 #include <string>
 #include <random>
 #include <QImage>
@@ -29,5 +30,6 @@
 #include "Scene.h"
 #include "Renderer.h"
 #include "RayTracer.h"
+#include "OCTracer.h"
 
 #endif

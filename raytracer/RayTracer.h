@@ -8,7 +8,7 @@ class RayTracer : public Renderer {
 		RayTracer();
 		virtual ~RayTracer() {};
 
-		virtual void render(Scene* pScene, Camera* pCamera) const override;
+		void render(Scene* pScene, Camera* pCamera);
 
 	
 

@@ -12,7 +12,7 @@ class Camera {
 		Vector3		m_vDirection;
 		int 			m_iWidth;
 		int 			m_iHeight;
-		double		m_fAspect;
+		double		m_dAspect;
 		Vector3** 	m_ppvSensor;
 
 		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus);
@@ -20,6 +20,11 @@ class Camera {
 
 		void saveImageToFile(const char* pcFilename);
 		Ray	getRay(int x, int y);
+	private:
+		double	m_dWidth;
+		double	m_dHeight;
+		double	m_dWStep;
+		double	m_dHStep;
 };
 
 #endif

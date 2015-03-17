@@ -19,6 +19,8 @@ cmath
 -
 vector
 -
+list
+-
 string
 -
 random
@@ -49,10 +51,14 @@ Renderer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.h
 RayTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.h
+OCTracer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.h
 

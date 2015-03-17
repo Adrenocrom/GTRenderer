@@ -4,6 +4,7 @@
 #pragma once
 
 class Ray;
+class IntersectionInfo;
 
 class Sphere {
 	public:
@@ -14,8 +15,8 @@ class Sphere {
 		Sphere(const Vector3 vPosition, double fRadius);
 		~Sphere();
 
-		double intersect(const Ray& r);
-		std::pair<double, double> intersect2(const Ray& r);
+		std::pair<double, double> intersect(const Ray& ray, int* iNumIntersects = NULL);
+		IntersectionInfo getIntersectionInfo(const Ray& ray, int iObjectId = -1);
 
 	private:
 		int CalcQuadricRoots(double a, double b, double c, double* x1, double* x2);

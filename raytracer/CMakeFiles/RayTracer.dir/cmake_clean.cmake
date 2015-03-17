@@ -10,6 +10,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/RayTracer.dir/Scene.cpp.o"
   "CMakeFiles/RayTracer.dir/Renderer.cpp.o"
   "CMakeFiles/RayTracer.dir/RayTracer.cpp.o"
+  "CMakeFiles/RayTracer.dir/OCTracer.cpp.o"
   "CMakeFiles/RayTracer.dir/main.cpp.o"
   "CMakeFiles/RayTracer.dir/GTRenderer.cpp.o"
   "libRayTracer.pdb"

@@ -8,7 +8,7 @@ class Renderer {
 		Renderer();
 		virtual ~Renderer() {};
 
-		virtual void render(Scene* pScene, Camera* pCamera) const = 0;
+		virtual void render(Scene* pScene, Camera* pCamera) = 0;
 };
 
 #endif

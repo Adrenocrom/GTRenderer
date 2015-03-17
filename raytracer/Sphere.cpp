@@ -13,21 +13,7 @@ Sphere::~Sphere() {
 
 }
 
-double Sphere::intersect(const Ray& r) {
-	Vector3 op = m_vPosition - r.m_vOrigin;
-	double t 	  = 0.0f;
-	double b	  = Vector3Dot(op, r.m_vDirection);
-	double det  = b*b - Vector3Dot(op, op) + m_fRadius*m_fRadius;
-	
-	if(det < 0)
-		return 0;
-	else
-		det = sqrt(det);
-
-	return (t = b - det) > 1e-4 ? t : ((t = b + det) > 1e-4 ? t : 0);
-}
-
-std::pair<double, double> Sphere::intersect2(const Ray& r) {
+std::pair<double, double> Sphere::intersect(const Ray& r, int* iNumIntersects) {
 	double boundingSquare = m_fRadius * m_fRadius ;
 	Vector3 origin = r.m_vOrigin - m_vPosition;
  	double a, b, c;
@@ -39,15 +25,52 @@ std::pair<double, double> Sphere::intersect2(const Ray& r) {
  
 	double t1 , t2 ;
 	int roots = CalcQuadricRoots (a, b, c, &t1, &t2) ;
- 
-	//std::cout<<"T1: "<<t1<<"| T2: "<<t2<<std::endl;
 
+	if(iNumIntersects) {
+		*iNumIntersects = roots;
+	} 
+		
 	if(roots == 1)
 		return std::make_pair(t1, t1);
 	else if(roots == 2)
 		return std::make_pair(t1, t2);
 	else
-		return std::make_pair(-1, -1);
+		return std::make_pair(0, 0);
+}
+
+IntersectionInfo Sphere::getIntersectionInfo(const Ray& ray, int iObjectId) {
+	std::vector<Vector3> vPositions;
+	std::vector<Vector3> vNormals;
+	std::vector<double>  vIntersects;
+	std::vector<double>	vSegmentLengths;
+	int iNumIntersects = 0;
+	Vector3	vPosition;
+	Vector3	vNormal;
+
+	std::pair<double, double> t12 = intersect(ray, &iNumIntersects);
+	
+	if(iNumIntersects > 0) {
+		vPosition = ray.m_vOrigin + t12.first * ray.m_vDirection;
+		vNormal   = Vector3Normalize(vPosition - m_vPosition);
+		vPositions.push_back(vPosition);
+		vNormals.push_back(vNormal);
+		vIntersects.push_back(t12.first);
+
+		vSegmentLengths.push_back(t12.second - t12.first);
+
+		vPosition = ray.m_vOrigin + t12.second * ray.m_vDirection;
+		vNormal   = Vector3Normalize(vPosition - m_vPosition);
+		vPositions.push_back(vPosition);
+		vNormals.push_back(vNormal);
+		vIntersects.push_back(t12.second);
+	}
+
+	return IntersectionInfo(ray,
+									vPositions,
+									vNormals,
+									vIntersects,
+									vSegmentLengths,
+									iObjectId);
 }
 
 int Sphere::CalcQuadricRoots(double a, double b, double c, double* x1, double* x2) {

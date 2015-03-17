@@ -25,6 +25,7 @@ add_library( RayTracer	Vector3.cpp
 								Scene.cpp
 								Renderer.cpp
 								RayTracer.cpp
+								OCTracer.cpp
 								main.cpp
 								GTRenderer.cpp )
 

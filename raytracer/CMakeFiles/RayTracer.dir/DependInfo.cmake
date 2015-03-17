@@ -9,6 +9,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/GTRenderer.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/LightSource.cpp.o"
+  "/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/OCTracer.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/PointLight.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Ray.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/RayTracer.cpp.o"
