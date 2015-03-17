@@ -30,7 +30,7 @@ void OCTracer::render(Scene* pScene, Camera* pCamera) {
 			if(pCamera->m_ppvSensor[x][y].b > 255) pCamera->m_ppvSensor[x][y].b = 255;
 				
 			dNumCalcd++;
-			printf("\rRender: [\033[31m%.2f \%\033[0m]", ((dNumCalcd / dNumPixel) * 100.0));
+			printf("\rRender: [\033[31m%.2f %%\033[0m]", (float)((dNumCalcd / dNumPixel) * 100.0));
 		}
 	}
 }
@@ -60,7 +60,7 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 		auto zEnd = zBuffer.end();
 		for(auto it = zBuffer.begin(); it != zEnd; ++it) {
 			IntersectionInfo info = *it;
-			double dLambda = 0.9159;
+			double dLambda = 0.0159;
 			double dTau = exp(-dLambda * info.m_vSegmentLengths[0]);
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);
