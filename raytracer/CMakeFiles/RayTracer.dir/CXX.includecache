@@ -58,6 +58,10 @@ OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.h
@@ -73,10 +77,6 @@ OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /usr/include/qt4/Qt3Support/q3cstring.h
 QtCore/qbytearray.h

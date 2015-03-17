@@ -176,6 +176,12 @@ GTRenderer_BINARY_DIR:STATIC=/home/josef/Dokumente/Studium/GTRenderer/raytracer
 //Value Computed by CMake
 GTRenderer_SOURCE_DIR:STATIC=/home/josef/Dokumente/Studium/GTRenderer/raytracer
 
+//C++ compiler flags for OpenMP parallization
+OpenMP_CXX_FLAGS:STRING=-fopenmp
+
+//C compiler flags for OpenMP parallization
+OpenMP_C_FLAGS:STRING=-fopenmp
+
 //Path to a library.
 QT_ARTHURPLUGIN_PLUGIN_DEBUG:FILEPATH=QT_ARTHURPLUGIN_PLUGIN_DEBUG-NOTFOUND
 
@@ -908,8 +914,16 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenMP
+FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[-fopenmp][-fopenmp][v()]
 //Details about finding Qt4
 FIND_PACKAGE_MESSAGE_DETAILS_Qt4:INTERNAL=[/usr/bin/qmake-qt4][/usr/lib/x86_64-linux-gnu/qt4/bin/moc][/usr/lib/x86_64-linux-gnu/qt4/bin/rcc][/usr/lib/x86_64-linux-gnu/qt4/bin/uic][/usr/include/qt4][/usr/lib/x86_64-linux-gnu][/usr/lib/x86_64-linux-gnu/libQtCore.so][v4.8.6()]
+//ADVANCED property for variable: OpenMP_CXX_FLAGS
+OpenMP_CXX_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenMP_C_FLAGS
+OpenMP_C_FLAGS-ADVANCED:INTERNAL=1
+//Test OpenMP_FLAG_DETECTED
+OpenMP_FLAG_DETECTED:INTERNAL=1
 //ADVANCED property for variable: QT_ARTHURPLUGIN_PLUGIN_DEBUG
 QT_ARTHURPLUGIN_PLUGIN_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: QT_ARTHURPLUGIN_PLUGIN_RELEASE

@@ -6,5 +6,5 @@ DirectionLight::DirectionLight(Vector3 vDirection, Vector3 vTotalPower)
 }
 
 Vector3 DirectionLight::getLightDirection(Vector3* pPosition) {
-	return Vector3Normalize(m_vDirection);
+	return Vector3NormalizeEx(m_vDirection);
 }

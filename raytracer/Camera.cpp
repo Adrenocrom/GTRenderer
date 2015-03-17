@@ -37,10 +37,10 @@ Ray Camera::getRay(int x, int y) {
 	Vector3 vF = Vector3(dX, dY, 1.0);
 	return Ray(vO, Vector3Normalize(vF));*/
 
-	double bottom  = -1;
-	double top		= 1;
-	double left		= -m_dAspect;
-	double right	= m_dAspect;
+	double bottom  = -0.2;
+	double top		= 0.2;
+	double left		= -m_dAspect * 0.2;
+	double right	= m_dAspect * 0.2;
 	double xpart, ypart;
 
 	Vector3 vOrigin = Vector3(((double)x) / ((double)m_iWidth),

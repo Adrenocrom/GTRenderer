@@ -290,3 +290,53 @@ int main(int argc, char** argv)
 #endif
 }
 
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec155106657/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec155106657.dir/build.make CMakeFiles/cmTryCompileExec155106657.dir/build
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird betreten
+/usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec155106657.dir/src.c.o
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec155106657.dir/src.c.o   -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec155106657
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec155106657.dir/link.txt --verbose=1
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTryCompileExec155106657.dir/src.c.o  -o cmTryCompileExec155106657 -rdynamic 
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird verlassen
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3024616049/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3024616049.dir/build.make CMakeFiles/cmTryCompileExec3024616049.dir/build
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird betreten
+/usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3024616049.dir/src.cxx.o
+/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec3024616049.dir/src.cxx.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3024616049
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3024616049.dir/link.txt --verbose=1
+/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTryCompileExec3024616049.dir/src.cxx.o  -o cmTryCompileExec3024616049 -rdynamic 
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird verlassen
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
