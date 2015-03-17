@@ -60,7 +60,7 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 		auto zEnd = zBuffer.end();
 		for(auto it = zBuffer.begin(); it != zEnd; ++it) {
 			IntersectionInfo info = *it;
-			double dLambda = 0.0159;
+			double dLambda = 0.2159;
 			double dTau = exp(-dLambda * info.m_vSegmentLengths[0]);
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);
