@@ -14,7 +14,7 @@ void OCTracer::render(Scene* pScene, Camera* pCamera) {
 	std::vector<LightSource*>* pLights = &pScene->m_vpLightSources;
 	double	dNumPixel = (double)(pCamera->m_iWidth * pCamera->m_iHeight);
 	double	dNumCalcd = 0;
-	double	dSamples	 = 100;
+	double	dSamples	 = 10000;
 	
 	#pragma omp parallel for schedule(dynamic, 1)
 	for(int y = 0; y < pCamera->m_iHeight; ++y) {

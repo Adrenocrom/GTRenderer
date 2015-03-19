@@ -32,7 +32,7 @@ int main() {
 	scene.m_vpLightSources.push_back(&light1);
 	//scene.m_vpLightSources.push_back(&light2);
 	//scene.m_vpLightSources.push_back(&light3);
-	Camera camera(640, 480, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
+	Camera camera(1920, 1080, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
 	Renderer* tracer = new RayTracer();
 	Renderer* otracer = new OCTracer();
 /*
