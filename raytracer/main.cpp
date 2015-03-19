@@ -13,8 +13,8 @@ int main() {
 	Sphere s8(Vector3( 0.0,-5.0, 0.0), 2.0);
 	Sphere s9(Vector3( 5.0,-5.0, 0.0), 2.0);
 
-	PointLight 		light0(Vector3(0.0, 9.0, 0.0), Vector3(10.0, 100.0, 10.0));
-	PointLight 		light1(Vector3(0.0,-9.0, 0.0), Vector3(100.0, 10.0, 10.0));
+	PointLight 		light0(Vector3(0.0, 9.0, 0.0), Vector3(30.0, 30.0, 30.0));
+	PointLight 		light1(Vector3(0.0,-9.0, 0.0), Vector3(30.0, 30.0, 30.0));
 	PointLight 		light2(Vector3(-9.0, 0.0, 0.0), Vector3(100.0, 10.0, 10.0));
 	DirectionLight light3(Vector3(-1.0, 0.0, 0.02), Vector3(0.0, 0.0, 40.0));
 	//LightSource test;
@@ -32,7 +32,7 @@ int main() {
 	scene.m_vpLightSources.push_back(&light1);
 	//scene.m_vpLightSources.push_back(&light2);
 	//scene.m_vpLightSources.push_back(&light3);
-	Camera camera(1920, 1080, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
+	Camera camera(640, 480, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
 	Renderer* tracer = new RayTracer();
 	Renderer* otracer = new OCTracer();
 /*

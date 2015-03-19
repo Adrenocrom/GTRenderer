@@ -43,7 +43,7 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 											int 		iMaxDepth) {
 	std::list<IntersectionInfo> zBuffer;
 	Vector3 result 	  = vLightColor;
-	double  dNumSamples = 1000;
+	double  dNumSamples = 100;
 
 	int iNumLights	 = pScene->m_vpLightSources.size();
 	int iNumSpheres = pScene->m_vSpheres.size();
@@ -60,7 +60,7 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 		auto zEnd = zBuffer.end();
 		for(auto it = zBuffer.begin(); it != zEnd; ++it) {
 			IntersectionInfo info = *it;
-			double dLambda = 0.2159;
+			double dLambda = 0.5159;
 			double dTau = exp(-dLambda * info.m_vSegmentLengths[0]);
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);
