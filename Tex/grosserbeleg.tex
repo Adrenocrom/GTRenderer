@@ -9,6 +9,9 @@
 % noproblem	keine Aufgabenstellung
 % notoc			kein Inhaltsverzeichnis
 % twoside		zweiseitig
+
+\usepackage{tabularx}
+
 \author{Josef Schulz}
 \title{Ground-Truth-Renderer für Partikelbasierte Daten}
 \birthday{20. Oktober 1989}
@@ -127,7 +130,25 @@ Bild"ubernahmen zitieren.}
 	Im Folgenden werden alle benötigten Mathematischen Formeln hergeleitet und erklärt.
 	Am ende dieses Kapitels wird der Aufbau der Perspektivischen Kamera, 
 	welche hier zum Einsatz kommt genau erläutert.
-	
+
+\section{Verwendete Formelzeichen}
+
+   \begin{table}[htbp]
+     \centering
+		\begin{tabularx}{\textwidth}{l|X}
+  			\textbf{Formelzeichen} & \textbf{Erläuterung}  \\
+  			\hline
+  			$\mathbb{R}_+$						& Bezeichnet die Menge der Reellen Zahlen im Intervall $[0, \infty)$ \\
+  			$\mathbb{N}_+$						& Bezeichnet die Menge der Natürlichen Zahlen im Intervall $[0, \infty)$ \\
+  			$\underline{p}$ 					& Punkt im Raum  \\
+  			$\vec{v}$							& Vektor im Raum \\
+  			$\langle\vec{a}, \vec{b}\rangle$ 	& Skalarprodukt der Vektoren $\vec{a}$ und $\vec{b}$ \\
+ 		\end{tabularx}
+ 		\caption{Verwendete Formelzeichen}
+      	\label{tbl:Formelzeichen}
+      	% Verweis im Text mittels \ref{tbl:beispieltabelle}
+    \end{table}
+
 %\section{Lokale und Globale Beleuchtung}
 	
 \section{Rendertechniken}
@@ -169,21 +190,136 @@ Bild"ubernahmen zitieren.}
 	Raycasting ist die Grundlage des in dieser Arbeit verwendeten Renderalgorithmus.
 
 \section{Strahl}
-	Der Strahl ist das Zentrale Element dieser Rendertechnik.
+	Der Strahl ist das Zentrale Element jedes Raytracing Algorithmus. Seine Mathematische Beschreibung ist
+	denkbar einfach:
 	
-	\begin{figure}[htbp]
-		\centering
-			$\vec{r} = \underline{p} + t \cdot \vec{r}$	
-		\caption{Formel des Strahls}
-		\label{fig:ray}
-	\end{figure}
+	\begin{equation}
+	  	\underline{r}(t) = \underline{p} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}_+
+	  	\label{eq:Strahl}
+	\end{equation}	
 	
-	
-	Jeder Punkt auf dem Strahl lässt sich durch die 
+	Jeder Punkt auf dem Strahl, hier durch $\underline{r}$ bezeichnet, ergibt sich aus der Addition eines Stützpunktes $\underline{p}$
+	mit dem Produkt eines Richtungsvektor $\vec{r}$ und einem skalaren Wert $t$. Durch das Produkt $t \cdot \vec{r}$ wird der
+	Richtungsvektor $\vec{r}$ beliebig gestaucht oder gestreckt.
 
 \section{Kugel}
 
+	Eine Kugelfläche wird im $\mathbb{R}^3$ mit dem Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und dem Radius $r$ durch folgende
+	Formel parametrisiert.
+
+	\begin{equation}
+		(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = r^2
+		\label{eq:KugelGleichung1}
+	\end{equation}
+	
+	Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelGleichung1} erfüllt liegt auf der Oberfläche der Kugel.
+	Die Formel \ref{eq:KugelGleichung1} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern.
+	
+	\begin{equation}
+		\langle\underline{p} - \underline{m}, \underline{p} - \underline{m}\rangle = r^2
+		\label{eq:KugelGleichung2}
+	\end{equation}
+	
+	Durch diese Verallgemeinerung der Formel \ref{eq:KugelGleichung1} zur Formel \ref{eq:KugelGleichung2} ist die Beschreibung der
+	Kugel jetzt unabhängig von der Dimension.
+
 \section{Schnittpunktberechnung}
+
+	Eine Kugel ist definiert durch ihren Mittelpunkt $\underline{m}$ und ihren Radius $r$. Wird der Mittelpunkt der Kugel auf
+	den Koordinaten Ursprung verschoben, liegen alle Punkte $p$ auf der Oberfläche $O$, wenn sie denn Abstand $r$ zum Koordinatenursprung haben. Die zu erfüllende Bedingung hat demnach folgende Form:
+	
+	\begin{equation}
+		\vert\vert\underline{p}\vert\vert = r
+		\label{eq:KugelGleichungBedingun1}
+	\end{equation}
+	
+	Die Bedingung aus Formel \ref{eq:KugelGleichungBedingun1} lässt sich Quartieren wodurch sich die folgende Kugelgleichung ergibt:
+	
+	\begin{equation}
+		\langle\underline{p}, \underline{p}\rangle = r^2
+		\label{eq:Schnittpunktberechnung1}
+	\end{equation}
+	
+	Um den Schnittpunkt der Kugel mit dem Strahl aus der Formel \ref{eq:Strahl} zu Berechnen, wird der Strahl in die Gleichung \ref{eq:Schnittpunktberechnung1} eingesetzt und erhält die folgende Gleichung:
+	
+	\begin{equation}
+		r^2 = \langle\underline{p}, \underline{p}\rangle = \langle r(t), r(t) \rangle
+		\label{eq:Schnittpunktberechnung2}
+	\end{equation}
+	
+	diese Gleichung gilt es umzustellen und nach $t$ aufzulösen:
+	
+	\begin{equation}
+		r^2 = \langle r(t), r(t) \rangle = \langle \underline{p} + t \cdot \vec{r}, \underline{p} + t \cdot \vec{r} \rangle
+		\label{eq:Schnittpunktberechnung3}
+	\end{equation}
+	
+	\begin{equation}
+		r^2 = \langle \underline{p}, \underline{p}\rangle + 2 \cdot \langle \underline{p}, \vec{r} \rangle \cdot t + \langle \vec{r}, \vec{r} \rangle \cdot t^2
+		\label{eq:Schnittpunktberechnung4}
+	\end{equation}
+	
+	Die Formel \ref{eq:Schnittpunktberechnung4} entspricht einer allgemeinen Quadratischen Gleichung:
+	
+	\begin{equation}
+		a \cdot x^2 + b \cdot x + c = 0 \text{, mit } a \neq 0
+		\label{eq:AllgemeineQuadratischeGleichung}
+	\end{equation}
+	
+	Für die allgemeine Quadratische Gleichung lassen sich die Nullstellen folgendermaßen bestimmen:
+	
+	\begin{equation}
+		x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4 \cdot a \cdot c}}{2 \cdot a}
+		\label{eq:AllgemeineQuadratischeGleichungLösungsFormel}	
+	\end{equation}
+	
+	Wird die Gleichung \ref{eq:Schnittpunktberechnung4} mithilfe der Allgemeinen Lösungsformel \ref{eq:AllgemeineQuadratischeGleichungLösungsFormel} für Quadratische Gleichungen nach $t$ aufgelöst, ergeben sich für
+	$t$ zwei Lösungen $t_1$ und $t_2$:
+	
+	\begin{equation}
+		t_{1,2} = \frac{-2 \cdot \langle \underline{p}, \vec{r} \rangle \pm \sqrt{4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle}}{2 \cdot \langle \vec{r}, \vec{r} \rangle}
+		\label{eq:Schnittpunktberechnung5}
+	\end{equation}
+	
+	Die Diskriminante $D$ wird der Teil der Formel bezeichnet der im Zähler der Gleichung \ref{eq:Schnittpunktberechnung5} unter der
+	Wurzel steht.
+	
+	\begin{equation}
+		D = 4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle
+		\label{eq:Diskriminante}
+	\end{equation}
+	
+	Mit Hilfe der  Diskriminante $D$ lässt sich eine Aussage über die Schnittpunkte zwischen Strahl und Kugel formulieren. 
+	Wenn gilt, dass $D < 0$, dann gibt es keine Lösung im Zahlenbereich $\mathbb{R}$, das heißt der Strahl schneidet die Kugel nicht.
+	Gilt, dass $D = 0$ ist, dann trifft der Strahl die Kugel an genau einer Stelle und die beiden Lösungen $t_1$ und $t_2$ haben
+	identische Werte. Wenn aber gilt, dass $D > 0$, dann ergeben sich genau zwei Schnittpunkte an den Stellen $t_1$ und $t_2$.
+	Um die Punkte zu bestimmen, an dem der Strahl die Kugel trifft setzt man $t_1$ und $t_2$ einfach in die Gleichung \ref{eq:Strahl} ein.
+
+\section{Die Perspektivische Kamera}
+
+	Die für den einfachen Raycaster nötigen Gleichungen sind in den Obigen Teil bereits hergeleitet. Was jetzt noch benötigt wird
+	ist eine Beschreibung für die Bildebene. Ausgehend von der Bildebene werden die Licht stahlen in die Szene geschossen.
+	Anders als bei einem Rasterizer wird keine Kamera und keine Projektionsmatrix benötigt. Die Kamera konstruiert sich gerade heraus.
+	Zu Beginn wird eine sehr einfache Kamera betrachtet, welche nicht rotiert und nicht verschoben wird.
+	
+	Das bedeutet, das es sich bei der Kamera um eine Ebene $E$ handelt welche mit der Folgenden Gleichung beschrieben wird:
+	
+	\begin{equation}
+		E(u, v) = \underline{p} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
+		\label{eq:KameraEbene}	
+	\end{equation}
+	
+	Da unsere Kamera am Koordinaten Ursprung Positioniert werden soll, kann der Punkt $\underline{p}$ vorerst vernachlässigt werden.
+	Die Spannvektoren $\vec{p}_0$ und $\vec{p}_1$ sind folgender maßen definiert:
+	
+	\begin{equation}
+		\vec{p}_0 = \left(\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right) \text{, }
+		\vec{p}_1 = \left(\begin{array}{c} 0 \\ 1 \\ 0 \end{array}\right)
+		\label{eq:KameraSpannvektoren}	
+	\end{equation}
+	
+	Die Auf diese Weise beschriebe Ebene wird in Pixel unterteilt. Dadurch definiert sich jeder Pixel, als Teilfläche der Kameraebene.
+	Die Eckpunkte jedes Pixels lässt sich durch zwei Wertepaare genau beschreiben.
 
 \section{Volumen-Integral}
 
@@ -242,8 +378,8 @@ $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot I_{p(t)} dt$
 
 $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p dt$
 
-\section{Verwendete Technologien}
-\section{UML-Klassen}
+
+\chapter{Verwandte Arbeiten}
 
 
 \chapter{Evaluation}
