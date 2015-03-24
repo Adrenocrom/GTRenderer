@@ -244,6 +244,30 @@ LightSource.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/LightSource.cpp.s
 .PHONY : LightSource.cpp.s
 
+Material.o: Material.cpp.o
+.PHONY : Material.o
+
+# target to build an object file
+Material.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Material.cpp.o
+.PHONY : Material.cpp.o
+
+Material.i: Material.cpp.i
+.PHONY : Material.i
+
+# target to preprocess a source file
+Material.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Material.cpp.i
+.PHONY : Material.cpp.i
+
+Material.s: Material.cpp.s
+.PHONY : Material.s
+
+# target to generate assembly for a file
+Material.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Material.cpp.s
+.PHONY : Material.cpp.s
+
 OCTracer.o: OCTracer.cpp.o
 .PHONY : OCTracer.o
 
@@ -388,6 +412,30 @@ Scene.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Scene.cpp.s
 .PHONY : Scene.cpp.s
 
+SceneLoader.o: SceneLoader.cpp.o
+.PHONY : SceneLoader.o
+
+# target to build an object file
+SceneLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/SceneLoader.cpp.o
+.PHONY : SceneLoader.cpp.o
+
+SceneLoader.i: SceneLoader.cpp.i
+.PHONY : SceneLoader.i
+
+# target to preprocess a source file
+SceneLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/SceneLoader.cpp.i
+.PHONY : SceneLoader.cpp.i
+
+SceneLoader.s: SceneLoader.cpp.s
+.PHONY : SceneLoader.s
+
+# target to generate assembly for a file
+SceneLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/SceneLoader.cpp.s
+.PHONY : SceneLoader.cpp.s
+
 Sphere.o: Sphere.cpp.o
 .PHONY : Sphere.o
 
@@ -488,6 +536,9 @@ help:
 	@echo "... LightSource.o"
 	@echo "... LightSource.i"
 	@echo "... LightSource.s"
+	@echo "... Material.o"
+	@echo "... Material.i"
+	@echo "... Material.s"
 	@echo "... OCTracer.o"
 	@echo "... OCTracer.i"
 	@echo "... OCTracer.s"
@@ -506,6 +557,9 @@ help:
 	@echo "... Scene.o"
 	@echo "... Scene.i"
 	@echo "... Scene.s"
+	@echo "... SceneLoader.o"
+	@echo "... SceneLoader.i"
+	@echo "... SceneLoader.s"
 	@echo "... Sphere.o"
 	@echo "... Sphere.i"
 	@echo "... Sphere.s"

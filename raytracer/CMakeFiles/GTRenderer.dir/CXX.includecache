@@ -21,9 +21,15 @@ vector
 -
 list
 -
+fstream
+-
+sstream
+-
 string
 -
 random
+-
+pthread.h
 -
 QImage
 -
@@ -33,6 +39,8 @@ Vector3.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
 Camera.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
+Material.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
 Sphere.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 Ray.h
@@ -47,6 +55,8 @@ IntersectionInfo.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
 Scene.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.h
+SceneLoader.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.h
 Renderer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.h
 RayTracer.h
@@ -57,6 +67,8 @@ OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
@@ -69,6 +81,8 @@ OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 

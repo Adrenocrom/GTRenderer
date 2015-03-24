@@ -8,8 +8,11 @@
 #include <cmath>
 #include <vector>
 #include <list>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <random>
+#include <pthread.h>
 #include <QImage>
 #include <QColor>
 
@@ -21,6 +24,7 @@
 
 #include "Vector3.h"
 #include "Camera.h"
+#include "Material.h"
 #include "Sphere.h"
 #include "Ray.h"
 #include "LightSource.h"
@@ -28,6 +32,7 @@
 #include "DirectionLight.h"
 #include "IntersectionInfo.h"
 #include "Scene.h"
+#include "SceneLoader.h"
 #include "Renderer.h"
 #include "RayTracer.h"
 #include "OCTracer.h"

@@ -1,12 +1,14 @@
 #include "GTRenderer.h"
 
 Sphere::Sphere() {
+	m_vPosition = Vector3(0.0, 0.0, 0.0);
 	m_fRadius = 1.0f;
 }
 
-Sphere::Sphere(const Vector3 vPosition, double fRadius) {
+Sphere::Sphere(const Vector3 vPosition, double fRadius, Material material) {
 	m_vPosition = vPosition;
 	m_fRadius	= fRadius;
+	m_material	= material;
 }
 
 Sphere::~Sphere() {

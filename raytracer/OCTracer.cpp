@@ -59,20 +59,19 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 	if(zBuffer.size() > 0) {
 		auto zEnd = zBuffer.end();
 		for(auto it = zBuffer.begin(); it != zEnd; ++it) {
-			IntersectionInfo info = *it;
-			double dLambda = 0.5159;
-			double dTau = exp(-dLambda * info.m_vSegmentLengths[0]);
+			IntersectionInfo &info = *it;
+			double dTau = exp(-pScene->m_vSpheres[info.m_iObjectId].m_material.m_dLambda  * info.m_vSegmentLengths[0]);
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);
 			
 			if(iDepth < iMaxDepth) {
-				double	dDelta = info.m_vSegmentLengths[0] / dNumSamples;
+				double	dDelta = (info.m_vSegmentLengths[0] / dNumSamples) * (1.0/(double)iNumLights);
 				//printf("\nDelta: %f\n", dDelta);
 				double	dInteg = 0.0;
 				double	dFx 	 = 0.0;
 				for(double t = info.m_vIntersects[0]; t < info.m_vIntersects[1]; t += dDelta) {
 					Vector3 vPosition = pRay->m_vOrigin + t * pRay->m_vDirection;
-					Vector3 vLight	= Vector3(0.0, 0.0, 0.0);
+					Vector3 vColor		= Vector3(0.0, 0.0, 0.0);
 					//printf("\nint: %f, end: %f, is: %f\n", info.m_vIntersects[0], info.m_vIntersects[1], t);
 
 					for(int l = 0; l < iNumLights; ++l) {
@@ -81,18 +80,19 @@ Vector3 OCTracer::calcColorOfRay(Scene* 	pScene,
 						Ray ray(vPosition, -vLightDirection);
 					
 						IntersectionInfo sInfo = pScene->m_vSpheres[info.m_iObjectId].getIntersectionInfo(ray);
-						dFx = exp(-dLambda * sInfo.m_vIntersects[1]);
+						dFx = exp(-pScene->m_vSpheres[info.m_iObjectId].m_material.m_dLambda * sInfo.m_vIntersects[1]);
 						//dFx *= Vector3Dot(sInfo.m_vNormals[1], -vLightDirection);
-						vLight += dFx * calcColorOfRay(pScene, &ray, pScene->m_vpLightSources[l]->m_vTotalPower, info.m_iObjectId, iDepth+1, iMaxDepth);
+						vColor += (1 - dFx) * pScene->m_vSpheres[info.m_iObjectId].m_material.m_vColor
+								 +  dFx * calcColorOfRay(pScene, &ray, pScene->m_vpLightSources[l]->m_vTotalPower, info.m_iObjectId, iDepth+1, iMaxDepth);
 
 					}
-
-					vPower += dDelta * vLight * exp(-dLambda * (info.m_vIntersects[0] - t));
+					dInteg = exp(-pScene->m_vSpheres[info.m_iObjectId].m_material.m_dLambda * (t - info.m_vIntersects[0]));
+					vPower += dDelta * vColor * dInteg + (1-dInteg) * pScene->m_vSpheres[info.m_iObjectId].m_material.m_vColor;
 				}
 				//printf("\njumpOut\n");
 			}
 
-			result = dOpacity * Vector3(7.0, 7.0, 7.0) + (1-dOpacity) * result + vPower;
+			result = /*dOpacity * pScene->m_vSpheres[info.m_iObjectId].m_material.m_vColor +*/ (1-dOpacity) * result + vPower;
 		}
 	} 
 

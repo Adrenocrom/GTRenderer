@@ -14,6 +14,17 @@ class Scene {
 
 		Scene();
 		~Scene();
+
+		void switchOnLights() {
+			for(int i = 0; i < m_vPointLights.size(); ++i) 
+				m_vpLightSources.push_back(&m_vPointLights[i]);
+			for(int i = 0; i < m_vDirectionLight.size(); ++i)
+				m_vpLightSources.push_back(&m_vDirectionLight[i]);
+		}
+		
+		void switchOffLights() {
+			m_vpLightSources.clear();
+		}
 };
 
 #endif

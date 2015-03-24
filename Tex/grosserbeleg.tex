@@ -121,38 +121,70 @@ Bild"ubernahmen zitieren.}
 	Um diese Fähigkeit nutzen zu können wird jedoch eine komplexe Beleuchtung der Szene nötig.
 	
 
-\section{Vorwort}
-	Die Entwicklung des ersten Funktionsfähigen Ray-Tracers wird auf  Arthur Appel, Robert Goldstein und Roger Nagel zurückgeführt. 
-	Diese erzeugten im Jahr 1963 an der University of Maryland, auf einem oszilloskopartigen Bildschirm das erste mit Ray-Tracing berechnete
-	Bild. Viele der Verwendeten Algorithmen worden jedoch schon Jahre zuvor entwickelt. Nach Jahren der Weiterentwicklung von Computern,
-	stehen heute Leistungsfähige Rechenmaschinen zur Verfügung die den Einsatz von Ray-Tracern praktikabel machen.
+\chapter{Grundlagen}
+
+	In diesem Kapitel soll die verwendete Rendertechnik Begrifflich genauer abgegrenzt werden.
+	Im Folgenden werden alle benötigten Mathematischen Formeln hergeleitet und erklärt.
+	Am ende dieses Kapitels wird der Aufbau der Perspektivischen Kamera, 
+	welche hier zum Einsatz kommt genau erläutert.
 	
-	Ein Ray-Tracer ist ein Programm, welches die Wege und die Ausbreitung des Lichtes simuliert. Hierbei kann der Weg des Lichtes, entweder
-	ausgehend von der Lichtquelle, oder ausgehend von der Kamera, der Bildebene nachvollzogen werden.
-	Betrachtet man den zweiten Fall, wird das Bild in Pixel unterteilt. Von jeden Pixel werden Strahlen in die Szene geschossen. An den Stellen,
-	wo diese auf Objekte in der Szene treffen, wird eine Beleuchtungsrechnung durchgeführt. Die ermittelten Lichtintensitäten werden akkumuliert und
-	in Farben übersetzt. Auf diese Weise lassen sich für jeden Pixel des Bildes die Farbwerte bestimmen.
+%\section{Lokale und Globale Beleuchtung}
 	
-	Mit einem Ray-Tracer, lassen sich Szenen nach realen physikalischen Modellen beleuchten. Aus diesem Grund ist es ein Verfahren, mit dessen Hilfe
-	sich Ground-Truth Daten erzeugen lassen. Ground-Truth bezeichnet in diesem Falle eine Optimale Lösung, die als Vergleichswert zur Evaluation
-	anderer Verfahren geeignet ist.
+\section{Rendertechniken}
+
+\subsection{Raytracing}
+
+	Raytracing ist ein verfahren, bei dem Ausgehend von der Lichtquelle, oder der Bildebene Strahlen in
+	die Szene geschickt werden. 
+	Strahlen, die auf ein ein Objekt treffen werden reflektiert, gestreut oder gebrochen. 
+	Die Möglichkeiten hängen vom Verwendeten Modell der Oberfläche und des Lichtes ab.
+	Nach der Wechselwirkung mit der Oberfläche können weitere Strahlen durch die Szene verfolgt werden.
+	Dieser Vorgang wir meist Rekursiv aufgebaut und nach dem erreichen einer entsprechenden Rekursionstiefe
+	wird dieser abgebrochen.
+	Das Bild selbst entsteht durch die Aufakkumulierung der Lichtintensitäten, welche die Bildebene erreichen.
+	Modell dieser Technik ist die Strahlenoptik, welche das Licht auf Strahlen reduziert die durch die Szene
+	geschossen werden. Beugungsphänomene werden bei dieser Technik vernachlässigt.
+ 
+\subsection{Path und Lighttracer}
+
+\subsubsection{Lighttracer}
+
+	Der Lighttracer ist eine Spezialisierung des Raytracers, bei dem die Wege des Lichtes grundlegend,
+	ausgehend von der Lichtquelle berechnet werden. Hierbei werden die Strahlen bis zum erreichen eines
+	Abbruchkriteriums durch die Szene verfolgt und anschließend mit der Bildebene verbunden.
 	
-	Im Rahmen dieser Arbeit, wird der Aufbau eines Ray-Tracers beschrieben. Benötigt wird dieser zur realistischen Beleuchtung von Kugelglyphen.
-	Dabei wird aus Partikeldaten eine Dichtefunktion geschätzt, welche die Materialeigenschaften der Kugel an jedem Punkt im Volumen definiert.
-	Der Ray-Tracer, wird hierzu nach und nach erweitert. Zu beginn wird die Beleuchtungsrechnung ausschließlich auf der Oberfläche durchgeführt.
-	Diese wird später auf Volumen erweitert. Ziel dieser Arbeit ist es die Rendergleichung, möglichst Analytisch zu lösen.
+\subsubsection{Pathtracer}
 
-\section{Vorbetrachtungen}
+	Auch der Pathtracer stellt eine Spezialisierung des Raytracers da, bei dem die Lichtwege zum einem
+	ausgehend von der Bildebene und gleichzeitig ausgehend von der Lichtquelle betrachtet werden.
+	Nach erreichen des Abbruchkriteriums werden die Lichtwege ausgehend von der Lichtquelle und der
+	Bildebene mit einander Kombiniert. Durch dieses Vorgehen ergeben sich wesentlich schnell mehr mögliche
+	Lichtwege, als beim normalen Rayztracingalgorithmus.
+	Der Pathtracer ist ein State-Of-the-Art Algorithmus zur Berrechnung der Globalen Beleuchtung.
+	
+\subsection{Raycasting}
 
-\section{Raycasting}
-\section{Raytracing}
-\section{Bidirectional Pathtracing}
+	Raycasting stellt eine Vereinfachte Form des Raytracing da, bei dieser Technik wird die Berrechnung der
+	Beleuchtung bereits nach der ersten Kollision zwischen Strahl und Objekt abgebrochen.
+	Raycasting ist die Grundlage des in dieser Arbeit verwendeten Renderalgorithmus.
 
-\chapter{Ray-Caster}
+\section{Strahl}
+	Der Strahl ist das Zentrale Element dieser Rendertechnik.
+	
+	\begin{figure}[htbp]
+		\centering
+			$\vec{r} = \underline{p} + t \cdot \vec{r}$	
+		\caption{Formel des Strahls}
+		\label{fig:ray}
+	\end{figure}
+	
+	
+	Jeder Punkt auf dem Strahl lässt sich durch die 
 
-\section{Die Kamera}
-\section{Der Strahl}
+\section{Kugel}
+
 \section{Schnittpunktberechnung}
+
 \section{Volumen-Integral}
 
 \section{Lokale Bleuchtung}
@@ -258,4 +290,5 @@ $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdo
 %text
 %
 %\cite*{}
+
 \end{document}

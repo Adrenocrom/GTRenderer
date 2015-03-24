@@ -22,6 +22,7 @@ include_directories( include . )
 
 add_library( RayTracer	Vector3.cpp
 								Camera.cpp
+								Material.cpp
 								Sphere.cpp
 								Ray.cpp
 								LightSource.cpp
@@ -29,6 +30,7 @@ add_library( RayTracer	Vector3.cpp
 								DirectionLight.cpp
 								IntersectionInfo.cpp
 								Scene.cpp
+								SceneLoader.cpp
 								Renderer.cpp
 								RayTracer.cpp
 								OCTracer.cpp

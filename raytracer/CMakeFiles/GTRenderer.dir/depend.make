@@ -6,12 +6,14 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: DirectionLight.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: GTRenderer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: IntersectionInfo.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: LightSource.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: Material.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: OCTracer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: PointLight.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Ray.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: RayTracer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Renderer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Scene.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: SceneLoader.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Sphere.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Vector3.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: main.cpp

@@ -10,9 +10,10 @@ class Sphere {
 	public:
 		Vector3	m_vPosition;
 		double	m_fRadius;
+		Material m_material;
 	
 		Sphere();
-		Sphere(const Vector3 vPosition, double fRadius);
+		Sphere(const Vector3 vPosition, double fRadius, Material material);
 		~Sphere();
 
 		std::pair<double, double> intersect(const Ray& ray, int* iNumIntersects = NULL);

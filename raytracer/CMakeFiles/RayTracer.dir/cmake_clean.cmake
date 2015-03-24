@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/RayTracer.dir/Vector3.cpp.o"
   "CMakeFiles/RayTracer.dir/Camera.cpp.o"
+  "CMakeFiles/RayTracer.dir/Material.cpp.o"
   "CMakeFiles/RayTracer.dir/Sphere.cpp.o"
   "CMakeFiles/RayTracer.dir/Ray.cpp.o"
   "CMakeFiles/RayTracer.dir/LightSource.cpp.o"
@@ -8,6 +9,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/RayTracer.dir/DirectionLight.cpp.o"
   "CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o"
   "CMakeFiles/RayTracer.dir/Scene.cpp.o"
+  "CMakeFiles/RayTracer.dir/SceneLoader.cpp.o"
   "CMakeFiles/RayTracer.dir/Renderer.cpp.o"
   "CMakeFiles/RayTracer.dir/RayTracer.cpp.o"
   "CMakeFiles/RayTracer.dir/OCTracer.cpp.o"
