@@ -5,6 +5,7 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: Camera.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: DirectionLight.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: GTRenderer.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: IntersectionInfo.h
+CMakeFiles/GTRenderer.dir/main.cpp.o: KDTree.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: LightSource.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: Material.h
 CMakeFiles/GTRenderer.dir/main.cpp.o: OCTracer.h

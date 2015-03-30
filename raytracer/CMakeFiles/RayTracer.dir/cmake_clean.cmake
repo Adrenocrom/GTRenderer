@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/RayTracer.dir/Material.cpp.o"
   "CMakeFiles/RayTracer.dir/Sphere.cpp.o"
   "CMakeFiles/RayTracer.dir/Ray.cpp.o"
+  "CMakeFiles/RayTracer.dir/KDTree.cpp.o"
   "CMakeFiles/RayTracer.dir/LightSource.cpp.o"
   "CMakeFiles/RayTracer.dir/PointLight.cpp.o"
   "CMakeFiles/RayTracer.dir/DirectionLight.cpp.o"

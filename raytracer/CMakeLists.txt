@@ -25,6 +25,7 @@ add_library( RayTracer	Vector3.cpp
 								Material.cpp
 								Sphere.cpp
 								Ray.cpp
+								KDTree.cpp
 								LightSource.cpp
 								PointLight.cpp
 								DirectionLight.cpp

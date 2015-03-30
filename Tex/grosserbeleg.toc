@@ -1,25 +1,32 @@
 \contentsline {chapter}{\numberline {1}Einleitung}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Vorvorwort}{3}{section.1.1}
-\contentsline {chapter}{\numberline {2}Grundlagen}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Verwendete Formelzeichen}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Rendertechniken}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Raytracing}{5}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Path und Lighttracer}{5}{subsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.2.1}Lighttracer}{5}{subsubsection.2.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2.2}Pathtracer}{6}{subsubsection.2.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Raycasting}{6}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Strahl}{6}{section.2.3}
-\contentsline {section}{\numberline {2.4}Kugel}{6}{section.2.4}
-\contentsline {section}{\numberline {2.5}Schnittpunktberechnung}{6}{section.2.5}
-\contentsline {section}{\numberline {2.6}Die Perspektivische Kamera}{8}{section.2.6}
-\contentsline {section}{\numberline {2.7}Volumen-Integral}{8}{section.2.7}
-\contentsline {section}{\numberline {2.8}Lokale Bleuchtung}{8}{section.2.8}
-\contentsline {section}{\numberline {2.9}Globale Beleuchtung}{8}{section.2.9}
-\contentsline {section}{\numberline {2.10}Material und Konstanten}{8}{section.2.10}
-\contentsline {chapter}{\numberline {3}Das Programm}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Verdeckung}{9}{section.3.1}
-\contentsline {chapter}{\numberline {4}Verwandte Arbeiten}{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Evaluation}{13}{chapter.5}
-\contentsline {subsection}{\numberline {5.0.1}Analytisches Ende}{13}{subsection.5.0.1}
-\contentsline {subsection}{\numberline {5.0.2}Numerische Grenzf\"alle}{13}{subsection.5.0.2}
-\contentsline {chapter}{\numberline {6}Fazit}{15}{chapter.6}
+\contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Optical Models for Direct Volume Rendering}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Emission}{5}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Absorption und Emission}{6}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Streuung und Schatten}{6}{section.2.2}
+\contentsline {chapter}{\numberline {3}Grundlagen}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Verwendete Formelzeichen}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Rendertechniken}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Raytracing}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Path und Lighttracer}{9}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Lighttracer}{9}{subsubsection.3.2.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2.2}Pathtracer}{10}{subsubsection.3.2.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Raycasting}{10}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Strahl}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}Kugel}{10}{section.3.4}
+\contentsline {section}{\numberline {3.5}Schnittpunktberechnung}{10}{section.3.5}
+\contentsline {section}{\numberline {3.6}Die Perspektivische Kamera}{12}{section.3.6}
+\contentsline {section}{\numberline {3.7}Die Orthogonale Kamera}{12}{section.3.7}
+\contentsline {section}{\numberline {3.8}Volumen-Integral}{12}{section.3.8}
+\contentsline {section}{\numberline {3.9}Lokale Bleuchtung}{12}{section.3.9}
+\contentsline {section}{\numberline {3.10}Globale Beleuchtung}{12}{section.3.10}
+\contentsline {section}{\numberline {3.11}Material und Konstanten}{12}{section.3.11}
+\contentsline {chapter}{\numberline {4}Das Programm}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Verdeckung}{13}{section.4.1}
+\contentsline {chapter}{\numberline {5}Verwandte Arbeiten}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Evaluation}{17}{chapter.6}
+\contentsline {subsection}{\numberline {6.0.1}Analytisches Ende}{17}{subsection.6.0.1}
+\contentsline {subsection}{\numberline {6.0.2}Numerische Grenzf\"alle}{17}{subsection.6.0.2}
+\contentsline {chapter}{\numberline {7}Fazit}{19}{chapter.7}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{21}{chapter*.4}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{23}{chapter*.5}

@@ -6,9 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 stdio.h
@@ -29,7 +41,7 @@ string
 -
 random
 -
-pthread.h
+thread
 -
 QImage
 -
@@ -45,6 +57,8 @@ Sphere.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 Ray.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
+KDTree.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
 LightSource.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 PointLight.h
@@ -64,25 +78,75 @@ RayTracer.h
 OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp
+GTRenderer.h
+-
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 
@@ -649,4 +713,90 @@ QtCore/qglobal.h
 /usr/include/qt4/QtGui/qwmatrix.h
 QtGui/qmatrix.h
 -
+
+Camera.h
+
+DirectionLight.h
+
+GTRenderer.h
+stdio.h
+-
+iostream
+-
+cmath
+-
+vector
+-
+list
+-
+fstream
+-
+sstream
+-
+string
+-
+random
+-
+thread
+-
+QImage
+-
+QColor
+-
+Vector3.h
+Vector3.h
+Camera.h
+Camera.h
+Material.h
+Material.h
+Sphere.h
+Sphere.h
+Ray.h
+Ray.h
+KDTree.h
+KDTree.h
+LightSource.h
+LightSource.h
+PointLight.h
+PointLight.h
+DirectionLight.h
+DirectionLight.h
+IntersectionInfo.h
+IntersectionInfo.h
+Scene.h
+Scene.h
+SceneLoader.h
+SceneLoader.h
+Renderer.h
+Renderer.h
+RayTracer.h
+RayTracer.h
+OCTracer.h
+OCTracer.h
+
+IntersectionInfo.h
+
+KDTree.h
+
+LightSource.h
+
+Material.h
+
+OCTracer.h
+
+PointLight.h
+
+Ray.h
+
+RayTracer.h
+
+Renderer.h
+
+Scene.h
+
+SceneLoader.h
+
+Sphere.h
+
+Vector3.h
 

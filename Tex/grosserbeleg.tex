@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg,final]{cgvpub}
+\documentclass[hyperref,german,beleg,final,lof,lot]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -67,8 +67,6 @@ Bild"ubernahmen zitieren.}
 \begin{document}
 
 \chapter{Einleitung}
- 
-\section{Vorvorwort}
 
 	Ein Photon das im inneren der Sonne emittiert wird, ist dem kurzwelligen Spektrum der elektromagnetischen Wellen zugeordnet. Es handelt sich um Gammastrahlung. 
 	Auf seiner langen Reise vom Kern bis zur Korona, 
@@ -99,7 +97,8 @@ Bild"ubernahmen zitieren.}
 	Für die Berechnung von Schatten, Reflexion und Brechung eignet sich die Strahlenoptik
 	ausgesprochen gut und soll für diese Arbeit Grundlage der Betrachtung sein.
 	Die Lichtstrahlen breiten sich immer nur geradlinig aus, bis sie auf einen Körper treffen und
-	reflektiert, gestreut oder gebrochen werden. Sie können einander durchdringen ohne sich gegenseitig zu beeinflussen. Der Weg des Lichtes lässt sich umkehren, was zur folge hat,
+	reflektiert, gestreut oder gebrochen werden. Sie können einander durchdringen ohne sich gegenseitig zu beeinflussen. 
+	Der Weg des Lichtes lässt sich umkehren, was zur folge hat,
 	dass die Gesetzt auch bei umgekehrter Lichtrichtung gelten.
 	Dieses Prinzip ist essentiell für die Implementierung welche im Folgenden betrachtet wird,
 	da die Strahlen von der Kamera aus in die Welt geschossen werden.
@@ -123,6 +122,109 @@ Bild"ubernahmen zitieren.}
 	Silhouette zu schätzen.
 	Um diese Fähigkeit nutzen zu können wird jedoch eine komplexe Beleuchtung der Szene nötig.
 	
+\chapter{Verwandte Arbeiten}
+
+\section{Optical Models for Direct Volume Rendering}
+
+	Die Arbeit von Nelson Max gehört zu den meist Zitierten Arbeiten im Bereich des Volumen Renderns und behandelt
+	die Grundlagen des Emission und Absorptionsverhalten Gas gefüllten Volumen.
+	Zur Herleitung der Gleichung nutzt Nelson Max Partikel in Form von Einheitskugeln, diese besitzen einen Radius $r$
+	und somit die Projizierte Oberfläche $A = \Pi \cdot r$. 
+	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln innerhalb des Einheitsvolumen.
+	Betrachtet wird ein Zylinder, der mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
+	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und enthält demnach $N$ Partikel, mit $N = \rho E \delta s$.
+	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
+	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt
+	$\rho A \delta s$. Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen.
+	
+	Es ergibt sich die Folgende Differenzialgleichung:
+	
+	 
+	\begin{equation}
+		\frac{dI}{ds} = -\rho(s)AI(s) = -\tau(s)I(s)
+		\label{eq:MAX95grundDG}
+	\end{equation}
+	
+	In der Gleichung \ref{eq:MAX95grundDG} beschreibt $s$ die Länge entlang des Lichtstrahles. $I(s)$ stellt die Lichtintensität an der Stelle des Volumens
+	dar, an dem der Strahl genau die Länge $s$ besitzt. $\tau(s) = \rho(s)A$ wird als Abschwächungskoeffizient bezeichnet. $\tau$ beschreibt den Grad der Abschwächung des Lichtes durch ein Volumen.
+	
+	\begin{equation}
+		I(s) = I_0 \cdot e^{- \int_{0}^{s} \tau(t) dt}
+		\label{eq:MAX95LSGgrundDG}
+	\end{equation}
+	 
+	Gleichung \ref{eq:MAX95LSGgrundDG} ist die Lösung von \ref{eq:MAX95grundDG}. Das Integral über den Abschwächungskoeffizienten, wird von Nelson Max als Transparenz $T(s)$ von $0$ bis $s$ bezeichnet. Die Lichtundurchlässigkeit $\alpha$, im Englischen \textit{opacity} berechnet sich aus $\alpha = 1 - T(s)$.
+	
+\subsection{Emission}
+	
+	Wird die Lichtintensität an einem Bestimmten Punkt auf einem Lichtstrahl betrachtet, welcher von der Lichtquelle durch ein Medium zu der
+	Projektionsoberfläche geschossen wird, lässt sich diese durch Reflektionen und Emission von Licht an diesem Punkt weiter anreichern.
+	Nelson Max betrachtet in seiner Arbeit den Einfacheren Fall, bei dem nur Licht emittiert wird. Die Absorption von Licht durch die Partikel 
+	wird in der nächsten Sektion behandelt. 
+	Wie beschrieben sollen die Partikel im Folgenden als Vollkommen Transparent betrachtet werden, mit der Eigenschaft Licht zu emittieren.
+	Das Licht, welches von den Partikeln emittiert wird strahlt Diffuse mit konstanter Intensität $C$ über der Fläche $A$.
+	Die Menge des Lichtes, welches durch $B$ fließt entspricht $C \rho AE \delta s$. Für die Einheitsfläche $A$ entspricht dieser Fluss $C \rho A \delta s$.
+	Aus dieser Annahme ergibt sich eine weitere Differenzialgleichung:
+	
+	\begin{equation}
+		\frac{dI}{ds} = C(s)\rho(s)A = C(s)\tau(s) = g(s)
+		\label{eq:MAX95EmissionDG}
+	\end{equation}
+	
+	Mit $g(s)$ ist die Intensität des emittierten Lichtes gemeint. Die Lösung lässt sich zu folgender Formel vereinfachen, wenn die Reflektionen aus
+	der Betrachtung heraus genommen werden:
+	
+	\begin{equation}
+		I(s) = I_0 + \int_{0}^{s} g(t) dt
+		\label{eq:MAX95LSGEmissionDG}
+	\end{equation}
+	
+	Mit dieser Lösung ergibt sich ein Problem, denn das Integral ist nicht durch eine Obere Schranke beschränkt. Das bedeutet, dass das die Lichtintensität
+	die Aufnahmefähigkeit des Sensors schnell überschreitet und C deshalb nur sehr kleine Werte annehmen kann. $I_0$ ist wie in der Gleichung \ref{eq:MAX95LSGgrundDG} als Hintergrundstrahlung definiert und kann für jeden Strahl unabhängig gewählt werden.
+	
+\subsection{Absorption und Emission}
+
+	In der Vorhergehenden Abschnitt wurden die Volumen als vollkommen Transparent betrachtet, dieses Verhalten soll sich jetzt ändern.
+	Das Licht, welches das Volumen durchläuft wird soll mit Hilfe des Abschwächungskoeffizient abgeschwächt werden und zusätzlich durch
+	die Emission angereichert werden:
+	
+	\begin{equation}
+		\frac{dI}{ds} = g(s) - \tau(s)I(s)
+		\label{eq:MAX95EmissionAbsorptionDG}
+	\end{equation}
+	
+	In seiner Arbeit entwickelt Nelson Max eine Lösung für beliebige Quellfunktionen, welche $g(s)$ annehmen kann. 
+	Dabei wird das Licht als Strahl von der Lichtquelle durch das Medium geschickt. Die Variable $s$ entspricht dem Laufparameter des Strahls,
+	welcher an der Position der Lichtquelle den Wert Null annimmt und den Wert $D$ am Sensor hat.
+	
+	\begin{equation}
+		I(D) = I_0 \cdot e^{-\int\limits_{0}^{D}\tau(t)dt} + \int\limits_{0}^{D}g(s) \cdot e^{-\int\limits_{s}^{D}\tau(t)dt}ds
+		\label{eq:MAX95LSGEmissionAbsorptionDG1}
+	\end{equation}
+	
+	\begin{equation}
+		I(D) = I_0T(D) + \int\limits_{0}^{D}g(s)T'(s)ds
+		\label{eq:MAX95LSGEmissionAbsorptionDG2}
+	\end{equation}
+	
+	Wobei die Transparenz über die einzelnen Werte von s sich als $T'(s) = e^{-\int\limits_{s}^{D}\tau(x)dx}$ definiert. Das Integral aus der Gleichung \ref{eq:MAX95LSGEmissionAbsorptionDG1} lässt sich für einige Transferfunktionen analytisch lösen für die anderen schlägt Nelson Max die
+	Approximation durch Riemannsummen vor. Ist der Faktor $C(s)$ eine Konstante $C$, lässt sich die Lösung stark vereinfachen. und das Licht,
+	welches den Sensor erreicht ergibt sich durch die Gleichung:
+	
+	\begin{equation}
+		I(D) = I_0 T(D) + C(1 - T(D))
+		\label{eq:MAX95LSGEmissionAbsorptionWithCKonstDG1}
+	\end{equation}
+	
+	Die Lichtundurchlässigkeit $\alpha = (1 - T(D))$ und entspricht der Wahrscheinlichkeit, dass ein Strahl, welcher vom Sensor in Richtung der Lichtquelle
+	geschossen wird einen Partikel trifft und die Farbe C zu sehen ist. 
+	
+\section{Streuung und Schatten}
+
+	Die bisher vorgestellten Gleichungen erzeugen bereits schöne Bilder, entsprechen allerdings noch nicht der Realität. Licht welches auf ein Partikel
+	trifft wird gestreut, es entstehen Schatten. Nelson Max geht dabei auf die Grundlagen der Streuung ein, in dem der Quellterm $g(s)$ um einen
+	Winkelparameter erweitert wird. Der Quellterm wird im Folgenden mit $g(X, \omega) = E(X) + S(X, \omega)$. $E(X)$ bezeichnet die Emission an einen
+	bestimmten Punkt $X$ und $S(X, \omega)$ die Richtung in welche das Licht gestreut wird. 
 
 \chapter{Grundlagen}
 
@@ -320,6 +422,8 @@ Bild"ubernahmen zitieren.}
 	
 	Die Auf diese Weise beschriebe Ebene wird in Pixel unterteilt. Dadurch definiert sich jeder Pixel, als Teilfläche der Kameraebene.
 	Die Eckpunkte jedes Pixels lässt sich durch zwei Wertepaare genau beschreiben.
+	
+\section{Die Orthogonale Kamera}
 
 \section{Volumen-Integral}
 

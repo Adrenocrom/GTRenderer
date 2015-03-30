@@ -164,9 +164,32 @@ CMakeFiles/RayTracer.dir/Ray.cpp.o.provides: CMakeFiles/RayTracer.dir/Ray.cpp.o.
 
 CMakeFiles/RayTracer.dir/Ray.cpp.o.provides.build: CMakeFiles/RayTracer.dir/Ray.cpp.o
 
+CMakeFiles/RayTracer.dir/KDTree.cpp.o: CMakeFiles/RayTracer.dir/flags.make
+CMakeFiles/RayTracer.dir/KDTree.cpp.o: KDTree.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/KDTree.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/KDTree.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp
+
+CMakeFiles/RayTracer.dir/KDTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RayTracer.dir/KDTree.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp > CMakeFiles/RayTracer.dir/KDTree.cpp.i
+
+CMakeFiles/RayTracer.dir/KDTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RayTracer.dir/KDTree.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp -o CMakeFiles/RayTracer.dir/KDTree.cpp.s
+
+CMakeFiles/RayTracer.dir/KDTree.cpp.o.requires:
+.PHONY : CMakeFiles/RayTracer.dir/KDTree.cpp.o.requires
+
+CMakeFiles/RayTracer.dir/KDTree.cpp.o.provides: CMakeFiles/RayTracer.dir/KDTree.cpp.o.requires
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/KDTree.cpp.o.provides.build
+.PHONY : CMakeFiles/RayTracer.dir/KDTree.cpp.o.provides
+
+CMakeFiles/RayTracer.dir/KDTree.cpp.o.provides.build: CMakeFiles/RayTracer.dir/KDTree.cpp.o
+
 CMakeFiles/RayTracer.dir/LightSource.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/LightSource.cpp.o: LightSource.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/LightSource.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/LightSource.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.cpp
 
@@ -189,7 +212,7 @@ CMakeFiles/RayTracer.dir/LightSource.cpp.o.provides.build: CMakeFiles/RayTracer.
 
 CMakeFiles/RayTracer.dir/PointLight.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/PointLight.cpp.o: PointLight.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/PointLight.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/PointLight.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.cpp
 
@@ -212,7 +235,7 @@ CMakeFiles/RayTracer.dir/PointLight.cpp.o.provides.build: CMakeFiles/RayTracer.d
 
 CMakeFiles/RayTracer.dir/DirectionLight.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/DirectionLight.cpp.o: DirectionLight.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/DirectionLight.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/DirectionLight.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.cpp
 
@@ -235,7 +258,7 @@ CMakeFiles/RayTracer.dir/DirectionLight.cpp.o.provides.build: CMakeFiles/RayTrac
 
 CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o: IntersectionInfo.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.cpp
 
@@ -258,7 +281,7 @@ CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.o.provides.build: CMakeFiles/RayTr
 
 CMakeFiles/RayTracer.dir/Scene.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/Scene.cpp.o: Scene.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/Scene.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/Scene.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.cpp
 
@@ -281,7 +304,7 @@ CMakeFiles/RayTracer.dir/Scene.cpp.o.provides.build: CMakeFiles/RayTracer.dir/Sc
 
 CMakeFiles/RayTracer.dir/SceneLoader.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/SceneLoader.cpp.o: SceneLoader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/SceneLoader.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/SceneLoader.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.cpp
 
@@ -304,7 +327,7 @@ CMakeFiles/RayTracer.dir/SceneLoader.cpp.o.provides.build: CMakeFiles/RayTracer.
 
 CMakeFiles/RayTracer.dir/Renderer.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/Renderer.cpp.o: Renderer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/Renderer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/Renderer.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.cpp
 
@@ -327,7 +350,7 @@ CMakeFiles/RayTracer.dir/Renderer.cpp.o.provides.build: CMakeFiles/RayTracer.dir
 
 CMakeFiles/RayTracer.dir/RayTracer.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/RayTracer.cpp.o: RayTracer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/RayTracer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/RayTracer.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.cpp
 
@@ -350,7 +373,7 @@ CMakeFiles/RayTracer.dir/RayTracer.cpp.o.provides.build: CMakeFiles/RayTracer.di
 
 CMakeFiles/RayTracer.dir/OCTracer.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/OCTracer.cpp.o: OCTracer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/OCTracer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/OCTracer.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp
 
@@ -373,7 +396,7 @@ CMakeFiles/RayTracer.dir/OCTracer.cpp.o.provides.build: CMakeFiles/RayTracer.dir
 
 CMakeFiles/RayTracer.dir/main.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/main.cpp.o: main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/main.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
 
@@ -396,7 +419,7 @@ CMakeFiles/RayTracer.dir/main.cpp.o.provides.build: CMakeFiles/RayTracer.dir/mai
 
 CMakeFiles/RayTracer.dir/GTRenderer.cpp.o: CMakeFiles/RayTracer.dir/flags.make
 CMakeFiles/RayTracer.dir/GTRenderer.cpp.o: GTRenderer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/RayTracer.dir/GTRenderer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/RayTracer.dir/GTRenderer.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.cpp
 
@@ -424,6 +447,7 @@ RayTracer_OBJECTS = \
 "CMakeFiles/RayTracer.dir/Material.cpp.o" \
 "CMakeFiles/RayTracer.dir/Sphere.cpp.o" \
 "CMakeFiles/RayTracer.dir/Ray.cpp.o" \
+"CMakeFiles/RayTracer.dir/KDTree.cpp.o" \
 "CMakeFiles/RayTracer.dir/LightSource.cpp.o" \
 "CMakeFiles/RayTracer.dir/PointLight.cpp.o" \
 "CMakeFiles/RayTracer.dir/DirectionLight.cpp.o" \
@@ -444,6 +468,7 @@ libRayTracer.a: CMakeFiles/RayTracer.dir/Camera.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/Material.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/Sphere.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/Ray.cpp.o
+libRayTracer.a: CMakeFiles/RayTracer.dir/KDTree.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/LightSource.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/PointLight.cpp.o
 libRayTracer.a: CMakeFiles/RayTracer.dir/DirectionLight.cpp.o
@@ -470,6 +495,7 @@ CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/Camera.cpp.o.require
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/Material.cpp.o.requires
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/Sphere.cpp.o.requires
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/Ray.cpp.o.requires
+CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/KDTree.cpp.o.requires
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/LightSource.cpp.o.requires
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/PointLight.cpp.o.requires
 CMakeFiles/RayTracer.dir/requires: CMakeFiles/RayTracer.dir/DirectionLight.cpp.o.requires

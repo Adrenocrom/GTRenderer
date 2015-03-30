@@ -220,6 +220,30 @@ IntersectionInfo.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/IntersectionInfo.cpp.s
 .PHONY : IntersectionInfo.cpp.s
 
+KDTree.o: KDTree.cpp.o
+.PHONY : KDTree.o
+
+# target to build an object file
+KDTree.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/KDTree.cpp.o
+.PHONY : KDTree.cpp.o
+
+KDTree.i: KDTree.cpp.i
+.PHONY : KDTree.i
+
+# target to preprocess a source file
+KDTree.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/KDTree.cpp.i
+.PHONY : KDTree.cpp.i
+
+KDTree.s: KDTree.cpp.s
+.PHONY : KDTree.s
+
+# target to generate assembly for a file
+KDTree.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/KDTree.cpp.s
+.PHONY : KDTree.cpp.s
+
 LightSource.o: LightSource.cpp.o
 .PHONY : LightSource.o
 
@@ -533,6 +557,9 @@ help:
 	@echo "... IntersectionInfo.o"
 	@echo "... IntersectionInfo.i"
 	@echo "... IntersectionInfo.s"
+	@echo "... KDTree.o"
+	@echo "... KDTree.i"
+	@echo "... KDTree.s"
 	@echo "... LightSource.o"
 	@echo "... LightSource.i"
 	@echo "... LightSource.s"

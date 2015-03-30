@@ -1,21 +1,55 @@
 #include "GTRenderer.h"
 
+double g_dCounter;
+
 bool g_compare_positions (const IntersectionInfo& first, const IntersectionInfo& second) {
 	if(first.m_vIntersects[1] > second.m_vIntersects[2])
   		return false;
 	return true;
 }
 
+void renderPixel(int tId, int iChunkSize, double dMax, Scene* pScene, Camera* pCamera) {
+	int begin = tId * iChunkSize;
+	int end	 = (tId + 1) * iChunkSize;
+	if(end > pCamera->m_iHeight)
+		end = pCamera->m_iHeight;
+
+	for(int y = begin; y < end; ++y) {
+		for(int x = 0; x < pCamera->m_iWidth; ++x) {
+			Ray ray = pCamera->getRay(x, y);
+			pCamera->m_ppvSensor[x][y] = OCTracer::calcColorOfRay(pScene, &ray, Vector3(20, 20, 20), -1, 0, 1);
+					
+			if(pCamera->m_ppvSensor[x][y].r < 0) pCamera->m_ppvSensor[x][y].r = 0;
+			if(pCamera->m_ppvSensor[x][y].g < 0) pCamera->m_ppvSensor[x][y].g = 0;
+			if(pCamera->m_ppvSensor[x][y].b < 0) pCamera->m_ppvSensor[x][y].b = 0;
+			if(pCamera->m_ppvSensor[x][y].r > 255) pCamera->m_ppvSensor[x][y].r = 255;
+			if(pCamera->m_ppvSensor[x][y].g > 255) pCamera->m_ppvSensor[x][y].g = 255;
+			if(pCamera->m_ppvSensor[x][y].b > 255) pCamera->m_ppvSensor[x][y].b = 255;
+
+			g_dCounter++;
+			printf("\rRender: [\033[31m%.2f %%\033[0m]", (float)((g_dCounter / dMax) * 100.0));
+		}
+	}
+}
+
 OCTracer::OCTracer() {
 }
 
 void OCTracer::render(Scene* pScene, Camera* pCamera) {
-	Vector3 vCamPos = pCamera->m_vPosition;
-	std::vector<LightSource*>* pLights = &pScene->m_vpLightSources;
 	double	dNumPixel = (double)(pCamera->m_iWidth * pCamera->m_iHeight);
 	double	dNumCalcd = 0;
-	double	dSamples	 = 10000;
-	
+
+	std::vector<std::thread> threads;
+	int iNumThreads = 32;
+	int iChunkSize	 = pCamera->m_iHeight / iNumThreads;
+	g_dCounter = 0;
+
+	for(int t = 0; t < iNumThreads; ++t)
+		threads.push_back(std::thread(renderPixel, t, iChunkSize, dNumPixel, pScene, pCamera));
+
+	for (auto& th : threads) 
+		th.join();
+/*
 	#pragma omp parallel for schedule(dynamic, 1)
 	for(int y = 0; y < pCamera->m_iHeight; ++y) {
 		for(int x = 0; x < pCamera->m_iWidth; ++x) {
@@ -33,10 +67,11 @@ void OCTracer::render(Scene* pScene, Camera* pCamera) {
 			printf("\rRender: [\033[31m%.2f %%\033[0m]", (float)((dNumCalcd / dNumPixel) * 100.0));
 		}
 	}
+*/
 }
 
 Vector3 OCTracer::calcColorOfRay(Scene* 	pScene, 
-											Ray* 		pRay, 
+				 							Ray* 		pRay, 
 											Vector3 	vLightColor,
 											int		iObjectId,
 											int 		iDepth, 

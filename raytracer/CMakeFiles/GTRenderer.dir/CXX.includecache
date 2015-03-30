@@ -29,7 +29,7 @@ string
 -
 random
 -
-pthread.h
+thread
 -
 QImage
 -
@@ -45,6 +45,8 @@ Sphere.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 Ray.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
+KDTree.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
 LightSource.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 PointLight.h
@@ -65,6 +67,8 @@ OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 

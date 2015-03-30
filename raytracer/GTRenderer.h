@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 #include <random>
-#include <pthread.h>
+#include <thread>
 #include <QImage>
 #include <QColor>
 
@@ -27,6 +27,7 @@
 #include "Material.h"
 #include "Sphere.h"
 #include "Ray.h"
+#include "KDTree.h"
 #include "LightSource.h"
 #include "PointLight.h"
 #include "DirectionLight.h"
