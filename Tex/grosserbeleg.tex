@@ -274,12 +274,18 @@ Bild"ubernahmen zitieren.}
 	\end{equation}
 	
 	Bezeichnet $C_C(u)$ die akkumulierte Farbe, lässt diese sich mit einer ähnlichen rekursiven Formel
-	berechnen.
+	berechnen. $C(u)$ stellt die Farbe dar, welche von einem Punkt, mit dem Längenparameter $u$ durch
+	ein vollkommen transparentes Volumen auf den Pixel Reflektiert wird. Zur Berechnung der Farbintensität
+	wird das Phong Beleuchtungsmodell benutzt. In der Realität ist das Medium zwischen dem Punk an der Stelle $u$
+	und dem Pixel selten vollkommen Transparent, deshalb muss die Farbe durch das Volumen abgeschwächt werden.
+	$C(u) \alpha(u) \Delta u$ beschreibt diese Abschwächung.
 	
 	\begin{equation}
 		C_C(u + \Delta u) = C_C(u) + (1 - \alpha_C(u)) \cdot C(u) \alpha(u) \Delta u
 		\label{eq:TransparenzGL3}
 	\end{equation}
+	
+\subsection{Eine kontinuierliche Formulierung}
 	
 \chapter{Grundlagen}
 
@@ -480,13 +486,6 @@ Bild"ubernahmen zitieren.}
 	
 \section{Die Orthogonale Kamera}
 
-\section{Volumen-Integral}
-
-\section{Lokale Bleuchtung}
-\section{Globale Beleuchtung}
-
-\section{Material und Konstanten}
-
 \chapter{Das Programm}
 
 \section{Verdeckung}
@@ -538,13 +537,7 @@ $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot I_{p(t)} dt$
 $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p dt$
 
 
-\chapter{Verwandte Arbeiten}
-
-
 \chapter{Evaluation}
-
-\subsection{Analytisches Ende}
-\subsection{Numerische Grenzfälle}
 
 \chapter{Fazit}
 
