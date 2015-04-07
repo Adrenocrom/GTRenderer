@@ -23,7 +23,9 @@ include_directories( include . )
 add_library( RayTracer	Vector3.cpp
 								Camera.cpp
 								Material.cpp
+								Primitive.cpp
 								Sphere.cpp
+								Box.cpp
 								Ray.cpp
 								KDTree.cpp
 								LightSource.cpp

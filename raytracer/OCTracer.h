@@ -5,7 +5,7 @@
 
 bool g_compare_positions (const IntersectionInfo& first, const IntersectionInfo& second);
 
-void renderPixel(int tId, int iChunkSize, double dMax, Scene* pScene, Camera* pCamera);
+void renderPixel(int tId, int iChunkSize, double dMax, Camera* pCamera);
 
 extern double g_dCounter;
 
@@ -14,12 +14,11 @@ class OCTracer : public Renderer {
 		OCTracer();
 		virtual ~OCTracer() {};
 
-		void render(Scene* pScene, Camera* pCamera);
+		void render(Camera* pCamera);
 
-		static Vector3 calcColorOfRay(Scene* 	pScene, 
-				 					 		 	Ray* 		pRay, 
+		static Vector3 calcColorOfRay(Ray* 		pRay, 
 									  			Vector3 	vLightColor,
-									  			int			iObjectId,
+									  			int		iObjectId,
 									  			int 		iDepth, 
 									  			int 		iMaxDepth);
 };

@@ -15,12 +15,15 @@
 \contentsline {subsubsection}{\numberline {3.2.2.1}Lighttracer}{9}{subsubsection.3.2.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2.2}Pathtracer}{10}{subsubsection.3.2.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Raycasting}{10}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Strahl}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Kugel}{10}{section.3.4}
-\contentsline {section}{\numberline {3.5}Schnittpunktberechnung}{10}{section.3.5}
-\contentsline {section}{\numberline {3.6}Die Perspektivische Kamera}{12}{section.3.6}
-\contentsline {section}{\numberline {3.7}Die Orthogonale Kamera}{12}{section.3.7}
-\contentsline {chapter}{\numberline {4}Das Programm}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Verdeckung}{13}{section.4.1}
-\contentsline {chapter}{\numberline {5}Evaluation}{15}{chapter.5}
-\contentsline {chapter}{\numberline {6}Fazit}{17}{chapter.6}
+\contentsline {section}{\numberline {3.3}Grundobjekte}{10}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Strahl}{10}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Kugel}{10}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Schnittpunktberechnung}{10}{section.3.4}
+\contentsline {section}{\numberline {3.5}Die Perspektivische Kamera}{12}{section.3.5}
+\contentsline {section}{\numberline {3.6}Die Orthogonale Kamera}{12}{section.3.6}
+\contentsline {chapter}{\numberline {4}Ein analytischer Ansatz}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Paradigma}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Emission und Absorption}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Verdeckung}{14}{section.4.3}
+\contentsline {chapter}{\numberline {5}Fazit}{15}{chapter.5}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{17}{chapter*.4}

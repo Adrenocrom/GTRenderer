@@ -8,7 +8,7 @@ class RayTracer : public Renderer {
 		RayTracer();
 		virtual ~RayTracer() {};
 
-		void render(Scene* pScene, Camera* pCamera);
+		void render(Camera* pCamera);
 
 	
 

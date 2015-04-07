@@ -4,7 +4,9 @@ int main() {
 
 	SceneLoader sl;
 	Scene scene = sl.loadSceneFromFile("scene.txt");
-	scene.switchOnLights();
+	g_pScene = &scene;
+	g_pScene->switchOnLights();
+	//scene.switchOnLights();
 	
 	Camera camera(640, 480, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
 	Renderer* tracer = new RayTracer();
@@ -15,7 +17,7 @@ int main() {
 	camera.saveImageToFile("image.png");
 */
 	//std::cout<<"Render: \033[31mOCRaycast\033[0m"<<std::endl;
-	otracer->render(&scene, &camera);
+	otracer->render(&camera);
 	camera.saveImageToFile("image.png");
 
 	return 0;

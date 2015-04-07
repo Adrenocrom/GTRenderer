@@ -124,6 +124,30 @@ RayTracer/fast:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/build
 .PHONY : RayTracer/fast
 
+Box.o: Box.cpp.o
+.PHONY : Box.o
+
+# target to build an object file
+Box.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Box.cpp.o
+.PHONY : Box.cpp.o
+
+Box.i: Box.cpp.i
+.PHONY : Box.i
+
+# target to preprocess a source file
+Box.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Box.cpp.i
+.PHONY : Box.cpp.i
+
+Box.s: Box.cpp.s
+.PHONY : Box.s
+
+# target to generate assembly for a file
+Box.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Box.cpp.s
+.PHONY : Box.cpp.s
+
 Camera.o: Camera.cpp.o
 .PHONY : Camera.o
 
@@ -340,6 +364,30 @@ PointLight.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/PointLight.cpp.s
 .PHONY : PointLight.cpp.s
 
+Primitive.o: Primitive.cpp.o
+.PHONY : Primitive.o
+
+# target to build an object file
+Primitive.cpp.o:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Primitive.cpp.o
+.PHONY : Primitive.cpp.o
+
+Primitive.i: Primitive.cpp.i
+.PHONY : Primitive.i
+
+# target to preprocess a source file
+Primitive.cpp.i:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Primitive.cpp.i
+.PHONY : Primitive.cpp.i
+
+Primitive.s: Primitive.cpp.s
+.PHONY : Primitive.s
+
+# target to generate assembly for a file
+Primitive.cpp.s:
+	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Primitive.cpp.s
+.PHONY : Primitive.cpp.s
+
 Ray.o: Ray.cpp.o
 .PHONY : Ray.o
 
@@ -545,6 +593,9 @@ help:
 	@echo "... RayTracer"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Box.o"
+	@echo "... Box.i"
+	@echo "... Box.s"
 	@echo "... Camera.o"
 	@echo "... Camera.i"
 	@echo "... Camera.s"
@@ -572,6 +623,9 @@ help:
 	@echo "... PointLight.o"
 	@echo "... PointLight.i"
 	@echo "... PointLight.s"
+	@echo "... Primitive.o"
+	@echo "... Primitive.i"
+	@echo "... Primitive.s"
 	@echo "... Ray.o"
 	@echo "... Ray.i"
 	@echo "... Ray.s"

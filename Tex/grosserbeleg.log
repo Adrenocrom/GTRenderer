@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  31 MAR 2015 12:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 APR 2015 11:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,26 +721,19 @@ Underfull \vbox (badness 1509) has occurred while \output is active []
 ]
 [10] [11] [12]
  4.
+[13
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13
-
-]
-[14]
+] [14]
  5.
 [15
 
 ] [16
 
-]
- 6.
-[17] [18
+] (./grosserbeleg.bbl) [17
 
-]
-No file grosserbeleg.bbl.
-[19
+] [18
 
+] [19
 
 
 
@@ -752,34 +745,28 @@ No file grosserbeleg.bbl.
 ] [22
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 582.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 582.
- (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 582.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 582.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 618.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 618.
 
-
-Package rerunfilecheck Warning: File `grosserbeleg.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `grosserbeleg.out':
-(rerunfilecheck)             Before: C14A63358A852CAE0646D0F15DEDF60D;1708
-(rerunfilecheck)             After:  8874DC354705A081ACFAC8914631C703;1801.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 582.
+(./grosserbeleg.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 618.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 618.
+Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
+(rerunfilecheck)             Checksum: 469C76FD12D6167AFDF9050F5D94D075;2036.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 618.
  )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 67 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10225 strings out of 494976
- 149671 string characters out of 6179136
- 307607 words of memory out of 5000000
- 13211 multiletter control sequences out of 15000+600000
- 50013 words of font info for 59 fonts, out of 8000000 for 9000
+ 10253 strings out of 494976
+ 150191 string characters out of 6179136
+ 307695 words of memory out of 5000000
+ 13227 multiletter control sequences out of 15000+600000
+ 55229 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,13n,61p,412b,1418s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,13n,61p,412b,1417s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/
@@ -796,10 +783,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (28 pages, 194484 bytes).
+Output written on grosserbeleg.pdf (28 pages, 203590 bytes).
 PDF statistics:
- 383 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 83 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 417 PDF objects out of 1000 (max. 8388607)
+ 367 compressed objects within 4 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 

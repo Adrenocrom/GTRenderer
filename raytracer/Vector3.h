@@ -67,4 +67,13 @@ inline Vector3 Vector3InterpolateNormal(const Vector3& v1, const Vector3& v2, co
 inline Vector3 Vector3Min(const Vector3& v1, const Vector3& v2) {return Vector3(FM_MIN(v1.x, v2.x), FM_MIN(v1.y, v2.y), FM_MIN(v1.z, v2.z));}
 inline Vector3 Vector3Max(const Vector3& v1, const Vector3& v2) {return Vector3(FM_MAX(v1.x, v2.x), FM_MAX(v1.y, v2.y), FM_MAX(v1.z, v2.z));}
 
+inline int Vector3BiggestDimension(const Vector3& v) {
+	if(v.x >= v.y && v.x >= v.z)
+		return 0;
+	else if(v.y >= v.x && v.y >= v.z)
+		return 1;
+	else
+		return 2;
+}
+
 #endif

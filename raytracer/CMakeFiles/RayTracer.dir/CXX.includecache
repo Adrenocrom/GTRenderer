@@ -6,21 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 stdio.h
@@ -53,8 +43,12 @@ Camera.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 Material.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
+Primitive.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Primitive.h
 Sphere.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
+Box.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.h
 Ray.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
 KDTree.h
@@ -78,10 +72,6 @@ RayTracer.h
 OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp
@@ -90,15 +80,7 @@ GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
 
@@ -108,53 +90,23 @@ GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Primitive.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Scene.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/SceneLoader.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /usr/include/qt4/Qt3Support/q3cstring.h
 QtCore/qbytearray.h
@@ -714,6 +666,8 @@ QtCore/qglobal.h
 QtGui/qmatrix.h
 -
 
+Box.h
+
 Camera.h
 
 DirectionLight.h
@@ -749,8 +703,12 @@ Camera.h
 Camera.h
 Material.h
 Material.h
+Primitive.h
+Primitive.h
 Sphere.h
 Sphere.h
+Box.h
+Box.h
 Ray.h
 Ray.h
 KDTree.h
@@ -785,6 +743,8 @@ Material.h
 OCTracer.h
 
 PointLight.h
+
+Primitive.h
 
 Ray.h
 

@@ -1,4 +1,4 @@
 rm GTRenderer
-make
+make -j8
 ./GTRenderer
 feh image.png

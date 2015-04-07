@@ -4,6 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Box.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Camera.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/DirectionLight.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/GTRenderer.cpp.o"
@@ -13,6 +14,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Material.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/OCTracer.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/PointLight.cpp.o"
+  "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Primitive.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Primitive.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Ray.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/RayTracer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/RayTracer.cpp.o"
   "/home/josef/Dokumente/Studium/GTRenderer/raytracer/Renderer.cpp" "/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/RayTracer.dir/Renderer.cpp.o"

@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.h
@@ -41,8 +43,12 @@ Camera.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 Material.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
+Primitive.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Primitive.h
 Sphere.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
+Box.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.h
 Ray.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
 KDTree.h
@@ -77,6 +83,8 @@ OCTracer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/PointLight.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Primitive.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Ray.h
 

@@ -1,6 +1,14 @@
 #ifndef KDTREE_H
 #define KDTREE_H
 
+#pragma once
+
+class Scene;
+
+bool g_compare_positions_x (const int& first, const int& second);
+bool g_compare_positions_y (const int& first, const int& second);
+bool g_compare_positions_z (const int& first, const int& second);
+
 class AABBox {
 	public:
 		AABBox() : m_vMin(Vector3(-1.0)), m_vMax(Vector3(1.0)) {}
@@ -8,23 +16,18 @@ class AABBox {
 	
 		bool hit(Ray &ray);
 
-	private:
 		Vector3	m_vMin;
 		Vector3	m_vMax;
 };
 
-class KDNode {
-	public:
-		KDNode();
-
-		AABBox  m_vAABB;
-		KDNode* m_pParent;
-		KDNode* m_pLeft;
-		KDNode* m_pRight;
-		bool	  m_isLeaf;
-		int	  m_iSphere;
-
-		void insertInNode(KDNode* pNode, std::vector<Sphere> spheres, KDNode* pParent = 0);
+struct SKDNode {
+		AABBox  aabb;
+		int 	  iParent;
+		int	  iD;
+		int	  iLeft;
+		int	  iRight;
+		bool	  bLeaf;
+		int	  iPrimitiv;
 };
 
 class KDTree {
@@ -32,12 +35,18 @@ class KDTree {
 		KDTree();
 		~KDTree();
 
-		KDNode m_pRoot;
+		std::vector<SKDNode> m_vSKDNodes;
 
-		void insertInTree(std::vector<Sphere> spheres);
-		AABBox createAABBFromSphere(Sphere &sphere);
+		void createTree();
 
 		std::vector<IntersectionInfo> hit(Ray &ray);
+
+	private:
+		int insertInTree(std::list<int> viPrimitives, int iParent = -1);
+		std::pair<std::list<int>, std::list<int> >	splitPrimitives(std::list<int>& viPrimitives, int iD);
+		AABBox	createAABBox(std::list<int>& viPrimitives);
+
+		std::vector<AABBox>	m_vAABBoxes;
 };
 
 #endif

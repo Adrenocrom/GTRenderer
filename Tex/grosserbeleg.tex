@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg,final]{cgvpub}
+\documentclass[hyperref,german,beleg,final,twoside]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -19,7 +19,7 @@
 \matno{3658867}
 
 \betreuer{Dipl-MedienInf. Joachim Staib}
-\bibfiles{literatur}
+\bibfiles{literatur.bib}
 \problem{
 Die Darstellung von Partikeldaten mittels Kugelglyphen ist in der wissenschaftlichen Visualisierung
 inzwischen etabliert. Gerade bei dichten Datensätzen stellen kompakte Anordnungen von sehr vielen
@@ -352,7 +352,9 @@ Bild"ubernahmen zitieren.}
 	Beleuchtung bereits nach der ersten Kollision zwischen Strahl und Objekt abgebrochen.
 	Raycasting ist die Grundlage des in dieser Arbeit verwendeten Renderalgorithmus.
 
-\section{Strahl}
+\section{Grundobjekte}
+
+\subsection{Strahl}
 	Der Strahl ist das Zentrale Element jedes Raytracing Algorithmus. Seine Mathematische Beschreibung ist
 	denkbar einfach:
 	
@@ -365,7 +367,7 @@ Bild"ubernahmen zitieren.}
 	mit dem Produkt eines Richtungsvektor $\vec{r}$ und einem skalaren Wert $t$. Durch das Produkt $t \cdot \vec{r}$ wird der
 	Richtungsvektor $\vec{r}$ beliebig gestaucht oder gestreckt.
 
-\section{Kugel}
+\subsection{Kugel}
 
 	Eine Kugelfläche wird im $\mathbb{R}^3$ mit dem Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und dem Radius $r$ durch folgende
 	Formel parametrisiert.
@@ -468,7 +470,7 @@ Bild"ubernahmen zitieren.}
 	Das bedeutet, das es sich bei der Kamera um eine Ebene $E$ handelt welche mit der Folgenden Gleichung beschrieben wird:
 	
 	\begin{equation}
-		E(u, v) = \underline{p} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
+		E(u, v) = \underline{p_k} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
 		\label{eq:KameraEbene}	
 	\end{equation}
 	
@@ -483,10 +485,69 @@ Bild"ubernahmen zitieren.}
 	
 	Die Auf diese Weise beschriebe Ebene wird in Pixel unterteilt. Dadurch definiert sich jeder Pixel, als Teilfläche der Kameraebene.
 	Die Eckpunkte jedes Pixels lässt sich durch zwei Wertepaare genau beschreiben.
+	Zum Schluss fehlt noch die Position der Kamera, welche durch den Positionsvektor $\underline{o}$ bezeichnet wird.
+	Jeder Kamerastrahl bestimmt sich durch $\underline{o}$ und durch einen Richtungsvektor $\vec{d} = E(u, v) - \underline{o}$.
+	Mit dieser Definition wird das Bild zu den Rändern hin gestreckt.
 	
 \section{Die Orthogonale Kamera}
 
-\chapter{Das Programm}
+	Eine weitere Möglichkeit eine Kamera zu definieren, besteht darin den Kameraursprung $\underline{o}$ in Abhängigkeit von $u$ und $v$ zu definieren, so dass alle Strahlen Parallel verlaufen.
+	Die Bildebene wird wie in der Gleichung \ref{eq:KameraEbene} definiert mit den Spannvektoren aus \ref{eq:KameraSpannvektoren}. Die Definition der Ursprünge der Strahlen funktioniert analog zur Bildebene:
+	
+	\begin{equation}
+		O(u, v) = \underline{p_o} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
+		\label{eq:KameraOrthogonal}	
+	\end{equation}
+	
+	Beide Gleichungen unterscheiden sich durch ihren Stützvektor. Der Stützvektor der Bildebene wird mit $\underline{p_k}$ bezeichnet und der, der Ursprünge $\underline{p_o}$. Im Einfachsten Fall definiert sich
+	$\underline{p_k}$ als Nullvektor und $\underline{p_o}$ als der Vektor $(0, 0, -1)^T$.
+	
+\chapter{Ein analytischer Ansatz}
+ 
+\section{Paradigma}
+
+	In diesem Kapitel wird der Algorithmus hergeleitet welcher zum Zeichnen der Kugeln dient.
+	Um die Gleichung herzuleiten wurde eine Grundannahme getroffen, dass die Dichte einer Kugel im inneren
+	konstant ist. Das Ziel der Arbeit bestand darin herauszufinden, ob sich eine Analytische Funktion zur
+	Berechnung der Lichtdurchlässigkeit erstellen lässt. Diese Frage wird im Folgenden beantwortet.
+ 
+\section{Emission und Absorption}
+
+	Als Grundlage dient das Emission und Absorptionsmodell von \cite{Max:1995:OMD:614258.614298}, welches im Kapitel
+	über Verwandte Arbeiten bereits genauer erläutert wurde. Zunächst werden ein paar Grundlegende Symbole definiert und auf diese Aufbauend werden die Formeln hergeleitet. $I_{p_{(x, y)}}$ bezeichnet die Intensität auf dem Sensor,
+	an der Stelle $x, y$. Das bedeutet die Energie, welche am Sensor ankommt. Da die genauen Werte für den Algorithmus
+	nicht von Interesse sind werden diese im folgenden nicht betrachtet, daher genügt die Vereinfachung $I_{p_{(x,y)}} = I_p$.
+	
+	\begin{equation}
+		I_p = I_E + I_A
+		\label{eq:EmissionAbsorptionGL1}	
+	\end{equation}
+	
+	Die Energie, welche in Form von Licht am Sensor ankommt, setzt sich zusammen aus $I_E$ und $I_A$. 
+	$I_E$ bezeichnet die Energie, welche vom Material selbst an die Umgebung abgegeben wird. Diese Emittierte
+	Energie schwächt sich auf dem Weg durch das Volumen ab, bis sie den Sensor erreicht. Mit dem Symbol $I_A$ wird
+	die Energie bezeichnet, welche von den Lichtquellen Abgegeben wird. Dieses Licht verliert beim durchwandern
+	des Mediums an Energie.
+	
+	\begin{equation}
+			I_E = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot c(v_r(t)) dt
+			\label{eq:EmissionAbsorptionGL2}	
+	\end{equation}
+	
+	Die Gleichung \ref{eq:EmissionAbsorptionGL2} beschreibt die Emission im Volumen entlang eines Strahls $\underline{r}(t)$. Wobei der Strahl ausgehend von der Kamera in die Szene geschossen wurde.
+	Der Eintrittspunkt in das Volumen wird über den Längenparameter mit $t_n$ bezeichnet und der Austrittspunkt analog als $t_f$. Die Funktion $v_r(t)$ liefert die Dichte an einem Bestimmten Punkt im Volumen. 
+	In dieser Arbeit wird diese Funktion als Konstant definiert: $v_r(t) = \kappa$. 
+	Die Transferfunktion $c(v_r(t)) = \lambda \cdot v_r(t)$ ist eine lineare Funktion, welche die Dichte mit
+	dem Parameter $\lambda$ skaliert. Werden die Funktionen Ineinander eingesetzt, kommt eine konstante Dichte
+	heraus mit $c(v_r(t)) = \lambda \cdot \kappa$.
+	
+	\begin{equation}
+		\tau(t_0, t_1) = e^{- \int\limits_{t_0}^{t_1} \sigma (v_r(t)) dt}
+		\label{eq:AbsorptionsFunktion}	
+	\end{equation}
+	
+	Die Absorptionsfunktion \ref{eq:AbsorptionsFunktion} beschreibt die Abschwächung des Lichtes durch das Volumen
+	entlang eines Strahls.
 
 \section{Verdeckung}
 
@@ -537,7 +598,9 @@ $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot I_{p(t)} dt$
 $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p dt$
 
 
-\chapter{Evaluation}
+\cite{Max:1995:OMD:614258.614298}
+
+\cite{conf/pg/JungPP98}
 
 \chapter{Fazit}
 
@@ -551,32 +614,5 @@ $I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdo
 %	\caption{beschriftung}
 %	\label{fig:diplominf}
 %\end{figure}
-
-
-%\subsection{Etwas Mathe}
-%
-%\[
-%\sum_{i=1}^{100}x_i
-%\]
-%noch mehr text
-%\subsubsection{Verweise auf Literatur}
-%So kann ich Literatur aus literatur.bib zitieren: \cite{kochbuch}. 
-%
-%\paragraph{etwas quelltext}
-%
-%
-%\begin{figure}[htbp]
-%\begin{lstlisting}[frame=trbl]
-%//comment
-%for(int i = 0; i < 100;i++)
-%{
-%test(i);
-%}
-%\end{lstlisting}
-%\end{figure}
-%
-%text
-%
-%\cite*{}
 
 \end{document}

@@ -75,6 +75,12 @@ IntersectionInfo Sphere::getIntersectionInfo(const Ray& ray, int iObjectId) {
 									iObjectId);
 }
 
+AABBox Sphere::createAABBox() {
+	Vector3 vMax = m_vPosition + m_fRadius;
+	Vector3 vMin = m_vPosition - m_fRadius;
+	return AABBox(vMin, vMax);
+}
+
 int Sphere::CalcQuadricRoots(double a, double b, double c, double* x1, double* x2) {
 	double determinant = b * b - 4 * a * c;
 	if (determinant < 0) {

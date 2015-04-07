@@ -3,7 +3,7 @@
 RayTracer::RayTracer() {
 }
 
-void RayTracer::render(Scene* pScene, Camera* pCamera) {
+void RayTracer::render(Camera* pCamera) {
 /*	Vector3 vCamPos = pCamera->m_vPosition;
 	std::vector<PointLight>* pLights = &pScene->m_vPointLights;
 	bool bOverZero = false;

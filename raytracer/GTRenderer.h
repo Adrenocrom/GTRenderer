@@ -22,10 +22,16 @@
 #define FM_DEG_TO_RAD(x) ((x) * 0.0174532925199432957692369076848f) // Grad -> Bogenmaß
 #define FM_RAD_TO_DEG(x) ((x) * 57.295779513082320876798154814105f)
 
+class Scene;
+
+extern Scene* g_pScene;
+
 #include "Vector3.h"
 #include "Camera.h"
 #include "Material.h"
+#include "Primitive.h"
 #include "Sphere.h"
+#include "Box.h"
 #include "Ray.h"
 #include "KDTree.h"
 #include "LightSource.h"
