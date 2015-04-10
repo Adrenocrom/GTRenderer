@@ -4,6 +4,9 @@
 #pragma once
 
 class Ray;
+class Camera;
+
+void saveImageToFile(Camera& camera, const char* pcFilename);
 
 class Camera {
 	public:

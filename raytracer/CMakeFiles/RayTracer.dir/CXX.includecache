@@ -8,6 +8,10 @@
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Box.h
 
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
+
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Camera.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/DirectionLight.h
@@ -74,19 +78,11 @@ OCTracer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/IntersectionInfo.h
 
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.cpp
-GTRenderer.h
--
-
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/KDTree.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/LightSource.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Material.h
-
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.cpp
-GTRenderer.h
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/OCTracer.h
 
@@ -107,6 +103,10 @@ GTRenderer.h
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Sphere.h
 
 /home/josef/Dokumente/Studium/GTRenderer/raytracer/Vector3.h
+
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
+GTRenderer.h
+/home/josef/Dokumente/Studium/GTRenderer/raytracer/GTRenderer.h
 
 /usr/include/qt4/Qt3Support/q3cstring.h
 QtCore/qbytearray.h
@@ -665,98 +665,4 @@ QtCore/qglobal.h
 /usr/include/qt4/QtGui/qwmatrix.h
 QtGui/qmatrix.h
 -
-
-Box.h
-
-Camera.h
-
-DirectionLight.h
-
-GTRenderer.h
-stdio.h
--
-iostream
--
-cmath
--
-vector
--
-list
--
-fstream
--
-sstream
--
-string
--
-random
--
-thread
--
-QImage
--
-QColor
--
-Vector3.h
-Vector3.h
-Camera.h
-Camera.h
-Material.h
-Material.h
-Primitive.h
-Primitive.h
-Sphere.h
-Sphere.h
-Box.h
-Box.h
-Ray.h
-Ray.h
-KDTree.h
-KDTree.h
-LightSource.h
-LightSource.h
-PointLight.h
-PointLight.h
-DirectionLight.h
-DirectionLight.h
-IntersectionInfo.h
-IntersectionInfo.h
-Scene.h
-Scene.h
-SceneLoader.h
-SceneLoader.h
-Renderer.h
-Renderer.h
-RayTracer.h
-RayTracer.h
-OCTracer.h
-OCTracer.h
-
-IntersectionInfo.h
-
-KDTree.h
-
-LightSource.h
-
-Material.h
-
-OCTracer.h
-
-PointLight.h
-
-Primitive.h
-
-Ray.h
-
-RayTracer.h
-
-Renderer.h
-
-Scene.h
-
-SceneLoader.h
-
-Sphere.h
-
-Vector3.h
 

@@ -42,3 +42,4 @@ add_library( RayTracer	Vector3.cpp
 
 add_executable( GTRenderer main.cpp )
 target_link_libraries( GTRenderer RayTracer ${QT_LIBRARIES} )
+target_link_libraries( GTRenderer RayTracer )

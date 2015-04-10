@@ -1,1 +1,1 @@
-/usr/bin/c++    -fopenmp -O3 -DNDEBUG    CMakeFiles/GTRenderer.dir/main.cpp.o  -o GTRenderer -rdynamic libRayTracer.a -lQtGui -lQtCore 
+/usr/bin/c++    -fopenmp -O3 -DNDEBUG    CMakeFiles/GTRenderer.dir/main.cpp.o  -o GTRenderer -rdynamic libRayTracer.a -lQtGui -lQtCore libRayTracer.a 

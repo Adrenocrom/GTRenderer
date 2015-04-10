@@ -124,168 +124,67 @@ Bild"ubernahmen zitieren.}
 	
 \chapter{Verwandte Arbeiten}
 
+\section{A Survey of Volumetric Illumination Techniques for Interactive Volume Rendering}
+
+	Die Arbeit \cite{JSYR14} fokussiert sich nicht auf ein spezielles Verfahren, vielmehr gibt sie einen Überblick über gängige Methoden zum rendern von Volumendaten. In der Einleitung der Arbeit wird auf die Unzulänglichkeiten
+	verwiesen, die Methoden wie das Emission und Absorptionsmodell aufweisen, dieses im speziellen ist nur in der
+	Lage Lokale Beleuchtungseffekte zu simulieren. Als Unterscheidungskriterien dienen das Volumetrische Modell,
+	die Unabhängigkeit bezüglich der verwendeten Transferfunktion und die Möglichkeit den Algorithmus zu parallelisieren. Das Volumetrischen Modell trägt entschieden zur Komplexität und Geschwindigkeit bei,
+	Voxel können als Boxen, Kugeln oder anderen Beliebigen Formen entsprechen. Die Transferfunktion als solche,
+	ist in einigen Modellen fest vorgeschrieben, während sie in anderen Algorithmen zur Laufzeit ausgetauscht werden kann.
+	
+	Trotz der einleitend genannten Einschränkungen bleibt das Emission und Absorptionsmodell die Grundlage für
+	die meisten Betrachtungen. Algorithmen, welche Daten vor dem eigentlichen Rendervorgang generieren, werden
+	von jenen differenziert, welche die nötigen Daten zur Laufzeit generieren und somit weit weniger Speicher benötigen. Der anfallende Speicherbedarf verhindert bei einigen Algorithmen den Einsatz für große Datenmengen.
+
 \section{Optical Models for Direct Volume Rendering}
 
-	Die Arbeit von Nelson Max gehört zu den meist Zitierten Arbeiten im Bereich des Volumen Renderns und behandelt
-	die Grundlagen des Emission und Absorptionsverhalten Gas gefüllten Volumen.
-	Zur Herleitung der Gleichung nutzt Nelson Max Partikel in Form von Einheitskugeln, diese besitzen einen Radius $r$
-	und somit die Projizierte Oberfläche $A = \Pi \cdot r$. 
-	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln innerhalb des Einheitsvolumen.
-	Betrachtet wird ein Zylinder, der mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
-	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und enthält demnach $N$ Partikel, mit $N = \rho E \delta s$.
-	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
-	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt
-	$\rho A \delta s$. Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen.
+	Die Arbeit von Nelson Max \cite{Max:1995:OMD:614258.614298}, beschreibt die Grundlagen des Emission und Absorptionsmodells, wie oben bereits erwähnt. 
+	Nelson Max baut in seiner Arbeit eine Rendergleichung auf, welche sich zu Beginn auf
+	das Emissionsmodell beschränkt. Anhand des Emissionsmodells werden die Grundlagen des Lichttransportes
+	betrachtet und definiert. Erweitert wird die entstandene Gleichung mit einen Term zur Lichtabsorption,
+	Streuung und Schattenberechnung. 
+	Am ende seiner Arbeit geht er auf die Erweiterung durch die Vielfache Streuung ein und stellt einige Lösungsansätze vor.
 	
-	Es ergibt sich die Folgende Differenzialgleichung:
-	
-	 
-	\begin{equation}
-		\frac{dI}{ds} = -\rho(s)AI(s) = -\tau(s)I(s)
-		\label{eq:MAX95grundDG}
-	\end{equation}
-	
-	In der Gleichung \ref{eq:MAX95grundDG} beschreibt $s$ die Länge entlang des Lichtstrahles. $I(s)$ stellt die Lichtintensität an der Stelle des Volumens
-	dar, an dem der Strahl genau die Länge $s$ besitzt. $\tau(s) = \rho(s)A$ wird als Abschwächungskoeffizient bezeichnet. $\tau$ beschreibt den Grad der Abschwächung des Lichtes durch ein Volumen.
-	
-	\begin{equation}
-		I(s) = I_0 \cdot e^{- \int_{0}^{s} \tau(t) dt}
-		\label{eq:MAX95LSGgrundDG}
-	\end{equation}
-	 
-	Gleichung \ref{eq:MAX95LSGgrundDG} ist die Lösung von \ref{eq:MAX95grundDG}. Das Integral über den Abschwächungskoeffizienten, wird von Nelson Max als Transparenz $T(s)$ von $0$ bis $s$ bezeichnet. Die Lichtundurchlässigkeit $\alpha$, im Englischen \textit{opacity} berechnet sich aus $\alpha = 1 - T(s)$.
-	
-\subsection{Emission}
-	
-	Wird die Lichtintensität an einem Bestimmten Punkt auf einem Lichtstrahl betrachtet, welcher von der Lichtquelle durch ein Medium zu der
-	Projektionsoberfläche geschossen wird, lässt sich diese durch Reflektionen und Emission von Licht an diesem Punkt weiter anreichern.
-	Nelson Max betrachtet in seiner Arbeit den Einfacheren Fall, bei dem nur Licht emittiert wird. Die Absorption von Licht durch die Partikel 
-	wird in der nächsten Sektion behandelt. 
-	Wie beschrieben sollen die Partikel im Folgenden als Vollkommen Transparent betrachtet werden, mit der Eigenschaft Licht zu emittieren.
-	Das Licht, welches von den Partikeln emittiert wird strahlt Diffuse mit konstanter Intensität $C$ über der Fläche $A$.
-	Die Menge des Lichtes, welches durch $B$ fließt entspricht $C \rho AE \delta s$. Für die Einheitsfläche $A$ entspricht dieser Fluss $C \rho A \delta s$.
-	Aus dieser Annahme ergibt sich eine weitere Differenzialgleichung:
-	
-	\begin{equation}
-		\frac{dI}{ds} = C(s)\rho(s)A = C(s)\tau(s) = g(s)
-		\label{eq:MAX95EmissionDG}
-	\end{equation}
-	
-	Mit $g(s)$ ist die Intensität des emittierten Lichtes gemeint. Die Lösung lässt sich zu folgender Formel vereinfachen, wenn die Reflektionen aus
-	der Betrachtung heraus genommen werden:
-	
-	\begin{equation}
-		I(s) = I_0 + \int_{0}^{s} g(t) dt
-		\label{eq:MAX95LSGEmissionDG}
-	\end{equation}
-	
-	Mit dieser Lösung ergibt sich ein Problem, denn das Integral ist nicht durch eine Obere Schranke beschränkt. Das bedeutet, dass das die Lichtintensität
-	die Aufnahmefähigkeit des Sensors schnell überschreitet und C deshalb nur sehr kleine Werte annehmen kann. $I_0$ ist wie in der Gleichung \ref{eq:MAX95LSGgrundDG} als Hintergrundstrahlung definiert und kann für jeden Strahl unabhängig gewählt werden.
-	
-\subsection{Absorption und Emission}
-
-	In der Vorhergehenden Abschnitt wurden die Volumen als vollkommen Transparent betrachtet, dieses Verhalten soll sich jetzt ändern.
-	Das Licht, welches das Volumen durchläuft wird soll mit Hilfe des Abschwächungskoeffizient abgeschwächt werden und zusätzlich durch
-	die Emission angereichert werden:
-	
-	\begin{equation}
-		\frac{dI}{ds} = g(s) - \tau(s)I(s)
-		\label{eq:MAX95EmissionAbsorptionDG}
-	\end{equation}
-	
-	In seiner Arbeit entwickelt Nelson Max eine Lösung für beliebige Quellfunktionen, welche $g(s)$ annehmen kann. 
-	Dabei wird das Licht als Strahl von der Lichtquelle durch das Medium geschickt. 
-	Die Variable $s$ entspricht dem Laufparameter des Strahls,
-	welcher an der Position der Lichtquelle den Wert Null annimmt und den Wert $D$ am Sensor hat.
-	
-	\begin{equation}
-		I(D) = I_0 \cdot e^{-\int\limits_{0}^{D}\tau(t)dt} + \int\limits_{0}^{D}g(s) \cdot e^{-\int\limits_{s}^{D}\tau(t)dt}ds
-		\label{eq:MAX95LSGEmissionAbsorptionDG1}
-	\end{equation}
-	
-	\begin{equation}
-		I(D) = I_0T(D) + \int\limits_{0}^{D}g(s)T'(s)ds
-		\label{eq:MAX95LSGEmissionAbsorptionDG2}
-	\end{equation}
-	
-	Wobei die Transparenz über die einzelnen Werte von s sich als $T'(s) = e^{-\int\limits_{s}^{D}\tau(x)dx}$ definiert. Das Integral aus der Gleichung \ref{eq:MAX95LSGEmissionAbsorptionDG1} lässt sich für einige Transferfunktionen analytisch lösen für die anderen schlägt Nelson Max die
-	Approximation durch Riemannsummen vor. Ist der Faktor $C(s)$ eine Konstante $C$, lässt sich die Lösung stark vereinfachen. und das Licht,
-	welches den Sensor erreicht ergibt sich durch die Gleichung:
-	
-	\begin{equation}
-		I(D) = I_0 T(D) + C(1 - T(D))
-		\label{eq:MAX95LSGEmissionAbsorptionWithCKonstDG1}
-	\end{equation}
-	
-	Die Lichtundurchlässigkeit $\alpha = (1 - T(D))$ und entspricht der Wahrscheinlichkeit, dass ein Strahl, welcher vom Sensor in Richtung der Lichtquelle
-	geschossen wird einen Partikel trifft und die Farbe C zu sehen ist. 
-	
-\subsection{Streuung und Schatten}
-
-	Die bisher vorgestellten Gleichungen erzeugen bereits schöne Bilder, entsprechen allerdings noch nicht der Realität. Licht welches auf ein Partikel
-	trifft wird gestreut, es entstehen Schatten. Nelson Max geht dabei auf die Grundlagen der Streuung ein, in dem der Quellterm $g(s)$ um einen Winkelparameter erweitert wird. 
-	Der Quellterm wird im Folgenden mit $g(X, \omega) = E(X) + S(X, \omega)$. 
-	$E(X)$ bezeichnet die Emission an einen bestimmten Punkt $X$ und $S(X, \omega)$ die Richtung in welche das Licht gestreut wird. Trifft das Licht ein Partikel an einem Punkt $X$, wird dessen Intensität
-	mit einer \textit{brdf} Funktion multipliziert. \textit{Brdf} steht für 
-	\textit{bidirectional reflection distribution function}, welche die Verteilung des Lichtes in Abhängigkeit
-	des Einfalls und Ausfallwinkels an dem Punkt $X$ bestimmt. 
-	Die Streufunktion $S(X, \omega) = r(X, \omega, \omega') \cdot i(X, \omega)$ setzt sich zusammen aus der
-	\textit{brdf} welche hier durch die Funktion $r$ dargestellt wird und der Intensität des Lichtes $i$,
-	welches aus der Winkelrichtung $\omega'$ in den Punkt $X$ einfällt. Mit Hilfe eines rekursiven \textit{Raytracers} kann der Lichtanteil reduziert werden, was einen Schattenwurf zur Folge hat.
+	Es wird angeführt, dass sich die Gleichung in einigen Fällen wohl analytisch lösen ließe, im Allgemeinen
+	wird zur Lösung der Rendergleichung auf Nummerische Integration verwiesen.
 	
 \section{An Analytical Ray Casting of Volume Data}
 
-	Diese Arbeit baut auf der Grundlage von CT, MRI, SPECT und PET Datenmengen auf. Das bedeutet, alles was
-	vorliegt ist ein 3D-Array von skalaren Werten, welche im Folgenden als Dichte interpretiert werden.
-	Das hier vorgestellte Verfahren baut auf einen \textit{Raycaster} auf, das heißt es werden ausgehend vom
-	Bildsensor Stahlen in die Szene geschossen. Das Resultat ist ein Bild, welches durch die Abschwächung der
-	Hintergrundbeleuchtung durch das Volumen entsteht. Durch den Einsatz von Interaktionstechniken, kann
-	der Nutzer im Folgenden Teile des Volumen durch die Veränderung der Dichtewerte ausblenden oder hervorheben.
-	Die meisten \textit{Raycast}-Ansätze approximieren diesen Vorgang nummerisch, da das finden, von Analytischen
-	Lösungen, insofern möglich nicht einfach ist. In dieser Arbeit wird ein Verfahren vorgestellt,
-	welches zum Teil die Aufkommenden Integrale Analytisch löst und wenn nötig auf Numerische Praktiken zurückgreift.
+	Eine weitere sehr interessante Arbeit zum Thema Volumenintegral ist \cite{conf/pg/JungPP98}.
+	Grundlage dieser Arbeit ist ein Reguläres Gitter, welches die Voxel repräsentiert. Jedem
+	Voxel ist eine Dichte zugeordnet, welche die einzigen Materialparameter in der Gleichung sind.
+	Als Algorithmus zum Zeichnen des Bildet dient ein \textit{Ray-Cast} Verfahren, welches entlang
+	eines Sichtstrahls, an bestimmten Stützpunkten die Transparenz mit einander verrechnet.
+	Diese Transparenten werden über eine Transferfunktion aus der Dichte eines Voxels erzeugt.
+	Verwendet wird eine Lineare Transferfunktion, diese hat den Vorteil, das sich das Volumenintegral
+	für den Durchlauf eines Voxels analytisch lösen lässt.
 	
-\subsection{Levoy's raycast algorithm}
+\section{Historygrams: Enabling Interactive Global Illumination in Direct Volume Rendering using Photon Mapping}
 
-	Grundlage dieser Arbeit ist ein \textit{Raycast}-Algorithmus von Levoy. Die betrachtete Welt besteht aus
-	einem Regulären Gitter, wobei jede Zelle ein Voxel darstellt. Jeder dieser Voxel hat 8 Nachbarn.
-	Im folgenden beschreibt $r$ einen Strahl, welcher in die Szene geschossen wird. Jeder Punkt entlang
-	des Strahls lässt sich über die Länge $u$ vom Beginn des Strahls bis zu dem entsprechenden Punkt bestimmen.
-	Zusätzlich wird eine Funktion $\alpha_C(u)$ definiert, welche die akkumulierten Verdeckungen vom Punkt an der
-	Stelle $u$ bis zum Pixel liefert. Diese Funktion repräsentiert die Abschwächung des Lichtes durch das Volumen.
-	$\Delta u$ definiert eine bestimmte Länge auf dem Strahl zwischen zwei benachbarten Stützpunkten.
-	Ein Stützpunkt wird in dieser Arbeit mit $u_i$ bezeichnet. Die Abschwächung des Lichtes an einem
-	gewählten Stützpunkten wird über die Formel $\alpha(u_i) \Delta u_i$ berechnet. Wie in der Arbeit von
-	Nelson Max berechnet sich die Transparenz durch $1 - \alpha_C(u)$. 
-	$u + \Delta u$ ist ein Punkt mit der Transparenz $1 - \alpha_C(u + \Delta u)$. Die Transparenz
-	zwischen den Punkt $u$ und $u + \Delta u$ wird mit $1 - \alpha(u) \Delta u$ angegeben.
-	Die Transparenz zwischen dem Pixel und dem Punkt $u + \Delta u$ setzt sich folgendermaßen zusammen:
+	\textit{Photon Mapping} ist ein Verfahren zum erzeugen von Globaler Beleuchtung. Im Prinzip eignet sich
+	das Verfahren nicht zum Rendern in Echtzeit. In der Arbeit \cite{JKRY12} wir jedoch ein Ansatz vorgestellt,
+	mit welchem sich das Photonmapping zum Bleuchten von Volumen in Echtzeit nutzen lässt und somit Physikalisch
+	korrekte Beleuchtungen ermöglicht. Echtzeitfähigkeit erreicht der Ansatz dadurch, dass die für den Algorithmus
+	notwendige Photonenmap nicht bei jedem Renderdurchlauf neu berechnet werden muss, sondern nur die Teile,
+	welche nach einer Parameteränderung auch wirklich neu berechnet werden müssen aktualisiert werden. Um diese
+	Änderung zu finden, kommen Histogramme zum Einsatz. Bei diesen Ansatz ist es Möglich die Transferfunktion zur Laufzeit zu ändern. Die Performance dieses Ansatz ist Hauptsächlich abhängig von der Anzahl der Photonen,
+	welche durch die Szene verfolgt werden, der Anzahl an Lichtstahlsegmenten und der maximalen Anzahl von Streuungen.
 	
-	\begin{equation}
-		1 - \alpha_C(u + \Delta u) = (1 - \alpha_C(u)) \cdot (1 - \alpha(u)\Delta u)
-		\label{eq:TransparenzGL1}
-	\end{equation}
+\section{Ambient Volume Scattering}
+
+	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emission und Absorptionsmodell aufbaut, sondern von einem Punkt Stahlen in die umliegende Nachbarschaft verfolgt um den
+	Grad an Verdeckung an diesem Punkt zu bestimmen. Je mehr Segmente mit hoher Dichte in der Nachbarschaft liegen,
+	umso geringer ist der Anteil des Lichtes, welches eben jenen Punkt erreicht. Ein Geschwindigkeitszuwachs wird durch eine Vor-integrierte Transferfunktion erreicht. Ein Vorteil dieses Verfahrens, stellt die Güte der erzeugten
+	Schatten da.
 	
-	Daraus ergibt sich eine rekursive Beziehung für die aufakkumulierten Verdeckungen für $\alpha_C(u)$
+\section{A Model Volume Lighting and Modeling}
+
+	Eine weitere Arbeit aufbauend auf dem Prinzip der Ambienten Verdeckung stellt die Arbeit \cite{journals/tvcg/KnissPHSM03} vor.
+	In dieser Arbeit hat Direktes und Indirektes Licht einen Einfluss auf das Ergebnis. 
+	Mit Hilfe des so genannten \textit{blurring} werden die Farbanteile des Indirekten Lichtes in einem Buffer gehalten. Dieses verfahren approximiert die Streuungseffekte, welche in Materialien auftreten können.
 	
-	\begin{equation}
-		\alpha_C(u + \Delta u) = \alpha_C(u) + \alpha(u)(1 - \alpha_C(u)) \Delta u
-		\label{eq:TransparenzGL2}
-	\end{equation}
-	
-	Bezeichnet $C_C(u)$ die akkumulierte Farbe, lässt diese sich mit einer ähnlichen rekursiven Formel
-	berechnen. $C(u)$ stellt die Farbe dar, welche von einem Punkt, mit dem Längenparameter $u$ durch
-	ein vollkommen transparentes Volumen auf den Pixel Reflektiert wird. Zur Berechnung der Farbintensität
-	wird das Phong Beleuchtungsmodell benutzt. In der Realität ist das Medium zwischen dem Punk an der Stelle $u$
-	und dem Pixel selten vollkommen Transparent, deshalb muss die Farbe durch das Volumen abgeschwächt werden.
-	$C(u) \alpha(u) \Delta u$ beschreibt diese Abschwächung.
-	
-	\begin{equation}
-		C_C(u + \Delta u) = C_C(u) + (1 - \alpha_C(u)) \cdot C(u) \alpha(u) \Delta u
-		\label{eq:TransparenzGL3}
-	\end{equation}
-	
-\subsection{Eine kontinuierliche Formulierung}
+	Eine Erweiterung dieses Verfahrens stellt die Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} dar, welche hier nur der Vollständigkeit halber erwähnt werden soll.
 	
 \chapter{Grundlagen}
 
@@ -548,6 +447,169 @@ Bild"ubernahmen zitieren.}
 	
 	Die Absorptionsfunktion \ref{eq:AbsorptionsFunktion} beschreibt die Abschwächung des Lichtes durch das Volumen
 	entlang eines Strahls.
+
+\section{Optical Models for Direct Volume Rendering}
+
+	Die Arbeit von Nelson Max gehört zu den meist Zitierten Arbeiten im Bereich des Volumen Renderns und behandelt
+	die Grundlagen des Emission und Absorptionsverhalten Gas gefüllten Volumen.
+	Zur Herleitung der Gleichung nutzt Nelson Max Partikel in Form von Einheitskugeln, diese besitzen einen Radius $r$
+	und somit die Projizierte Oberfläche $A = \Pi \cdot r$. 
+	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln innerhalb des Einheitsvolumen.
+	Betrachtet wird ein Zylinder, der mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
+	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und enthält demnach $N$ Partikel, mit $N = \rho E \delta s$.
+	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
+	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt
+	$\rho A \delta s$. Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen.
+	
+	Es ergibt sich die Folgende Differenzialgleichung:
+	
+	 
+	\begin{equation}
+		\frac{dI}{ds} = -\rho(s)AI(s) = -\tau(s)I(s)
+		\label{eq:MAX95grundDG}
+	\end{equation}
+	
+	In der Gleichung \ref{eq:MAX95grundDG} beschreibt $s$ die Länge entlang des Lichtstrahles. $I(s)$ stellt die Lichtintensität an der Stelle des Volumens
+	dar, an dem der Strahl genau die Länge $s$ besitzt. $\tau(s) = \rho(s)A$ wird als Abschwächungskoeffizient bezeichnet. $\tau$ beschreibt den Grad der Abschwächung des Lichtes durch ein Volumen.
+	
+	\begin{equation}
+		I(s) = I_0 \cdot e^{- \int_{0}^{s} \tau(t) dt}
+		\label{eq:MAX95LSGgrundDG}
+	\end{equation}
+	 
+	Gleichung \ref{eq:MAX95LSGgrundDG} ist die Lösung von \ref{eq:MAX95grundDG}. Das Integral über den Abschwächungskoeffizienten, wird von Nelson Max als Transparenz $T(s)$ von $0$ bis $s$ bezeichnet. Die Lichtundurchlässigkeit $\alpha$, im Englischen \textit{opacity} berechnet sich aus $\alpha = 1 - T(s)$.
+	
+\subsection{Emission}
+	
+	Wird die Lichtintensität an einem Bestimmten Punkt auf einem Lichtstrahl betrachtet, welcher von der Lichtquelle durch ein Medium zu der
+	Projektionsoberfläche geschossen wird, lässt sich diese durch Reflektionen und Emission von Licht an diesem Punkt weiter anreichern.
+	Nelson Max betrachtet in seiner Arbeit den Einfacheren Fall, bei dem nur Licht emittiert wird. Die Absorption von Licht durch die Partikel 
+	wird in der nächsten Sektion behandelt. 
+	Wie beschrieben sollen die Partikel im Folgenden als Vollkommen Transparent betrachtet werden, mit der Eigenschaft Licht zu emittieren.
+	Das Licht, welches von den Partikeln emittiert wird strahlt Diffuse mit konstanter Intensität $C$ über der Fläche $A$.
+	Die Menge des Lichtes, welches durch $B$ fließt entspricht $C \rho AE \delta s$. Für die Einheitsfläche $A$ entspricht dieser Fluss $C \rho A \delta s$.
+	Aus dieser Annahme ergibt sich eine weitere Differenzialgleichung:
+	
+	\begin{equation}
+		\frac{dI}{ds} = C(s)\rho(s)A = C(s)\tau(s) = g(s)
+		\label{eq:MAX95EmissionDG}
+	\end{equation}
+	
+	Mit $g(s)$ ist die Intensität des emittierten Lichtes gemeint. Die Lösung lässt sich zu folgender Formel vereinfachen, wenn die Reflektionen aus
+	der Betrachtung heraus genommen werden:
+	
+	\begin{equation}
+		I(s) = I_0 + \int_{0}^{s} g(t) dt
+		\label{eq:MAX95LSGEmissionDG}
+	\end{equation}
+	
+	Mit dieser Lösung ergibt sich ein Problem, denn das Integral ist nicht durch eine Obere Schranke beschränkt. Das bedeutet, dass das die Lichtintensität
+	die Aufnahmefähigkeit des Sensors schnell überschreitet und C deshalb nur sehr kleine Werte annehmen kann. $I_0$ ist wie in der Gleichung \ref{eq:MAX95LSGgrundDG} als Hintergrundstrahlung definiert und kann für jeden Strahl unabhängig gewählt werden.
+	
+\subsection{Absorption und Emission}
+
+	In der Vorhergehenden Abschnitt wurden die Volumen als vollkommen Transparent betrachtet, dieses Verhalten soll sich jetzt ändern.
+	Das Licht, welches das Volumen durchläuft wird soll mit Hilfe des Abschwächungskoeffizient abgeschwächt werden und zusätzlich durch
+	die Emission angereichert werden:
+	
+	\begin{equation}
+		\frac{dI}{ds} = g(s) - \tau(s)I(s)
+		\label{eq:MAX95EmissionAbsorptionDG}
+	\end{equation}
+	
+	In seiner Arbeit entwickelt Nelson Max eine Lösung für beliebige Quellfunktionen, welche $g(s)$ annehmen kann. 
+	Dabei wird das Licht als Strahl von der Lichtquelle durch das Medium geschickt. 
+	Die Variable $s$ entspricht dem Laufparameter des Strahls,
+	welcher an der Position der Lichtquelle den Wert Null annimmt und den Wert $D$ am Sensor hat.
+	
+	\begin{equation}
+		I(D) = I_0 \cdot e^{-\int\limits_{0}^{D}\tau(t)dt} + \int\limits_{0}^{D}g(s) \cdot e^{-\int\limits_{s}^{D}\tau(t)dt}ds
+		\label{eq:MAX95LSGEmissionAbsorptionDG1}
+	\end{equation}
+	
+	\begin{equation}
+		I(D) = I_0T(D) + \int\limits_{0}^{D}g(s)T'(s)ds
+		\label{eq:MAX95LSGEmissionAbsorptionDG2}
+	\end{equation}
+	
+	Wobei die Transparenz über die einzelnen Werte von s sich als $T'(s) = e^{-\int\limits_{s}^{D}\tau(x)dx}$ definiert. Das Integral aus der Gleichung \ref{eq:MAX95LSGEmissionAbsorptionDG1} lässt sich für einige Transferfunktionen analytisch lösen für die anderen schlägt Nelson Max die
+	Approximation durch Riemannsummen vor. Ist der Faktor $C(s)$ eine Konstante $C$, lässt sich die Lösung stark vereinfachen. und das Licht,
+	welches den Sensor erreicht ergibt sich durch die Gleichung:
+	
+	\begin{equation}
+		I(D) = I_0 T(D) + C(1 - T(D))
+		\label{eq:MAX95LSGEmissionAbsorptionWithCKonstDG1}
+	\end{equation}
+	
+	Die Lichtundurchlässigkeit $\alpha = (1 - T(D))$ und entspricht der Wahrscheinlichkeit, dass ein Strahl, welcher vom Sensor in Richtung der Lichtquelle
+	geschossen wird einen Partikel trifft und die Farbe C zu sehen ist. 
+	
+\subsection{Streuung und Schatten}
+
+	Die bisher vorgestellten Gleichungen erzeugen bereits schöne Bilder, entsprechen allerdings noch nicht der Realität. Licht welches auf ein Partikel
+	trifft wird gestreut, es entstehen Schatten. Nelson Max geht dabei auf die Grundlagen der Streuung ein, in dem der Quellterm $g(s)$ um einen Winkelparameter erweitert wird. 
+	Der Quellterm wird im Folgenden mit $g(X, \omega) = E(X) + S(X, \omega)$. 
+	$E(X)$ bezeichnet die Emission an einen bestimmten Punkt $X$ und $S(X, \omega)$ die Richtung in welche das Licht gestreut wird. Trifft das Licht ein Partikel an einem Punkt $X$, wird dessen Intensität
+	mit einer \textit{brdf} Funktion multipliziert. \textit{Brdf} steht für 
+	\textit{bidirectional reflection distribution function}, welche die Verteilung des Lichtes in Abhängigkeit
+	des Einfalls und Ausfallwinkels an dem Punkt $X$ bestimmt. 
+	Die Streufunktion $S(X, \omega) = r(X, \omega, \omega') \cdot i(X, \omega)$ setzt sich zusammen aus der
+	\textit{brdf} welche hier durch die Funktion $r$ dargestellt wird und der Intensität des Lichtes $i$,
+	welches aus der Winkelrichtung $\omega'$ in den Punkt $X$ einfällt. Mit Hilfe eines rekursiven \textit{Raytracers} kann der Lichtanteil reduziert werden, was einen Schattenwurf zur Folge hat.
+	
+\section{An Analytical Ray Casting of Volume Data}
+
+	Diese Arbeit baut auf der Grundlage von CT, MRI, SPECT und PET Datenmengen auf. Das bedeutet, alles was
+	vorliegt ist ein 3D-Array von skalaren Werten, welche im Folgenden als Dichte interpretiert werden.
+	Das hier vorgestellte Verfahren baut auf einen \textit{Raycaster} auf, das heißt es werden ausgehend vom
+	Bildsensor Stahlen in die Szene geschossen. Das Resultat ist ein Bild, welches durch die Abschwächung der
+	Hintergrundbeleuchtung durch das Volumen entsteht. Durch den Einsatz von Interaktionstechniken, kann
+	der Nutzer im Folgenden Teile des Volumen durch die Veränderung der Dichtewerte ausblenden oder hervorheben.
+	Die meisten \textit{Raycast}-Ansätze approximieren diesen Vorgang nummerisch, da das finden, von Analytischen
+	Lösungen, insofern möglich nicht einfach ist. In dieser Arbeit wird ein Verfahren vorgestellt,
+	welches zum Teil die Aufkommenden Integrale Analytisch löst und wenn nötig auf Numerische Praktiken zurückgreift.
+	
+\subsection{Levoy's raycast algorithm}
+
+	Grundlage dieser Arbeit ist ein \textit{Raycast}-Algorithmus von Levoy. Die betrachtete Welt besteht aus
+	einem Regulären Gitter, wobei jede Zelle ein Voxel darstellt. Jeder dieser Voxel hat 8 Nachbarn.
+	Im folgenden beschreibt $r$ einen Strahl, welcher in die Szene geschossen wird. Jeder Punkt entlang
+	des Strahls lässt sich über die Länge $u$ vom Beginn des Strahls bis zu dem entsprechenden Punkt bestimmen.
+	Zusätzlich wird eine Funktion $\alpha_C(u)$ definiert, welche die akkumulierten Verdeckungen vom Punkt an der
+	Stelle $u$ bis zum Pixel liefert. Diese Funktion repräsentiert die Abschwächung des Lichtes durch das Volumen.
+	$\Delta u$ definiert eine bestimmte Länge auf dem Strahl zwischen zwei benachbarten Stützpunkten.
+	Ein Stützpunkt wird in dieser Arbeit mit $u_i$ bezeichnet. Die Abschwächung des Lichtes an einem
+	gewählten Stützpunkten wird über die Formel $\alpha(u_i) \Delta u_i$ berechnet. Wie in der Arbeit von
+	Nelson Max berechnet sich die Transparenz durch $1 - \alpha_C(u)$. 
+	$u + \Delta u$ ist ein Punkt mit der Transparenz $1 - \alpha_C(u + \Delta u)$. Die Transparenz
+	zwischen den Punkt $u$ und $u + \Delta u$ wird mit $1 - \alpha(u) \Delta u$ angegeben.
+	Die Transparenz zwischen dem Pixel und dem Punkt $u + \Delta u$ setzt sich folgendermaßen zusammen:
+	
+	\begin{equation}
+		1 - \alpha_C(u + \Delta u) = (1 - \alpha_C(u)) \cdot (1 - \alpha(u)\Delta u)
+		\label{eq:TransparenzGL1}
+	\end{equation}
+	
+	Daraus ergibt sich eine rekursive Beziehung für die aufakkumulierten Verdeckungen für $\alpha_C(u)$
+	
+	\begin{equation}
+		\alpha_C(u + \Delta u) = \alpha_C(u) + \alpha(u)(1 - \alpha_C(u)) \Delta u
+		\label{eq:TransparenzGL2}
+	\end{equation}
+	
+	Bezeichnet $C_C(u)$ die akkumulierte Farbe, lässt diese sich mit einer ähnlichen rekursiven Formel
+	berechnen. $C(u)$ stellt die Farbe dar, welche von einem Punkt, mit dem Längenparameter $u$ durch
+	ein vollkommen transparentes Volumen auf den Pixel Reflektiert wird. Zur Berechnung der Farbintensität
+	wird das Phong Beleuchtungsmodell benutzt. In der Realität ist das Medium zwischen dem Punk an der Stelle $u$
+	und dem Pixel selten vollkommen Transparent, deshalb muss die Farbe durch das Volumen abgeschwächt werden.
+	$C(u) \alpha(u) \Delta u$ beschreibt diese Abschwächung.
+	
+	\begin{equation}
+		C_C(u + \Delta u) = C_C(u) + (1 - \alpha_C(u)) \cdot C(u) \alpha(u) \Delta u
+		\label{eq:TransparenzGL3}
+	\end{equation}
+	
+\subsection{Eine kontinuierliche Formulierung}
 
 \section{Verdeckung}
 

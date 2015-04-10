@@ -18,7 +18,7 @@ int main() {
 */
 	//std::cout<<"Render: \033[31mOCRaycast\033[0m"<<std::endl;
 	otracer->render(&camera);
-	camera.saveImageToFile("image.png");
+	saveImageToFile(camera, "image.pbm");
 
 	return 0;
 }

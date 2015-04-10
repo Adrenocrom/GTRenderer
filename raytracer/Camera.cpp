@@ -45,7 +45,7 @@ Ray Camera::getRay(int x, int y) {
 
 	Vector3 vOrigin = Vector3(((double)x) / ((double)m_iWidth),
 									  ((double)y) / ((double)m_iHeight),
-									 m_vPosition.z);
+									  0.0);
 	vOrigin.x = (left + vOrigin.x * (right - left));//* m_dAspect;
 	vOrigin.y =  top  + vOrigin.y * (bottom - top);
 	Vector3 vDirection = Vector3( vOrigin.x,
@@ -68,4 +68,30 @@ void Camera::saveImageToFile(const char* pcFilename) {
 	}
 
 	result.save(pcFilename);
+}
+
+void saveImageToFile(Camera& camera, const char* pcFilename) {
+	FILE* pFile = NULL;
+	if((pFile = fopen(pcFilename, "w")) == NULL) {
+		printf("couldn't write file %s", pcFilename);
+		return;
+	}
+
+	fprintf(pFile, "P3\n%d %d 255\n", camera.m_iWidth, camera.m_iHeight);
+
+	for(int y = 0; y < camera.m_iHeight; ++y) {
+		for(int x = 0; x < camera.m_iWidth; ++x) {
+			fprintf(pFile, "%d ", (int)camera.m_ppvSensor[x][y].x);
+			fprintf(pFile, "%d ", (int)camera.m_ppvSensor[x][y].y);
+
+			if(x == (camera.m_iWidth-1))
+				fprintf(pFile, "%d\n", (int)camera.m_ppvSensor[x][y].z);
+			else
+				fprintf(pFile, "%d ", (int)camera.m_ppvSensor[x][y].z);
+
+		}
+	}
+
+	fclose(pFile);
+	pFile = NULL;
 }
