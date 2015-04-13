@@ -122,6 +122,28 @@ Bild"ubernahmen zitieren.}
 	Silhouette zu schätzen.
 	Um diese Fähigkeit nutzen zu können wird jedoch eine komplexe Beleuchtung der Szene nötig.
 	
+\section{neue einleitung}
+ 
+	Ein Problem der Echtzeitgrafik besteht in der Komplexität des Lichtes, welches auf Grund mangelnder
+	Rechenkapazitäten oft nur lokal approximiert werden kann. In der Realität entstehen Schatten durch die Wechselwirkung des Lichtes mit der Umwelt.
+	Anders in den meisten Computergenerierten Szenen, hier werden die Schatten mit Hilfe von rechenintensiver Verfahren oft sehr vereinfacht, insofern sie vorhanden sind.
+	Es existieren allerdings einige algorithmische Verfahren, welche die Wechselwirkung von Photonen mit Oberflächen 
+	physikalisch plausibel nachempfinden können. 
+	Zu diesen zählen einfache Raytracer, bis hin zum Bidirektionalen Pathtracer oder dem so genannten Photonenmapping.
+	Die Besonderheit dieser Algorithmen besteht darin, dass das Licht auf Strahlen durch die Szene verfolgt wird.
+	Schatten, harte und weiche entstehen auf natürliche Weise. Trifft das Licht auf ein Objekt, wird es reflektiert
+	oder absorbiert, das Licht ändert seinen Weg und seine Intensität und hinter dem Objekt entsteht ein Schatten.
+	
+	In der Realität bestehen viele Objekte aus Licht durchlässigen Materialien, wie Wachs, Glas oder Luft.
+	Die bereits genannten physikalisch basierten Renderer kommen dabei an ihre Grenzen.
+	Die Anzahl an möglichen Wechselwirkungen in einem Volumen ist weit größer, als bei Licht undurchlässigen Oberflächen. Die Komplexität der Berechnung steigt drastisch an.
+	
+	Datensätze aus der Medizin, der Biologie oder der Meteorologie enthalten oft mehr als die Oberflächenbeschreibung.
+	Es handelt sich um so genannte Volumendaten, ein oft Dreidimensionales Array von skalaren Werten.
+	Möglichkeiten der Visualisierung dieser Daten gibt es viele, in dieser Arbeit werden die Daten als
+	Dichten von Gaskugeln interpretiert, welche anschließend durch Punkt und Richtungslichtquellen beleuchtet
+	werden.
+	
 \chapter{Verwandte Arbeiten}
 
 \section{A Survey of Volumetric Illumination Techniques for Interactive Volume Rendering}
@@ -406,105 +428,89 @@ Bild"ubernahmen zitieren.}
 \section{Paradigma}
 
 	In diesem Kapitel wird der Algorithmus hergeleitet welcher zum Zeichnen der Kugeln dient.
-	Um die Gleichung herzuleiten wurde eine Grundannahme getroffen, dass die Dichte einer Kugel im inneren
-	konstant ist. Das Ziel der Arbeit bestand darin herauszufinden, ob sich eine Analytische Funktion zur
-	Berechnung der Lichtdurchlässigkeit erstellen lässt. Diese Frage wird im Folgenden beantwortet.
- 
-\section{Emission und Absorption}
+	Zum Beginn wird das Emission und Absorptionsmodell aus der Arbeit von \cite{Max:1995:OMD:614258.614298}
+	genauer betrachtet. Als Grundannahme wird die Menge der Transferfunktionen auf lineare Funktionen beschränkt,
+	die Dichte soll im Volumen als Konstant gelten. Diese Arbeit befasst sich mit der Frage, ob sich mit
+	diesen Einschränkungen das entstehende Volumenintegral analytisch lösen lässt.
+	Gibt es eine analytische Lösung, so würden sich die Bilder sehr effizient und korrekt berechnen lassen.
+	Lässt sich Gleichung nicht analytisch Lösen, werden die Integrale so weit wie möglich analytisch gelöst
+	und die restlichen Teile müssen Nummerisch approximiert werden.
+	
+\section{Das Optische Modell}
 
-	Als Grundlage dient das Emission und Absorptionsmodell von \cite{Max:1995:OMD:614258.614298}, welches im Kapitel
-	über Verwandte Arbeiten bereits genauer erläutert wurde. Zunächst werden ein paar Grundlegende Symbole definiert und auf diese Aufbauend werden die Formeln hergeleitet. $I_{p_{(x, y)}}$ bezeichnet die Intensität auf dem Sensor,
-	an der Stelle $x, y$. Das bedeutet die Energie, welche am Sensor ankommt. Da die genauen Werte für den Algorithmus
-	nicht von Interesse sind werden diese im folgenden nicht betrachtet, daher genügt die Vereinfachung $I_{p_{(x,y)}} = I_p$.
-	
-	\begin{equation}
-		I_p = I_E + I_A
-		\label{eq:EmissionAbsorptionGL1}	
-	\end{equation}
-	
-	Die Energie, welche in Form von Licht am Sensor ankommt, setzt sich zusammen aus $I_E$ und $I_A$. 
-	$I_E$ bezeichnet die Energie, welche vom Material selbst an die Umgebung abgegeben wird. Diese Emittierte
-	Energie schwächt sich auf dem Weg durch das Volumen ab, bis sie den Sensor erreicht. Mit dem Symbol $I_A$ wird
-	die Energie bezeichnet, welche von den Lichtquellen Abgegeben wird. Dieses Licht verliert beim durchwandern
-	des Mediums an Energie.
-	
-	\begin{equation}
-			I_E = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot c(v_r(t)) dt
-			\label{eq:EmissionAbsorptionGL2}	
-	\end{equation}
-	
-	Die Gleichung \ref{eq:EmissionAbsorptionGL2} beschreibt die Emission im Volumen entlang eines Strahls $\underline{r}(t)$. Wobei der Strahl ausgehend von der Kamera in die Szene geschossen wurde.
-	Der Eintrittspunkt in das Volumen wird über den Längenparameter mit $t_n$ bezeichnet und der Austrittspunkt analog als $t_f$. Die Funktion $v_r(t)$ liefert die Dichte an einem Bestimmten Punkt im Volumen. 
-	In dieser Arbeit wird diese Funktion als Konstant definiert: $v_r(t) = \kappa$. 
-	Die Transferfunktion $c(v_r(t)) = \lambda \cdot v_r(t)$ ist eine lineare Funktion, welche die Dichte mit
-	dem Parameter $\lambda$ skaliert. Werden die Funktionen Ineinander eingesetzt, kommt eine konstante Dichte
-	heraus mit $c(v_r(t)) = \lambda \cdot \kappa$.
-	
-	\begin{equation}
-		\tau(t_0, t_1) = e^{- \int\limits_{t_0}^{t_1} \sigma (v_r(t)) dt}
-		\label{eq:AbsorptionsFunktion}	
-	\end{equation}
-	
-	Die Absorptionsfunktion \ref{eq:AbsorptionsFunktion} beschreibt die Abschwächung des Lichtes durch das Volumen
-	entlang eines Strahls.
-
-\section{Optical Models for Direct Volume Rendering}
-
-	Die Arbeit von Nelson Max gehört zu den meist Zitierten Arbeiten im Bereich des Volumen Renderns und behandelt
-	die Grundlagen des Emission und Absorptionsverhalten Gas gefüllten Volumen.
-	Zur Herleitung der Gleichung nutzt Nelson Max Partikel in Form von Einheitskugeln, diese besitzen einen Radius $r$
-	und somit die Projizierte Oberfläche $A = \Pi \cdot r$. 
-	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln innerhalb des Einheitsvolumen.
-	Betrachtet wird ein Zylinder, der mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
-	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und enthält demnach $N$ Partikel, mit $N = \rho E \delta s$.
+	Wie im vorherigen Abschnitt beschrieben baut das Modell auf dem von Nelsen Max aus der Arbeit \cite{Max:1995:OMD:614258.614298} auf. Zur Herleitung seiner Formel betrachtete er Partikel in Form
+	von Einheitskugeln. Jede dieser Kugeln besitzt einen Radius $r$. Die Oberfläche eines Partikel $A$
+	bestimmt sich durch das Produkt der Kreiszahl $\pi$ und dem Radius. So das gilt $A = \pi \cdot r$.
+	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln, welche in einem Einheitsvolumen zu finden sind.
+	Betrachtet wird im folgenden ein Zylinder, welcher mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
+	Das Volumen eines solchen Zylinders entspricht $V_z = E \cdot \delta s$ und es enthält in etwa $N$ Partikel, mit $N = \rho E \delta s$.
 	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
-	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt
-	$\rho A \delta s$. Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen.
-	
-	Es ergibt sich die Folgende Differenzialgleichung:
-	
-	 
+	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt $\rho A \delta s$. 
+	Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen. Die Funktion $I(s)$ liefert die Intensität des Lichtes an der Distanz $s$. Wird die Lichtintensität
+	$I(s)$ nach $s$ abgeleitet, ergibt sich die folgender Differenzialgleichung:
+		 
 	\begin{equation}
 		\frac{dI}{ds} = -\rho(s)AI(s) = -\tau(s)I(s)
 		\label{eq:MAX95grundDG}
 	\end{equation}
 	
-	In der Gleichung \ref{eq:MAX95grundDG} beschreibt $s$ die Länge entlang des Lichtstrahles. $I(s)$ stellt die Lichtintensität an der Stelle des Volumens
-	dar, an dem der Strahl genau die Länge $s$ besitzt. $\tau(s) = \rho(s)A$ wird als Abschwächungskoeffizient bezeichnet. $\tau$ beschreibt den Grad der Abschwächung des Lichtes durch ein Volumen.
+	Auf der rechten Seite der Gleichung \ref{eq:MAX95LSGgrundDG} steht die Funktion $\tau(s)$, diese beschreibt
+	die Abschwächung der Lichtintensität durch ein Volumen der Länge $s$. Wie in \ref{eq:MAX95EmissionDG} zusehen
+	ist definiert sich der Abschwächungskoeffizient als das negative Produkt der mittleren Dichte $\rho$ mit der
+	Oberfläche eines Partikels. Nelson Max hat die folgende Lösung für die Differenzialgleichung gefunden:
 	
 	\begin{equation}
-		I(s) = I_0 \cdot e^{- \int_{0}^{s} \tau(t) dt}
+		I(s) = I_0 \cdot e^{- \int\limits_{0}^{s} \tau(t) dt}
 		\label{eq:MAX95LSGgrundDG}
 	\end{equation}
-	 
-	Gleichung \ref{eq:MAX95LSGgrundDG} ist die Lösung von \ref{eq:MAX95grundDG}. Das Integral über den Abschwächungskoeffizienten, wird von Nelson Max als Transparenz $T(s)$ von $0$ bis $s$ bezeichnet. Die Lichtundurchlässigkeit $\alpha$, im Englischen \textit{opacity} berechnet sich aus $\alpha = 1 - T(s)$.
 	
-\subsection{Emission}
+	Der Parameter $I_0$ entspricht der Intensität an der Stelle $s = 0$, dabei handelt es sich um den Punkt,
+	an dem der Lichtstrahl auf das Volumen trifft. Bei den zweiten Teil des Terms handelt es sich um die Transparenz
+	des Mediums im Intervall $[0, s]$, welche durch $T(s) = exp(- \int_{0}^{l} \tau(t) dt)$ repräsentiert wird. 
+	Nelson Max definiert neben der Transparenz einen Wert für den Grad an
+	Verdeckung durch das Volumen $\alpha$, der im Englischen als \textit{opacity} bekannt ist.
 	
-	Wird die Lichtintensität an einem Bestimmten Punkt auf einem Lichtstrahl betrachtet, welcher von der Lichtquelle durch ein Medium zu der
-	Projektionsoberfläche geschossen wird, lässt sich diese durch Reflektionen und Emission von Licht an diesem Punkt weiter anreichern.
-	Nelson Max betrachtet in seiner Arbeit den Einfacheren Fall, bei dem nur Licht emittiert wird. Die Absorption von Licht durch die Partikel 
-	wird in der nächsten Sektion behandelt. 
-	Wie beschrieben sollen die Partikel im Folgenden als Vollkommen Transparent betrachtet werden, mit der Eigenschaft Licht zu emittieren.
-	Das Licht, welches von den Partikeln emittiert wird strahlt Diffuse mit konstanter Intensität $C$ über der Fläche $A$.
-	Die Menge des Lichtes, welches durch $B$ fließt entspricht $C \rho AE \delta s$. Für die Einheitsfläche $A$ entspricht dieser Fluss $C \rho A \delta s$.
-	Aus dieser Annahme ergibt sich eine weitere Differenzialgleichung:
+	\begin{equation}
+		\alpha = 1 - T(l) = 1 - e^{- \int\limits_{0}^{l} \tau(t) dt}
+		\label{eq:MAX95Opacity}
+	\end{equation}
+	
+	Ist die Funktion $\tau$ innerhalb des Volumens konstant, vereinfacht sich der Term für die Verdeckung zur Gleichung $\alpha = 1 - exp(-\tau l) = \tau l - (\tau l)^2 / 2 + \cdots$. 
+	Im Rahmen dieser Arbeit ist der Begriff der Transferfunktion bereit mehr als einmal gefallen,
+	eine solche Funktion bildet den Materialwert auf die optischen Eigenschaften der Gleichung ab.
+	
+\subsection{Emssion}
+
+	Wie in der Arbeit \cite{Max:1995:OMD:614258.614298} wird auch in dieser zuerst die Gleichung für die Emission
+	hergeleitet. Neben der Abschwächung der Lichtintensität durch ein Volumen, kann zusätzlich an jedem Punkt in diesem Licht emittiert werden. In Worten bedeutete es, das ein Lichtstrahl welcher durch das Volumen geschossen
+	wurde zusätzlich mit Licht angereichert wird. Zur Herleitung der Emission soll die Absorption zu nächst vernachlässigt werden. Betrachtet werden die Partikel aus dem vorhergehenden Abschnitt, jeder dieser Partikel
+	wird im Folgenden als Transparent angenommen. Zusätzlich emittiert jeder von ihnen diffuses Licht. Das bedeutet
+	jeder Partikel emittiert Licht, in alle Richtungen mit der gleichen Intensität $C$ über der projizierten Fläche $\rho A E \Delta s$. Dieser Effekt bewirkt eine Anreicherung des Lichtfluss $C \rho A E \Delta s$ welcher zur Basisfläche $E$ fließt.
+	Durch diesen Zusammenhang ergibt sich eine weitere Differenzialgleichung:
 	
 	\begin{equation}
 		\frac{dI}{ds} = C(s)\rho(s)A = C(s)\tau(s) = g(s)
 		\label{eq:MAX95EmissionDG}
 	\end{equation}
 	
-	Mit $g(s)$ ist die Intensität des emittierten Lichtes gemeint. Die Lösung lässt sich zu folgender Formel vereinfachen, wenn die Reflektionen aus
-	der Betrachtung heraus genommen werden:
+	Die Funktion $g(s)$ wird als Quellterm bezeichnet. Dieser Term beschreibt die Wechselwirkung des Lichtes mit dem
+	Volumen über der Länge $s$. Zu der Differenzialgleichung \ref{eq:MAX95EmissionDG} hat Nelson Max ebenfalls eine
+	Lösung gefunden welche sich wie folgt definiert:
 	
 	\begin{equation}
-		I(s) = I_0 + \int_{0}^{s} g(t) dt
-		\label{eq:MAX95LSGEmissionDG}
+			I(s) = I_0 + \int\limits_{0}^{s} g(t) dt
+			\label{eq:MAX95LSGEmissionDG}
 	\end{equation}
 	
-	Mit dieser Lösung ergibt sich ein Problem, denn das Integral ist nicht durch eine Obere Schranke beschränkt. Das bedeutet, dass das die Lichtintensität
-	die Aufnahmefähigkeit des Sensors schnell überschreitet und C deshalb nur sehr kleine Werte annehmen kann. $I_0$ ist wie in der Gleichung \ref{eq:MAX95LSGgrundDG} als Hintergrundstrahlung definiert und kann für jeden Strahl unabhängig gewählt werden.
+	Ein Problem dieser Lösung ist die Abhängigkeit zwischen der Ausdehnung des Mediums und des Emissionsfaktors.
+	Es gibt keine obere Schranke, das bedeutet, das die Emittierte Lichtenergie sehr schnell die Szene mit Licht
+	überfluten kann und die Abbildung der Materialparameter in Abhängigkeit der Objektgrößen gewählt werden müssen.
+	
+	
+\section{Optical Models for Direct Volume Rendering}
+	
+\subsection{Emission}
+
 	
 \subsection{Absorption und Emission}
 
