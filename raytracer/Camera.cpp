@@ -1,7 +1,7 @@
 #include "GTRenderer.h"
 
-Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus)
-: m_iWidth(iWidth), m_iHeight(iHeight), m_vPosition(vPosition), m_vFocus(vFocus) {
+Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vRotation, double dFocalLength)
+: m_iWidth(iWidth), m_iHeight(iHeight), m_vPosition(vPosition), m_vRotation(vRotation), m_dFocalLength(dFocalLength) {
 	m_ppvSensor = NULL;
 	m_ppvSensor = new Vector3*[m_iWidth];
 	
@@ -10,12 +10,9 @@ Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus)
 	}
 
 	m_dAspect = (double)m_iWidth / (double)m_iHeight;
-	m_dWidth	 = 10.0f * m_dAspect;
-	m_dHeight = 10.0f;
-	m_dWStep	 = m_dWidth / (double) m_iWidth;
-	m_dHStep	 = m_dHeight / (double) m_iHeight;
 
-	m_vDirection = Vector3Normalize(m_vFocus - m_vDirection);
+	m_vRotation *= 0.017453293;
+	//m_vRotation.x *= -1.0;
 }
 
 Camera::~Camera() {
@@ -30,28 +27,10 @@ Camera::~Camera() {
 }
 
 Ray Camera::getRay(int x, int y) {
-	/*
-	double dX = x * m_dWStep - (m_dWidth / 2.0);
-	double dY = y * m_dHStep - (m_dHeight / 2.0);
-	Vector3 vO = Vector3(0.0, 0.0, 0.0);
-	Vector3 vF = Vector3(dX, dY, 1.0);
-	return Ray(vO, Vector3Normalize(vF));*/
-
-	double bottom  = -0.2;
-	double top		= 0.2;
-	double left		= -m_dAspect * 0.2;
-	double right	= m_dAspect * 0.2;
-	double xpart, ypart;
-
-	Vector3 vOrigin = Vector3(((double)x) / ((double)m_iWidth),
-									  ((double)y) / ((double)m_iHeight),
-									  0.0);
-	vOrigin.x = (left + vOrigin.x * (right - left));//* m_dAspect;
-	vOrigin.y =  top  + vOrigin.y * (bottom - top);
-	Vector3 vDirection = Vector3( vOrigin.x,
-											vOrigin.y,
-											1.0 );
-	return Ray(m_vPosition,  Vector3Normalize(vDirection));
+	Vector3 vDirection = Vector3((-m_dAspect) + (((double)x) / ((double)m_iWidth)) * 2.0 * m_dAspect,
+							   1.0 + ((double)y) / ((double)m_iHeight) * -2.0,
+							   m_dFocalLength);
+	return Ray(m_vPosition,  Vector3Normalize(rotateCamera(vDirection)));
 }
 
 
@@ -68,6 +47,40 @@ void Camera::saveImageToFile(const char* pcFilename) {
 	}
 
 	result.save(pcFilename);
+}
+
+Vector3 Camera::rotateCamera(Vector3& v) {
+	double r[9];
+	double dSinA = sin(m_vRotation.x);
+	double dCosA = cos(m_vRotation.x);
+	double dSinB = sin(m_vRotation.y);
+	double dCosB = cos(m_vRotation.y);
+	
+	/*
+	r[0] = dCosB;
+	r[1] = 0.0;
+	r[2] = dSinB;
+	r[3] = dSinB * dSinA;
+	r[4] = dCosA;
+	r[5] = -(dSinA * dCosB);
+	r[6] = -(dCosA * dSinB);
+	r[7] = dSinA;
+	r[8] = dCosB * dCosA;
+*/
+	r[0] = dCosB;
+	r[1] = -(dSinA*dSinB);
+	r[2] = dCosA * dSinB;
+	r[3] = 0.0;
+	r[4] = dCosA;
+	r[5] = -dSinA;
+	r[6] = -dSinB;
+	r[7] = -(dSinA * dCosB);
+	r[8] = dCosA * dCosB;
+
+	Vector3 vResult(v.x * r[0] + v.y * r[1] + v.z * r[2],
+						 v.x * r[3] + v.y * r[4] + v.z * r[5],
+						 v.x * r[6] + v.y * r[7] + v.z * r[8]);
+	return vResult;
 }
 
 void saveImageToFile(Camera& camera, const char* pcFilename) {

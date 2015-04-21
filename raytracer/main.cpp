@@ -8,7 +8,7 @@ int main() {
 	g_pScene->switchOnLights();
 	//scene.switchOnLights();
 	
-	Camera camera(640, 480, Vector3(0.0,  0.0, -40.0), Vector3(0.0, 0.0, 1.0));
+	Camera camera(640, 480, Vector3(40.0,  0.0, 0.0), Vector3(7.0, -90.0, 0.0), 5.0);
 	Renderer* tracer = new RayTracer();
 	Renderer* otracer = new OCTracer();
 /*

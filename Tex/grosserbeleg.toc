@@ -1,26 +1,8 @@
 \contentsline {chapter}{\numberline {1}Einleitung}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}neue einleitung}{4}{section.1.1}
 \contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}A Survey of Volumetric Illumination Techniques for Interactive Volume Rendering}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Optical Models for Direct Volume Rendering}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}An Analytical Ray Casting of Volume Data}{5}{section.2.3}
-\contentsline {section}{\numberline {2.4}Historygrams: Enabling Interactive Global Illumination in Direct Volume Rendering using Photon Mapping}{6}{section.2.4}
-\contentsline {section}{\numberline {2.5}Ambient Volume Scattering}{6}{section.2.5}
-\contentsline {section}{\numberline {2.6}A Model Volume Lighting and Modeling}{6}{section.2.6}
 \contentsline {chapter}{\numberline {3}Grundlagen}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Verwendete Formelzeichen}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Rendertechniken}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Raytracing}{7}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Path und Lighttracer}{7}{subsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.1}Lighttracer}{7}{subsubsection.3.2.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2.2}Pathtracer}{8}{subsubsection.3.2.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Raycasting}{8}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Grundobjekte}{8}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Strahl}{8}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Kugel}{8}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Schnittpunktberechnung}{8}{section.3.4}
-\contentsline {section}{\numberline {3.5}Die Perspektivische Kamera}{10}{section.3.5}
-\contentsline {section}{\numberline {3.6}Die Orthogonale Kamera}{10}{section.3.6}
+\contentsline {section}{\numberline {3.1}Strahl und Kugelgleichung}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Die Perspektivische Kamera}{8}{section.3.2}
 \contentsline {chapter}{\numberline {4}Ein analytischer Ansatz}{11}{chapter.4}
 \contentsline {section}{\numberline {4.1}Paradigma}{11}{section.4.1}
 \contentsline {section}{\numberline {4.2}Das Optische Modell}{11}{section.4.2}

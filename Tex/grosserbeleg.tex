@@ -67,140 +67,82 @@ Bild"ubernahmen zitieren.}
 \begin{document}
 
 \chapter{Einleitung}
-
-	Ein Photon das im inneren der Sonne emittiert wird, ist dem kurzwelligen Spektrum der elektromagnetischen Wellen zugeordnet. Es handelt sich um Gammastrahlung. 
-	Auf seiner langen Reise vom Kern bis zur Korona, 
-	die rund 150.000 Jahre dauert, wird das Photon durch das enorm dichte und
-	heiße Gas der Sonne blau verschoben.
-	Auf den rund 690.000 km, die das Photon durch die Sonne wandert, absorbiert die Sonne
-	einen großen Teil der Energie des Photons. Nachdem es die Sonne verlassen hat, benötigt
-	das Photon weitere 8 Minuten um unsere Erde zu erreichen. 
-	Die Geschichte von der Langen Reise dieses einzelnen Photons ist ein extremes Beispiel
-	für den Vorgang der im Folgenden betrachtet wird.
-	
-	Licht ist im Physikalischen Sinn ein noch nicht gänzlich erfasstes Phänomen.
-	Es zeigen sich Charakteristika von Wellen und von Teilchen, es wird vom
-	Welle-Teilechodualismus gesprochen. Dieses wunderbare Modell ist ein Deckmantel
-	für viele Fragen, die sich im Zusammenhang mit der Ausbreitung des Lichtes in unserer
-	Welt ergeben und noch nicht alle beantwortet sind.
-	
-	Die Optik ist in der Physik die Lehre des Lichtes, sie beschreibt die Ausbreitung des Lichts
-	und die Wechselwirkung mit Materie. In der Optik gibt es verschiedene Modelle, welche die
-	Eigenschaften des Lichtes beschreiben.
-	
-	Die Strahlenoptik betrachtet das Licht in Form von Strahlen. Diese Modell approximiert 
-	das Licht als Strahl, der von der Lichtquelle aus in die Welt geschossen wird.
-	Diese Vereinfachung kann genutzt werde, wenn die Größenordnungen der Objekte, welche im
-	Zusammenhang mit Licht betrachtet werden, deutlich über der Wellenlänge des Lichts liegt.
-	Ist dies erfüllt können Typische Welleneigenschaften, wie Beugung und daraus resultierende
-	Interferenz vernachlässigt werden.
-	Für die Berechnung von Schatten, Reflexion und Brechung eignet sich die Strahlenoptik
-	ausgesprochen gut und soll für diese Arbeit Grundlage der Betrachtung sein.
-	Die Lichtstrahlen breiten sich immer nur geradlinig aus, bis sie auf einen Körper treffen und
-	reflektiert, gestreut oder gebrochen werden. Sie können einander durchdringen ohne sich gegenseitig zu beeinflussen. 
-	Der Weg des Lichtes lässt sich umkehren, was zur folge hat,
-	dass die Gesetzt auch bei umgekehrter Lichtrichtung gelten.
-	Dieses Prinzip ist essentiell für die Implementierung welche im Folgenden betrachtet wird,
-	da die Strahlen von der Kamera aus in die Welt geschossen werden.
-	
-	Die Beleuchtung einer Computergenerierten Szene wird in vielen Implementierungen, die
-	aus Computerspielen und anderen Visualisierungen bekannt sind stark vereinfacht.
-	Diese Modelle lassen die Landschaften in einem schönen Licht erscheinen, vernachlässigen
-	jedoch Physikalische Gesetzmäßigkeiten, wie die Erhaltung von Energie.
-	Die Berechnung von Schatten welche sich durch den Weg des Lichtes ergeben sollten,
-	werden oftmals nur sehr vereinfacht berechnet, insofern sie vorhanden sind.
-	
-	Für die meisten Anwendungen sind diese Approximationen vollkommen ausreichend.
-	In der Computergrafik hat sich die Repräsentation von Daten mithilfe von Kugelglyphen
-	bewährt. Als Beispiel soll das Modell eines Moleküls dienen.
-	Ein Problem welches sich aus der Projektion auf den Bildschirm ergibt, ist die 
-	Tiefenwahrnehmung des Menschen. Die durch den Computergenerierten Bilder sind in der Regel
-	zweidimensionale Projektionen von dreidimensionalen Szenen. Der Mensch benötigt zur Erkennung
-	von Lagenbeziehungen der Objekte in der Szene weitere Informationen.
-	Im Laufe des Lebens lernt ein Mensch, die Merkmale des Lichtes zu Interpretieren.
-	Auf diese Weise gelingt es einem Betrachter, die Lage der Lichtquelle nur aus einer Objekt
-	Silhouette zu schätzen.
-	Um diese Fähigkeit nutzen zu können wird jedoch eine komplexe Beleuchtung der Szene nötig.
-	
-\section{neue einleitung}
  
 	Ein Problem der Echtzeitgrafik besteht in der Komplexität des Lichtes, welches auf Grund mangelnder
-	Rechenkapazitäten oft nur lokal approximiert werden kann. In der Realität entstehen Schatten durch die Wechselwirkung des Lichtes mit der Umwelt.
-	Anders in den meisten Computergenerierten Szenen, hier werden die Schatten mit Hilfe von rechenintensiver Verfahren oft sehr vereinfacht, insofern sie vorhanden sind.
-	Es existieren allerdings einige algorithmische Verfahren, welche die Wechselwirkung von Photonen mit Oberflächen 
-	physikalisch plausibel nachempfinden können. 
-	Zu diesen zählen einfache Raytracer, bis hin zum Bidirektionalen Pathtracer oder dem so genannten Photonenmapping.
-	Die Besonderheit dieser Algorithmen besteht darin, dass das Licht auf Strahlen durch die Szene verfolgt wird.
-	Schatten, harte und weiche entstehen auf natürliche Weise. Trifft das Licht auf ein Objekt, wird es reflektiert
-	oder absorbiert, das Licht ändert seinen Weg und seine Intensität und hinter dem Objekt entsteht ein Schatten.
+	Rechen- und Speicherkapazitäten nur approximiert werden kann. Die meisten Anwendungen beschränken
+	sich auf die Berechnung lokaler Beleuchtungsmodelle.
+	Algorithmen für die globale Lichtberechnung werden inzwischen mit GPU Implementierungen Echtzeitfähig,
+	als Beispiel soll die Brigade Engine dienen, welche auf dem \textit{Bidirectionalen Pathtracing} Algorithmus
+	aufbaut.
 	
-	In der Realität bestehen viele Objekte aus Licht durchlässigen Materialien, wie Wachs, Glas oder Luft.
-	Die bereits genannten physikalisch basierten Renderer kommen dabei an ihre Grenzen.
-	Die Anzahl an möglichen Wechselwirkungen in einem Volumen ist weit größer, als bei Licht undurchlässigen Oberflächen. Die Komplexität der Berechnung steigt drastisch an.
+	Neben dem \textit{Pathtracing} existieren weitere Ansätze, wie das Photonenmapping, welche in der Lage sind
+	die Wege des Lichtes, die Verbreitung von Photonen Physikalisch plausibel zu berechnen. 
+	Diese Algorithmen kratzen dabei nur an der Oberfläche der Materie. Die Beleuchtungsberechnung wird nur
+	an der Materialoberfläche durchgeführt und das Licht wird nicht durch das Volumen gestreut.
+	Diese grobe Approximation ist notwendig, da die Volumenintegrale die Rechenzeit ungemein erhöhen.
 	
 	Datensätze aus der Medizin, der Biologie oder der Meteorologie enthalten oft mehr als die Oberflächenbeschreibung.
-	Es handelt sich um so genannte Volumendaten, ein oft Dreidimensionales Array von skalaren Werten.
-	Möglichkeiten der Visualisierung dieser Daten gibt es viele, in dieser Arbeit werden die Daten als
-	Dichten von Gaskugeln interpretiert, welche anschließend durch Punkt und Richtungslichtquellen beleuchtet
-	werden.
+	Gemeint sind in diesen Zusammenhang Volumendaten in Form von Skalarfeldern. Vereinfacht gesagt handelt es sich um ein Mehrdimensionales Array von reelen Werten.
+	Um ein solches Skalares Feld zu Visualisieren ist es notwendig die Werte zu interpretieren, beispielsweise als
+	Dichte eines Voxels.
+	Ein Voxel ist in diesem Zusammenhang ein Volumen, die genaue Form spielt dabei eine untergeordnete Rolle.
+	Die Abbildung einer solchen Anordnung auf eine Bildebene, wird als Volumenrendering bezeichnet.
+	
+	Viele Ansätze gehen von einer Richtungslichtquelle aus, welche sich hinter dem Volumen befindet und
+	Licht in Richtung der Bildebene der Kamera ausstrahlt. Das Licht wird, auf Grund der Dichte der einzelnen
+	Voxel unterschiedlich stark abgeschwächt. Das Ergebnis ist ein Bild des Volumens.
+	Es gibt eine Vielzahl von Verfahren zur Berechnung solcher Volumenvisualisierungen, ein oft verwendeter Ansatz
+	ist die Ambiente Verdeckung. Hierbei wird geschaut wie viele benachbarte Voxel das Einfallende Licht verdecken,
+	aus dieser Anzahl wird der Helligkeitswert des eigentlichen Voxels bestimmt.
+	
+	In wissenschaftlichen Visualisierungen haben sich neben den Voxelstrukturen auch Kugelglyphen etabliert.
+	Hierbei handelt es sich um beliebig große und frei im Raum positionierte Kugeln, die Informationen werden,
+	wie bei den Voxelgittern auf die Farbe und die Dichte solcher Kugeln abgebildet.
+	Ziel der Visualisierungen ist es die dargestellten Prozesse für die Menschliche Wahrnehmung anschaulich
+	abzubilden.
+	Durch die Projektion auf ein zweidimensionales Bild ist es nötig die Tiefenwahrnehmung des Menschen mit
+	Licht und Schatten zu fördern, da die exakten Positionen der Kugelglyphen sonst nicht erkannt werden können.
+	
+	Wie bereits erwähnt, lassen sich exakte Verfahren zur Berechnung der Lichtwege durch ein solches Volumen noch
+	nicht in Echtzeit berechnen. Approximationen sind nötig um die Geschwindigkeit der Berechnung in Echtzeit zu
+	gewährleisten. Die Güte einer solchen Approximation lässt sich anhand von Daten bestimmten, welche nicht
+	mit Echtzeitalgorithmen, sondern mit sehr genauen Verfahren gerendert wurden.
+	Die entstandenen Bilder werden als \textit{Ground-Truth} Daten bezeichnet. Ziel dieser Arbeit ist es,
+	einen Algorithmus zur Erzeugung von \textit{Ground-Truth} Daten zu entwickeln.
+	
+	Es wird eine Rendergleichung aufgestellt werden, welche weitestgehend analytisch gelöst werden soll.
+	Der Vorteil einer Analytischen Lösung besteht in der Exaktheit und in der Geschwindigkeit der Berechnung selbst.
 	
 \chapter{Verwandte Arbeiten}
 
-\section{A Survey of Volumetric Illumination Techniques for Interactive Volume Rendering}
-
-	Die Arbeit \cite{JSYR14} fokussiert sich nicht auf ein spezielles Verfahren, vielmehr gibt sie einen Überblick über gängige Methoden zum rendern von Volumendaten. In der Einleitung der Arbeit wird auf die Unzulänglichkeiten
-	verwiesen, die Methoden wie das Emission und Absorptionsmodell aufweisen, dieses im speziellen ist nur in der
-	Lage Lokale Beleuchtungseffekte zu simulieren. Als Unterscheidungskriterien dienen das Volumetrische Modell,
-	die Unabhängigkeit bezüglich der verwendeten Transferfunktion und die Möglichkeit den Algorithmus zu parallelisieren. Das Volumetrischen Modell trägt entschieden zur Komplexität und Geschwindigkeit bei,
-	Voxel können als Boxen, Kugeln oder anderen Beliebigen Formen entsprechen. Die Transferfunktion als solche,
-	ist in einigen Modellen fest vorgeschrieben, während sie in anderen Algorithmen zur Laufzeit ausgetauscht werden kann.
+	Die Arbeit \cite{JSYR14} wurde verfasst, um den Leser einen Überblick über Techniken des
+	renderns von Volumendaten in Echtzeit zu geben.
+	Die in dieser Arbeit vorgestellten Algorithmen wurden mit Gütekriterien bewertet und klassifiziert.  
+	Diese Kriterien sollen die Auswahl des Verfahrens für den Entwickler erleichtern.
+	Alle vorgestellten Modelle sind Approximationen, sie generieren Optisch schöne Bilder, weichen jedoch weit von der Realität ab.
 	
-	Trotz der einleitend genannten Einschränkungen bleibt das Emission und Absorptionsmodell die Grundlage für
-	die meisten Betrachtungen. Algorithmen, welche Daten vor dem eigentlichen Rendervorgang generieren, werden
-	von jenen differenziert, welche die nötigen Daten zur Laufzeit generieren und somit weit weniger Speicher benötigen. Der anfallende Speicherbedarf verhindert bei einigen Algorithmen den Einsatz für große Datenmengen.
-
-\section{Optical Models for Direct Volume Rendering}
-
-	Die Arbeit von Nelson Max \cite{Max:1995:OMD:614258.614298}, beschreibt die Grundlagen des Emission und Absorptionsmodells, wie oben bereits erwähnt. 
-	Nelson Max baut in seiner Arbeit eine Rendergleichung auf, welche sich zu Beginn auf
-	das Emissionsmodell beschränkt. Anhand des Emissionsmodells werden die Grundlagen des Lichttransportes
-	betrachtet und definiert. Erweitert wird die entstandene Gleichung mit einen Term zur Lichtabsorption,
-	Streuung und Schattenberechnung. 
-	Am ende seiner Arbeit geht er auf die Erweiterung durch die Vielfache Streuung ein und stellt einige Lösungsansätze vor.
+	Die Arbeit von Nelson Max \cite{Max:1995:OMD:614258.614298}, beschreibt die Grundlagen des Emission und Absorptionsmodells, welches Grundlage vieler Arbeiten im Bereich des Direkten Volumenrenderns bildet.
+	Für die Rendergleichung entwickelt er in dieser Arbeit eine Allgemeine Lösung und beschreibt den Vorgang
+	der Lichtstreuung im Detail. Am ende der Arbeit werden einige Lösungsvorschläge zur Implementierung vorgestellt.
 	
-	Es wird angeführt, dass sich die Gleichung in einigen Fällen wohl analytisch lösen ließe, im Allgemeinen
-	wird zur Lösung der Rendergleichung auf Nummerische Integration verwiesen.
-	
-\section{An Analytical Ray Casting of Volume Data}
+	In der Publikation \cite{conf/pg/JungPP98} wird ein zum Teil Analytisches Verfahren vorgestellt.
+	Der Algorithmus wurde zum Rendern von Voxelgittern konzipiert. 
+	Jedem Voxel wird eine Dichte zu geordnet, aus welchem ein Wert für Transparenz abgeleitet wird.
+	Hinter dem Voxelgitter befindet sich eine Lichtquelle und deren Lichtintensität wird durch das Volumen unterschiedlich Stark abgeschwächt.	Die Integrale der Gleichungen werden streckenweise Analytisch gelöst,
+	wodurch ein Zuwachs an Genauigkeit erreicht wird. 
 
-	Eine weitere sehr interessante Arbeit zum Thema Volumenintegral ist \cite{conf/pg/JungPP98}.
-	Grundlage dieser Arbeit ist ein Reguläres Gitter, welches die Voxel repräsentiert. Jedem
-	Voxel ist eine Dichte zugeordnet, welche die einzigen Materialparameter in der Gleichung sind.
-	Als Algorithmus zum Zeichnen des Bildet dient ein \textit{Ray-Cast} Verfahren, welches entlang
-	eines Sichtstrahls, an bestimmten Stützpunkten die Transparenz mit einander verrechnet.
-	Diese Transparenten werden über eine Transferfunktion aus der Dichte eines Voxels erzeugt.
-	Verwendet wird eine Lineare Transferfunktion, diese hat den Vorteil, das sich das Volumenintegral
-	für den Durchlauf eines Voxels analytisch lösen lässt.
+	\textit{Photon Mapping} ist ein Verfahren zum erzeugen von Globaler Beleuchtung. Es werden Photonen in die
+	Szene geschossen, trifft ein Photon die Oberfläche, werden Informationen in der Photonenmap gespeichert.
+	Wenn das Photon noch genügend Energie besitzt, wird in Abhängigkeit der Reflektionsrichtung ein weiterer
+	Strahl verfolgt. Diese Vorgehensweise wiederholt sich das Photon seine Energie komplett an die Umgebung abgegeben hat, oder ein Abruchkriterium erfüllt wurde.
+	In einem zweiten Schritt wird das Bild mit einem Raycast verfahren erzeugt.
+	In der Arbeit \cite{JKRY12} wird die Photonenmap mit Histogrammen umgesetzt. Nach Parameteränderungen, werden
+	nur die Betroffenen Histogramme ersetzt. Dadurch wird dieses Verfahren Echtzeitfähig.
 	
-\section{Historygrams: Enabling Interactive Global Illumination in Direct Volume Rendering using Photon Mapping}
-
-	\textit{Photon Mapping} ist ein Verfahren zum erzeugen von Globaler Beleuchtung. Im Prinzip eignet sich
-	das Verfahren nicht zum Rendern in Echtzeit. In der Arbeit \cite{JKRY12} wir jedoch ein Ansatz vorgestellt,
-	mit welchem sich das Photonmapping zum Bleuchten von Volumen in Echtzeit nutzen lässt und somit Physikalisch
-	korrekte Beleuchtungen ermöglicht. Echtzeitfähigkeit erreicht der Ansatz dadurch, dass die für den Algorithmus
-	notwendige Photonenmap nicht bei jedem Renderdurchlauf neu berechnet werden muss, sondern nur die Teile,
-	welche nach einer Parameteränderung auch wirklich neu berechnet werden müssen aktualisiert werden. Um diese
-	Änderung zu finden, kommen Histogramme zum Einsatz. Bei diesen Ansatz ist es Möglich die Transferfunktion zur Laufzeit zu ändern. Die Performance dieses Ansatz ist Hauptsächlich abhängig von der Anzahl der Photonen,
-	welche durch die Szene verfolgt werden, der Anzahl an Lichtstahlsegmenten und der maximalen Anzahl von Streuungen.
-	
-\section{Ambient Volume Scattering}
-
 	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emission und Absorptionsmodell aufbaut, sondern von einem Punkt Stahlen in die umliegende Nachbarschaft verfolgt um den
 	Grad an Verdeckung an diesem Punkt zu bestimmen. Je mehr Segmente mit hoher Dichte in der Nachbarschaft liegen,
 	umso geringer ist der Anteil des Lichtes, welches eben jenen Punkt erreicht. Ein Geschwindigkeitszuwachs wird durch eine Vor-integrierte Transferfunktion erreicht. Ein Vorteil dieses Verfahrens, stellt die Güte der erzeugten
 	Schatten da.
-	
-\section{A Model Volume Lighting and Modeling}
 
 	Eine weitere Arbeit aufbauend auf dem Prinzip der Ambienten Verdeckung stellt die Arbeit \cite{journals/tvcg/KnissPHSM03} vor.
 	In dieser Arbeit hat Direktes und Indirektes Licht einen Einfluss auf das Ergebnis. 
@@ -210,109 +152,41 @@ Bild"ubernahmen zitieren.}
 	
 \chapter{Grundlagen}
 
-	In diesem Kapitel soll die verwendete Rendertechnik Begrifflich genauer abgegrenzt werden.
-	Im Folgenden werden alle benötigten Mathematischen Formeln hergeleitet und erklärt.
-	Am ende dieses Kapitels wird der Aufbau der Perspektivischen Kamera, 
-	welche hier zum Einsatz kommt genau erläutert. 
+	Wie in der Einleitung bereits geschildert, wird es in dieser Arbeit ein Raycast Algorithmus beschrieben,
+	welcher Lichtdurchlässige Gaskugeln zeichnen wird. In den Folgenden Abschnitten werden die Gleichung
+	für den Strahl, die Kugel und die Schnittpunktberechnung genauer betrachtet. Abschließend wird die 
+	verwendete Perspektivische Kamera auf der Basis der \textit{Camera obscura} hergeleitet. 
+	In der Arbeit werden Punkte im $\mathbb{R}^n$ unterstrichen geschrieben, so symbolisiert $\underline{p}$
+	einen Punkt und $\vec{v}$ einen Vektor und die Formel $\langle\vec{a}, \vec{b}\rangle$ bezeichnet ein Skalarprodukt.
 
-\section{Verwendete Formelzeichen}
+\section{Strahl und Kugelgleichung}
 
-   \begin{table}[htbp]
-     \centering
-		\begin{tabularx}{\textwidth}{l|X}
-  			\textbf{Formelzeichen} & \textbf{Erläuterung}  \\
-  			\hline
-  			$\mathbb{R}_+$						& Bezeichnet die Menge der Reellen Zahlen im Intervall $[0, \infty)$ \\
-  			$\mathbb{N}_+$						& Bezeichnet die Menge der Natürlichen Zahlen im Intervall $[0, \infty)$ \\
-  			$\underline{p}$ 					& Punkt im Raum  \\
-  			$\vec{v}$							& Vektor im Raum \\
-  			$\langle\vec{a}, \vec{b}\rangle$ 	& Skalarprodukt der Vektoren $\vec{a}$ und $\vec{b}$ \\
- 		\end{tabularx}
- 		\caption{Verwendete Formelzeichen}
-      	\label{tbl:Formelzeichen}
-      	% Verweis im Text mittels \ref{tbl:beispieltabelle}
-    \end{table}
-
-%\section{Lokale und Globale Beleuchtung}
-	
-\section{Rendertechniken}
-
-\subsection{Raytracing}
-
-	Raytracing ist ein verfahren, bei dem Ausgehend von der Lichtquelle, oder der Bildebene Strahlen in
-	die Szene geschickt werden. 
-	Strahlen, die auf ein ein Objekt treffen werden reflektiert, gestreut oder gebrochen. 
-	Die Möglichkeiten hängen vom Verwendeten Modell der Oberfläche und des Lichtes ab.
-	Nach der Wechselwirkung mit der Oberfläche können weitere Strahlen durch die Szene verfolgt werden.
-	Dieser Vorgang wir meist Rekursiv aufgebaut und nach dem erreichen einer entsprechenden Rekursionstiefe
-	wird dieser abgebrochen.
-	Das Bild selbst entsteht durch die Aufakkumulierung der Lichtintensitäten, welche die Bildebene erreichen.
-	Modell dieser Technik ist die Strahlenoptik, welche das Licht auf Strahlen reduziert die durch die Szene
-	geschossen werden. Beugungsphänomene werden bei dieser Technik vernachlässigt.
- 
-\subsection{Path und Lighttracer}
-
-\subsubsection{Lighttracer}
-
-	Der Lighttracer ist eine Spezialisierung des Raytracers, bei dem die Wege des Lichtes grundlegend,
-	ausgehend von der Lichtquelle berechnet werden. Hierbei werden die Strahlen bis zum erreichen eines
-	Abbruchkriteriums durch die Szene verfolgt und anschließend mit der Bildebene verbunden.
-	
-\subsubsection{Pathtracer}
-
-	Auch der Pathtracer stellt eine Spezialisierung des Raytracers da, bei dem die Lichtwege zum einem
-	ausgehend von der Bildebene und gleichzeitig ausgehend von der Lichtquelle betrachtet werden.
-	Nach erreichen des Abbruchkriteriums werden die Lichtwege ausgehend von der Lichtquelle und der
-	Bildebene mit einander Kombiniert. Durch dieses Vorgehen ergeben sich wesentlich schnell mehr mögliche
-	Lichtwege, als beim normalen Rayztracingalgorithmus.
-	Der Pathtracer ist ein State-Of-the-Art Algorithmus zur Berrechnung der Globalen Beleuchtung.
-	
-\subsection{Raycasting}
-
-	Raycasting stellt eine Vereinfachte Form des Raytracing da, bei dieser Technik wird die Berrechnung der
-	Beleuchtung bereits nach der ersten Kollision zwischen Strahl und Objekt abgebrochen.
-	Raycasting ist die Grundlage des in dieser Arbeit verwendeten Renderalgorithmus.
-
-\section{Grundobjekte}
-
-\subsection{Strahl}
-	Der Strahl ist das Zentrale Element jedes Raytracing Algorithmus. Seine Mathematische Beschreibung ist
-	denkbar einfach:
+	Wie oben beschrieben stellen Strahlen die Elementarsten Elemente eines jedem Stahlenverfolgenden Algorithmus dar.
+	Mathematisch lässt sich der Strahl durch die Formel
 	
 	\begin{equation}
 	  	\underline{r}(t) = \underline{p} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}_+
 	  	\label{eq:Strahl}
-	\end{equation}	
+	\end{equation}
 	
-	Jeder Punkt auf dem Strahl, hier durch $\underline{r}$ bezeichnet, ergibt sich aus der Addition eines Stützpunktes $\underline{p}$
-	mit dem Produkt eines Richtungsvektor $\vec{r}$ und einem skalaren Wert $t$. Durch das Produkt $t \cdot \vec{r}$ wird der
-	Richtungsvektor $\vec{r}$ beliebig gestaucht oder gestreckt.
-
-\subsection{Kugel}
-
-	Eine Kugelfläche wird im $\mathbb{R}^3$ mit dem Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und dem Radius $r$ durch folgende
-	Formel parametrisiert.
+	beschreiben. Jeder Punkt auf dem Strahl $\underline{r}(t)$, ergibt sich aus der Addition eines Stützpunktes $\underline{p}$ mit dem durch $t$ skalierten Richtungsvektor $\vec{r}$.
+	
+	Eine Kugelfläche wird im $\mathbb{R}^3$ mit dem Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und dem Radius $r$ parametrisiert. Durch den Abstand zum Mittelpunkt lässt sich jeder Punkt auf der Kugel mit der Formel
 
 	\begin{equation}
 		(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = r^2
 		\label{eq:KugelGleichung1}
 	\end{equation}
 	
-	Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelGleichung1} erfüllt liegt auf der Oberfläche der Kugel.
-	Die Formel \ref{eq:KugelGleichung1} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern.
+	bestimmen. Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelGleichung1} erfüllt liegt auf der Oberfläche der Kugel.
+	Die Formel \ref{eq:KugelGleichung1} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern:
 	
 	\begin{equation}
-		\langle\underline{p} - \underline{m}, \underline{p} - \underline{m}\rangle = r^2
+		\langle\underline{p} - \underline{m}, \underline{p} - \underline{m}\rangle = r^2.
 		\label{eq:KugelGleichung2}
 	\end{equation}
-	
-	Durch diese Verallgemeinerung der Formel \ref{eq:KugelGleichung1} zur Formel \ref{eq:KugelGleichung2} ist die Beschreibung der
-	Kugel jetzt unabhängig von der Dimension.
 
-\section{Schnittpunktberechnung}
-
-	Eine Kugel ist definiert durch ihren Mittelpunkt $\underline{m}$ und ihren Radius $r$. Wird der Mittelpunkt der Kugel auf
-	den Koordinaten Ursprung verschoben, liegen alle Punkte $p$ auf der Oberfläche $O$, wenn sie denn Abstand $r$ zum Koordinatenursprung haben. Die zu erfüllende Bedingung hat demnach folgende Form:
+	Wird der Mittelpunkt der Kugel auf den Koordinaten Ursprung verschoben, liegen alle Punkte $p$ auf der Oberfläche $O$, wenn sie denn Abstand $r$ zum Koordinatenursprung haben. Die zu erfüllende Bedingung hat demnach folgende Form:
 	
 	\begin{equation}
 		\vert\vert\underline{p}\vert\vert = r
@@ -326,102 +200,69 @@ Bild"ubernahmen zitieren.}
 		\label{eq:Schnittpunktberechnung1}
 	\end{equation}
 	
-	Um den Schnittpunkt der Kugel mit dem Strahl aus der Formel \ref{eq:Strahl} zu Berechnen, wird der Strahl in die Gleichung \ref{eq:Schnittpunktberechnung1} eingesetzt und erhält die folgende Gleichung:
+	Um den Schnittpunkt der Kugel mit dem Strahl aus der Formel \ref{eq:Strahl} zu Berechnen, wird der Strahl in die Gleichung \ref{eq:Schnittpunktberechnung1} eingesetzt
 	
 	\begin{equation}
-		r^2 = \langle\underline{p}, \underline{p}\rangle = \langle r(t), r(t) \rangle
-		\label{eq:Schnittpunktberechnung2}
+			r^2 = \langle r(t), r(t) \rangle = \langle \underline{p} + t \cdot \vec{r}, \underline{p} + t \cdot \vec{r} \rangle
+			\label{eq:Schnittpunktberechnung3}
 	\end{equation}
 	
-	diese Gleichung gilt es umzustellen und nach $t$ aufzulösen:
+	und nach dem Parameter $t$ aufgelöst. Die Gleichung ist Quadratisch, daher ergeben sich entweder keine,
+	eine oder zwei Lösungen für die Gleichung:
+
 	
 	\begin{equation}
-		r^2 = \langle r(t), r(t) \rangle = \langle \underline{p} + t \cdot \vec{r}, \underline{p} + t \cdot \vec{r} \rangle
-		\label{eq:Schnittpunktberechnung3}
-	\end{equation}
-	
-	\begin{equation}
-		r^2 = \langle \underline{p}, \underline{p}\rangle + 2 \cdot \langle \underline{p}, \vec{r} \rangle \cdot t + \langle \vec{r}, \vec{r} \rangle \cdot t^2
-		\label{eq:Schnittpunktberechnung4}
-	\end{equation}
-	
-	Die Formel \ref{eq:Schnittpunktberechnung4} entspricht einer allgemeinen Quadratischen Gleichung:
-	
-	\begin{equation}
-		a \cdot x^2 + b \cdot x + c = 0 \text{, mit } a \neq 0
-		\label{eq:AllgemeineQuadratischeGleichung}
-	\end{equation}
-	
-	Für die allgemeine Quadratische Gleichung lassen sich die Nullstellen folgendermaßen bestimmen:
-	
-	\begin{equation}
-		x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4 \cdot a \cdot c}}{2 \cdot a}
-		\label{eq:AllgemeineQuadratischeGleichungLösungsFormel}	
-	\end{equation}
-	
-	Wird die Gleichung \ref{eq:Schnittpunktberechnung4} mithilfe der Allgemeinen Lösungsformel \ref{eq:AllgemeineQuadratischeGleichungLösungsFormel} für Quadratische Gleichungen nach $t$ aufgelöst, ergeben sich für
-	$t$ zwei Lösungen $t_1$ und $t_2$:
-	
-	\begin{equation}
-		t_{1,2} = \frac{-2 \cdot \langle \underline{p}, \vec{r} \rangle \pm \sqrt{4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle}}{2 \cdot \langle \vec{r}, \vec{r} \rangle}
+		t_{1,2} = \frac{-2 \cdot \langle \underline{p}, \vec{r} \rangle \pm \sqrt{4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle}}{2 \cdot \langle \vec{r}, \vec{r} \rangle}.
 		\label{eq:Schnittpunktberechnung5}
 	\end{equation}
-	
-	Die Diskriminante $D$ wird der Teil der Formel bezeichnet der im Zähler der Gleichung \ref{eq:Schnittpunktberechnung5} unter der
-	Wurzel steht.
-	
-	\begin{equation}
-		D = 4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle
-		\label{eq:Diskriminante}
-	\end{equation}
-	
-	Mit Hilfe der  Diskriminante $D$ lässt sich eine Aussage über die Schnittpunkte zwischen Strahl und Kugel formulieren. 
-	Wenn gilt, dass $D < 0$, dann gibt es keine Lösung im Zahlenbereich $\mathbb{R}$, das heißt der Strahl schneidet die Kugel nicht.
-	Gilt, dass $D = 0$ ist, dann trifft der Strahl die Kugel an genau einer Stelle und die beiden Lösungen $t_1$ und $t_2$ haben
-	identische Werte. Wenn aber gilt, dass $D > 0$, dann ergeben sich genau zwei Schnittpunkte an den Stellen $t_1$ und $t_2$.
-	Um die Punkte zu bestimmen, an dem der Strahl die Kugel trifft setzt man $t_1$ und $t_2$ einfach in die Gleichung \ref{eq:Strahl} ein.
 
 \section{Die Perspektivische Kamera}
 
-	Die für den einfachen Raycaster nötigen Gleichungen sind in den Obigen Teil bereits hergeleitet. Was jetzt noch benötigt wird
-	ist eine Beschreibung für die Bildebene. Ausgehend von der Bildebene werden die Licht stahlen in die Szene geschossen.
-	Anders als bei einem Rasterizer wird keine Kamera und keine Projektionsmatrix benötigt. Die Kamera konstruiert sich gerade heraus.
-	Zu Beginn wird eine sehr einfache Kamera betrachtet, welche nicht rotiert und nicht verschoben wird.
+	Um Bilder zu erzeugen wird eine Kamera, mit einer Bildebene benötigt, auf welcher die Lichtintensitäten akkumuliert werden. Es soll eine Perspektivische Kamera verwendet werden, welche sich von
+	der im folgenden beschriebenen \textit{Camera obscura} ableitet.
 	
-	Das bedeutet, das es sich bei der Kamera um eine Ebene $E$ handelt welche mit der Folgenden Gleichung beschrieben wird:
+	Eine \textit{Camera obscura} besteht aus einem Kasten, auf der einen Seite befindet sich ein schmales Loch,
+	durch welches das Licht einer beleuchteten Szene auf die gegenüberliegende Wand trifft, diese
+	Wand wird als Bildebene Bezeichnet. 
+	Auf der Bildebene entsteht dabei ein auf dem Kopf stehendes und seitenverkehrtes Bild der Szene.
 	
-	\begin{equation}
-		E(u, v) = \underline{p_k} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
-		\label{eq:KameraEbene}	
-	\end{equation}
+	\begin{figure}[h]
+		\centering
+		\includegraphics{images/cameraObscura.pdf}
+		\caption{Schematische Darstellung des Abbildungsvorgangs der \textit{camera obscura}}
+		\label{fig:cameraObscura}
+	\end{figure}
 	
-	Da unsere Kamera am Koordinaten Ursprung Positioniert werden soll, kann der Punkt $\underline{p}$ vorerst vernachlässigt werden.
-	Die Spannvektoren $\vec{p}_0$ und $\vec{p}_1$ sind folgender maßen definiert:
+	Die Abbildung \ref{fig:cameraObscura} zeigt den Aufbau der \textit{Camera obscura} schematisch.
+	Auf der Linken Seite der Abbildung befindet sich die Bildebene, in der Mitte die Wand mit dem kleinen Loch.
+	Rechts befindet sich das mit den Punkten $A$ und $B$ abzubildende Objekt. Der Strahl welcher von dem Punkt $B'$
+	nach $B$ zeigt definiert die Blickrichtung der Kamera. Der Punkt $A$ wird auf den Punkt $A'$ abgebildet und
+	der Punkt $B$ auf den Punkt $B'$. Die Distanz zwischen der Bildebene und dem Loch der Kamera wird mit der
+	Variable $f$ bezeichnet.
+	Ein mit diesem Modell generiertes Bild müsste nach der Aufnahme gedreht werden. In der Virtuellen Welt,
+	lässt sich Bildebene Vor dem Loch positionieren. Die Position $\underline{p}$ der Kamera ist mit der Position
+	des Lochs der \textit{Camera obscura} identisch.
+	Für jeden Pixel der Bildebene wird jetzt mindestens ein Strahl generiert welcher als Stützpunkt die Position
+	der Kamera erhält und der Richtungsvektor ist der Normierte Vektor von der Kamerapostion zum Pixel. 
 	
-	\begin{equation}
-		\vec{p}_0 = \left(\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right) \text{, }
-		\vec{p}_1 = \left(\begin{array}{c} 0 \\ 1 \\ 0 \end{array}\right)
-		\label{eq:KameraSpannvektoren}	
-	\end{equation}
-	
-	Die Auf diese Weise beschriebe Ebene wird in Pixel unterteilt. Dadurch definiert sich jeder Pixel, als Teilfläche der Kameraebene.
-	Die Eckpunkte jedes Pixels lässt sich durch zwei Wertepaare genau beschreiben.
-	Zum Schluss fehlt noch die Position der Kamera, welche durch den Positionsvektor $\underline{o}$ bezeichnet wird.
-	Jeder Kamerastrahl bestimmt sich durch $\underline{o}$ und durch einen Richtungsvektor $\vec{d} = E(u, v) - \underline{o}$.
-	Mit dieser Definition wird das Bild zu den Rändern hin gestreckt.
-	
-\section{Die Orthogonale Kamera}
-
-	Eine weitere Möglichkeit eine Kamera zu definieren, besteht darin den Kameraursprung $\underline{o}$ in Abhängigkeit von $u$ und $v$ zu definieren, so dass alle Strahlen Parallel verlaufen.
-	Die Bildebene wird wie in der Gleichung \ref{eq:KameraEbene} definiert mit den Spannvektoren aus \ref{eq:KameraSpannvektoren}. Die Definition der Ursprünge der Strahlen funktioniert analog zur Bildebene:
+	Die Sensorfläche der Kamera setzt sich aus $W \cdot H$ Pixeln zusammen. Das Verhältnis zwischen Höhe und Breite wird im Englischen als \textit{aspect ratio} bezeichnet und definiert sich als Quotient aus der Breite und Höhe $aspect = \frac{W}{H}$. Der Richtungsvektor eines Pixel an der Stelle $(x, y)$ auf der Bildebene definiert sich
+	durch die Formel:
 	
 	\begin{equation}
-		O(u, v) = \underline{p_o} + u \cdot \vec{p}_0 + v \cdot \vec{p}_1 \text{, mit } u \in [-1, 1] \text{ und } v \in [-1, 1]
-		\label{eq:KameraOrthogonal}	
+		\vec{r}(x, y) = \left|\left|\left( 
+							\begin{array}{l}
+								(\frac{x}{W} \cdot 2 - 1) \cdot aspect \\
+								\frac{y}{H} \cdot (- 2) + 1 \\
+								f
+							\end{array}							
+					 	\right)\right|\right|.
+		\label{eq:direction}
 	\end{equation}
 	
-	Beide Gleichungen unterscheiden sich durch ihren Stützvektor. Der Stützvektor der Bildebene wird mit $\underline{p_k}$ bezeichnet und der, der Ursprünge $\underline{p_o}$. Im Einfachsten Fall definiert sich
-	$\underline{p_k}$ als Nullvektor und $\underline{p_o}$ als der Vektor $(0, 0, -1)^T$.
+	Für jeden Pixel $(x, y)$ wird ein Strahl $s$ in die Szene geschossen mit der Formel
+	$\underline{s} (x, y, z) = \underline{p} + t \cdot \vec{r}(x, y)$. Jetzt lässt sich die Kamera frei positionieren
+	und der Zoom mit dem Parameter $f$ bestimmen. Zu diesen Zeitpunkt ist es nur möglich in Richtung der Positiven $z$-Achse zu schauen. Um die Kamera zu rotieren genügt es die Richtungsvektoren $\vec{r}(x, y)$ mit Hilfe
+	einer Rotationsmatrix um den Koordinaten Ursprung zu rotieren.
 	
 \chapter{Ein analytischer Ansatz}
  

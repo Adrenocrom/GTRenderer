@@ -32,8 +32,14 @@ void SceneLoader::readLine(std::stringstream &line, Scene &scene) {
 
 	if('#' == entry[0])
 		return;
+	
+	if(entry == "lambda") {
+		double dLambda;
+		line >> dLambda;
 
-	if(entry == "sphere") {
+		scene.m_dLambda = dLambda;
+	}
+	else if(entry == "sphere") {
 		Vector3 	vPosition;
 		double  	dRadius;
 		Material	m;
@@ -41,6 +47,8 @@ void SceneLoader::readLine(std::stringstream &line, Scene &scene) {
 		line >> dRadius;
 		line >> m.m_vColor.r; line >> m.m_vColor.g; line >> m.m_vColor.b;
 		line >> m.m_dLambda;
+
+		m.m_dLambda = (-1.0 / (scene.m_dLambda * 2.0 * dRadius)) * log(1 - m.m_dLambda);
 
 		Sphere s(vPosition, dRadius, m);
 		scene.m_vSpheres.push_back(s);

@@ -17,7 +17,7 @@ void renderPixel(int tId, int iChunkSize, double dMax, Camera* pCamera) {
 	for(int y = begin; y < end; ++y) {
 		for(int x = 0; x < pCamera->m_iWidth; ++x) {
 			Ray ray = pCamera->getRay(x, y);
-			pCamera->m_ppvSensor[x][y] = OCTracer::calcColorOfRay(&ray, Vector3(20, 20, 20), -1, 0, 1);
+			pCamera->m_ppvSensor[x][y] = OCTracer::calcColorOfRay(&ray, Vector3(20, 20, 20), -1, 1);
 					
 			if(pCamera->m_ppvSensor[x][y].r < 0) pCamera->m_ppvSensor[x][y].r = 0;
 			if(pCamera->m_ppvSensor[x][y].g < 0) pCamera->m_ppvSensor[x][y].g = 0;
@@ -75,8 +75,7 @@ void OCTracer::render(Camera* pCamera) {
 Vector3 OCTracer::calcColorOfRay(Ray* 		pRay, 
 											Vector3 	vLightColor,
 											int		iObjectId,
-											int 		iDepth, 
-											int 		iMaxDepth) {
+											int 		iDepth) {
 	std::list<IntersectionInfo> zBuffer;
 	Vector3 result 	  = vLightColor;
 	double  dNumSamples = 100;
@@ -101,7 +100,7 @@ Vector3 OCTracer::calcColorOfRay(Ray* 		pRay,
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);
 			
-			if(iDepth < iMaxDepth) {
+			if(iDepth > 0) {
 				double	dDelta = (info.m_vSegmentLengths[0] / dNumSamples);
 				//printf("\nDelta: %f\n", dDelta);
 				double	dInteg = 0.0;
@@ -120,7 +119,7 @@ Vector3 OCTracer::calcColorOfRay(Ray* 		pRay,
 						dFx = exp(-g_pScene->m_vSpheres[info.m_iObjectId].m_material.m_dLambda * sInfo.m_vIntersects[1]);
 						//dFx *= Vector3Dot(sInfo.m_vNormals[1], -vLightDirection);
 						//vColor += (1 - dFx) * pScene->m_vSpheres[info.m_iObjectId].m_material.m_vColor +
-						vColor = dFx * calcColorOfRay(&ray, g_pScene->m_vpLightSources[l]->m_vTotalPower, info.m_iObjectId, iDepth+1, iMaxDepth);
+						vColor = dFx * calcColorOfRay(&ray, g_pScene->m_vpLightSources[l]->m_vTotalPower, info.m_iObjectId, iDepth-1);
 					}
 
 					//vColor /= (double)iNumLights;

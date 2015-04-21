@@ -13,6 +13,7 @@ class Scene {
 		std::vector<Primitive*>		 m_vpPrimitives;
 		std::vector<Sphere>		 	 m_vSpheres;
 		std::vector<Box>				 m_vBoxes;
+		double							 m_dLambda;
 
 		KDTree							 m_kdTree;
 

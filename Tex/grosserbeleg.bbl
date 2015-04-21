@@ -1,0 +1,65 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{KPH{\etalchar{+}}03}
+
+\bibitem[ASW13]{journals/tvcg/AmentSW13}
+\textsc{Ament}, Marco ; \textsc{Sadlo}, Filip  ; \textsc{Weiskopf}, Daniel:
+\newblock Ambient Volume Scattering.
+\newblock {In: }\emph{IEEE Trans. Vis. Comput. Graph.}
+\newblock 19 (2013), Nr. 12, S. 2936--2945
+
+\bibitem[JKRY12]{JKRY12}
+\textsc{J{\"o}nsson}, Daniel ; \textsc{Kronander}, Joel ; \textsc{Ropinski},
+  Timo  ; \textsc{Ynnerman}, Anders:
+\newblock {Historygrams: Enabling Interactive Global Illumination in Direct
+  Volume Rendering using Photon Mapping}.
+\newblock {In: }\emph{IEEE Transactions on Visualization and Computer Graphics
+  (TVCG)}
+\newblock 18 (2012), Nr. 12, S. 2364--2371
+
+\bibitem[JPP98]{conf/pg/JungPP98}
+\textsc{Jung}, Moon-Ryul ; \textsc{Park}, Hyunwoo  ; \textsc{Paik}, Doowon:
+\newblock An Analytical Ray Casting of Volume Data.
+\newblock {In: }\emph{Pacific Conference on Computer Graphics and
+  Applications}, IEEE Computer Society, 1998. --
+\newblock ISBN 0--8186--8620--0, S. 79--86
+
+\bibitem[JSYR14]{JSYR14}
+\textsc{J{\"o}nsson}, Daniel ; \textsc{Sund\'en}, Erik ; \textsc{Ynnerman},
+  Anders  ; \textsc{Ropinski}, Timo:
+\newblock {A Survey of Volumetric Illumination Techniques for Interactive
+  Volume Rendering}.
+\newblock {In: }\emph{Computer Graphics Forum}
+\newblock 33 (2014), Nr. 1, S. 27--51
+
+\bibitem[KPB12]{KPB12a}
+\textsc{Kroes}, Thomas ; \textsc{Post}, Frits~H.  ; \textsc{Botha}, Charl~P.:
+\newblock Exposure render: an interactive photo-realistic volume rendering
+  framework.
+\newblock {In: }\emph{PLoS ONE}
+\newblock 7 (2012), 07, Nr. 7. --
+\newblock 10.1371/journal.pone.0038586
+
+\bibitem[KPH{\etalchar{+}}03]{journals/tvcg/KnissPHSM03}
+\textsc{Kniss}, Joe ; \textsc{Premoze}, Simon ; \textsc{Hansen}, Charles~D. ;
+  \textsc{Shirley}, Peter  ; \textsc{McPherson}, Allen:
+\newblock A Model for Volume Lighting and Modeling.
+\newblock {In: }\emph{IEEE Trans. Vis. Comput. Graph.}
+\newblock 9 (2003), Nr. 2, S. 150--162
+
+\bibitem[Max95]{Max:1995:OMD:614258.614298}
+\textsc{Max}, Nelson:
+\newblock Optical Models for Direct Volume Rendering.
+\newblock {In: }\emph{IEEE Transactions on Visualization and Computer Graphics}
+\newblock 1 (1995), Juni, Nr. 2, S. 99--108. --
+\newblock ISSN 1077--2626
+
+\bibitem[SPH{\etalchar{+}}09]{10.1111:j.1467-8659.2009.01464.x}
+\textsc{Schott}, Mathias ; \textsc{Pegoraro}, Vincent ; \textsc{Hansen},
+  Charles ; \textsc{Boulanger}, Kévin  ; \textsc{Bouatouch}, Kadi:
+\newblock {A Directional Occlusion Shading Model for Interactive Direct Volume
+  Rendering}.
+\newblock {In: }\emph{Computer Graphics Forum}
+\newblock  (2009). --
+\newblock ISSN 1467--8659
+
+\end{thebibliography}

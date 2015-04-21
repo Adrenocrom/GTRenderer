@@ -19,8 +19,7 @@ class OCTracer : public Renderer {
 		static Vector3 calcColorOfRay(Ray* 		pRay, 
 									  			Vector3 	vLightColor,
 									  			int		iObjectId,
-									  			int 		iDepth, 
-									  			int 		iMaxDepth);
+									  			int 		iDepth);
 };
 
 #endif

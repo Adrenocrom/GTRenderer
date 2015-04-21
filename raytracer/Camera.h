@@ -11,23 +11,23 @@ void saveImageToFile(Camera& camera, const char* pcFilename);
 class Camera {
 	public:
 		Vector3		m_vPosition;
-		Vector3		m_vFocus;
-		Vector3		m_vDirection;
+		Vector3		m_vRotation;
+		Vector3		m_vLookAt;
 		int 			m_iWidth;
 		int 			m_iHeight;
-		double		m_dAspect;
 		Vector3** 	m_ppvSensor;
 
-		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vFocus);
+		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vRotation, double dFocalLength);
 		~Camera();
 
 		void saveImageToFile(const char* pcFilename);
 		Ray	getRay(int x, int y);
+
 	private:
-		double	m_dWidth;
-		double	m_dHeight;
-		double	m_dWStep;
-		double	m_dHStep;
+		double		m_dFocalLength;
+		double		m_dAspect;
+
+		Vector3		rotateCamera(Vector3& v);
 };
 
 #endif
