@@ -4,16 +4,15 @@
 \BOOKMARK [1][-]{section.3.1}{3.1 Strahl und Kugelgleichung}{chapter.3}% 4
 \BOOKMARK [1][-]{section.3.2}{3.2 Die Perspektivische Kamera}{chapter.3}% 5
 \BOOKMARK [0][-]{chapter.4}{4 Ein analytischer Ansatz}{}% 6
-\BOOKMARK [1][-]{section.4.1}{4.1 Paradigma}{chapter.4}% 7
-\BOOKMARK [1][-]{section.4.2}{4.2 Das Optische Modell}{chapter.4}% 8
-\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Emssion}{section.4.2}% 9
-\BOOKMARK [1][-]{section.4.3}{4.3 Optical Models for Direct Volume Rendering}{chapter.4}% 10
-\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Emission}{section.4.3}% 11
-\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Absorption und Emission}{section.4.3}% 12
-\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 Streuung und Schatten}{section.4.3}% 13
-\BOOKMARK [1][-]{section.4.4}{4.4 An Analytical Ray Casting of Volume Data}{chapter.4}% 14
-\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Levoy's raycast algorithm}{section.4.4}% 15
-\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Eine kontinuierliche Formulierung}{section.4.4}% 16
-\BOOKMARK [1][-]{section.4.5}{4.5 Verdeckung}{chapter.4}% 17
-\BOOKMARK [0][-]{chapter.5}{5 Fazit}{}% 18
-\BOOKMARK [0][-]{chapter*.4}{Literaturverzeichnis}{}% 19
+\BOOKMARK [1][-]{section.4.1}{4.1 Das Optische Modell}{chapter.4}% 7
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Emission}{section.4.1}% 8
+\BOOKMARK [1][-]{section.4.2}{4.2 Optical Models for Direct Volume Rendering}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Emission}{section.4.2}% 10
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Absorption und Emission}{section.4.2}% 11
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Streuung und Schatten}{section.4.2}% 12
+\BOOKMARK [1][-]{section.4.3}{4.3 An Analytical Ray Casting of Volume Data}{chapter.4}% 13
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Levoy's raycast algorithm}{section.4.3}% 14
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Eine kontinuierliche Formulierung}{section.4.3}% 15
+\BOOKMARK [1][-]{section.4.4}{4.4 Verdeckung}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter.5}{5 Fazit}{}% 17
+\BOOKMARK [0][-]{chapter*.4}{Literaturverzeichnis}{}% 18

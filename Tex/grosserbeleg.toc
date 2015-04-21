@@ -4,16 +4,15 @@
 \contentsline {section}{\numberline {3.1}Strahl und Kugelgleichung}{7}{section.3.1}
 \contentsline {section}{\numberline {3.2}Die Perspektivische Kamera}{8}{section.3.2}
 \contentsline {chapter}{\numberline {4}Ein analytischer Ansatz}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Paradigma}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Das Optische Modell}{11}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Emssion}{12}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Optical Models for Direct Volume Rendering}{12}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Emission}{12}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Absorption und Emission}{12}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Streuung und Schatten}{13}{subsection.4.3.3}
-\contentsline {section}{\numberline {4.4}An Analytical Ray Casting of Volume Data}{13}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Levoy's raycast algorithm}{14}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Eine kontinuierliche Formulierung}{14}{subsection.4.4.2}
-\contentsline {section}{\numberline {4.5}Verdeckung}{14}{section.4.5}
+\contentsline {section}{\numberline {4.1}Das Optische Modell}{11}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Emission}{12}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}Optical Models for Direct Volume Rendering}{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Emission}{12}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Absorption und Emission}{12}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Streuung und Schatten}{13}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}An Analytical Ray Casting of Volume Data}{13}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Levoy's raycast algorithm}{14}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Eine kontinuierliche Formulierung}{14}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Verdeckung}{14}{section.4.4}
 \contentsline {chapter}{\numberline {5}Fazit}{17}{chapter.5}
 \contentsline {chapter}{\nonumberline Literaturverzeichnis}{19}{chapter*.4}

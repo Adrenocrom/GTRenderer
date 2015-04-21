@@ -157,7 +157,7 @@ Bild"ubernahmen zitieren.}
 	für den Strahl, die Kugel und die Schnittpunktberechnung genauer betrachtet. Abschließend wird die 
 	verwendete Perspektivische Kamera auf der Basis der \textit{Camera obscura} hergeleitet. 
 	In der Arbeit werden Punkte im $\mathbb{R}^n$ unterstrichen geschrieben, so symbolisiert $\underline{p}$
-	einen Punkt und $\vec{v}$ einen Vektor und die Formel $\langle\vec{a}, \vec{b}\rangle$ bezeichnet ein Skalarprodukt.
+	einen Punkt und $\vec{v}$ einen Vektor und der Term $\langle\vec{a}, \vec{b}\rangle$ bezeichnet ein Skalarprodukt.
 
 \section{Strahl und Kugelgleichung}
 
@@ -228,7 +228,7 @@ Bild"ubernahmen zitieren.}
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics{images/cameraObscura.pdf}
+		\input{images/cameraObscura.pdf_tex}
 		\caption{Schematische Darstellung des Abbildungsvorgangs der \textit{camera obscura}}
 		\label{fig:cameraObscura}
 	\end{figure}
@@ -240,8 +240,7 @@ Bild"ubernahmen zitieren.}
 	der Punkt $B$ auf den Punkt $B'$. Die Distanz zwischen der Bildebene und dem Loch der Kamera wird mit der
 	Variable $f$ bezeichnet.
 	Ein mit diesem Modell generiertes Bild müsste nach der Aufnahme gedreht werden. In der Virtuellen Welt,
-	lässt sich Bildebene Vor dem Loch positionieren. Die Position $\underline{p}$ der Kamera ist mit der Position
-	des Lochs der \textit{Camera obscura} identisch.
+	lässt sich Bildebene Vor dem Loch positionieren, damit das entstandene Bild nicht gespiegelt aufgenommen wird. Die Position $\underline{p}$ der Kamera ist mit der Position des Lochs der \textit{Camera obscura} identisch.
 	Für jeden Pixel der Bildebene wird jetzt mindestens ein Strahl generiert welcher als Stützpunkt die Position
 	der Kamera erhält und der Richtungsvektor ist der Normierte Vektor von der Kamerapostion zum Pixel. 
 	
@@ -265,17 +264,15 @@ Bild"ubernahmen zitieren.}
 	einer Rotationsmatrix um den Koordinaten Ursprung zu rotieren.
 	
 \chapter{Ein analytischer Ansatz}
- 
-\section{Paradigma}
 
 	In diesem Kapitel wird der Algorithmus hergeleitet welcher zum Zeichnen der Kugeln dient.
 	Zum Beginn wird das Emission und Absorptionsmodell aus der Arbeit von \cite{Max:1995:OMD:614258.614298}
 	genauer betrachtet. Als Grundannahme wird die Menge der Transferfunktionen auf lineare Funktionen beschränkt,
 	die Dichte soll im Volumen als Konstant gelten. Diese Arbeit befasst sich mit der Frage, ob sich mit
 	diesen Einschränkungen das entstehende Volumenintegral analytisch lösen lässt.
-	Gibt es eine analytische Lösung, so würden sich die Bilder sehr effizient und korrekt berechnen lassen.
+	Gibt es eine analytische Lösung, so würden sich die Bilder effizient und korrekt berechnen lassen.
 	Lässt sich Gleichung nicht analytisch Lösen, werden die Integrale so weit wie möglich analytisch gelöst
-	und die restlichen Teile müssen Nummerisch approximiert werden.
+	und die restlichen Teile der Gleichung müssen Nummerisch approximiert werden.
 	
 \section{Das Optische Modell}
 
@@ -320,7 +317,7 @@ Bild"ubernahmen zitieren.}
 	Im Rahmen dieser Arbeit ist der Begriff der Transferfunktion bereit mehr als einmal gefallen,
 	eine solche Funktion bildet den Materialwert auf die optischen Eigenschaften der Gleichung ab.
 	
-\subsection{Emssion}
+\subsection{Emission}
 
 	Wie in der Arbeit \cite{Max:1995:OMD:614258.614298} wird auch in dieser zuerst die Gleichung für die Emission
 	hergeleitet. Neben der Abschwächung der Lichtintensität durch ein Volumen, kann zusätzlich an jedem Punkt in diesem Licht emittiert werden. In Worten bedeutete es, das ein Lichtstrahl welcher durch das Volumen geschossen
@@ -347,6 +344,14 @@ Bild"ubernahmen zitieren.}
 	Es gibt keine obere Schranke, das bedeutet, das die Emittierte Lichtenergie sehr schnell die Szene mit Licht
 	überfluten kann und die Abbildung der Materialparameter in Abhängigkeit der Objektgrößen gewählt werden müssen.
 	
+
+	\begin{figure}[h]
+		\centering
+		\input{images/standartAbsorption.pdf_tex}
+		% %\includegraphics{images/standartAbsorption2.pdf}
+		\caption{Veranschaulichung des Strahlengangs durch die Kugel, die Nullstellen sind mit $t_n$ und $t_f$ bezeichnet. Der Gelbe Kreis auf der rechten Seite stellt eine Lichtquelle dar.}
+		\label{fig:simpleBackgroundTransperency}
+	\end{figure}
 	
 \section{Optical Models for Direct Volume Rendering}
 	
