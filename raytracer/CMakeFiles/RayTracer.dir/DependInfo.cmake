@@ -26,22 +26,12 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
-# Preprocessor definitions for this target.
-SET(CMAKE_TARGET_DEFINITIONS
-  "QT_CORE_LIB"
-  "QT_GUI_LIB"
-  "QT_NO_DEBUG"
-  )
-
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/include/qt4"
-  "/usr/include/qt4/QtGui"
-  "/usr/include/qt4/QtCore"
   "include"
   "."
   )

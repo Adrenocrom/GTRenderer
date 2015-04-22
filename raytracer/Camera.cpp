@@ -34,7 +34,7 @@ Ray Camera::getRay(int x, int y) {
 }
 
 
-
+/*
 void Camera::saveImageToFile(const char* pcFilename) {
 	QImage result(m_iWidth, m_iHeight, QImage::Format_RGB32);
 
@@ -47,7 +47,7 @@ void Camera::saveImageToFile(const char* pcFilename) {
 	}
 
 	result.save(pcFilename);
-}
+}*/
 
 Vector3 Camera::rotateCamera(Vector3& v) {
 	double r[9];

@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required( VERSION 2.8 )
 
 project( GTRenderer )
 
@@ -9,11 +9,14 @@ set( CMAKE_BUILD_TYPE "RELEASE" )
 #include( ${QT_USE_FILE} )
 #add_definitions( ${QT_DEFINITIONS} )
 
-add_definitions( "-std=c++11" )
-add_definitions( "-DQT_GUI_LIB" )
-add_definitions( "-Wl" )
-add_definitions( "--no-as-needed" )
-add_definitions( "-pthread" )
+set (CMAKE_CXX_FLAGS "-Wall -pthread -std=c++11 -Wl,--no-as-needed")
+add_definitions(${CMAKE_CXX_FLAGS})
+
+#add_definitions( "-std=c++11" )
+#add_definitions( "-DQT_GUI_LIB" )
+#add_definitions( "-Wl" )
+#add_definitions( "--no-as-needed" )
+#add_definitions( "-pthread" )
 
 #find_package(OpenMP)
 #if (OPENMP_FOUND)

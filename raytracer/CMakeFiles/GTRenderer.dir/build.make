@@ -82,9 +82,6 @@ GTRenderer_EXTERNAL_OBJECTS =
 GTRenderer: CMakeFiles/GTRenderer.dir/main.cpp.o
 GTRenderer: CMakeFiles/GTRenderer.dir/build.make
 GTRenderer: libRayTracer.a
-GTRenderer: /usr/lib/x86_64-linux-gnu/libQtGui.so
-GTRenderer: /usr/lib/x86_64-linux-gnu/libQtCore.so
-GTRenderer: libRayTracer.a
 GTRenderer: CMakeFiles/GTRenderer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable GTRenderer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GTRenderer.dir/link.txt --verbose=$(VERBOSE)

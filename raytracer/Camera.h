@@ -20,7 +20,7 @@ class Camera {
 		Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vRotation, double dFocalLength);
 		~Camera();
 
-		void saveImageToFile(const char* pcFilename);
+		//void saveImageToFile(const char* pcFilename);
 		Ray	getRay(int x, int y);
 
 	private:

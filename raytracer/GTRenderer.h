@@ -13,8 +13,8 @@
 #include <string>
 #include <random>
 #include <thread>
-#include <QImage>
-#include <QColor>
+//#include <QImage>
+//#include <QColor>
 
 #define FM_MIN(a, b) ((a) < (b) ? (a) : (b)) // Minimum
 #define FM_MAX(a, b) ((a) > (b) ? (a) : (b)) // Maximum
