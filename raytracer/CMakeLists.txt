@@ -9,6 +9,8 @@ set( CMAKE_BUILD_TYPE "RELEASE" )
 #include( ${QT_USE_FILE} )
 #add_definitions( ${QT_DEFINITIONS} )
 
+find_package(CUDA REQUIRED)
+
 set (CMAKE_CXX_FLAGS "-Wall -p -pthread -std=c++11 -Wl,--no-as-needed")
 add_definitions(${CMAKE_CXX_FLAGS})
 
