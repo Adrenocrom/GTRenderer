@@ -53,15 +53,15 @@ CMakeFiles/GTRenderer.dir/main.cpp.o: CMakeFiles/GTRenderer.dir/flags.make
 CMakeFiles/GTRenderer.dir/main.cpp.o: main.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/GTRenderer.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GTRenderer.dir/main.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GTRenderer.dir/main.cpp.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp
 
 CMakeFiles/GTRenderer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GTRenderer.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp > CMakeFiles/GTRenderer.dir/main.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp > CMakeFiles/GTRenderer.dir/main.cpp.i
 
 CMakeFiles/GTRenderer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GTRenderer.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp -o CMakeFiles/GTRenderer.dir/main.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/josef/Dokumente/Studium/GTRenderer/raytracer/main.cpp -o CMakeFiles/GTRenderer.dir/main.cpp.s
 
 CMakeFiles/GTRenderer.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/GTRenderer.dir/main.cpp.o.requires
@@ -81,9 +81,6 @@ GTRenderer_EXTERNAL_OBJECTS =
 
 GTRenderer: CMakeFiles/GTRenderer.dir/main.cpp.o
 GTRenderer: CMakeFiles/GTRenderer.dir/build.make
-GTRenderer: libRayTracer.a
-GTRenderer: /usr/lib/x86_64-linux-gnu/libQtGui.so
-GTRenderer: /usr/lib/x86_64-linux-gnu/libQtCore.so
 GTRenderer: libRayTracer.a
 GTRenderer: CMakeFiles/GTRenderer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable GTRenderer"

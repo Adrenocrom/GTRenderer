@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required( VERSION 2.8 )
 
 project( GTRenderer )
 
@@ -9,11 +9,20 @@ set( CMAKE_BUILD_TYPE "RELEASE" )
 #include( ${QT_USE_FILE} )
 #add_definitions( ${QT_DEFINITIONS} )
 
-add_definitions( "-std=c++11" )
-add_definitions( "-DQT_GUI_LIB" )
-add_definitions( "-Wl" )
-add_definitions( "--no-as-needed" )
-add_definitions( "-pthread" )
+#cmake_minimum_required(VERSION 2.8)
+
+set (CMAKE_CXX_FLAGS "-Wall -pthread -std=c++11 -Wl,--no-as-needed")
+add_definitions(${CMAKE_CXX_FLAGS})
+
+#add_definitions( "-std=c++11" )
+#add_definitions( "-DQT_GUI_LIB" )
+#add_definitions( "-Wall" )
+#add_definitions( "-no-as-needed" )
+#add_definitions( "-pthread" )
+
+FIND_PACKAGE ( Threads REQUIRED )
+
+#set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl --no-as-needed")
 
 #find_package(OpenMP)
 #if (OPENMP_FOUND)
@@ -45,4 +54,4 @@ add_library( RayTracer	Vector3.cpp
 
 add_executable( GTRenderer main.cpp )
 #target_link_libraries( GTRenderer RayTracer ${QT_LIBRARIES} )
-target_link_libraries( GTRenderer RayTracer )
+target_link_libraries( GTRenderer RayTracer ${CMAKE_THREAD_LIBS_INIT})

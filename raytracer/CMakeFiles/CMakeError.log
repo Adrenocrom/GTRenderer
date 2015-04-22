@@ -1,96 +1,53 @@
-Determining if the Q_WS_WIN exist failed with the following output:
+Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec2539722495/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2539722495.dir/build.make CMakeFiles/cmTryCompileExec2539722495.dir/build
-make[1]: Betrete Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/make "cmTryCompileExec2571738013/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2571738013.dir/build.make CMakeFiles/cmTryCompileExec2571738013.dir/build
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2539722495.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec2539722495.dir/CheckSymbolExists.cxx.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
-   return ((int*)(&Q_WS_WIN))[argc];
-                   ^
-make[1]: *** [CMakeFiles/cmTryCompileExec2539722495.dir/CheckSymbolExists.cxx.o] Fehler 1
-make[1]: Verlasse Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
-make: *** [cmTryCompileExec2539722495/fast] Fehler 2
+Building C object CMakeFiles/cmTryCompileExec2571738013.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2571738013.dir/CheckSymbolExists.c.o   -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec2571738013
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2571738013.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2571738013.dir/CheckSymbolExists.c.o  -o cmTryCompileExec2571738013 -rdynamic 
+CMakeFiles/cmTryCompileExec2571738013.dir/CheckSymbolExists.c.o: In Funktion `main':
+CheckSymbolExists.c:(.text+0x16): Nicht definierter Verweis auf `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec2571738013] Fehler 1
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird verlassen
+make: *** [cmTryCompileExec2571738013/fast] Fehler 2
 
-File /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
-#include <QtCore/qglobal.h>
+#include <pthread.h>
 
 int main(int argc, char** argv)
 {
   (void)argv;
-#ifndef Q_WS_WIN
-  return ((int*)(&Q_WS_WIN))[argc];
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
 #else
   (void)argc;
   return 0;
 #endif
 }
 
-Determining if the Q_WS_QWS exist failed with the following output:
+Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec1079613732/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1079613732.dir/build.make CMakeFiles/cmTryCompileExec1079613732.dir/build
-make[1]: Betrete Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/make "cmTryCompileExec1841531682/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1841531682.dir/build.make CMakeFiles/cmTryCompileExec1841531682.dir/build
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1079613732.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec1079613732.dir/CheckSymbolExists.cxx.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
-   return ((int*)(&Q_WS_QWS))[argc];
-                   ^
-make[1]: *** [CMakeFiles/cmTryCompileExec1079613732.dir/CheckSymbolExists.cxx.o] Fehler 1
-make[1]: Verlasse Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
-make: *** [cmTryCompileExec1079613732/fast] Fehler 2
+Building C object CMakeFiles/cmTryCompileExec1841531682.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1841531682.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1841531682
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1841531682.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1841531682.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1841531682 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec1841531682] Fehler 1
+make[1]: Verzeichnis »/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp« wird verlassen
+make: *** [cmTryCompileExec1841531682/fast] Fehler 2
 
-File /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
-/* */
-#include <QtCore/qglobal.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef Q_WS_QWS
-  return ((int*)(&Q_WS_QWS))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
-
-Determining if the Q_WS_MAC exist failed with the following output:
-Change Dir: /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp
-
-Run Build Command:/usr/bin/make "cmTryCompileExec3513024875/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3513024875.dir/build.make CMakeFiles/cmTryCompileExec3513024875.dir/build
-make[1]: Betrete Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3513024875.dir/CheckSymbolExists.cxx.o
-/usr/bin/c++    -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec3513024875.dir/CheckSymbolExists.cxx.o -c /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
-/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
-   return ((int*)(&Q_WS_MAC))[argc];
-                   ^
-make[1]: *** [CMakeFiles/cmTryCompileExec3513024875.dir/CheckSymbolExists.cxx.o] Fehler 1
-make[1]: Verlasse Verzeichnis '/home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp'
-make: *** [cmTryCompileExec3513024875/fast] Fehler 2
-
-File /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
-/* */
-#include <QtCore/qglobal.h>
-
-int main(int argc, char** argv)
-{
-  (void)argv;
-#ifndef Q_WS_MAC
-  return ((int*)(&Q_WS_MAC))[argc];
-#else
-  (void)argc;
-  return 0;
-#endif
-}
 
