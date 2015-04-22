@@ -53,38 +53,38 @@ CMAKE_SOURCE_DIR = /home/josef/Dokumente/Studium/GTRenderer/raytracer
 CMAKE_BINARY_DIR = /home/josef/Dokumente/Studium/GTRenderer/raytracer
 
 #=============================================================================
-# Target rules for target CMakeFiles/GTRenderer.dir
+# Target rules for target CMakeFiles/CudaRenderer.dir
 
 # All Build rule for target.
-CMakeFiles/GTRenderer.dir/all: CMakeFiles/RayTracer.dir/all
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/depend
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/build
+CMakeFiles/CudaRenderer.dir/all:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/depend
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles  1
-	@echo "Built target GTRenderer"
-.PHONY : CMakeFiles/GTRenderer.dir/all
+	@echo "Built target CudaRenderer"
+.PHONY : CMakeFiles/CudaRenderer.dir/all
 
 # Include target in all.
-all: CMakeFiles/GTRenderer.dir/all
+all: CMakeFiles/CudaRenderer.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/GTRenderer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles 20
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/GTRenderer.dir/all
+CMakeFiles/CudaRenderer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/CudaRenderer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/josef/Dokumente/Studium/GTRenderer/raytracer/CMakeFiles 0
-.PHONY : CMakeFiles/GTRenderer.dir/rule
+.PHONY : CMakeFiles/CudaRenderer.dir/rule
 
 # Convenience name for target.
-GTRenderer: CMakeFiles/GTRenderer.dir/rule
-.PHONY : GTRenderer
+CudaRenderer: CMakeFiles/CudaRenderer.dir/rule
+.PHONY : CudaRenderer
 
 # clean rule for target.
-CMakeFiles/GTRenderer.dir/clean:
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/clean
-.PHONY : CMakeFiles/GTRenderer.dir/clean
+CMakeFiles/CudaRenderer.dir/clean:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/clean
+.PHONY : CMakeFiles/CudaRenderer.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/GTRenderer.dir/clean
+clean: CMakeFiles/CudaRenderer.dir/clean
 .PHONY : clean
 
 #=============================================================================

@@ -99,17 +99,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named GTRenderer
+# Target rules for targets named CudaRenderer
 
 # Build rule for target.
-GTRenderer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 GTRenderer
-.PHONY : GTRenderer
+CudaRenderer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CudaRenderer
+.PHONY : CudaRenderer
 
 # fast build rule for target.
-GTRenderer/fast:
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/build
-.PHONY : GTRenderer/fast
+CudaRenderer/fast:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/build
+.PHONY : CudaRenderer/fast
 
 #=============================================================================
 # Target rules for targets named RayTracer
@@ -171,6 +171,30 @@ Camera.s: Camera.cpp.s
 Camera.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/Camera.cpp.s
 .PHONY : Camera.cpp.s
+
+CudaMain.o: CudaMain.cpp.o
+.PHONY : CudaMain.o
+
+# target to build an object file
+CudaMain.cpp.o:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/CudaMain.cpp.o
+.PHONY : CudaMain.cpp.o
+
+CudaMain.i: CudaMain.cpp.i
+.PHONY : CudaMain.i
+
+# target to preprocess a source file
+CudaMain.cpp.i:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/CudaMain.cpp.i
+.PHONY : CudaMain.cpp.i
+
+CudaMain.s: CudaMain.cpp.s
+.PHONY : CudaMain.s
+
+# target to generate assembly for a file
+CudaMain.cpp.s:
+	$(MAKE) -f CMakeFiles/CudaRenderer.dir/build.make CMakeFiles/CudaRenderer.dir/CudaMain.cpp.s
+.PHONY : CudaMain.cpp.s
 
 DirectionLight.o: DirectionLight.cpp.o
 .PHONY : DirectionLight.o
@@ -561,7 +585,6 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/main.cpp.o
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/main.cpp.o
 .PHONY : main.cpp.o
 
@@ -570,7 +593,6 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/main.cpp.i
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/main.cpp.i
 .PHONY : main.cpp.i
 
@@ -579,7 +601,6 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/GTRenderer.dir/build.make CMakeFiles/GTRenderer.dir/main.cpp.s
 	$(MAKE) -f CMakeFiles/RayTracer.dir/build.make CMakeFiles/RayTracer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
@@ -589,7 +610,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... GTRenderer"
+	@echo "... CudaRenderer"
 	@echo "... RayTracer"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
@@ -599,6 +620,9 @@ help:
 	@echo "... Camera.o"
 	@echo "... Camera.i"
 	@echo "... Camera.s"
+	@echo "... CudaMain.o"
+	@echo "... CudaMain.i"
+	@echo "... CudaMain.s"
 	@echo "... DirectionLight.o"
 	@echo "... DirectionLight.i"
 	@echo "... DirectionLight.s"
