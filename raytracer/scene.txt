@@ -3,8 +3,13 @@
 #material color lambda
 #pointlight pos color
 #directional dir color
+#loadFromSiff ../Data/FILENAME
 
 lambda 0.3
+
+pointlight 0.0  9.0 4.0 0.0 0.0 30.0
+#loadFromSiff ../Data/pdb.2BT9.siff
+#loadFromSiff ../Data/cool_random.siff
 
 #sphere -5.0  5.0 0.0 2.0 10.0 10.0 10.0 0.5
 #sphere  0.0  5.0 0.0 2.0 0.0 30.0 0.0 0.05
@@ -24,6 +29,3 @@ lambda 0.3
 
 sphere 0.0 0.0 0.0 4.0 10.0 10.0 10.0 0.04
 sphere 0.0 0.0 8.0 2.0 10.0 10.0 10.0 0.04
-
-pointlight 0.0  9.0 4.0 0.0 0.0 30.0
-#pointlight 0.0 -9.0 0.0 30.0 0.0 0.0

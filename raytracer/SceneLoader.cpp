@@ -74,4 +74,52 @@ void SceneLoader::readLine(std::stringstream &line, Scene &scene) {
 		scene.m_vDirectionLight.push_back(d);
 		return;
 	}
+	else if(entry == "loadFromSiff") {
+		std::string str_fn;
+
+		line >> str_fn;
+
+		loadSpheresFromSiff(str_fn, scene);
+		return;
+	}
+}
+
+void SceneLoader::loadSpheresFromSiff(std::string &str_filename, Scene &scene) {
+	std::ifstream file(str_filename.c_str());
+	if (!file.is_open())	{
+		std::cerr << "Error: Could not find siff file "<<str_filename<<"."<<std::endl;
+		return;
+	}
+
+	printf("Load spheres from %s\n", str_filename.c_str());
+	int iNum = 0;
+
+	std::string str_line;
+	while(std::getline(file, str_line, '\n')) {
+		std::stringstream line(str_line);
+		std::string entry;
+		getline(line, entry, ' ');
+		
+		if(entry == "SIFFa1.0") {
+		}
+		else {
+			Vector3 	vPosition;
+			double  	dRadius;
+			Material	m;
+			line >> vPosition.x; line >> vPosition.y; line >> vPosition.z;
+			line >> dRadius;
+			line >> m.m_vColor.r; line >> m.m_vColor.g; line >> m.m_vColor.b;
+			
+			m.m_dLambda = 0.5;
+			m.m_dLambda = (-1.0 / (scene.m_dLambda * 2.0 * dRadius)) * log(1 - m.m_dLambda);
+			
+			Sphere s(vPosition, dRadius, m);
+			scene.m_vSpheres.push_back(s);
+			iNum++;
+		}
+	}
+
+	printf("Loaded %d spheres from File\n", iNum);
+
+	file.close();
 }

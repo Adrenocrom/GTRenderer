@@ -17,7 +17,7 @@ void renderPixel(int tId, int iChunkSize, double dMax, Camera* pCamera) {
 	for(int y = begin; y < end; ++y) {
 		for(int x = 0; x < pCamera->m_iWidth; ++x) {
 			Ray ray = pCamera->getRay(x, y);
-			pCamera->m_ppvSensor[x][y] = OCTracer::calcColorOfRay(&ray, Vector3(20, 20, 20), -1, 1);
+			pCamera->m_ppvSensor[x][y] = OCTracer::calcColorOfRay(&ray, Vector3(20, 20, 20), -1, 0);
 					
 			if(pCamera->m_ppvSensor[x][y].r < 0) pCamera->m_ppvSensor[x][y].r = 0;
 			if(pCamera->m_ppvSensor[x][y].g < 0) pCamera->m_ppvSensor[x][y].g = 0;

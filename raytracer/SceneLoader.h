@@ -10,7 +10,9 @@ class SceneLoader {
 		Scene loadSceneFromFile(const std::string &str_filename);
 	
 	private:
-		void readLine(std::stringstream &line, Scene &scene);	
+		void readLine(std::stringstream &line, Scene &scene);
+
+		void loadSpheresFromSiff(std::string &str_filename, Scene &scene);
 };
 
 #endif
