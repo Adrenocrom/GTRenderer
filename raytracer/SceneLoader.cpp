@@ -91,6 +91,11 @@ void SceneLoader::loadSpheresFromSiff(std::string &str_filename, Scene &scene) {
 		return;
 	}
 
+	std::string nam = "../Data/" + str_filename + "_ply";
+	FILE* pFile = fopen(nam.c_str(), "w");
+
+	fprintf(pFile, "ply\nformat ascii 1.0\nelement vertex \nproperty float x\nproperty float y\nproperty float z\nproperty uchar red\nproperty uchar green\nproperty uchar blue\nend_header\n");
+
 	printf("Load spheres from %s\n", str_filename.c_str());
 	int iNum = 0;
 
@@ -110,14 +115,18 @@ void SceneLoader::loadSpheresFromSiff(std::string &str_filename, Scene &scene) {
 			line >> dRadius;
 			line >> m.m_vColor.r; line >> m.m_vColor.g; line >> m.m_vColor.b;
 			
-			m.m_dLambda = 0.5;
+			m.m_dLambda = 0.05;
 			m.m_dLambda = (-1.0 / (scene.m_dLambda * 2.0 * dRadius)) * log(1 - m.m_dLambda);
 			
+			vPosition *= 0.01;
+			fprintf(pFile, "%f %f %f %d %d %d\n", vPosition.x, vPosition.y, vPosition.z, (int)m.m_vColor.r, (int)m.m_vColor.g, (int)m.m_vColor.b);
 			Sphere s(vPosition, dRadius, m);
 			scene.m_vSpheres.push_back(s);
 			iNum++;
 		}
 	}
+
+	fclose(pFile);
 
 	printf("Loaded %d spheres from File\n", iNum);
 

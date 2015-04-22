@@ -21,12 +21,17 @@ class Scene {
 		~Scene();
 
 		void switchOnLights() {
-			for(int i = 0; i < m_vPointLights.size(); ++i) 
+			int iSize[3];
+			iSize[0] = m_vPointLights.size();
+			iSize[1] = m_vDirectionLight.size();
+			iSize[2] = m_vSpheres.size();
+
+			for(int i = 0; i < iSize[0]; ++i) 
 				m_vpLightSources.push_back(&m_vPointLights[i]);
-			for(int i = 0; i < m_vDirectionLight.size(); ++i)
+			for(int i = 0; i < iSize[1]; ++i)
 				m_vpLightSources.push_back(&m_vDirectionLight[i]);
 
-			for(int i = 0; i < m_vSpheres.size(); ++i)
+			for(int i = 0; i < iSize[2]; ++i)
 				m_vpPrimitives.push_back(&m_vSpheres[i]);
 
 			m_kdTree.createTree();

@@ -9,7 +9,7 @@ set( CMAKE_BUILD_TYPE "RELEASE" )
 #include( ${QT_USE_FILE} )
 #add_definitions( ${QT_DEFINITIONS} )
 
-set (CMAKE_CXX_FLAGS "-Wall -pthread -std=c++11 -Wl,--no-as-needed")
+set (CMAKE_CXX_FLAGS "-Wall -p -pthread -std=c++11 -Wl,--no-as-needed")
 add_definitions(${CMAKE_CXX_FLAGS})
 
 #add_definitions( "-std=c++11" )
@@ -34,6 +34,7 @@ add_library( RayTracer	Vector3.cpp
 								Box.cpp
 								Ray.cpp
 								KDTree.cpp
+								CudaKernels.cu
 								LightSource.cpp
 								PointLight.cpp
 								DirectionLight.cpp

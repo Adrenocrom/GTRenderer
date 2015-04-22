@@ -78,7 +78,7 @@ Vector3 OCTracer::calcColorOfRay(Ray* 		pRay,
 											int 		iDepth) {
 	std::list<IntersectionInfo> zBuffer;
 	Vector3 result 	  = vLightColor;
-	double  dNumSamples = 100;
+	double  dNumSamples = 1;
 
 	auto infos 		= g_pScene->m_kdTree.hit(*pRay);
 	int  iNumHits	= infos.size();
@@ -96,6 +96,9 @@ Vector3 OCTracer::calcColorOfRay(Ray* 		pRay,
 		auto zEnd = zBuffer.end();
 		for(auto it = zBuffer.begin(); it != zEnd; ++it) {
 			IntersectionInfo &info = *it;
+
+			//std::cout<<info.m_vIntersects[0]<<std::endl;
+
 			double dTau = exp(-g_pScene->m_vSpheres[info.m_iObjectId].m_material.m_dLambda  * info.m_vSegmentLengths[0]);
 			double dOpacity = 1-dTau;
 			Vector3 vPower = Vector3(0.0, 0.0, 0.0);

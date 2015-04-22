@@ -1,5 +1,7 @@
 #include <GTRenderer.h>
 
+//#include <cuda.h>
+
 bool g_compare_positions_x (const int& first, const int& second) {
 	if(g_pScene->m_vpPrimitives[first]->m_vPosition.x > g_pScene->m_vpPrimitives[second]->m_vPosition.x)
   		return false;
@@ -149,7 +151,7 @@ std::vector<IntersectionInfo> KDTree::hit(Ray &ray) {
 
 		if(node.bLeaf) {
 			IntersectionInfo info = g_pScene->m_vpPrimitives[node.iPrimitiv]->getIntersectionInfo(ray, node.iPrimitiv);
-			if(info.m_iNumIntersects != 0)
+			if(info.m_iNumIntersects != 0 && info.m_vIntersects[0] > 0)
 				infos.push_back(info);
 		} else {
 		//	std::cout<<node.iLeft<<" - "<<node.iRight<<std::endl;
@@ -163,4 +165,28 @@ std::vector<IntersectionInfo> KDTree::hit(Ray &ray) {
 	}
 
 	return infos;
+}
+
+std::vector<IntersectionInfo> cudaHit(Ray &ray) {
+/*	std::vector<IntersectionInfo> infos;
+	int a[N], b[N], c[N];
+	int *dev_a, *dev_b, *dev_c;
+
+	cudaMalloc((void **) &dev_a, N*sizeof(int));
+	cudaMalloc((void **) &dev_b, N*sizeof(int));
+	cudaMalloc((void **) &dev_c, N*sizeof(int));
+
+	// Fill Arrays
+	for (int i = 0; i < N; i++) {
+		a[i] = i,
+		b[i] = 1;
+	}
+
+	cudaMemcpy(dev_a, a, N*sizeof(int), cudaMemcpyHostToDevice);
+	cudaMemcpy(dev_b, b, N*sizeof(int), cudaMemcpyHostToDevice);
+
+	add<<<N,1>>>(dev_a, dev_b, dev_c);
+
+	cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);
+	return infos;*/
 }

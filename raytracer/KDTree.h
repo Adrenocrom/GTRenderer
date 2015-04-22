@@ -41,6 +41,9 @@ class KDTree {
 
 		std::vector<IntersectionInfo> hit(Ray &ray);
 
+		// find intersects via GPU
+		std::vector<IntersectionInfo> cudaHit(Ray &ray);
+
 	private:
 		int insertInTree(std::list<int> viPrimitives, int iParent = -1);
 		std::pair<std::list<int>, std::list<int> >	splitPrimitives(std::list<int>& viPrimitives, int iD);

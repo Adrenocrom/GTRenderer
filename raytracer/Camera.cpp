@@ -56,17 +56,6 @@ Vector3 Camera::rotateCamera(Vector3& v) {
 	double dSinB = sin(m_vRotation.y);
 	double dCosB = cos(m_vRotation.y);
 	
-	/*
-	r[0] = dCosB;
-	r[1] = 0.0;
-	r[2] = dSinB;
-	r[3] = dSinB * dSinA;
-	r[4] = dCosA;
-	r[5] = -(dSinA * dCosB);
-	r[6] = -(dCosA * dSinB);
-	r[7] = dSinA;
-	r[8] = dCosB * dCosA;
-*/
 	r[0] = dCosB;
 	r[1] = -(dSinA*dSinB);
 	r[2] = dCosA * dSinB;
