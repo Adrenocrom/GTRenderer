@@ -1,6 +1,8 @@
-#include <GTRenderer.h>
+#include "GTRenderer.h"
 
-//#include <cuda.h>
+#ifdef USECUDA
+	#include "CudaKernels.h"
+#endif
 
 bool g_compare_positions_x (const int& first, const int& second) {
 	if(g_pScene->m_vpPrimitives[first]->m_vPosition.x > g_pScene->m_vpPrimitives[second]->m_vPosition.x)
@@ -140,7 +142,10 @@ std::pair<std::list<int>, std::list<int> >	KDTree::splitPrimitives(std::list<int
 }
 
 std::vector<IntersectionInfo> KDTree::hit(Ray &ray) {
+
 	std::vector<IntersectionInfo> infos;
+#ifndef USECUDA
+	IntersectionInfo					info;
 	std::list<SKDNode>				stack;
 
 	stack.push_back(m_vSKDNodes.front());
@@ -150,7 +155,7 @@ std::vector<IntersectionInfo> KDTree::hit(Ray &ray) {
 		//std::cout<<node.iD<<std::endl;
 
 		if(node.bLeaf) {
-			IntersectionInfo info = g_pScene->m_vpPrimitives[node.iPrimitiv]->getIntersectionInfo(ray, node.iPrimitiv);
+			info = g_pScene->m_vpPrimitives[node.iPrimitiv]->getIntersectionInfo(ray, node.iPrimitiv);
 			if(info.m_iNumIntersects != 0 && info.m_vIntersects[0] > 0)
 				infos.push_back(info);
 		} else {
@@ -163,12 +168,13 @@ std::vector<IntersectionInfo> KDTree::hit(Ray &ray) {
 
 		stack.pop_front();
 	}
-
+#else
+#endif
 	return infos;
 }
 
 std::vector<IntersectionInfo> cudaHit(Ray &ray) {
-/*	std::vector<IntersectionInfo> infos;
+	std::vector<IntersectionInfo> infos;/*
 	int a[N], b[N], c[N];
 	int *dev_a, *dev_b, *dev_c;
 
@@ -184,9 +190,9 @@ std::vector<IntersectionInfo> cudaHit(Ray &ray) {
 
 	cudaMemcpy(dev_a, a, N*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(dev_b, b, N*sizeof(int), cudaMemcpyHostToDevice);
+*/
+	//someOperation();
 
-	add<<<N,1>>>(dev_a, dev_b, dev_c);
-
-	cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);
-	return infos;*/
+/*	cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);*/
+	return infos;
 }

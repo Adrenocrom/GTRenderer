@@ -73,6 +73,34 @@ IntersectionInfo Sphere::getIntersectionInfo(const Ray& ray, int iObjectId) {
 									vIntersects,
 									vSegmentLengths,
 									iObjectId);
+
+/*	IntersectionInfo info;
+	int iNumIntersects = 0;
+	Vector3	vPosition;
+	Vector3	vNormal;
+
+	std::pair<double, double> t12 = intersect(ray, &iNumIntersects);
+	
+	if(iNumIntersects > 0) {
+		vPosition = ray.m_vOrigin + t12.first * ray.m_vDirection;
+		vNormal   = Vector3Normalize(vPosition - m_vPosition);
+		info.m_vPositions.push_back(vPosition);
+		info.m_vNormals.push_back(vNormal);
+		info.m_vIntersects.push_back(t12.first);
+
+		info.m_vSegmentLengths.push_back(t12.second - t12.first);
+
+		vPosition = ray.m_vOrigin + t12.second * ray.m_vDirection;
+		vNormal   = Vector3Normalize(vPosition - m_vPosition);
+		info.m_vPositions.push_back(vPosition);
+		info.m_vNormals.push_back(vNormal);
+		info.m_vIntersects.push_back(t12.second);
+	}
+
+	info.m_ray = ray;
+	info.m_iObjectId = iObjectId;
+	info.m_iNumIntersects = iNumIntersects;
+	return info;*/
 }
 
 AABBox Sphere::createAABBox() {

@@ -10,7 +10,7 @@ lambda 1.0
 #pointlight 0.0  9.0 4.0 0.0 0.0 30.0
 #loadFromSiff ../Data/pdb.2BT9.siff
 #loadFromSiff ../Data/cool_random.siff
-loadFromSiff ../Data/pdb.1UUN.siff
+#loadFromSiff ../Data/pdb.1UUN.siff
 #loadFromSiff ../Data/huebsch.chkpt.raw.siff
 
 #sphere -5.0  5.0 0.0 2.0 10.0 10.0 10.0 0.5
@@ -29,5 +29,5 @@ loadFromSiff ../Data/pdb.1UUN.siff
 #sphere  6.0 3.0 10.0 2.0 10.0 10.0 10.0 0.05
 #sphere  -3.0 3.0 10.0 2.0 10.0 10.0 10.0 0.05
 
-#sphere 0.0 0.0 0.0 4.0 10.0 10.0 10.0 0.04
+sphere 0.0 0.0 0.0 4.0 10.0 10.0 10.0 0.04
 #sphere 0.0 0.0 -60.0 4.0 10.0 10.0 10.0 0.04

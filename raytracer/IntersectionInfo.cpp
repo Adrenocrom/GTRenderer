@@ -1,5 +1,8 @@
 #include "GTRenderer.h"
 
+IntersectionInfo::IntersectionInfo() {
+}
+
 IntersectionInfo::IntersectionInfo(Ray ray,
 							  				  std::vector<Vector3> vPositions,
 							  				  std::vector<Vector3> vNormals,

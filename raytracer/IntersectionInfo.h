@@ -11,7 +11,7 @@ class IntersectionInfo {
 		std::vector<double>	m_vSegmentLengths;
 		int	  m_iNumIntersects;
 
-		//IntersectionInfo() {}
+		IntersectionInfo();
 		IntersectionInfo(Ray ray,
 							  std::vector<Vector3> vPositions,
 							  std::vector<Vector3> vNormals,

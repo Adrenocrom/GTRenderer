@@ -16,6 +16,8 @@
 //#include <QImage>
 //#include <QColor>
 
+//#define USECUDA
+
 #define FM_MIN(a, b) ((a) < (b) ? (a) : (b)) // Minimum
 #define FM_MAX(a, b) ((a) > (b) ? (a) : (b)) // Maximum
 #define FM_PI	(3.1415926535897932384626433832795f) // Pi

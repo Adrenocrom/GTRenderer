@@ -1,6 +1,9 @@
 #include "GTRenderer.h"
 
+#include "CudaKernels.h"
+
 int main() {
+	someOperation();
 
 	SceneLoader sl;
 	Scene scene = sl.loadSceneFromFile("scene.txt");

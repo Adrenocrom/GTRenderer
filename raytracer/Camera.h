@@ -26,6 +26,7 @@ class Camera {
 	private:
 		double		m_dFocalLength;
 		double		m_dAspect;
+		double		m_Matrix[9];
 
 		Vector3		rotateCamera(Vector3& v);
 };

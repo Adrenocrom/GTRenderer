@@ -13,6 +13,21 @@ Camera::Camera(int iWidth, int iHeight, Vector3 vPosition, Vector3 vRotation, do
 
 	m_vRotation *= 0.017453293;
 	//m_vRotation.x *= -1.0;
+
+	double dSinA = sin(m_vRotation.x);
+	double dCosA = cos(m_vRotation.x);
+	double dSinB = sin(m_vRotation.y);
+	double dCosB = cos(m_vRotation.y);
+					
+	m_Matrix[0] = dCosB;
+	m_Matrix[1] = -(dSinA*dSinB);
+	m_Matrix[2] = dCosA * dSinB;
+	m_Matrix[3] = 0.0;
+	m_Matrix[4] = dCosA;
+	m_Matrix[5] = -dSinA;
+	m_Matrix[6] = -dSinB;
+	m_Matrix[7] = -(dSinA * dCosB);
+	m_Matrix[8] = dCosA * dCosB;
 }
 
 Camera::~Camera() {
@@ -50,25 +65,9 @@ void Camera::saveImageToFile(const char* pcFilename) {
 }*/
 
 Vector3 Camera::rotateCamera(Vector3& v) {
-	double r[9];
-	double dSinA = sin(m_vRotation.x);
-	double dCosA = cos(m_vRotation.x);
-	double dSinB = sin(m_vRotation.y);
-	double dCosB = cos(m_vRotation.y);
-	
-	r[0] = dCosB;
-	r[1] = -(dSinA*dSinB);
-	r[2] = dCosA * dSinB;
-	r[3] = 0.0;
-	r[4] = dCosA;
-	r[5] = -dSinA;
-	r[6] = -dSinB;
-	r[7] = -(dSinA * dCosB);
-	r[8] = dCosA * dCosB;
-
-	Vector3 vResult(v.x * r[0] + v.y * r[1] + v.z * r[2],
-						 v.x * r[3] + v.y * r[4] + v.z * r[5],
-						 v.x * r[6] + v.y * r[7] + v.z * r[8]);
+	Vector3 vResult(v.x * m_Matrix[0] + v.y * m_Matrix[1] + v.z * m_Matrix[2],
+						 v.x * m_Matrix[3] + v.y * m_Matrix[4] + v.z * m_Matrix[5],
+						 v.x * m_Matrix[6] + v.y * m_Matrix[7] + v.z * m_Matrix[8]);
 	return vResult;
 }
 
