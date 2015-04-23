@@ -5,6 +5,8 @@
 
 //#include <cuda.h>
 
+void loadUpScene();
+
 void someOperation();
 
 #endif

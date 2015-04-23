@@ -5,6 +5,10 @@
 
 class LightSource;
 
+#ifdef USECUDA
+	#include "CudaKernels.h"
+#endif
+
 class Scene {
 	public:
 		std::vector<LightSource*> 	 m_vpLightSources;
@@ -35,6 +39,8 @@ class Scene {
 				m_vpPrimitives.push_back(&m_vSpheres[i]);
 
 			m_kdTree.createTree();
+
+			loadUpScene();			
 		}
 		
 		void switchOffLights() {

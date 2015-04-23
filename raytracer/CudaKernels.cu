@@ -2,6 +2,10 @@
 
 #include <iostream>
 #include <vector_types.h>
+#include <vector_functions.h>
+#include <math_functions.h>
+//#include <cutil_math.h>
+
 
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
@@ -12,6 +16,52 @@
 
 #define N 10000
 
+typedef struct {
+    double3 p;
+	 double r;
+} SSphere;
+
+typedef struct {
+	double3 o;
+	double3 d;
+} SRay;
+
+typedef struct {
+	double tn;
+	double tf;
+	double l;
+} SInInfo;
+
+__device__ double3 minus(const double3& u, const double3& v) {
+	return make_double3(u.x - v.x, u.y - v.y, u.z - v.z);
+}
+
+__device__ double dot(const double3& u, const double3& v) {
+	return u.x*v.x + u.y*v.y + u.z*v.z;
+}
+
+
+__device__ int RaySphereIntersection(const SRay  &ray, const SSphere &sphere, SInInfo &t)
+{
+	double b, c, d;
+
+	double3 sr = minus(ray.o, sphere.p);
+	b =  dot(sr,ray.d);
+	c = dot(sr,sr) - (sphere.r*sphere.r);
+	d = b*b - c;
+	if (d > 0) 
+	{
+		double e = sqrt(d);
+		t.tn = -b-e;
+		t.tf = -b+e;
+		return 1;
+	}
+	return 0;
+}
+
+
+SSphere* dev_spheres;
+
 __global__ void add(int *a, int *b, int *c) {
 	int tID = blockIdx.x;
 
@@ -19,6 +69,41 @@ __global__ void add(int *a, int *b, int *c) {
 		c[tID] = a[tID] + b[tID];
 }
 
+__global__ void hit(SSphere *s, int* r) {
+	int tID = blockIdx.x;
+
+	if(tID < 2) {
+		if(s[tID].r == 2.0)
+			r[tID] = 1;
+		else
+			r[tID] = 0;
+	}
+}
+
+void loadUpScene() {
+	SSphere spheres[2];
+	spheres[0].p = make_double3(0.0, 0.0, 0.0);
+	spheres[0].r = 2.0;
+	spheres[1].p = make_double3(0.0, 0.0, 0.0);
+	spheres[1].r = 2.0;
+
+
+	int r[2];
+	int* dev_r;
+
+	int num = 2;
+
+	cudaMalloc((void **) &dev_spheres, num * sizeof(SSphere));
+	cudaMemcpy(dev_spheres, spheres, 2*sizeof(SSphere), cudaMemcpyHostToDevice);
+
+	cudaMalloc((void **) &dev_r, 2 * sizeof(int));
+
+	hit<<<N, 1>>>(dev_spheres, dev_r);
+
+	cudaMemcpy(r, dev_r, 2*sizeof(int), cudaMemcpyDeviceToHost);
+
+	std::cout<<r[0]<<" -- "<<r[1]<<std::endl;
+}
 void someOperation() {
 	int a[N], b[N], c[N];
 	int *dev_a, *dev_b, *dev_c;
