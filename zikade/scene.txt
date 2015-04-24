@@ -1,0 +1,33 @@
+#lambda value is a global parameter
+#sphere pos r material
+#material color lambda
+#pointlight pos color
+#directional dir color
+#loadFromSiff ../Data/FILENAME
+
+lambda 1.0
+
+#pointlight 0.0  9.0 4.0 0.0 0.0 30.0
+#loadFromSiff ../Data/pdb.2BT9.siff
+#loadFromSiff ../Data/cool_random.siff
+#loadFromSiff ../Data/pdb.1UUN.siff
+#loadFromSiff ../Data/huebsch.chkpt.raw.siff
+
+#sphere -5.0  5.0 0.0 2.0 10.0 10.0 10.0 0.5
+#sphere  0.0  5.0 0.0 2.0 0.0 30.0 0.0 0.05
+#sphere  5.0  5.0 0.0 2.0 10.0 10.0 10.0 0.5
+#sphere -5.0  0.0 0.0 2.0 10.0 10.0 10.0 0.5
+#sphere  0.0  0.0 0.0 2.0 10.0 10.0 10.0 0.05
+#sphere  5.0  0.0 0.0 2.0 10.0 10.0 10.0 0.5
+#sphere -5.0 -5.0 0.0 2.0 10.0 10.0 10.0 0.5
+#sphere  0.0 -5.0 0.0 2.0 10.0 10.0 10.0 0.5
+##sphere  -3.0 -3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  0.0 -3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  3.0 -3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  6.0 -3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  0.0 3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  6.0 3.0 10.0 2.0 10.0 10.0 10.0 0.05
+#sphere  -3.0 3.0 10.0 2.0 10.0 10.0 10.0 0.05
+
+sphere 0.0 0.0 0.0 6.0 10.0 10.0 10.0 0.04
+sphere 0.0 0.0 30.0 4.0 10.0 10.0 10.0 0.04
