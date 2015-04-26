@@ -6,7 +6,7 @@
 #define SI_WIDTH	640
 #define SI_HEIGHT 480
 
-typedef float real;
+typedef double real;
 typedef unsigned int uint;
 
 struct rgb;
@@ -40,13 +40,16 @@ struct real3 {
 };
 
 inline real3 operator + (const real3& a, const real3& b) {return real3(a.x + b.x, a.y + b.y, a.z + b.z);}
+inline real3 operator + (const real3& v, const real f) {return real3(v.x + f, v.y + f, v.z + f);}
 inline real3 operator - (const real3& a, const real3& b) {return real3(a.x - b.x, a.y - b.y, a.z - b.z);}
+inline real3 operator - (const real3& v, const real f) {return real3(v.x - f, v.y - f, v.z - f);}
 inline real3 operator - (const real3& v) {return real3(-v.x, -v.y, -v.z);}
 inline real3 operator * (const real3& a, const real3& b) {return real3(a.x * b.x, a.y * b.y, a.z * b.z);}
 inline real3 operator * (const real3& v, const real f) {return real3(v.x * f, v.y * f, v.z * f);}
 inline real3 operator * (const real f, const real3& v) {return real3(v.x * f, v.y * f, v.z * f);}
 inline real3 operator / (const real3& a, const real3& b) {return real3(a.x / b.x, a.y / b.y, a.z / b.z);}
 inline real3 operator / (const real3& v, const real f) {return real3(v.x / f, v.y / f, v.z / f);}
+inline real3 operator / (const real f, const real3& v) {return real3(f / v.x, f / v.y, f / v.z);}
 
 // Vergleichsoperatoren
 inline bool operator == (const real3& a, const real3& b) {if(a.x != b.x) return false; if(a.y != b.y) return false; return a.z == b.z;}
@@ -55,6 +58,13 @@ inline bool operator != (const real3& a, const real3& b) {if(a.x != b.x) return 
 inline real  dot(const real3& a, const real3& b) {return a.x*b.x + a.y*b.y + a.z*b.z;}
 inline real3 normalize(const real3& v) {return v / sqrt(v.x * v.x + v.y * v.y + v.z * v.z);}
 inline real	 clamp(const real& f) {return MAX(MIN(255.0, f), 0.0);}
+
+inline real3 real3Min(const real3& v1, const real3& v2) {return real3(MIN(v1.x, v2.x), MIN(v1.y, v2.y), MIN(v1.z, v2.z));}
+inline real3 real3Max(const real3& v1, const real3& v2) {return real3(MAX(v1.x, v2.x), MAX(v1.y, v2.y), MAX(v1.z, v2.z));}
+
+
+inline uint real3MaxDim(const real3& v) {if(v.x >= v.y && v.x >= v.z)return 0;else if(v.y >= v.x && v.y >= v.z)return 1;else return 2;}
+
 
 struct rgb {
 	uint r;
@@ -94,6 +104,7 @@ struct hitInfo {
 };
 
 uint intersect(const ray& r, const sphere& s, hitInfo& info);
+uint intersect(const ray& r, const real3& min, const real3& max);
 void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename);
 
 #endif

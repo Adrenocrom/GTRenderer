@@ -11,6 +11,7 @@ void zikade::init() {
 	dLights = NULL; 
 	spheres = NULL;
 	rays	  = NULL;
+	kd		  = NULL;
 
 	lambda = 1.0;
 	aspect = (real)SI_WIDTH / (real)SI_HEIGHT;
@@ -19,7 +20,7 @@ void zikade::init() {
 	rays 		= new ray[numRays];
 	sensor 	= new real3[numRays];
 
-	move(real3(0.0, 0.0, -40.0), 0.0, 0.0, 5.0);
+	move(real3(2.0, 0.0, -100.0), 0.0, 0.0, 20.0);
 }
 
 void zikade::exit() {
@@ -28,6 +29,7 @@ void zikade::exit() {
 	SAFE_DELETE_ARRAY(spheres);
 	SAFE_DELETE_ARRAY(rays);
 	SAFE_DELETE_ARRAY(sensor);
+	SAFE_DELETE(kd);
 }
 
 void zikade::loadScene(const char* filename) {
@@ -61,6 +63,10 @@ void zikade::loadScene(const char* filename) {
 	tempPLights.clear();
 	tempDLights.clear();
 	tempSpheres.clear();
+
+	cout<<"create kdTree"<<endl;
+	kd = new kdTree(numSpheres, spheres);
+	cout<<"done"<<endl;
 }
 
 void zikade::readLine(stringstream& line) {
@@ -78,7 +84,7 @@ void zikade::readLine(stringstream& line) {
 		sphere s;
 		line >> s.p.x; line >> s.p.y; line >> s.p.z;
 		line >> s.r;
-		line >> s.c.x; line >> s.c.y; line >> s.p.z;
+		line >> s.c.x; line >> s.c.y; line >> s.c.z;
 		line >> s.k;				
 		s.k = (-1.0 / (lambda * 2.0 * s.r)) * log(1 - s.k);
 		tempSpheres.push_back(s);
@@ -147,11 +153,11 @@ void zikade::move(real3 p, real pitch, real yaw, real f) {
 	uint index;
 	ray*  r;
 	for(uint y = 0; y < SI_HEIGHT; ++y) {
-		for(uint x = 0; x < SI_HEIGHT; ++x) {
+		for(uint x = 0; x < SI_WIDTH; ++x) {
 			index = y * SI_WIDTH + x;
 			r = &rays[index];
-			r->d.x  = aspect * ( (((real)x/(real)SI_WIDTH) * 2.0) - 1.0 );
-			r->d.y  = 1.0 - (((real)y/(real)SI_HEIGHT) * 2.0);
+			r->d.x  = (((real)x/(real)(SI_WIDTH))  * 2.0 - 1.0) * aspect;
+			r->d.y  = 1.0 - ((real)y/(real)(SI_HEIGHT)) * 2.0;
 			r->d.z  = f;
 			r->d.rotate(mRot);
 			r->d = normalize(r->d);
@@ -164,32 +170,33 @@ void zikade::convert(rgbWxH& image) {
 	uint index;
 	for(uint y = 0; y < SI_HEIGHT; ++y) {
 		for(uint x = 0; x < SI_WIDTH; ++x) {
-			index = y * SI_HEIGHT + x;
+			index = y * SI_WIDTH + x;
 			image[x][y] = sensor[index];
 		}
 	}
 }
 
 void zikade::render(rgbWxH& image) {
-	//#pragma omp parallel for schedule(dynamic, 1)
-	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(10.0, 10.0, 10.0));	
-	}
+	uint cnt = 0;
+//	#pragma omp parallel num_threads(1)
+//	{
+//		#pragma omp for
+		for(uint i = 0; i < numRays; ++i) {
+			sensor[i] = trace(rays[i], real3(10.0, 10.0, 10.0));
+			cnt++;
+			printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+		}
+//	}
+	printf("\n");
 	convert(image);
 }
 
 real3 zikade::trace(const ray& r, real3 _flux) {
 	list<hitInfo> hits;
-	hitInfo		  hit;
-	for(uint i = 0; i < numSpheres; ++i) {
-		if(intersect(r, spheres[i], hit)) {
-			hit.id = i;
-			hits.push_back(hit);
-		}
-	}
+	kd->hit(r, hits);
 	hits.sort(compareHits);
 
-	real3 flux;
+	real3 flux = real3(20.0, 20.0, 20.0);
 	auto end = hits.end();
 	for(auto it = hits.begin(); it != end; ++it) {
 		hitInfo& h = *it;

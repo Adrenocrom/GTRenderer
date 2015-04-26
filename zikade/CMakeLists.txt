@@ -13,7 +13,8 @@ if( OPENMP_FOUND)
 endif()
 
 include_directories( include . )
-add_library( zikade 	light.cpp
+add_library( zikade 	kd.cpp
+							light.cpp
 							lightTracer.cpp
 							si.cpp
 							zikade.cpp

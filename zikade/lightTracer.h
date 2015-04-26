@@ -20,6 +20,7 @@ class zikade {
 
 		real				 lambda;
 		real				 aspect;
+		kdTree*			 kd;
 
 		void readLine(stringstream& line);
 		void loadSiff(const char* filename);

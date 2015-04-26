@@ -124,6 +124,30 @@ zikade/fast:
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/build
 .PHONY : zikade/fast
 
+kd.o: kd.cpp.o
+.PHONY : kd.o
+
+# target to build an object file
+kd.cpp.o:
+	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/kd.cpp.o
+.PHONY : kd.cpp.o
+
+kd.i: kd.cpp.i
+.PHONY : kd.i
+
+# target to preprocess a source file
+kd.cpp.i:
+	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/kd.cpp.i
+.PHONY : kd.cpp.i
+
+kd.s: kd.cpp.s
+.PHONY : kd.s
+
+# target to generate assembly for a file
+kd.cpp.s:
+	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/kd.cpp.s
+.PHONY : kd.cpp.s
+
 light.o: light.cpp.o
 .PHONY : light.o
 
@@ -257,6 +281,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... zikade"
+	@echo "... kd.o"
+	@echo "... kd.i"
+	@echo "... kd.s"
 	@echo "... light.o"
 	@echo "... light.i"
 	@echo "... light.s"

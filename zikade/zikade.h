@@ -25,6 +25,7 @@ using namespace std;
 
 #include "si.h"
 #include "light.h"
+#include "kd.h"
 #include "lightTracer.h"
 
 #endif
