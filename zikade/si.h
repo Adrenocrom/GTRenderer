@@ -3,8 +3,8 @@
 
 #pragma once
 
-#define SI_WIDTH	640
-#define SI_HEIGHT 480
+#define SI_WIDTH	500
+#define SI_HEIGHT 500
 
 typedef double real;
 typedef unsigned int uint;
@@ -56,6 +56,7 @@ inline bool operator == (const real3& a, const real3& b) {if(a.x != b.x) return 
 inline bool operator != (const real3& a, const real3& b) {if(a.x != b.x) return true; if(a.y != b.y) return true; return a.z != b.z;}
 
 inline real  dot(const real3& a, const real3& b) {return a.x*b.x + a.y*b.y + a.z*b.z;}
+inline real3 cross(const real3& v1, const real3& v2) {return real3(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);}
 inline real3 normalize(const real3& v) {return v / sqrt(v.x * v.x + v.y * v.y + v.z * v.z);}
 inline real	 clamp(const real& f) {return MAX(MIN(255.0, f), 0.0);}
 
@@ -90,21 +91,38 @@ struct ray {
 	ray(const real3 _o, const real3 _d) : o(_o), d(_d) {}
 };
 
-struct sphere {
-	real3 p;		// position
-	real 	r;		// radius
-	real3	c;		// color
-	real 	k;		// kappa
-};
-
 struct hitInfo {
 	int  id;
 	real tn;
 	real tf;
 };
 
-uint intersect(const ray& r, const sphere& s, hitInfo& info);
-uint intersect(const ray& r, const real3& min, const real3& max);
+struct sphere {
+	real3 p;		// position
+	real 	r;		// radius
+	real	sr;	// radiussquare
+	real3	c;		// color
+	real 	k;		// kappa
+
+	uint intersect(const ray& r, hitInfo& info) {
+		real b, d;
+
+		real3 op = r.o - p;
+		b = dot(op, r.d);
+		d = b*b - dot(op, op) + sr;
+	
+		if (d < 0)
+			return 0;
+	
+		d = sqrt(d);
+		info.tn = -b-d;
+		info.tf = -b+d;
+		return 1;
+	}
+};
+
+//uint intersect(const ray& r, const sphere& s, hitInfo& info);
+//uint intersect(const ray& r, const real3& min, const real3& max);
 void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename);
 
 #endif

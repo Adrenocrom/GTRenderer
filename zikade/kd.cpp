@@ -20,28 +20,42 @@ bool kd_comp_z (const uint& a, const uint& b) {
 	return true;
 }
 
-kdTree::kdTree(const uint& _numSpheres, sphere* _spheres) {
-	numSpheres = _numSpheres;
-	spheres	  = _spheres;
-	kd_spheres = _spheres;
+kdTree::kdTree(const uint& _numSpheres, sphere* _spheres, uint maxDepth) {
+	numSpheres 	= _numSpheres;
+	spheres	  	= _spheres;
+	kd_spheres 	= _spheres;
+	maxd			= maxDepth;
+	mins 			= new real3[numSpheres];
+	maxs 			= new real3[numSpheres];
 	list<uint> indizes;
-	
+
 	for(uint i = 0; i < numSpheres; ++i) {
 		indizes.push_back(i);
-		tmMins.push_back(spheres[i].p - spheres[i].r);
-		tmMaxs.push_back(spheres[i].p + spheres[i].r);
+		mins[i] = spheres[i].p - spheres[i].r;
+		maxs[i] = spheres[i].p + spheres[i].r;
 	}
 
 	insert(indizes);
+	numNodes = tmNodes.size();
+	nodes = new kdNode[numNodes];
+	for(uint i = 0; i < numNodes; ++i)
+		nodes[i] = tmNodes[i];
+	tmNodes.clear();
+}
+
+kdTree::~kdTree() {
+	SAFE_DELETE_ARRAY(mins);
+	SAFE_DELETE_ARRAY(maxs);
+	SAFE_DELETE_ARRAY(nodes);
 }
 
 void kdTree::creatBoundingBox(list<uint>& indizes, real3& min, real3& max) {
-	min = tmMins[indizes.front()];
-	max = tmMaxs[indizes.front()];
+	min = mins[indizes.front()];
+	max = maxs[indizes.front()];
 
 	for(uint index : indizes) {
-		min = real3Min(min, tmMins[index]);
-		max = real3Max(max, tmMaxs[index]);
+		min = real3Min(min, mins[index]);
+		max = real3Max(max, maxs[index]);
 	}
 }
 
@@ -81,30 +95,38 @@ void kdTree::split(list<uint>& indizes, list<uint>& l, list<uint>& r) {
 	} 
 }
 
-uint kdTree::insert(list<uint>& indizes) {
+uint kdTree::insert(list<uint>& indizes, uint d) {
 	uint size = indizes.size();
 	kdNode node;
 	node.id = tmNodes.size();
 	tmNodes.push_back(node);
-	real3 max, min;
+	real3 min, max;
+	creatBoundingBox(indizes, min, max);
 
-	if(size == 1) {
+	if(d >= maxd || size == 1) {
 		tmNodes[node.id].l 	= -1;
 		tmNodes[node.id].r 	= -1;
-		tmNodes[node.id].p 	= indizes.front();
-		tmNodes[node.id].min = tmMins[indizes.front()];
-		tmNodes[node.id].max = tmMaxs[indizes.front()];
+		tmNodes[node.id].p 	= new uint[size];
+		tmNodes[node.id].s	= size;
+		tmNodes[node.id].min = min;
+		tmNodes[node.id].max = max;
+			
+		uint cnt	 = 0;
+		for(uint index : indizes) {
+			tmNodes[node.id].p[cnt] = index;
+			cnt++;
+		}
 	} 
 	else {
 		list<uint> l, r;
-		creatBoundingBox(indizes, min, max);
 		split(indizes, l, r);
 
-		tmNodes[node.id].p 	= -1;
+		tmNodes[node.id].p 	= NULL;
+		tmNodes[node.id].s	= 0;
 		tmNodes[node.id].min = min;
 		tmNodes[node.id].max = max;
-		uint left 	= insert(l);
-		uint right 	= insert(r);
+		uint left 	= insert(l, d+1);
+		uint right 	= insert(r, d+1);
 		tmNodes[node.id].l 	= left;
 		tmNodes[node.id].r 	= right;
 	}
@@ -113,23 +135,25 @@ uint kdTree::insert(list<uint>& indizes) {
 
 void kdTree::hit(const ray& r, list<hitInfo>& infos, int id) {
 	hitInfo			 	info;
-	list<kdNode>		stack;
+	list<uint>			stack;
 	uint					num;
 
-	stack.push_back(tmNodes.front());
+	stack.push_back(0);
 	while(!stack.empty()) {
-		kdNode& node = stack.front();
+		kdNode& node = nodes[stack.front()];
 
-		if(node.p != -1) {
-			num = intersect(r, spheres[node.p], info);
-			info.id = node.p;
+		if(node.p) {
+			for(uint i = 0; i < node.s; ++i) {
+				num = spheres[node.p[i]].intersect(r, info);
+				info.id = node.p[i];
 
-			if(num != 0 && info.tn > 0 && info.id != id)
-				infos.push_back(info);
+				if(num != 0 && info.tn > 0 && info.id != id)
+					infos.push_back(info);
+			}
 		} else {
-			if(intersect(r, node.min, node.max)) {
-				stack.push_back(tmNodes[node.l]);
-				stack.push_back(tmNodes[node.r]);
+			if(node.intersect(r)) {
+				stack.push_back(node.l);
+				stack.push_back(node.r);
 			}
 		}
 

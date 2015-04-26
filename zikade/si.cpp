@@ -1,5 +1,5 @@
 #include "zikade.h"
-
+/*
 uint intersect(const ray& r, const sphere& s, hitInfo& info) {
 	real b, d;
 
@@ -34,7 +34,7 @@ uint intersect(const ray& r, const real3& min, const real3& max) {
 	tmax = MIN(MAX(r1, r2), tmax);
 	return ((tmax >= tmin) && (tmax >= 0.0));
 }
-
+*/
 void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename) {
 	FILE* file = NULL;
 
