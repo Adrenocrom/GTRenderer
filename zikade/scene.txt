@@ -1,5 +1,6 @@
 #camera pos pitch yaw f
 #lookat pos lookat f
+#lookatcom pos f looks at the center of mass
 #lambda value is a global parameter
 #samples	value is a global parameter
 #kdtree maxdepth is a global parameter
@@ -8,18 +9,29 @@
 #pointlight pos color
 #directional dir color
 #loadSiff ../Data/FILENAME
+#setRadius value
+#setColor  color
+#setk	value
 
-camera 0.0 0.0 -100.0 0.0 0.0 20.0
-lookat -1000.0 0.0 0.0 4.0 -2.0 0.0 2.0
+#camera 0.0 0.0 -100.0 0.0 0.0 20.0
+#lookat 0.0 0.0 -100.0 0.0 0.0 0.0 15.0
+#lookat 1000.0 0.0 -1000.0 370.414 403.237 403.850 10
+#lookat -1600.0 -300 -500.0 451.414 403.237 403.850 30.0
+lookatcom -1600.0 -300.0 -1000.0 30.0
+
 kdtree 25
 lambda 1.0
 samples 10
 
+setk 0.3
+setRadius 2.0
+#setColor 60.0 60.0 60.0
+
 #pointlight 0.0  9.0 4.0 0.0 0.0 30.0
-loadSiff ../Data/pdb.2BT9.siff
+#loadSiff ../Data/pdb.2BT9.siff
 #loadSiff ../Data/cool_random.siff
 #loadSiff ../Data/pdb.1UUN.siff
-#loadSiff ../Data/huebsch.chkpt.raw.siff
+loadSiff ../Data/huebsch.chkpt.raw.siff
 
-#sphere -4.0 0.0 0.0 3.0 60.0 100.0 60.0 0.8
-#sphere  4.0 -2.0 0.0 3.0 60.0 60.0 200.0 0.8
+sphere 451.414 403.237 6.0 0.0 200.0 0.0 0.4
+#sphere -4.0 0.0 6.0 3.0 60.0 60.0 200.0 0.8

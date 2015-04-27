@@ -1,9 +1,8 @@
 #include "zikade.h"
 
+rgbWxH image;
+
 int main() {
-
-	rgbWxH image;
-
 	zikade zi;
 	zi.loadScene("scene.txt");
 	zi.render(image);

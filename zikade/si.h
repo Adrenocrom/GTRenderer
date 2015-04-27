@@ -3,11 +3,12 @@
 
 #pragma once
 
-#define SI_WIDTH	500
-#define SI_HEIGHT 500
+#define SI_WIDTH	1024
+#define SI_HEIGHT 768
 
 typedef double real;
 typedef unsigned int uint;
+typedef unsigned short ushort;
 
 struct rgb;
 
@@ -103,6 +104,7 @@ struct sphere {
 	real	sr;	// radiussquare
 	real3	c;		// color
 	real 	k;		// kappa
+	//real3 e;		// emission
 
 	uint intersect(const ray& r, hitInfo& info) {
 		real b, d;

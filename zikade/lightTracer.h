@@ -4,6 +4,7 @@
 #pragma once
 
 bool compareHits(const hitInfo& a, const hitInfo& b);
+bool compareHitsRad(const hitInfo& a, const hitInfo& b);
 /*
 extern real global_counter;
 
@@ -20,23 +21,30 @@ class zikade {
 		uint numRays;
 		uint numPLights;
 		uint numDLights;
+		uint numLights;
 		uint numSpheres;
 
+		lightSource**	 lights;
 		pointLight* 	 pLights;
 		directionLight* dLights;
 		sphere*			 spheres;
 		ray*				 rays;
 		real3*			 sensor;
-
+		
 		real				 lambda;
 		real				 aspect;
-		real3				 _pos;
-		bool				 _look;
-		real3				 _lookAt;
-		real				 _pitch;
-		real				 _yaw;
-		real				 _focal;
-		uint				 _maxd;
+		bool				 cam_com;
+		real3				 center_of_mass;
+		real3				 cam_pos;
+		bool				 cam_look;
+		real3				 cam_lookAt;
+		real				 cam_pitch;
+		real				 cam_yaw;
+		real				 cam_focal;
+		real				 std_r;
+		real3				 std_c;
+		real				 std_k;
+		uint				 kd_maxd;
 		uint				 numSamples;
 		kdTree*			 kd;
 
@@ -48,6 +56,7 @@ class zikade {
 		vector<sphere>				tempSpheres;
 
 		real3	trace(const ray& r, real3 _flux);
+		real3 radiance(const ray& r, uint d, ushort* xi = NULL);
 	public:	
 		//static real3	trace(const ray& r, kdTree* kd, sphere* spheres, real3 _flux);
 
