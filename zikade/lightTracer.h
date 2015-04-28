@@ -5,17 +5,7 @@
 
 bool compareHits(const hitInfo& a, const hitInfo& b);
 bool compareHitsRad(const hitInfo& a, const hitInfo& b);
-/*
-extern real global_counter;
 
-void renderPixel(uint tId, 
-					  uint size, 
-					  ray* rays, 
-					  real3* sensor, 
-					  real numRays,
-					  kdTree* kd,
-					  sphere* spheres);
-*/
 class zikade {
 	private:
 		uint numRays;
@@ -55,11 +45,11 @@ class zikade {
 		vector<directionLight>	tempDLights;
 		vector<sphere>				tempSpheres;
 
-		real3	trace(const ray& r, real3 _flux);
+		inline real	trans(const sphere* s, const real& tn, const real& tf) {return exp( -(s->k * (tf-tn)) );}
+		real3	trace(const ray& r, real3 Ib, uint d = 0; int id = -1);
 		real3 radiance(const ray& r, uint d, ushort* xi = NULL);
+	
 	public:	
-		//static real3	trace(const ray& r, kdTree* kd, sphere* spheres, real3 _flux);
-
 		zikade() {init();}
 		~zikade() {exit();}
 

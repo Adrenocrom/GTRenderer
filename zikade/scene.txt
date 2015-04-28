@@ -27,11 +27,12 @@ setk 0.3
 setRadius 2.0
 #setColor 60.0 60.0 60.0
 
-#pointlight 0.0  9.0 4.0 0.0 0.0 30.0
+pointlight 0.0 0.0 0.0 0.0 0.0 0.0
+
 #loadSiff ../Data/pdb.2BT9.siff
 #loadSiff ../Data/cool_random.siff
 #loadSiff ../Data/pdb.1UUN.siff
 loadSiff ../Data/huebsch.chkpt.raw.siff
 
-sphere 451.414 403.237 6.0 0.0 200.0 0.0 0.4
+#sphere 451.414 403.237 6.0 0.0 200.0 0.0 0.4
 #sphere -4.0 0.0 6.0 3.0 60.0 60.0 200.0 0.8

@@ -281,7 +281,7 @@ void zikade::render(rgbWxH& image) {
 	
 	#pragma omp parallel for schedule(static, 1)
 	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(20.0, 20.0, 20.0));
+		sensor[i] = trace(rays[i], real3(220.0, 220.0, 220.0));
 		cnt++;
 		printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
 	}
@@ -322,33 +322,43 @@ real3 zikade::radiance(const ray& r, uint depth, ushort* xi) {
 	return s.c + c * radiance(ray(pos , d), depth , xi);
 }
 
-real3 zikade::trace(const ray& r, real3 _flux) {
+real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	list<hitInfo> hits;
-	kd->hit(r, hits);
+	kd->hit(r, hits, id);
 	hits.sort(compareHits);
-//	real t, delta;
+	real t, dx;
+	hitInfo hit;
 
-	real3 flux = _flux;
+	real3 flux = Ib;
 	auto end = hits.end();
 	for(auto it = hits.begin(); it != end; ++it) {
 		hitInfo& h = *it;
 		sphere*  s = &spheres[h.id];
 		
-		real tau = exp(- (s->k * (h.tf - h.tn)) ); 
-		real opa = 1.0 - tau;
+		real 	T = trans(s, h.tn, h.tf);
+		real3 C = real3();
 
-		flux = opa * s->c + tau * flux;
-/*
-		delta = (h.tf - h.tn) / (real)numSamples;
-		for(t = h.tn; t < h.tf; t += delta) {
-			real3 o = r.o + t * r.d;
+		flux = flux * T + (1 - T * s.c);
 
-			for(uint l = 0; l < numLights; ++l) {
-				hitInfo hit;
-				ray s_r(o, -lights[l]->direction(o));
-				s->intersect(s_r, hit);
+		if(d > 0) {
+
+			dx = (h.tf - h.tn) / (real)numSamples;
+			for(t = h.tn; t < h.tf; t += dx) {
+				real3 o = r.o + t * r.d;
+
+				for(uint l = 0; l < numLights; ++l) {
+					ray s_r(o, -lights[l]->direction(o));
+					s->intersect(s_r, hit);
+		
+					T = trans(s, 0, hit.tf);
+					C += T * lights[l]->power + (1 - T) * s->c;
+				}
+				C /= (real)numLights;
+	
+				T = trans(s, h.tn, t);
+				flux += (1-T) * C;
 			}
-		} */
+		}
 	}
 
 	return flux;
