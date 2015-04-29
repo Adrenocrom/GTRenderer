@@ -284,7 +284,7 @@ void zikade::render(rgbWxH& image) {
 	
 	#pragma omp parallel for schedule(static, 1)
 	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(200.0, 200.0, 200.0));
+		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
 		cnt++;
 		
 		#ifdef winbuild
@@ -336,8 +336,8 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	kd->hit(r, hits, id);
 	hits.sort(compareHits);
 	hitInfo hit;
-	uint cnt = 0; 
-	uint apx = hits.size() - 5;
+	int cnt = 0; 
+	int apx = hits.size() - 1;
 	real t, dx, T;
 	real3 Ie, C;
 
@@ -351,29 +351,33 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 
 		Ib = Ib * T;
 		Ie	= real3();
-		if(d > 0 && numLights && ++cnt > apx) {
-			dx = (h.tf - h.tn) / (real)numSamples;
-			for(t = h.tn; t < h.tf; t += dx) {
-				real3 o = r.o + t * r.d;
+		if(d > 0) {
+			//printf("%d, %d\n", numLights, cnt);
+			if(numLights && cnt >= apx) {
+				dx = (h.tf - h.tn) / (real)numSamples;
+				for(t = h.tn; t < h.tf; t += dx) {
+					real3 o = r.o + t * r.d;
 
-				C = real3(0.0, 0.0, 0.0);
-				for(uint l = 0; l < numLights; ++l) {
-					hit.tf = 0.0;
-					ray s_r(o, -lights[l]->direction(o));
-					s->intersect(s_r, hit);
+					C = real3(0.0, 0.0, 0.0);
+					for(uint l = 0; l < numLights; ++l) {
+						hit.tf = 0.0;
+						ray s_r(o, -lights[l]->direction(o));
+						s->intersect(s_r, hit);
 		
-					T = trans(s, 0, hit.tf);
-					C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
-				}
-				C /= (real)numLights;
+						T = trans(s, 0, hit.tf);
+						C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
+					}
+					C /= (real)numLights;
 	
-				T = trans(s, t, h.tf);
-				Ie += T * C * dx;
+					T = trans(s, t, h.tf);
+					Ie += T * C * dx;
+				}
 			}
+			else {
+				Ie  = (1-T) * s->c;
+			}
+			++cnt;
 		} 
-		else {
-			//Ie = (1-T) * s->c;
-		}
 
 		Ib = Ib + Ie;
 	}

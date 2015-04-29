@@ -8,9 +8,9 @@ samples 30
 #pointlight 0.0 -30.0 0.0 0.0 0.0 50.0
 
 directional  0.0 -1.0 0.0 0.0 200.0 0.0
-directional  0.0  1.0 0.0 0.0 0.0 0.0
-directional  1.0  0.0 0.0 0.0 0.0 0.0
-directional -1.0  0.0 0.0 0.0 0.0 0.0
+#directional  0.0  1.0 0.0 0.0 0.0 0.0
+#directional  1.0  0.0 0.0 0.0 0.0 0.0
+#directional -1.0  0.0 0.0 0.0 0.0 0.0
 #directional  1.0  1.0 0.0 0.0 0.0 0.0
 
 sphere 0.0 -3.0 0.0 1.4 100.0 100.0 100.0 0.9
