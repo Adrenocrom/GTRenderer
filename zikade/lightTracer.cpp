@@ -282,11 +282,11 @@ void zikade::convert(rgbWxH& image) {
 void zikade::render(rgbWxH& image) {
 	uint cnt = 0;
 	
-	#ifdef winbuild
-		#pragma omp parallel for schedule(dynamic, 1)
-	#else
+	//#ifdef winbuild
+	//	#pragma omp parallel for schedule(dynamic, 1)
+//	#else
 		#pragma omp parallel for schedule(static, 1)
-	#endif
+//	#endif
 	for(uint i = 0; i < numRays; ++i) {
 		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
 		cnt++;
