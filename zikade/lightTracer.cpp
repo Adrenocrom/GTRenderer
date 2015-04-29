@@ -1,5 +1,7 @@
 #include "zikade.h"
 
+#define winbuild
+
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)
 			return false;
@@ -280,11 +282,16 @@ void zikade::convert(rgbWxH& image) {
 void zikade::render(rgbWxH& image) {
 	uint cnt = 0;
 	
-	#pragma omp parallel for schedule(static, 1)
+	#pragma omp parallel for schedule(dynamic, 1)
 	for(uint i = 0; i < numRays; ++i) {
 		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
 		cnt++;
-		printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+		
+		#ifdef winbuild
+			printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
+		#else
+			printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+		#endif
 	}
 	
 	printf("\n");
