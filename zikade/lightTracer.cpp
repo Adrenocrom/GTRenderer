@@ -292,7 +292,7 @@ void zikade::render(rgbWxH& image) {
 }
 
 real3 zikade::radiance(const ray& r, uint depth, ushort* xi) {
-	list<hitInfo> hits;
+/*	list<hitInfo> hits;
 	kd->hit(r, hits);
 	hits.sort(compareHitsRad);
 	if(hits.empty()) return real3();
@@ -320,7 +320,8 @@ real3 zikade::radiance(const ray& r, uint depth, ushort* xi) {
 	real3 v = cross(w, u);
 	real3 d = normalize(u * cos(r1) * r2s + v * sin(r1) * r2s + w * sqrt(1.0 - r2));
 
-	return s.c + c * radiance(ray(pos , d), depth , xi);
+	return s.c + c * radiance(ray(pos , d), depth , xi);*/
+	return real3();
 }
 
 real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {

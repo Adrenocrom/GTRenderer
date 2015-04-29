@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 2.8 )
 project( zikade )
 
 set( CMAKE_BUILD_TYPE "RELEASE" )
-set( CMAKE_CXX_FLAGS "-Wall -p -O2 -pthread -std=c++11 -Wl,--no-as-needed" )
+set( CMAKE_CXX_FLAGS "-Wall -O2 -std=c++11" )
 add_definitions( ${CMAKE_CXX_FLAGS} )
 
 find_package( OpenMP )
