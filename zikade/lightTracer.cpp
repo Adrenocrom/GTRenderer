@@ -1,6 +1,6 @@
 #include "zikade.h"
 
-#define winbuild
+//#define winbuild
 
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)
@@ -282,13 +282,9 @@ void zikade::convert(rgbWxH& image) {
 void zikade::render(rgbWxH& image) {
 	uint cnt = 0;
 	
-	//#ifdef winbuild
-	//	#pragma omp parallel for schedule(dynamic, 1)
-//	#else
-		#pragma omp parallel for schedule(static, 1)
-//	#endif
+	#pragma omp parallel for schedule(static, 1)
 	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
+		sensor[i] = trace(rays[i], real3(200.0, 200.0, 200.0));
 		cnt++;
 		
 		#ifdef winbuild
@@ -340,6 +336,8 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	kd->hit(r, hits, id);
 	hits.sort(compareHits);
 	hitInfo hit;
+	uint cnt = 0; 
+	uint apx = hits.size() - 5;
 	real t, dx, T;
 	real3 Ie, C;
 
@@ -353,7 +351,7 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 
 		Ib = Ib * T;
 		Ie	= real3();
-		if(d > 0 && numLights) {
+		if(d > 0 && numLights && ++cnt > apx) {
 			dx = (h.tf - h.tn) / (real)numSamples;
 			for(t = h.tn; t < h.tf; t += dx) {
 				real3 o = r.o + t * r.d;

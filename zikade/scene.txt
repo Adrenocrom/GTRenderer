@@ -17,11 +17,11 @@
 #lookat 0.0 0.0 -100.0 0.0 0.0 0.0 14.0
 #lookat 1000.0 0.0 -1000.0 370.414 403.237 403.850 10
 #lookat -1600.0 -300 -500.0 451.414 403.237 403.850 30.0
-lookatcom -300.0 -300.0 -1000.0 35.0
+lookatcom -1600.0 -300.0 -1000.0 30.0
 
 kdtree 25
 lambda 1.0
-samples 15
+samples 30
 
 setk 0.99
 setRadius 2.0
@@ -32,14 +32,14 @@ setRadius 2.0
 
 #directional 0.0 -1.0 0.0 0.0 50.0 0.0
 directional  0.0 -1.0 0.0 0.0 200.0 0.0
-directional  0.0  1.0 0.0 0.0 0.0 0.0
-directional  1.0  0.0 0.0 0.0 0.0 0.0
-directional -1.0  0.0 0.0 0.0 0.0 0.0
+#directional  0.0  1.0 0.0 0.0 0.0 0.0
+#directional  1.0  0.0 0.0 0.0 0.0 0.0
+#directional -1.0  0.0 0.0 0.0 0.0 0.0
 
-loadSiff ../Data/pdb.2BT9.siff
+#loadSiff ../Data/pdb.2BT9.siff
 #loadSiff ../Data/cool_random.siff
 #loadSiff ../Data/pdb.1UUN.siff
-#loadSiff ../Data/huebsch.chkpt.raw.siff
+loadSiff ../Data/huebsch.chkpt.raw.siff
 
 #sphere 0.0 -3.0 0.0 1.0 100.0 100.0 100.0 0.8
 #sphere 0.0  0.0 0.0 1.0 100.0 100.0 100.0 0.8
