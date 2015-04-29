@@ -71,7 +71,7 @@ void zikade::loadScene(const char* filename) {
 
 	numPLights = tempPLights.size();
 	numDLights = tempDLights.size();
-	numLights  = numPLights * numDLights;
+	numLights  = numPLights + numDLights;
 	numSpheres = tempSpheres.size();
 
 	lights  = new lightSource*[numLights];
@@ -143,6 +143,7 @@ void zikade::readLine(stringstream& line) {
 		directionLight l;
 		line >> l.d.x; line >> l.d.y; line >> l.d.z;
 		line >> l.power.x; line >> l.power.y; line >> l.power.z;
+		l.d = normalize(l.d);
 		tempDLights.push_back(l);
 	} else if(entry == "loadSiff") {
 		string s;
@@ -199,7 +200,7 @@ void zikade::loadSiff(const char* filename) {
 			if(std_r > 0.0) s.r = std_r;
 			s.sr = s.r*s.r;
 			line >> s.c.x; line >> s.c.y; line >> s.c.z;
-			if(std_c.x >= 0.0) s.c = std_c; 
+			if(std_c.x >= 0.0) s.c = std_c;
 			s.k = 0.3;
 			if(std_k >= 0.0) s.k = std_k;
 			s.k = (-1.0 / (lambda * 2.0 * s.r)) * log(1 - s.k);
@@ -281,7 +282,7 @@ void zikade::render(rgbWxH& image) {
 	
 	#pragma omp parallel for schedule(static, 1)
 	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(220.0, 220.0, 220.0));
+		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
 		cnt++;
 		printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
 	}
@@ -326,40 +327,46 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	list<hitInfo> hits;
 	kd->hit(r, hits, id);
 	hits.sort(compareHits);
-	real t, dx;
 	hitInfo hit;
+	real t, dx, T;
+	real3 Ie, C;
 
-	real3 flux = Ib;
 	auto end = hits.end();
 	for(auto it = hits.begin(); it != end; ++it) {
 		hitInfo& h = *it;
 		sphere*  s = &spheres[h.id];
 		
-		real 	T = trans(s, h.tn, h.tf);
-		real3 C = real3();
+		T = trans(s, h.tn, h.tf);
+		C = real3();
 
-		flux = flux * T + (1 - T * s.c);
-
-		if(d > 0) {
-
+		Ib = Ib * T;
+		Ie	= real3();
+		if(d > 0 && numLights) {
 			dx = (h.tf - h.tn) / (real)numSamples;
 			for(t = h.tn; t < h.tf; t += dx) {
 				real3 o = r.o + t * r.d;
 
+				C = real3(0.0, 0.0, 0.0);
 				for(uint l = 0; l < numLights; ++l) {
+					hit.tf = 0.0;
 					ray s_r(o, -lights[l]->direction(o));
 					s->intersect(s_r, hit);
 		
 					T = trans(s, 0, hit.tf);
-					C += T * lights[l]->power + (1 - T) * s->c;
+					C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
 				}
 				C /= (real)numLights;
 	
-				T = trans(s, h.tn, t);
-				flux += (1-T) * C;
+				T = trans(s, t, h.tf);
+				Ie += T * C * dx;
 			}
+		} 
+		else {
+			//Ie = (1-T) * s->c;
 		}
+
+		Ib = Ib + Ie;
 	}
 
-	return flux;
+	return Ib;
 }

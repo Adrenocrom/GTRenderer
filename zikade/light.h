@@ -11,7 +11,7 @@ struct lightSource {
 struct pointLight : lightSource {
 	real3 p;
 	real3 direction(const real3& _p) {
-		return _p - p;
+		return normalize(_p - p);
 	}
 };
 

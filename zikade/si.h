@@ -3,8 +3,8 @@
 
 #pragma once
 
-#define SI_WIDTH	800
-#define SI_HEIGHT 600
+#define SI_WIDTH	640
+#define SI_HEIGHT 480
 
 typedef double real;
 typedef unsigned int uint;
@@ -31,6 +31,12 @@ struct real3 {
 	real3& operator /= (const real3& v) {x /= v.x; y /= v.y; z /= v.z; return *this;}
 	real3& operator /= (const real f) {x /= f; y /= f; z /= f; return *this;}
 
+	real3& clamp() {
+		x = MAX(MIN(255.0, x), 0.0); 
+		y = MAX(MIN(255.0, y), 0.0); 
+		z = MAX(MIN(255.0, z), 0.0); 
+		return *this;
+	}
 	real3& rotate(real3x3 m) {
 		const real3 t = *this;
 		x = t.x*m[0] + t.y*m[1] + t.z*m[2];

@@ -46,7 +46,7 @@ class zikade {
 		vector<sphere>				tempSpheres;
 
 		inline real	trans(const sphere* s, const real& tn, const real& tf) {return exp( -(s->k * (tf-tn)) );}
-		real3	trace(const ray& r, real3 Ib, uint d = 0; int id = -1);
+		real3	trace(const ray& r, real3 Ib, uint d = 1, int id = -1);
 		real3 radiance(const ray& r, uint d, ushort* xi = NULL);
 	
 	public:	
