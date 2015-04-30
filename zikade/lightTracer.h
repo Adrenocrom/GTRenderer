@@ -34,6 +34,7 @@ class zikade {
 		real				 std_r;
 		real3				 std_c;
 		real				 std_k;
+		uint				 std_apr;
 		uint				 kd_maxd;
 		uint				 numSamples;
 		kdTree*			 kd;

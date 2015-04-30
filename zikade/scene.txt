@@ -22,15 +22,16 @@ lookatcom -1600.0 -300.0 -1000.0 40.0
 kdtree 25
 lambda 1.0
 samples 30
+setApproxLevel 2
 
 setk 0.6
 #setRadius 0.9
 #setColor 60.0 60.0 60.0
 
-pointlight 451.414 403.237 403.850 200.0 00.0 0.0
+#pointlight 451.414 403.237 403.850 200.0 00.0 0.0
 #pointlight 0.0 -30.0 0.0 0.0 0.0 50.0
 
-#directional 0.0 -1.0 0.0 0.0 50.0 0.0
+directional 0.0 -1.0 0.0 0.0 50.0 0.0
 #directional  1.0 -1.0 0.0 0.0 130.0 0.0
 #directional  0.0  1.0 0.0 0.0 0.0 0.0
 #directional  1.0  0.0 0.0 0.0 0.0 0.0

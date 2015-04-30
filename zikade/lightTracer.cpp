@@ -1,6 +1,6 @@
 #include "zikade.h"
 
-#define winbuild
+//#define winbuild
 
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)
@@ -45,6 +45,7 @@ void zikade::init() {
 	std_r = -1.0;
 	std_k = -1.0;
 	std_c = real3(-1.0, -1.0, -1.0);
+	std_apr = 1;
 }
 
 void zikade::exit() {
@@ -176,6 +177,8 @@ void zikade::readLine(stringstream& line) {
 		line >> std_c.x;	line >> std_c.y; 	line >> std_c.z;
 	} else if(entry == "setk") {
 		line >> std_k;
+	} else if(entry == "setApproxLevel") {
+		line >> std_apr;
 	}
 }
 
@@ -337,7 +340,7 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	hits.sort(compareHits);
 	hitInfo hit;
 	int cnt = 0; 
-	int apx = hits.size() - 2;
+	int apx = hits.size() - std_apr;
 	real t, dx, T;
 	real3 Ie, C, o;
 
