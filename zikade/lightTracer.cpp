@@ -337,7 +337,7 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	hits.sort(compareHits);
 	hitInfo hit;
 	int cnt = 0; 
-	int apx = hits.size() - 1;
+	int apx = hits.size() - 2;
 	real t, dx, T;
 	real3 Ie, C;
 
