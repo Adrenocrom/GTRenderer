@@ -1,6 +1,6 @@
 #include "zikade.h"
 
-//#define winbuild
+#define winbuild
 
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)

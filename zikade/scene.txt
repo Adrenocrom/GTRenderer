@@ -1,28 +1,26 @@
-#camera pos pitch yaw f
-#lookat pos lookat f
-#lookatcom pos f looks at the center of mass
-#lambda value is a global parameter
-#samples	value is a global parameter
-#kdtree maxdepth is a global parameter
-#sphere pos r material
-#material color lambda
-#pointlight pos color
-#directional dir color
-#loadSiff ../Data/FILENAME
-#setRadius value
-#setColor  color
-#setk	value
+#camera         real3 real real real  // position pitch yaw focallength
+#lookat         real3 real3 real      // position lookat focallength
+#lookatcom      real3 real            // position focallength - looks at the center of mass
+#lambda         uint                  // scale of the opacities
+#samples        uint                  // num of samples - bigger better slower
+#kdtree         uint                  // maxdepth 
+#sphere         real3 real real3 real // position radius color opacity
+#pointlight     real3 real3           // position color
+#directional    real3 real3           // direction color
+#loadSiff 	FILENAME              // load data frome scene
+#setRadius 	real                  // global radius has no effect for spheres insert without sifffile
+#setColor  	real3                 // global color has no effect for spheres insert without sifffile
+#setk		real                  // global opacity has no effect for spheres insert without sifffile
+#setApproxLevel uint                  // 0 is an approximation without light calc - bigger better slower (tipp 2 - 3) for low opacities should be higher
 
-#camera 0.0 0.0 -100.0 0.0 0.0 20.0
-#lookat 0.0 0.0 -100.0 0.0 0.0 0.0 14.0
-#lookat 1000.0 0.0 -1000.0 370.414 403.237 403.850 10
-#lookat -1600.0 -300 -500.0 451.414 403.237 403.850 30.0
-lookatcom -1600.0 -300.0 -1000.0 40.0
+###############################################################
 
 kdtree 25
 lambda 1.0
 samples 30
 setApproxLevel 2
+
+lookatcom -1600.0 -300.0 -1000.0 40.0
 
 setk 0.6
 #setRadius 0.9
