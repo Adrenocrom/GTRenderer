@@ -339,7 +339,7 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	int cnt = 0; 
 	int apx = hits.size() - 2;
 	real t, dx, T;
-	real3 Ie, C;
+	real3 Ie, C, o;
 
 	auto end = hits.end();
 	for(auto it = hits.begin(); it != end; ++it) {
@@ -356,7 +356,7 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 			if(numLights && cnt >= apx) {
 				dx = (h.tf - h.tn) / (real)numSamples;
 				for(t = h.tn; t < h.tf; t += dx) {
-					real3 o = r.o + t * r.d;
+					o = r.o + t * r.d;
 
 					C = real3(0.0, 0.0, 0.0);
 					for(uint l = 0; l < numLights; ++l) {

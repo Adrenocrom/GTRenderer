@@ -21,25 +21,25 @@ lookatcom -1600.0 -300.0 -1000.0 40.0
 
 kdtree 25
 lambda 1.0
-samples 50
+samples 30
 
-setk 0.7
-setRadius 1.0
+setk 0.6
+#setRadius 0.9
 #setColor 60.0 60.0 60.0
 
-#pointlight 0.0 30.0 0.0 10.0 10.0 50.0
+pointlight 451.414 403.237 403.850 200.0 00.0 0.0
 #pointlight 0.0 -30.0 0.0 0.0 0.0 50.0
 
 #directional 0.0 -1.0 0.0 0.0 50.0 0.0
-directional  1.0 -1.0 0.0 0.0 130.0 0.0
+#directional  1.0 -1.0 0.0 0.0 130.0 0.0
 #directional  0.0  1.0 0.0 0.0 0.0 0.0
 #directional  1.0  0.0 0.0 0.0 0.0 0.0
 #directional -1.0  0.0 0.0 0.0 0.0 150.0
 
-loadSiff ../Data/pdb.2BT9.siff
+#loadSiff ../Data/pdb.2BT9.siff
 #loadSiff ../Data/cool_random.siff
 #loadSiff ../Data/pdb.1UUN.siff
-#loadSiff ../Data/huebsch.chkpt.raw.siff
+loadSiff ../Data/huebsch.chkpt.raw.siff
 
 #sphere 0.0 -3.0 0.0 1.0 100.0 100.0 100.0 0.8
 #sphere 0.0  0.0 0.0 1.0 100.0 100.0 100.0 0.8
