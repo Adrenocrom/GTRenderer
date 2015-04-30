@@ -36,10 +36,10 @@ pointlight 451.414 403.237 403.850 200.0 00.0 0.0
 #directional  1.0  0.0 0.0 0.0 0.0 0.0
 #directional -1.0  0.0 0.0 0.0 0.0 150.0
 
-#loadSiff ../Data/pdb.2BT9.siff
+loadSiff ../Data/pdb.2BT9.siff
 #loadSiff ../Data/cool_random.siff
 #loadSiff ../Data/pdb.1UUN.siff
-loadSiff ../Data/huebsch.chkpt.raw.siff
+#loadSiff ../Data/huebsch.chkpt.raw.siff
 
 #sphere 0.0 -3.0 0.0 1.0 100.0 100.0 100.0 0.8
 #sphere 0.0  0.0 0.0 1.0 100.0 100.0 100.0 0.8
