@@ -61,6 +61,9 @@ class zikade {
 		void exit();
 
 		void loadScene(const char* filename);
+
+		inline void setApproximationLevel(const uint& a) {std_apr = a;}
+		inline void setNumSamples(const uint& s) {numSamples = s;}
 };
 
 #endif
