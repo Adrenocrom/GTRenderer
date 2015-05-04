@@ -33,6 +33,7 @@ class zikade {
 		real				 cam_focal;
 		real				 std_r;
 		real3				 std_c;
+		real3				 std_bg;
 		real				 std_k;
 		uint				 std_apr;
 		uint				 kd_maxd;

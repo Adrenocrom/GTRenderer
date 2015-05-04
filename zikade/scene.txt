@@ -10,6 +10,7 @@
 #loadSiff 	FILENAME              	  // load data frome scene
 #setRadius 	real                  	  // global radius has no effect for spheres insert without sifffile
 #setColor  	real3                 	  // global color has no effect for spheres insert without sifffile
+#setbg		real3							  // background light is an directionlight, oposite of cam dir
 #setk			real                  	  // global opacity has no effect for spheres insert without sifffile
 #setApproxLevel uint                  // 0 is an approximation without light calc - bigger better slower (tipp 2 - 3) for low opacities should be higher
 
@@ -25,6 +26,7 @@ lookatcom 0.0 0.0 -1000.0 55.0
 setk 0.9
 setRadius 0.6
 #setColor 60.0 60.0 60.0
+setbg 20.0 20.0 20.0
 
 #pointlight 451.414 403.237 403.850 200.0 00.0 0.0
 #pointlight 0.0 -30.0 0.0 0.0 0.0 50.0

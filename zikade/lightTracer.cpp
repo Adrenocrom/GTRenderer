@@ -46,6 +46,7 @@ void zikade::init() {
 	std_k = -1.0;
 	std_c = real3(-1.0, -1.0, -1.0);
 	std_apr = 1;
+	std_bg = real3(0.0, 0.0, 0.0);
 }
 
 void zikade::exit() {
@@ -105,12 +106,12 @@ void zikade::loadScene(const char* filename) {
 	}
 	else 	move(cam_pos, cam_pitch, cam_yaw, cam_focal);
 
-	printf("cam_pos: %.3f %.3f %.3f\ncam_lat: %.3f %.3f %.3f\n", 	cam_pos.x,
-																						cam_pos.y,
-																						cam_pos.z,
-																						cam_lookAt.x,
-																						cam_lookAt.y,
-																						cam_lookAt.z);
+	fprintf(stderr, "cam_pos: %.3f %.3f %.3f\ncam_lat: %.3f %.3f %.3f\n", 	cam_pos.x,
+																									cam_pos.y,
+																									cam_pos.z,
+																									cam_lookAt.x,
+																									cam_lookAt.y,
+																									cam_lookAt.z);
 	cout<<"precalcs done"<<endl;
 }
 
@@ -179,6 +180,8 @@ void zikade::readLine(stringstream& line) {
 		line >> std_k;
 	} else if(entry == "setApproxLevel") {
 		line >> std_apr;
+	} else if(entry == "setbg") {
+		line >> std_bg.x; line >> std_bg.y; line >> std_bg.z;
 	}
 }
 
@@ -216,7 +219,7 @@ void zikade::loadSiff(const char* filename) {
 		}
 	}
 
-	cout<<"Loaded "<<num<<" spheres from "<<filename<<endl;
+	cerr<<"Loaded "<<num<<" spheres from "<<filename<<endl;
 	file.close();
 }
 
@@ -287,13 +290,13 @@ void zikade::render(rgbWxH& image) {
 	
 	#pragma omp parallel for schedule(static, 1)
 	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], real3(0.0, 0.0, 0.0));
+		sensor[i] = trace(rays[i], std_bg);
 		cnt++;
 		
 		#ifdef winbuild
-			fprintf(stderr, "\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
+			printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
 		#else
-			fprintf(stderr, "\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+			printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
 		#endif
 	}
 	
@@ -355,7 +358,6 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 		Ib = Ib * T;
 		Ie	= real3();
 		if(d > 0) {
-			//printf("%d, %d\n", numLights, cnt);
 			if(numLights && cnt >= apx) {
 				dx = (h.tf - h.tn) / (real)numSamples;
 				for(t = h.tn; t < h.tf; t += dx) {
