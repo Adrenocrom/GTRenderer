@@ -1,6 +1,6 @@
 #include "zikade.h"
 
-// #define winbuild
+#define winbuild
 
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)
@@ -106,12 +106,7 @@ void zikade::loadScene(const char* filename) {
 	}
 	else 	move(cam_pos, cam_pitch, cam_yaw, cam_focal);
 
-	fprintf(stderr, "cam_pos: %.3f %.3f %.3f\ncam_lat: %.3f %.3f %.3f\n", 	cam_pos.x,
-																									cam_pos.y,
-																									cam_pos.z,
-																									cam_lookAt.x,
-																									cam_lookAt.y,
-																									cam_lookAt.z);
+	cerr<<"cam_pos: "<<cam_pos.x<<" "<<cam_pos.y<<" "<<cam_pos.z<<" \ncam_lookat: "<<cam_lookAt.x<<" "<<cam_lookAt.y<<" "<<cam_lookAt.z<<endl;
 	cout<<"precalcs done"<<endl;
 }
 

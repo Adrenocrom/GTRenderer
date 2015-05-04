@@ -41,19 +41,41 @@ void renderSceneEx(string in, string out) {
 	cend	 = clock();
 	fprintf(stderr, "loaded in %.2f\n", ((float)(cend - cbegin)) / CLOCKS_PER_SEC);
 
-	for(uint s = 1; s < 30; s += 1) {
-		for(uint a = 0; a < 5; a += 1) {
-			fprintf(stderr, "samples = %d, alevel = %d\n", s, a);
+	uint samples;
+	for(uint s = 0; s <= 50; s += 5) {
+		if(s == 0) samples = 1;
+		else	   samples = s;	
+		
+		if(s == 50) {
+			for(uint a = 0; a <= 4; a += 1) {
+				cerr<<"samples = "<<samples<<", alevel = "<<a<<endl;
+				printf("samples = %d, alevel = %d\n", samples, a);
+				time(&tbegin);
+				zi.setNumSamples(s);
+				zi.setApproximationLevel(a);
+				zi.render(image);
+				time(&tend);
+				cerr<<"time in seconds: "<<difftime(tend, tbegin)<<endl;
+				printf("time in seconds: %.2f\n", difftime(tend, tbegin));
+				string name(out+to_string(SI_WIDTH)+"x"+to_string(SI_HEIGHT)+"_samples_"+to_string(samples)+"_approx_"+to_string(a)+".pbm");
+				//out += <<SI_WIDTH<<"x"<<SI_HEIGHT<<"_samples_"<<s<<"_approx_"<<a<<".pbm";
+				saveRgbWxHToPbm(image, name.c_str());
+			}
+		}
+		else {
+			uint a = 3;
+			cerr<<"samples = "<<samples<<", alevel = "<<a<<endl;
+			printf("samples = %d, alevel = %d\n", samples, a);
 			time(&tbegin);
 			zi.setNumSamples(s);
 			zi.setApproximationLevel(a);
 			zi.render(image);
 			time(&tend);
-			fprintf(stderr, "time in seconds: %.2f\n", difftime(tend, tbegin));
-			string name(out+to_string(SI_WIDTH)+"x"+to_string(SI_HEIGHT)+"_samples_"+to_string(s)+"_approx_"+to_string(a)+".pbm");
+			cerr<<"time in seconds: "<<difftime(tend, tbegin)<<endl;
+			printf("time in seconds: %.2f\n", difftime(tend, tbegin));
+			string name(out+to_string(SI_WIDTH)+"x"+to_string(SI_HEIGHT)+"_samples_"+to_string(samples)+"_approx_"+to_string(a)+".pbm");
 			//out += <<SI_WIDTH<<"x"<<SI_HEIGHT<<"_samples_"<<s<<"_approx_"<<a<<".pbm";
 			saveRgbWxHToPbm(image, name.c_str());
 		}
 	}
-
 }
