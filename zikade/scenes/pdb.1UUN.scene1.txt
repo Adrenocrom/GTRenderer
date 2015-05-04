@@ -1,0 +1,47 @@
+#camera         real3 real real real  // position pitch yaw focallength
+#lookat         real3 real3 real      // position lookat focallength
+#lookatcom      real3 real            // position focallength - looks at the center of mass
+#lambda         uint                  // scale of the opacities
+#samples        uint                  // num of samples - bigger better slower
+#kdtree         uint                  // maxdepth 
+#sphere         real3 real real3 real // position radius color opacity
+#pointlight     real3 real3           // position color
+#directional    real3 real3           // direction color
+#loadSiff 	FILENAME              	  // load data frome scene
+#setRadius 	real                  	  // global radius has no effect for spheres insert without sifffile
+#setColor  	real3                 	  // global color has no effect for spheres insert without sifffile
+#setbg		real3							  // background light is an directionlight, oposite of cam dir
+#setk			real                  	  // global opacity has no effect for spheres insert without sifffile
+#setApproxLevel uint                  // 0 is an approximation without light calc - bigger better slower (tipp 2 - 3) for low opacities should be higher
+
+###############################################################
+
+kdtree 25
+lambda 1.0
+samples 30
+setApproxLevel 2
+
+lookatcom 0.0 400.0 -1500.0 45.0
+
+setk 0.9
+setRadius 0.6
+#setColor 60.0 60.0 60.0
+setbg 20.0 20.0 20.0
+
+#pointlight 451.414 403.237 403.850 200.0 00.0 0.0
+#pointlight 0.0 -30.0 0.0 0.0 0.0 50.0
+
+directional 0.0 -1.0 0.0 255.0 255.0 255.0
+#directional  1.0 -1.0 0.0 0.0 130.0 0.0
+#directional  0.0  1.0 0.0 0.0 0.0 0.0
+#directional  1.0  0.0 0.0 0.0 0.0 0.0
+#directional -1.0  0.0 0.0 0.0 0.0 150.0
+
+#loadSiff data/pdb.2BT9.siff
+#loadSiff data/cool_random.siff
+loadSiff data/pdb.1UUN.siff
+#loadSiff data/huebsch.chkpt.raw.siff
+
+#sphere 0.0 -3.0 0.0 1.0 100.0 100.0 100.0 0.8
+#sphere 0.0  0.0 0.0 1.0 100.0 100.0 100.0 0.8
+#sphere 0.0  3.0 0.0 1.0 100.0 100.0 100.0 0.2
