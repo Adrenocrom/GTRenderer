@@ -42,7 +42,7 @@ void renderSceneEx(string in, string out) {
 	fprintf(stderr, "loaded in %.2f\n", ((float)(cend - cbegin)) / CLOCKS_PER_SEC);
 
 	uint samples;
-	for(uint s = 0; s <= 50; s += 5) {
+	for(uint s = 50; s <= 50; s += 5) {
 		if(s == 0) samples = 1;
 		else	   samples = s;	
 		
