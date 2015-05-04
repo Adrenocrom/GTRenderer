@@ -2,6 +2,11 @@ cmake_minimum_required( VERSION 2.8 )
 
 project( zikade )
 
+#find_package( Qt4 REQUIRED )
+#include( ${QT_USE_FILE} )
+#add_definitions( ${QT_DEFINITIONS} )
+
+
 set( CMAKE_BUILD_TYPE "RELEASE" )
 set( CMAKE_CXX_FLAGS "-Wall -O2 -std=c++11" )
 add_definitions( ${CMAKE_CXX_FLAGS} )

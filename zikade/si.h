@@ -3,8 +3,8 @@
 
 #pragma once
 
-#define SI_WIDTH 	3840
-#define SI_HEIGHT 2160
+#define SI_WIDTH 	1024
+#define SI_HEIGHT 768
 
 typedef double real;
 typedef unsigned int uint;

@@ -1,6 +1,6 @@
 #include "zikade.h"
 
-#define winbuild
+// #define winbuild
 
 bool compareHits(const hitInfo& a, const hitInfo& b) {
 	if(a.tn > b.tn)
@@ -291,9 +291,9 @@ void zikade::render(rgbWxH& image) {
 		cnt++;
 		
 		#ifdef winbuild
-			printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
+			fprintf(stderr, "\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
 		#else
-			printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+			fprintf(stderr, "\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
 		#endif
 	}
 	
