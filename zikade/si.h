@@ -3,8 +3,8 @@
 
 #pragma once
 
-#define SI_WIDTH 	2000
-#define SI_HEIGHT 2000
+#define SI_WIDTH 	1024
+#define SI_HEIGHT 768
 
 typedef double real;
 typedef unsigned int uint;
@@ -90,6 +90,14 @@ struct rgb {
 	}
 };
 
+
+inline real3 operator - (const rgb& a, const rgb& b) {
+	real3 u, v;
+	u.x = (real)a.r; u.y = (real)a.g; u.z = (real)a.b;
+	v.x = (real)b.r; v.y = (real)b.g; v.z = (real)b.b;
+	return u - v;
+}
+
 struct ray {
 	real3 o;
 	real3 d;
@@ -131,6 +139,7 @@ struct sphere {
 
 //uint intersect(const ray& r, const sphere& s, hitInfo& info);
 //uint intersect(const ray& r, const real3& min, const real3& max);
-void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename);
+int saveRgbWxHToPbm(const rgbWxH& image, const char* filename);
+int loadPbmToRgbWxH(rgbWxH& image, const char* filename);
 
 #endif

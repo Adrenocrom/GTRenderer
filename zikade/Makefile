@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Evaluator
+
+# Build rule for target.
+Evaluator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Evaluator
+.PHONY : Evaluator
+
+# fast build rule for target.
+Evaluator/fast:
+	$(MAKE) -f CMakeFiles/Evaluator.dir/build.make CMakeFiles/Evaluator.dir/build
+.PHONY : Evaluator/fast
+
+#=============================================================================
 # Target rules for targets named Zikade
 
 # Build rule for target.
@@ -112,6 +125,19 @@ Zikade/fast:
 .PHONY : Zikade/fast
 
 #=============================================================================
+# Target rules for targets named evaluator
+
+# Build rule for target.
+evaluator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 evaluator
+.PHONY : evaluator
+
+# fast build rule for target.
+evaluator/fast:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/build
+.PHONY : evaluator/fast
+
+#=============================================================================
 # Target rules for targets named zikade
 
 # Build rule for target.
@@ -123,6 +149,33 @@ zikade: cmake_check_build_system
 zikade/fast:
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/build
 .PHONY : zikade/fast
+
+evaluator.o: evaluator.cpp.o
+.PHONY : evaluator.o
+
+# target to build an object file
+evaluator.cpp.o:
+	$(MAKE) -f CMakeFiles/Evaluator.dir/build.make CMakeFiles/Evaluator.dir/evaluator.cpp.o
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/evaluator.cpp.o
+.PHONY : evaluator.cpp.o
+
+evaluator.i: evaluator.cpp.i
+.PHONY : evaluator.i
+
+# target to preprocess a source file
+evaluator.cpp.i:
+	$(MAKE) -f CMakeFiles/Evaluator.dir/build.make CMakeFiles/Evaluator.dir/evaluator.cpp.i
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/evaluator.cpp.i
+.PHONY : evaluator.cpp.i
+
+evaluator.s: evaluator.cpp.s
+.PHONY : evaluator.s
+
+# target to generate assembly for a file
+evaluator.cpp.s:
+	$(MAKE) -f CMakeFiles/Evaluator.dir/build.make CMakeFiles/Evaluator.dir/evaluator.cpp.s
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/evaluator.cpp.s
+.PHONY : evaluator.cpp.s
 
 kd.o: kd.cpp.o
 .PHONY : kd.o
@@ -228,6 +281,7 @@ si.o: si.cpp.o
 
 # target to build an object file
 si.cpp.o:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/si.cpp.o
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/si.cpp.o
 .PHONY : si.cpp.o
 
@@ -236,6 +290,7 @@ si.i: si.cpp.i
 
 # target to preprocess a source file
 si.cpp.i:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/si.cpp.i
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/si.cpp.i
 .PHONY : si.cpp.i
 
@@ -244,6 +299,7 @@ si.s: si.cpp.s
 
 # target to generate assembly for a file
 si.cpp.s:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/si.cpp.s
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/si.cpp.s
 .PHONY : si.cpp.s
 
@@ -252,6 +308,7 @@ zikade.o: zikade.cpp.o
 
 # target to build an object file
 zikade.cpp.o:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/zikade.cpp.o
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/zikade.cpp.o
 .PHONY : zikade.cpp.o
 
@@ -260,6 +317,7 @@ zikade.i: zikade.cpp.i
 
 # target to preprocess a source file
 zikade.cpp.i:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/zikade.cpp.i
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/zikade.cpp.i
 .PHONY : zikade.cpp.i
 
@@ -268,6 +326,7 @@ zikade.s: zikade.cpp.s
 
 # target to generate assembly for a file
 zikade.cpp.s:
+	$(MAKE) -f CMakeFiles/evaluator.dir/build.make CMakeFiles/evaluator.dir/zikade.cpp.s
 	$(MAKE) -f CMakeFiles/zikade.dir/build.make CMakeFiles/zikade.dir/zikade.cpp.s
 .PHONY : zikade.cpp.s
 
@@ -277,10 +336,15 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Evaluator"
 	@echo "... Zikade"
 	@echo "... edit_cache"
+	@echo "... evaluator"
 	@echo "... rebuild_cache"
 	@echo "... zikade"
+	@echo "... evaluator.o"
+	@echo "... evaluator.i"
+	@echo "... evaluator.s"
 	@echo "... kd.o"
 	@echo "... kd.i"
 	@echo "... kd.s"

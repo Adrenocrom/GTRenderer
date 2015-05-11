@@ -25,5 +25,12 @@ add_library( zikade 	kd.cpp
 							zikade.cpp
 							main.cpp )
 
+add_library( evaluator si.cpp
+				 			  zikade.cpp
+							  evaluator.cpp )
+
 add_executable( Zikade main.cpp )
 target_link_libraries( Zikade zikade )
+
+add_executable( Evaluator evaluator.cpp )
+target_link_libraries( Evaluator evaluator )

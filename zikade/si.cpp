@@ -35,12 +35,12 @@ uint intersect(const ray& r, const real3& min, const real3& max) {
 	return ((tmax >= tmin) && (tmax >= 0.0));
 }
 */
-void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename) {
+int saveRgbWxHToPbm(const rgbWxH& image, const char* filename) {
 	FILE* file = NULL;
 
-	if((file = fopen(pcFilename, "w")) == NULL) {
-		printf("couldn't write file %s", pcFilename);
-		return;
+	if((file = fopen(filename, "w")) == NULL) {
+		printf("couldn't write file %s", filename);
+		return 1;
 	}
 
 	fprintf(file, "P3\n%d %d 255\n", SI_WIDTH, SI_HEIGHT);
@@ -57,4 +57,43 @@ void saveRgbWxHToPbm(const rgbWxH& image, const char* pcFilename) {
 	}
 
 	fclose(file);
+	return 0;
+}
+
+int loadPbmToRgbWxH(rgbWxH& image, const char* filename) {
+	ifstream file(filename);
+	if(!file.is_open()) {
+		cerr << "Error: Could not find file "<<filename<<endl;
+		return 1;
+	}
+
+	uint x = 0, y = 1; 
+	uint width, height;
+	int r, b, g;
+	string str_line, entry;
+	getline(file, str_line, '\n');
+	getline(file, str_line, '\n');
+	stringstream line(str_line);
+	line >> width; line >> height;
+	
+	if(width != SI_WIDTH || height != SI_HEIGHT) {
+		cerr << "Error: Wrong image size "<<width<<"x"<<height<<" ( you need: "<<SI_WIDTH<<"x"<<SI_HEIGHT<<")"<<endl;
+		return 2;
+	}
+
+	while(getline(file, str_line, '\n')) {
+		stringstream line(str_line);
+		
+		for(x = 0; x < SI_WIDTH; ++x) {
+			line >> r; line >> b; line >> g;
+			image[x][y].r = (uint)r;
+			image[x][y].g = (uint)g;
+			image[x][y].b = (uint)b;
+		}
+			
+		y++;
+	}
+
+	file.close();
+	return 0;
 }

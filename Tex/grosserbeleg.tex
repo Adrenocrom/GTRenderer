@@ -58,62 +58,50 @@ Optional:
 \item Unterstützung komplexerer Materialtypen
 \end{itemize}
 }
+
 \copyrighterklaerung{Hier soll jeder Autor die von ihm eingeholten
 Zustimmungen der Copyright-Besitzer angeben bzw. die in Web Press
 Rooms angegebenen generellen Konditionen seiner Text- und
 Bild"ubernahmen zitieren.}
-\acknowledgments{Die Danksagung...}
 
+\acknowledgments{Die Danksagung...}
+	
+	 
 \begin{document}
 
 \chapter{Einleitung}
- 
-	Ein Problem der Echtzeitgrafik besteht in der Komplexität des Lichtes, welches auf Grund mangelnder
-	Rechen- und Speicherkapazitäten nur approximiert werden kann. Die meisten Anwendungen beschränken
-	sich auf die Berechnung lokaler Beleuchtungsmodelle.
-	Algorithmen für die globale Lichtberechnung werden inzwischen mit GPU Implementierungen Echtzeitfähig,
-	als Beispiel soll die Brigade Engine dienen, welche auf dem \textit{Bidirectionalen Pathtracing} Algorithmus
-	aufbaut.
+
+\section{Motivation}
 	
-	Neben dem \textit{Pathtracing} existieren weitere Ansätze, wie das Photonenmapping, welche in der Lage sind
-	die Wege des Lichtes, die Verbreitung von Photonen Physikalisch plausibel zu berechnen. 
-	Diese Algorithmen kratzen dabei nur an der Oberfläche der Materie. Die Beleuchtungsberechnung wird nur
-	an der Materialoberfläche durchgeführt und das Licht wird nicht durch das Volumen gestreut.
-	Diese grobe Approximation ist notwendig, da die Volumenintegrale die Rechenzeit ungemein erhöhen.
+	Partikel sind geometrische Objekte, welche in einem Raum durch ihre Position und beliebige weitere Attribute, wie einen Geschwindigkeitsvektor beschrieben werden können. Sie kommen bei computergestützten Simulationen zum Einsatz oder entstehen
+	bei modernen Messvorgängen in Form von Punktwolken. Der Einsatz von Partikelsystemen ist weit verbreitet und die Visualisierung
+	dieser ist eine der Kernkomponenten beim Analysieren und Verstehen der dargestellten Prozesse.
+	Bei komplexen und dichten Szenen kommt es vor, dass innere Strukturen auf Grund von Verdeckungen nicht Sichtbar sind.
+	Ein Ziel von Visualisierungen besteht in der Förderung der Menschlichen Wahrnehmung zur Erkennung von Beziehungen und Tendenzen
+	der Abgebildeten Daten. 
+	Eine Möglichkeit das Problem der verdeckten Objekten zu lösen, ist der Einsatz von Transparenz. Die Hinteren Objekte scheinen bis zum Betrachter durch. In Interaktiven Visualisierungen kann dem Benutzer die Möglichkeit geboten werden die Transparenz für Ausgewählte
+	Regionen selbst zu variieren.
+	Zusätzlich spielt der Einsatz von Licht eine wichtige Rolle, da der menschliche Wahrnehmungsapparat darauf trainiert ist Lichtwege zu
+	rekonstruieren und anhand dieser Tiefeninformationen zu schätzen.
+	Lokale Beleuchtungsmodelle erfüllen diese Aufgabe nicht, der Einsatz einer globalen Beleuchtung wird Notwendig.
+	Auf Grund der hohen Komplexität der Algorithmen zur Berechnung der globalen Beleuchtung, müssen bei Echtzeitfähigen
+	GPU-Implementierungen die Lösungen Approximiert werden.
 	
-	Datensätze aus der Medizin, der Biologie oder der Meteorologie enthalten oft mehr als die Oberflächenbeschreibung.
-	Gemeint sind in diesen Zusammenhang Volumendaten in Form von Skalarfeldern. Vereinfacht gesagt handelt es sich um ein Mehrdimensionales Array von reelen Werten.
-	Um ein solches Skalares Feld zu Visualisieren ist es notwendig die Werte zu interpretieren, beispielsweise als
-	Dichte eines Voxels.
-	Ein Voxel ist in diesem Zusammenhang ein Volumen, die genaue Form spielt dabei eine untergeordnete Rolle.
-	Die Abbildung einer solchen Anordnung auf eine Bildebene, wird als Volumenrendering bezeichnet.
+	Ziel dieser Arbeit ist die Entwicklung eines CPU-Renderes dessen Fokus nicht auf Geschwindigkeit, sondern auf der Genauigkeit der
+	Berechnung liegt. Die Partikel in Form von Kugeln werden mit Methoden des direkten Volumenrenderns abgebildet.
+	Das Verfahren wird als direkt bezeichnet, da die Objekte nicht in polygonale Netze aufgelöst werden müssen um sie abzubilden.
+	Die erzeugten Bilder, dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen
+	Implementierungen. Aufbauend auf der Volumen-Rendergleichung von Nelson Max aus der Arbeit \cite{Max:1995:OMD:614258.614298},
+	soll dessen Emission- und Absorptionsmodell benutzt und eine Weitestgehend Analytische Lösung entwickelt werden.
+	Zur Erzeugung der Bilder kommt ein \textit{Raycasting} Algorithmus zum Einsatz. 
+	Das Verfahren ist nicht auf Kugeln beschränkt und lässt sich für implizite Oberflächen erweitern.
+	Die erarbeitete Lösung stellt ebenfalls eine Approximation der eigentlichen dar. 
+	Um die Berechnung zu beschleunigen kann die Genauigkeit der nummerischen Integration in Abhängigkeit der Stichprobengröße vereinfacht werden.
+	Zusätzlich gibt es die Möglichkeit die Beleuchtungsberechnung der Verdeckten Objekte sukzessiv zu Vereinfachen, in Abhängigkeit
+	einer einstellbaren Tiefe werden nur bis zu dieser die Partikel global beleuchtet. Alle weiteren verdeckten Kugeln werden
+	durch eine weitere Vereinfachung der Rendergleichung gezeichnet.  
 	
-	Viele Ansätze gehen von einer Richtungslichtquelle aus, welche sich hinter dem Volumen befindet und
-	Licht in Richtung der Bildebene der Kamera ausstrahlt. Das Licht wird, auf Grund der Dichte der einzelnen
-	Voxel unterschiedlich stark abgeschwächt. Das Ergebnis ist ein Bild des Volumens.
-	Es gibt eine Vielzahl von Verfahren zur Berechnung solcher Volumenvisualisierungen, ein oft verwendeter Ansatz
-	ist die Ambiente Verdeckung. Hierbei wird geschaut wie viele benachbarte Voxel das Einfallende Licht verdecken,
-	aus dieser Anzahl wird der Helligkeitswert des eigentlichen Voxels bestimmt.
-	
-	In wissenschaftlichen Visualisierungen haben sich neben den Voxelstrukturen auch Kugelglyphen etabliert.
-	Hierbei handelt es sich um beliebig große und frei im Raum positionierte Kugeln, die Informationen werden,
-	wie bei den Voxelgittern auf die Farbe und die Dichte solcher Kugeln abgebildet.
-	Ziel der Visualisierungen ist es die dargestellten Prozesse für die Menschliche Wahrnehmung anschaulich
-	abzubilden.
-	Durch die Projektion auf ein zweidimensionales Bild ist es nötig die Tiefenwahrnehmung des Menschen mit
-	Licht und Schatten zu fördern, da die exakten Positionen der Kugelglyphen sonst nicht erkannt werden können.
-	
-	Wie bereits erwähnt, lassen sich exakte Verfahren zur Berechnung der Lichtwege durch ein solches Volumen noch
-	nicht in Echtzeit berechnen. Approximationen sind nötig um die Geschwindigkeit der Berechnung in Echtzeit zu
-	gewährleisten. Die Güte einer solchen Approximation lässt sich anhand von Daten bestimmten, welche nicht
-	mit Echtzeitalgorithmen, sondern mit sehr genauen Verfahren gerendert wurden.
-	Die entstandenen Bilder werden als \textit{Ground-Truth} Daten bezeichnet. Ziel dieser Arbeit ist es,
-	einen Algorithmus zur Erzeugung von \textit{Ground-Truth} Daten zu entwickeln.
-	
-	Es wird eine Rendergleichung aufgestellt werden, welche weitestgehend analytisch gelöst werden soll.
-	Der Vorteil einer Analytischen Lösung besteht in der Exaktheit und in der Geschwindigkeit der Berechnung selbst.
-	
-\chapter{Verwandte Arbeiten}
+\section{Verwandte Arbeiten}
 
 	Die Arbeit \cite{JSYR14} wurde verfasst, um den Leser einen Überblick über Techniken des
 	renderns von Volumendaten in Echtzeit zu geben.
@@ -150,136 +138,184 @@ Bild"ubernahmen zitieren.}
 	
 	Eine Erweiterung dieses Verfahrens stellt die Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} dar, welche hier nur der Vollständigkeit halber erwähnt werden soll.
 	
+\section{Aufbau der Arbeit}
+
+	Die Arbeit ist folgendermaßen gegliedert. Zunächst werden im Grundlagen Kapitel die Technik des Raycastings erläutert und
+	die grundlegenden Gleichungen für Kugel und Strahl und deren Schnitt behandelt. 
+	Beendet wird das zweite Kapitel mit der Herleitung der Perspektivischen	Kamera anhand einer Lochkamera. 
+	Im dritten Kapitel wird die Rendergleichung aufbauend auf der Arbeit von Nelson Max hergeleitet und eine Lösung
+	dieser präsentiert werden.
+	Das vierte Kapitel wird die sich mit der Implementierung des Algorithmus beschäftigen und im fünften Kapitel werden die
+	Ergebnisse in Abhängigkeit der Parameter und der Rechenzeit evaluiert und anschließend im Fazit diskutiert werden.
+	
 \chapter{Grundlagen}
 
-	Wie in der Einleitung bereits geschildert, wird es in dieser Arbeit ein Raycast Algorithmus beschrieben,
-	welcher Lichtdurchlässige Gaskugeln zeichnen wird. In den Folgenden Abschnitten werden die Gleichung
-	für den Strahl, die Kugel und die Schnittpunktberechnung genauer betrachtet. Abschließend wird die 
-	verwendete Perspektivische Kamera auf der Basis der \textit{Camera obscura} hergeleitet. 
-	In der Arbeit werden Punkte im $\mathbb{R}^n$ unterstrichen geschrieben, so symbolisiert $\underline{p}$
-	einen Punkt und $\vec{v}$ einen Vektor und der Term $\langle\vec{a}, \vec{b}\rangle$ bezeichnet ein Skalarprodukt.
+	Der Entwickelte Algorithmus basiert auf dem Verfahren des \textit{Raycasting}. Bei diesem Verfahren wird
+	der Sensor der Kamera, welche am ende dieses Kapitels definiert wird, diskretisiert und für jeden Pixel
+	wird mindestens ein Strahl in die Szene geschossen. 
+	Für jeden Strahl muss eine Schnittberechnung mit den in der Szene befindlichen Objekten durchgeführt werden. 
+	Wird ein Objekt vom Strahl geschnitten, muss die Rendergleichung für das dazugehörige Stahlsegment gelöst werden.
+	
+	In dieser Arbeit wird die Menge der Objekte auf Kugeln reduziert. Jede Kugel repräsentiert ein mit Gas gefüllten
+	Partikel. Die Dichte im Inneren jedes Partikels wird als Konstant angenommen und die Menge der Transferfunktionen
+	auf Lineare beschränkt werden. Im Folgenden werden die Gleichungen für Strahlen, Kugeln und deren Schnittberechnung
+	definiert. Das Kapitel wird mit der Herleitung der perspektivischen Kamera beendet.
+	
+	Punkte werden in dieser Arbeit wie Vektoren behandelt, sie unterscheiden sich von diesen in den Formeln dadurch das sie
+	Unterstrichen sind und keinen Pfeil besitzen wie ein Vektor. $\underline p$ stellt einen Punkt und $\vec{p}$ einen
+	Vektor dar. Skalarprodukte werden mit Hilfe von spitzen Klammern $\langle \vec{a}, \vec{b} \rangle$ repräsentiert.
 
 \section{Strahl und Kugelgleichung}
 
-	Wie oben beschrieben stellen Strahlen die Elementarsten Elemente eines jedem Stahlenverfolgenden Algorithmus dar.
-	Mathematisch lässt sich der Strahl durch die Formel
+	Es wird mit der Definition des Strahls begonnen, der das Zentrale Element des Algorithmus bildet. Die Formel
+	beschreibt wie jeder Punkt auf dem Strahl in Abhängigkeit eines skalaren Wertes $t$, eines Stützpunktes $\underline{o}$
+	und einem Richtungsvektor $r$ bestimmt werden kann. Die Gleichung definiert sich wie folgt:
 	
 	\begin{equation}
-	  	\underline{r}(t) = \underline{p} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}_+
+	  	\underline{p}(t) = \underline{o} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}_+
 	  	\label{eq:Strahl}
 	\end{equation}
 	
-	beschreiben. Jeder Punkt auf dem Strahl $\underline{r}(t)$, ergibt sich aus der Addition eines Stützpunktes $\underline{p}$ mit dem durch $t$ skalierten Richtungsvektor $\vec{r}$.
+	Jeder Punkt auf dem Strahl $\underline{p}(t)$, ergibt sich aus der Addition eines Stützpunktes $\underline{o}$ mit dem durch $t$ skalierten Richtungsvektor $\vec{r}$. Der Vektor $\vec{r}$ muss normiert sein, die Länge des Vektors muss genau 1 betragen:
+	$\left\|\left|\vec{r}\right|\right| = 1$.
+	Ist der Wert von $t < 0$ liegt der Punkt hinter dem Ausgangspunkt des Strahls, andernfalls
+	davor oder im Fall von $t = 0$ entspricht er eben diesen.
 	
-	Eine Kugelfläche wird im $\mathbb{R}^3$ mit dem Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und dem Radius $r$ parametrisiert. Durch den Abstand zum Mittelpunkt lässt sich jeder Punkt auf der Kugel mit der Formel
-
+	Neben dem Strahl ist die Kugel, welche die Geometrische Form der betrachteten Partikel darstellt eine wichtige Rolle und soll
+	ebenfalls definiert werden, damit die Schnittpunktberechnung durchgeführt werden kann.
+	
+	Die Fläche einer Kugel wird im $\mathbb{R}^3$ durch den Mittelpunkt $\underline{m} = (x_0, y_0, z_0)$ und den Radius $r$ parametrisiert. Jeder Punkt auf der Kugeloberfläche lässt sich durch den Abstand zum Mittelpunkt, dem Zentrum der Kugel definieren.
+	Die Folgende Formel beschreibt diese Formulierung:
+	
 	\begin{equation}
 		(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = r^2
-		\label{eq:KugelGleichung1}
+		\label{eq:KugelR3}
 	\end{equation}
 	
-	bestimmen. Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelGleichung1} erfüllt liegt auf der Oberfläche der Kugel.
-	Die Formel \ref{eq:KugelGleichung1} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern:
+	Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelR3} erfüllt liegt auf der Oberfläche der Kugel.
+	Die Kugelgleichung \ref{eq:KugelR3} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern,
+	und die Beschreibung ist für alle $n$ äquivalent:
 	
 	\begin{equation}
-		\langle\underline{p} - \underline{m}, \underline{p} - \underline{m}\rangle = r^2.
-		\label{eq:KugelGleichung2}
+		\langle\underline{p} - \underline{m}, \underline{p} - \underline{m}\rangle = r^2
+		\label{eq:Kugel}
 	\end{equation}
 
-	Wird der Mittelpunkt der Kugel auf den Koordinaten Ursprung verschoben, liegen alle Punkte $p$ auf der Oberfläche $O$, wenn sie denn Abstand $r$ zum Koordinatenursprung haben. Die zu erfüllende Bedingung hat demnach folgende Form:
+	Um den Schnittpunkt zwischen Kugel und Strahl zu berechnen wird die Kugelgleichung \ref{eq:Kugel} vereinfacht.
+	Der Mittelpunkt der Kugel auf den Koordinaten Ursprung verschoben, liegen alle Punkte $p$ auf der Oberfläche $O$, wenn sie denn Abstand $r$ zum Koordinatenursprung haben. Die zu erfüllende Bedingung hat demnach folgende Form:
 	
 	\begin{equation}
 		\vert\vert\underline{p}\vert\vert = r
-		\label{eq:KugelGleichungBedingun1}
+		\label{eq:KugelEasy}
 	\end{equation}
 	
-	Die Bedingung aus Formel \ref{eq:KugelGleichungBedingun1} lässt sich Quartieren wodurch sich die folgende Kugelgleichung ergibt:
+	Die Gleichung \ref{eq:KugelEasy} lässt sich Quartieren und der Strahl wird anschließend in diese eingesetzt. Das Resultat
+	ist eine quadratische Gleichung. Bis auf das Skalar $t$ sind alle Werte bekannt. Die Gleichung
 	
 	\begin{equation}
-		\langle\underline{p}, \underline{p}\rangle = r^2
-		\label{eq:Schnittpunktberechnung1}
+			r^2 = \langle\underline{p}, \underline{p}\rangle = \langle r(t), r(t) \rangle = \langle \underline{p} + t \cdot \vec{r}, \underline{p} + t \cdot \vec{r} \rangle
+			\label{eq:StrahlInKugel}
 	\end{equation}
 	
-	Um den Schnittpunkt der Kugel mit dem Strahl aus der Formel \ref{eq:Strahl} zu Berechnen, wird der Strahl in die Gleichung \ref{eq:Schnittpunktberechnung1} eingesetzt
-	
-	\begin{equation}
-			r^2 = \langle r(t), r(t) \rangle = \langle \underline{p} + t \cdot \vec{r}, \underline{p} + t \cdot \vec{r} \rangle
-			\label{eq:Schnittpunktberechnung3}
-	\end{equation}
-	
-	und nach dem Parameter $t$ aufgelöst. Die Gleichung ist Quadratisch, daher ergeben sich entweder keine,
-	eine oder zwei Lösungen für die Gleichung:
-
+	kann nach $t$ umgestellt werden und die Nullstellen berechnet werden. Es gibt entweder keine, eine oder zwei Lösungen für die
+	Gleichung. Werden die bestimmten Schnittpunkte in die Gleichung des Strahls eingesetzt können die Positionen der Schnittpositionen
+	berechnet werden. Die Komplette Lösungsformel definiert sich im Folgenden:
 	
 	\begin{equation}
 		t_{1,2} = \frac{-2 \cdot \langle \underline{p}, \vec{r} \rangle \pm \sqrt{4 \cdot \langle \underline{p}, \vec{r} \rangle^2 - 4 \cdot \langle \underline{p}, \underline{p} \rangle \cdot \langle \vec{r}, \vec{r} \rangle}}{2 \cdot \langle \vec{r}, \vec{r} \rangle}.
-		\label{eq:Schnittpunktberechnung5}
+		\label{eq:Schnittpunkte}
 	\end{equation}
+	
 
 \section{Die Perspektivische Kamera}
 
-	Um Bilder zu erzeugen wird eine Kamera, mit einer Bildebene benötigt, auf welcher die Lichtintensitäten akkumuliert werden. Es soll eine Perspektivische Kamera verwendet werden, welche sich von
-	der im folgenden beschriebenen \textit{Camera obscura} ableitet.
-	
-	Eine \textit{Camera obscura} besteht aus einem Kasten, auf der einen Seite befindet sich ein schmales Loch,
-	durch welches das Licht einer beleuchteten Szene auf die gegenüberliegende Wand trifft, diese
-	Wand wird als Bildebene Bezeichnet. 
-	Auf der Bildebene entsteht dabei ein auf dem Kopf stehendes und seitenverkehrtes Bild der Szene.
+	Um in der realen Welt Bilder aufzunehmen wird eine Kamera benötigt, hier wird eine Simulation durchgeführt
+	und für diese wird das Modell einer Kamera benötigt welches sich von der \textit{camera obscura} ableitet.
+	Dabei handelt es sich um das Modell einer Lochkamera, diese besteht aus einem Kasten. Auf der einen Seite
+	befindet sich ein Lichtempfindliches Material, welches den Sensor bildet und auf der an gegenüberliegenden
+	Seite befindet sich ein schmales Loch. Das Licht wird von der Oberfläche der Abzubildenden Objekte reflektiert
+	und fällt durch Loch auf den Sensor. Bei dem Vorgang der Abbildung findet eine Vertikale und Horizontale
+	Spiegelung der Szene statt. Das bedeutet das Bild der Szene wird spiegelverkehrt aufgenommen.
 	
 	\begin{figure}[h]
 		\centering
+		\def\svgwidth{5cm}
 		\input{images/cameraObscura.pdf_tex}
 		\caption{Schematische Darstellung des Abbildungsvorgangs der \textit{camera obscura}}
 		\label{fig:cameraObscura}
 	\end{figure}
 	
 	Die Abbildung \ref{fig:cameraObscura} zeigt den Aufbau der \textit{Camera obscura} schematisch.
-	Auf der Linken Seite der Abbildung befindet sich die Bildebene, in der Mitte die Wand mit dem kleinen Loch.
-	Rechts befindet sich das mit den Punkten $A$ und $B$ abzubildende Objekt. Der Strahl welcher von dem Punkt $B'$
-	nach $B$ zeigt definiert die Blickrichtung der Kamera. Der Punkt $A$ wird auf den Punkt $A'$ abgebildet und
-	der Punkt $B$ auf den Punkt $B'$. Die Distanz zwischen der Bildebene und dem Loch der Kamera wird mit der
-	Variable $f$ bezeichnet.
-	Ein mit diesem Modell generiertes Bild müsste nach der Aufnahme gedreht werden. In der Virtuellen Welt,
-	lässt sich Bildebene Vor dem Loch positionieren, damit das entstandene Bild nicht gespiegelt aufgenommen wird. Die Position $\underline{p}$ der Kamera ist mit der Position des Lochs der \textit{Camera obscura} identisch.
-	Für jeden Pixel der Bildebene wird jetzt mindestens ein Strahl generiert welcher als Stützpunkt die Position
-	der Kamera erhält und der Richtungsvektor ist der Normierte Vektor von der Kamerapostion zum Pixel. 
+	Auf der Linken Seite der Abbildung befindet sich die Bildebene, auf welche die Szene abgebildet wird.
+	In der Mitte der Abbildung \ref{fig:cameraObscura} befindet sich die Wand mit dem kleinen Loch.
+	Hier wird die erste Abstraktion durchgeführt, denn in der Realität kann das Loch eine gewisse Größe nicht
+	unterschreiten, da andernfalls kein Licht hindurch dringen würde. Aufgrund dieser minimalen Größe kommt
+	es zu einer Glättung der Abbildung. Diese Einschränkung gilt für die Computersimulation nicht, es wird
+	angenommen, dass das Loch unendlich klein ist, so dass die Szene unendlich genau Abgebildet werden kann.
 	
-	Die Sensorfläche der Kamera setzt sich aus $W \cdot H$ Pixeln zusammen. Das Verhältnis zwischen Höhe und Breite wird im Englischen als \textit{aspect ratio} bezeichnet und definiert sich als Quotient aus der Breite und Höhe $aspect = \frac{W}{H}$. Der Richtungsvektor eines Pixel an der Stelle $(x, y)$ auf der Bildebene definiert sich
-	durch die Formel:
+	Auf der rechten Seite in der Abbildung \ref{fig:cameraObscura} befindet sich ein Objekt in Form einer Strecke,
+	welche durch die Punkte $A$ und $B$ begrenzt wird. Der Punkt $B$ befindet sich mit der Sensormitte und dem
+	Loch genau auf einer Ebene und er wird auf den Punkt $B'$ abgebildet. 
+	Der zweite Punkt $A$ wird auf dem Punkt $A'$ abgebildet. Genauer zeigt die Abbildung \ref{fig:cameraObscura} den
+	Strahlensatz der in diesem Zusammenhang gilt. 
+		 
+	Die Distanz zwischen dem Sensor und dem Loch der Kamera wird mit der Variable $f$ bezeichnet. Da es sich wie
+	oben bereits erwähnt um eine Computersimulation handelt kann das Modell weiter abstrahiert werden.
+	In der im Computer simulierten Welt kann der Sensor auch vor dem Loch positioniert werden, was zur Folge hat,
+	das die Abbildung entspiegelt wird. 
+	
+	Die Position der Kamera soll im Folgenden mit der Variable $\underline{p}$ bezeichnet werden. Diese ist
+	mit der Position des Lochs der Lochkamera identisch und wird in der Literatur auch als Augpunkt bezeichnet.
+	Für jeden Pixel der Bildebene wird mindestens ein Strahl erzeugt, welcher als Stützpunkt die Position
+	der Kamera erhält und der Richtungsvektor ist der Normierte Vektor von der Kamerapostion zum Pixel.
+	Zur Vereinfachung wird angenommen, dass die Bildebene parallel zur xy-Ebene des Koordinatensystems der Szenen ist
+	und der Augpunkt genau im Ursprung von diesem liegt.
+	Die Fläche des Sensors wird in $W \cdot H$ Pixeln unterteilt.
+	Für jeden Pixel $(x, y)$ wird ein Strahl $s$ in die Szene geschossen, dessen Stützpunkt der Augpunkt der Kamera
+	ist und der Richtungsvektor der normierte Vektor $\vec{r}(x, y)$ welche sich ohne wie folgt definiert.
 	
 	\begin{equation}
-		\vec{r}(x, y) = \left|\left|\left( 
+		\vec{r}(x, y) = \left( 
 							\begin{array}{l}
-								(\frac{x}{W} \cdot 2 - 1) \cdot aspect \\
+								(\frac{x}{W} \cdot 2 - 1) \cdot \frac{W}{H} \\
 								\frac{y}{H} \cdot (- 2) + 1 \\
 								f
 							\end{array}							
-					 	\right)\right|\right|.
+					 	\right)
 		\label{eq:direction}
 	\end{equation}
 	
-	Für jeden Pixel $(x, y)$ wird ein Strahl $s$ in die Szene geschossen mit der Formel
-	$\underline{s} (x, y, z) = \underline{p} + t \cdot \vec{r}(x, y)$. Jetzt lässt sich die Kamera frei positionieren
-	und der Zoom mit dem Parameter $f$ bestimmen. Zu diesen Zeitpunkt ist es nur möglich in Richtung der Positiven $z$-Achse zu schauen. Um die Kamera zu rotieren genügt es die Richtungsvektoren $\vec{r}(x, y)$ mit Hilfe
-	einer Rotationsmatrix um den Koordinaten Ursprung zu rotieren.
+	Es ist gilt zu beachten das der Richtungsvektor noch normiert werden muss: $\vec{r}(x, y) =  \frac{\vec{r}(x, y)}{\left|\left|\vec{r}(x, y)\right|\right|}$. 
+	Jeder Kamera Strahl, im folgenden auch als Primärstrahl bezeichnet hat die folgende Form:
 	
-\chapter{Ein analytischer Ansatz}
+	\begin{equation}
+		\underline{s} (x, y) = \underline{p} + t \cdot \vec{r}(x, y)
+		\label{eq:primaryRay}
+	\end{equation}
+	
+	Die Kamera kann an dieser Stelle nur entlang der z-Achse Blicken, eine Rotation im Raum lässt sich durch die Multiplikation
+	einer Rotationsmatrix mit den Richtungsvektoren bewerkstelligen. Die Position des Kameramodells ist frei Wählbar, es genügt den
+	Augpunkt zu verschieben. Mit Hilfe der Distanz $f$, der fokalen Länge kann ein Zoomeffekt der Kamera erzielt werden.
+	
+\chapter{Rendergleichung}
 
-	In diesem Kapitel wird der Algorithmus hergeleitet welcher zum Zeichnen der Kugeln dient.
+	In diesem Kapitel wird die Rendergleichung aufgestellt und die Grundlagen des Algorithmus hergeleitet,
+	welcher beim Zeichnen der Kugeln zum Einsatz kommt.
 	Zum Beginn wird das Emission und Absorptionsmodell aus der Arbeit von \cite{Max:1995:OMD:614258.614298}
 	genauer betrachtet. Als Grundannahme wird die Menge der Transferfunktionen auf lineare Funktionen beschränkt,
-	die Dichte soll im Volumen als Konstant gelten. Diese Arbeit befasst sich mit der Frage, ob sich mit
-	diesen Einschränkungen das entstehende Volumenintegral analytisch lösen lässt.
-	Gibt es eine analytische Lösung, so würden sich die Bilder effizient und korrekt berechnen lassen.
-	Lässt sich Gleichung nicht analytisch Lösen, werden die Integrale so weit wie möglich analytisch gelöst
-	und die restlichen Teile der Gleichung müssen Nummerisch approximiert werden.
+	die Dichte soll im Volumen als konstant gelten. 
+	Diese Arbeit befasst sich mit der Frage, ob sich mit diesen Einschränkungen das entstehende Volumenintegral analytisch lösen lässt.
+	Gibt es eine analytische Lösung, lassen sich die Bilder effizient und sehr genau berechnen.
+	Tritt der Fall ein, dass sich keine analytische Lösung für die Gleichung finden lässt, 
+	werden die Integrale so weit es möglich analytisch gelöst und die restlichen Teile der Gleichung müssen 
+	folglich Nummerisch approximiert werden.
 	
 \section{Das Optische Modell}
 
-	Wie im vorherigen Abschnitt beschrieben baut das Modell auf dem von Nelsen Max aus der Arbeit \cite{Max:1995:OMD:614258.614298} auf. Zur Herleitung seiner Formel betrachtete er Partikel in Form
-	von Einheitskugeln. Jede dieser Kugeln besitzt einen Radius $r$. Die Oberfläche eines Partikel $A$
+	Aufbauend auf dem Modell von Nelsen Max aus der Arbeit \cite{Max:1995:OMD:614258.614298} werden zur Herleitung Partikel in Form
+	von Einheitskugeln betrachtet. Jede dieser Kugeln besitzt einen Radius $r$. Die Oberfläche eines Partikel $A$
 	bestimmt sich durch das Produkt der Kreiszahl $\pi$ und dem Radius. So das gilt $A = \pi \cdot r$.
-	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln, welche in einem Einheitsvolumen zu finden sind.
+	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln, welche sich in einem Einheitsvolumen befinden.
 	Betrachtet wird im folgenden ein Zylinder, welcher mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
 	Das Volumen eines solchen Zylinders entspricht $V_z = E \cdot \delta s$ und es enthält in etwa $N$ Partikel, mit $N = \rho E \delta s$.
 	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
@@ -305,8 +341,8 @@ Bild"ubernahmen zitieren.}
 	Der Parameter $I_0$ entspricht der Intensität an der Stelle $s = 0$, dabei handelt es sich um den Punkt,
 	an dem der Lichtstrahl auf das Volumen trifft. Bei den zweiten Teil des Terms handelt es sich um die Transparenz
 	des Mediums im Intervall $[0, s]$, welche durch $T(s) = exp(- \int_{0}^{l} \tau(t) dt)$ repräsentiert wird. 
-	Nelson Max definiert neben der Transparenz einen Wert für den Grad an
-	Verdeckung durch das Volumen $\alpha$, der im Englischen als \textit{opacity} bekannt ist.
+	Nelson Max definiert neben der Transparenz einen Wert für den Grad an Verdeckung durch das Volumen $\alpha$, der in 
+	der Englischen Literatur als \textit{opacity} bekannt ist.
 	
 	\begin{equation}
 		\alpha = 1 - T(l) = 1 - e^{- \int\limits_{0}^{l} \tau(t) dt}
@@ -335,188 +371,13 @@ Bild"ubernahmen zitieren.}
 	Volumen über der Länge $s$. Zu der Differenzialgleichung \ref{eq:MAX95EmissionDG} hat Nelson Max ebenfalls eine
 	Lösung gefunden welche sich wie folgt definiert:
 	
-	\begin{equation}
-			I(s) = I_0 + \int\limits_{0}^{s} g(t) dt
-			\label{eq:MAX95LSGEmissionDG}
-	\end{equation}
-	
-	Ein Problem dieser Lösung ist die Abhängigkeit zwischen der Ausdehnung des Mediums und des Emissionsfaktors.
-	Es gibt keine obere Schranke, das bedeutet, das die Emittierte Lichtenergie sehr schnell die Szene mit Licht
-	überfluten kann und die Abbildung der Materialparameter in Abhängigkeit der Objektgrößen gewählt werden müssen.
-	
-
-	\begin{figure}[h]
-		\centering
-		\input{images/standartAbsorption.pdf_tex}
-		% %\includegraphics{images/standartAbsorption2.pdf}
-		\caption{Veranschaulichung des Strahlengangs durch die Kugel, die Nullstellen sind mit $t_n$ und $t_f$ bezeichnet. Der Gelbe Kreis auf der rechten Seite stellt eine Lichtquelle dar.}
-		\label{fig:simpleBackgroundTransperency}
-	\end{figure}
-	
-\section{Optical Models for Direct Volume Rendering}
-	
-\subsection{Emission}
-
-	
-\subsection{Absorption und Emission}
-
-	In der Vorhergehenden Abschnitt wurden die Volumen als vollkommen Transparent betrachtet, dieses Verhalten soll sich jetzt ändern.
-	Das Licht, welches das Volumen durchläuft wird soll mit Hilfe des Abschwächungskoeffizient abgeschwächt werden und zusätzlich durch
-	die Emission angereichert werden:
-	
-	\begin{equation}
-		\frac{dI}{ds} = g(s) - \tau(s)I(s)
-		\label{eq:MAX95EmissionAbsorptionDG}
-	\end{equation}
-	
-	In seiner Arbeit entwickelt Nelson Max eine Lösung für beliebige Quellfunktionen, welche $g(s)$ annehmen kann. 
-	Dabei wird das Licht als Strahl von der Lichtquelle durch das Medium geschickt. 
-	Die Variable $s$ entspricht dem Laufparameter des Strahls,
-	welcher an der Position der Lichtquelle den Wert Null annimmt und den Wert $D$ am Sensor hat.
-	
-	\begin{equation}
-		I(D) = I_0 \cdot e^{-\int\limits_{0}^{D}\tau(t)dt} + \int\limits_{0}^{D}g(s) \cdot e^{-\int\limits_{s}^{D}\tau(t)dt}ds
-		\label{eq:MAX95LSGEmissionAbsorptionDG1}
-	\end{equation}
-	
-	\begin{equation}
-		I(D) = I_0T(D) + \int\limits_{0}^{D}g(s)T'(s)ds
-		\label{eq:MAX95LSGEmissionAbsorptionDG2}
-	\end{equation}
-	
-	Wobei die Transparenz über die einzelnen Werte von s sich als $T'(s) = e^{-\int\limits_{s}^{D}\tau(x)dx}$ definiert. Das Integral aus der Gleichung \ref{eq:MAX95LSGEmissionAbsorptionDG1} lässt sich für einige Transferfunktionen analytisch lösen für die anderen schlägt Nelson Max die
-	Approximation durch Riemannsummen vor. Ist der Faktor $C(s)$ eine Konstante $C$, lässt sich die Lösung stark vereinfachen. und das Licht,
-	welches den Sensor erreicht ergibt sich durch die Gleichung:
-	
-	\begin{equation}
-		I(D) = I_0 T(D) + C(1 - T(D))
-		\label{eq:MAX95LSGEmissionAbsorptionWithCKonstDG1}
-	\end{equation}
-	
-	Die Lichtundurchlässigkeit $\alpha = (1 - T(D))$ und entspricht der Wahrscheinlichkeit, dass ein Strahl, welcher vom Sensor in Richtung der Lichtquelle
-	geschossen wird einen Partikel trifft und die Farbe C zu sehen ist. 
-	
-\subsection{Streuung und Schatten}
-
-	Die bisher vorgestellten Gleichungen erzeugen bereits schöne Bilder, entsprechen allerdings noch nicht der Realität. Licht welches auf ein Partikel
-	trifft wird gestreut, es entstehen Schatten. Nelson Max geht dabei auf die Grundlagen der Streuung ein, in dem der Quellterm $g(s)$ um einen Winkelparameter erweitert wird. 
-	Der Quellterm wird im Folgenden mit $g(X, \omega) = E(X) + S(X, \omega)$. 
-	$E(X)$ bezeichnet die Emission an einen bestimmten Punkt $X$ und $S(X, \omega)$ die Richtung in welche das Licht gestreut wird. Trifft das Licht ein Partikel an einem Punkt $X$, wird dessen Intensität
-	mit einer \textit{brdf} Funktion multipliziert. \textit{Brdf} steht für 
-	\textit{bidirectional reflection distribution function}, welche die Verteilung des Lichtes in Abhängigkeit
-	des Einfalls und Ausfallwinkels an dem Punkt $X$ bestimmt. 
-	Die Streufunktion $S(X, \omega) = r(X, \omega, \omega') \cdot i(X, \omega)$ setzt sich zusammen aus der
-	\textit{brdf} welche hier durch die Funktion $r$ dargestellt wird und der Intensität des Lichtes $i$,
-	welches aus der Winkelrichtung $\omega'$ in den Punkt $X$ einfällt. Mit Hilfe eines rekursiven \textit{Raytracers} kann der Lichtanteil reduziert werden, was einen Schattenwurf zur Folge hat.
-	
-\section{An Analytical Ray Casting of Volume Data}
-
-	Diese Arbeit baut auf der Grundlage von CT, MRI, SPECT und PET Datenmengen auf. Das bedeutet, alles was
-	vorliegt ist ein 3D-Array von skalaren Werten, welche im Folgenden als Dichte interpretiert werden.
-	Das hier vorgestellte Verfahren baut auf einen \textit{Raycaster} auf, das heißt es werden ausgehend vom
-	Bildsensor Stahlen in die Szene geschossen. Das Resultat ist ein Bild, welches durch die Abschwächung der
-	Hintergrundbeleuchtung durch das Volumen entsteht. Durch den Einsatz von Interaktionstechniken, kann
-	der Nutzer im Folgenden Teile des Volumen durch die Veränderung der Dichtewerte ausblenden oder hervorheben.
-	Die meisten \textit{Raycast}-Ansätze approximieren diesen Vorgang nummerisch, da das finden, von Analytischen
-	Lösungen, insofern möglich nicht einfach ist. In dieser Arbeit wird ein Verfahren vorgestellt,
-	welches zum Teil die Aufkommenden Integrale Analytisch löst und wenn nötig auf Numerische Praktiken zurückgreift.
-	
-\subsection{Levoy's raycast algorithm}
-
-	Grundlage dieser Arbeit ist ein \textit{Raycast}-Algorithmus von Levoy. Die betrachtete Welt besteht aus
-	einem Regulären Gitter, wobei jede Zelle ein Voxel darstellt. Jeder dieser Voxel hat 8 Nachbarn.
-	Im folgenden beschreibt $r$ einen Strahl, welcher in die Szene geschossen wird. Jeder Punkt entlang
-	des Strahls lässt sich über die Länge $u$ vom Beginn des Strahls bis zu dem entsprechenden Punkt bestimmen.
-	Zusätzlich wird eine Funktion $\alpha_C(u)$ definiert, welche die akkumulierten Verdeckungen vom Punkt an der
-	Stelle $u$ bis zum Pixel liefert. Diese Funktion repräsentiert die Abschwächung des Lichtes durch das Volumen.
-	$\Delta u$ definiert eine bestimmte Länge auf dem Strahl zwischen zwei benachbarten Stützpunkten.
-	Ein Stützpunkt wird in dieser Arbeit mit $u_i$ bezeichnet. Die Abschwächung des Lichtes an einem
-	gewählten Stützpunkten wird über die Formel $\alpha(u_i) \Delta u_i$ berechnet. Wie in der Arbeit von
-	Nelson Max berechnet sich die Transparenz durch $1 - \alpha_C(u)$. 
-	$u + \Delta u$ ist ein Punkt mit der Transparenz $1 - \alpha_C(u + \Delta u)$. Die Transparenz
-	zwischen den Punkt $u$ und $u + \Delta u$ wird mit $1 - \alpha(u) \Delta u$ angegeben.
-	Die Transparenz zwischen dem Pixel und dem Punkt $u + \Delta u$ setzt sich folgendermaßen zusammen:
-	
-	\begin{equation}
-		1 - \alpha_C(u + \Delta u) = (1 - \alpha_C(u)) \cdot (1 - \alpha(u)\Delta u)
-		\label{eq:TransparenzGL1}
-	\end{equation}
-	
-	Daraus ergibt sich eine rekursive Beziehung für die aufakkumulierten Verdeckungen für $\alpha_C(u)$
-	
-	\begin{equation}
-		\alpha_C(u + \Delta u) = \alpha_C(u) + \alpha(u)(1 - \alpha_C(u)) \Delta u
-		\label{eq:TransparenzGL2}
-	\end{equation}
-	
-	Bezeichnet $C_C(u)$ die akkumulierte Farbe, lässt diese sich mit einer ähnlichen rekursiven Formel
-	berechnen. $C(u)$ stellt die Farbe dar, welche von einem Punkt, mit dem Längenparameter $u$ durch
-	ein vollkommen transparentes Volumen auf den Pixel Reflektiert wird. Zur Berechnung der Farbintensität
-	wird das Phong Beleuchtungsmodell benutzt. In der Realität ist das Medium zwischen dem Punk an der Stelle $u$
-	und dem Pixel selten vollkommen Transparent, deshalb muss die Farbe durch das Volumen abgeschwächt werden.
-	$C(u) \alpha(u) \Delta u$ beschreibt diese Abschwächung.
-	
-	\begin{equation}
-		C_C(u + \Delta u) = C_C(u) + (1 - \alpha_C(u)) \cdot C(u) \alpha(u) \Delta u
-		\label{eq:TransparenzGL3}
-	\end{equation}
-	
-\subsection{Eine kontinuierliche Formulierung}
-
-\section{Verdeckung}
-
-Die endgültige Lichtintensität, die das Auge erreicht setzt sich zusammen aus:
- 
-$I = I_E + I_B + I_L$
-
-dem emittierten Licht:
-
-$I_E = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot c(v_r(t)) dt $
-
-dem ambienten Licht:
-
-$I_B = \tau(t_n, t_f) \cdot I_b$
-
-$\tau(t_0, t_1) = e^{- \int\limits_{t_0}^{t_1} \sigma (v_r(t)) dt}$
-
-und dem Licht der Einzelnen Lichtquellen. Hier reduziert auf einen einzelnen Strahl der den Sichtstrahl $\underline{r}(t) = \underline{e} + t \cdot \vec{v}$ im Volumen schneidet. (An der Stelle t)
-
-$I_L(t) = \tau(t_n, t) \cdot I_p(t)$
-
-$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \sigma (v_r(s)) ds} \cdot I_p$
-
-$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot v_r(s) ds} \cdot I_p$
-
-$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot \kappa ds} \cdot I_p$
-
-$I_p(t) = e^{- \int\limits_{0}^{l(t)} \cdot  \lambda \cdot \kappa ds} \cdot I_p$
-
-$I_p(t) = e^{- \lambda \cdot \kappa \cdot \int\limits_{0}^{l(t)} ds} \cdot I_p$
-
-$I_p(t) = e^{- \lambda \cdot \kappa \cdot s} \cdot I_p$
-
-$I_p(t) = e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d(t)>}{<d(t), d(t)>} + \frac{\sqrt{<p(t), d(t)>^2 - <p(t), p(t)> \cdot <d(t), d(t)>}}{<d(t), d(t)>}} \cdot I_p$
-
-mit $d(t) = d$ da es sich um eine Richtungslichtquelle handelt
-
-$I_p(t) = e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p$
-
-$I_{L(t)} = \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p$
-
-Daraus ergibt sich $I_L$ für eine Richtungslichtquelle
-
-$I_L = \int\limits_{t_n}^{t_f} I_{L(t)} dt $
-
-$I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot I_{p(t)} dt$
-
-$I_L = \int\limits_{t_n}^{t_f} \tau(t_n, t) \cdot e^{- \lambda \cdot \kappa \cdot \frac{-<p(t), d>}{<d, d>} + \frac{\sqrt{<p(t), d>^2 - <p(t), p(t)> \cdot <d, d>}}{<d, d>}} \cdot I_p dt$
 
 
-\cite{Max:1995:OMD:614258.614298}
 
-\cite{conf/pg/JungPP98}
+\chapter{Implementation}
 
-\chapter{Fazit}
+\chapter{Evaluation und Diskussion}
+\section{Fazit}
 
 %\chapter{title}
 %
