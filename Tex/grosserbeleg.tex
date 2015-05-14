@@ -21,7 +21,7 @@
 \betreuer{Dipl-MedienInf. Joachim Staib}
 \bibfiles{literatur.bib}
 \problem{
-Die Darstellung von Partikeldaten mittels Kugelglyphen ist in der wissenschaftlichen Visualisierung
+Die Darstellung von Partikeldaten mittels Kugelglyphen ist in wissenschaftlichen Visualisierung
 inzwischen etabliert. Gerade bei dichten Datensätzen stellen kompakte Anordnungen von sehr vielen
 Kugeln jedoch ein Problem für die Erkennbarkeit der zu visualisierenden Vorgänge dar. Eine Möglichkeit, diesem Problem zu begegnen ist es, über Blinn-Phong-Beleuchtung hinausgehende Effekte wie
 globale Schatten oder den Einsatz von Methoden aus dem Volume-Rendering zu integrieren. Durch
@@ -73,69 +73,84 @@ Bild"ubernahmen zitieren.}
 
 \section{Motivation}
 	
-	Partikel sind geometrische Objekte, welche in einem Raum durch ihre Position und beliebige weitere Attribute, wie einen Geschwindigkeitsvektor beschrieben werden können. Sie kommen bei computergestützten Simulationen zum Einsatz oder entstehen
-	bei modernen Messvorgängen in Form von Punktwolken. Der Einsatz von Partikelsystemen ist weit verbreitet und die Visualisierung
-	dieser ist eine der Kernkomponenten beim Analysieren und Verstehen der dargestellten Prozesse.
-	Bei komplexen und dichten Szenen kommt es vor, dass innere Strukturen auf Grund von Verdeckungen nicht Sichtbar sind.
-	Ein Ziel von Visualisierungen besteht in der Förderung der Menschlichen Wahrnehmung zur Erkennung von Beziehungen und Tendenzen
-	der Abgebildeten Daten. 
-	Eine Möglichkeit das Problem der verdeckten Objekten zu lösen, ist der Einsatz von Transparenz. Die Hinteren Objekte scheinen bis zum Betrachter durch. In Interaktiven Visualisierungen kann dem Benutzer die Möglichkeit geboten werden die Transparenz für Ausgewählte
-	Regionen selbst zu variieren.
-	Zusätzlich spielt der Einsatz von Licht eine wichtige Rolle, da der menschliche Wahrnehmungsapparat darauf trainiert ist Lichtwege zu
-	rekonstruieren und anhand dieser Tiefeninformationen zu schätzen.
-	Lokale Beleuchtungsmodelle erfüllen diese Aufgabe nicht, der Einsatz einer globalen Beleuchtung wird Notwendig.
-	Auf Grund der hohen Komplexität der Algorithmen zur Berechnung der globalen Beleuchtung, müssen bei Echtzeitfähigen
-	GPU-Implementierungen die Lösungen Approximiert werden.
+	Bei einer Vielzahl von Messvorgängen oder Simulationen ergeben sich Partikel basierte Datensätze.
+	Erst durch eine geeignete Darstellung lassen sich diese optimal auswerten und analysieren.
+	Das Ziel von Visualisierungen ist die Unterstützung der menschlichen Wahrnehmung bei der Auswertung
+	der erhobenen Daten.
+	Dabei geht nicht um eine bloße Optische Verschönerung der Darstellung, sondern darum kodierte Eigenschaften 
+	in den Fokus des Betrachter zu rücken und Tendenzen hervorzuheben.
+	Die Darstellung von dreidimensionalen Partikeln auf eine zweidimensionalen Ebene ist mit Problemen verbunden,
+	diese sollen im Folgenden näher betrachtet und werden.
 	
-	Ziel dieser Arbeit ist die Entwicklung eines CPU-Renderes dessen Fokus nicht auf Geschwindigkeit, sondern auf der Genauigkeit der
-	Berechnung liegt. Die Partikel in Form von Kugeln werden mit Methoden des direkten Volumenrenderns abgebildet.
-	Das Verfahren wird als direkt bezeichnet, da die Objekte nicht in polygonale Netze aufgelöst werden müssen um sie abzubilden.
-	Die erzeugten Bilder, dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen
-	Implementierungen. Aufbauend auf der Volumen-Rendergleichung von Nelson Max aus der Arbeit \cite{Max:1995:OMD:614258.614298},
-	soll dessen Emission- und Absorptionsmodell benutzt und eine Weitestgehend Analytische Lösung entwickelt werden.
-	Zur Erzeugung der Bilder kommt ein \textit{Raycasting} Algorithmus zum Einsatz. 
-	Das Verfahren ist nicht auf Kugeln beschränkt und lässt sich für implizite Oberflächen erweitern.
-	Die erarbeitete Lösung stellt ebenfalls eine Approximation der eigentlichen dar. 
-	Um die Berechnung zu beschleunigen kann die Genauigkeit der nummerischen Integration in Abhängigkeit der Stichprobengröße vereinfacht werden.
-	Zusätzlich gibt es die Möglichkeit die Beleuchtungsberechnung der Verdeckten Objekte sukzessiv zu Vereinfachen, in Abhängigkeit
-	einer einstellbaren Tiefe werden nur bis zu dieser die Partikel global beleuchtet. Alle weiteren verdeckten Kugeln werden
-	durch eine weitere Vereinfachung der Rendergleichung gezeichnet.  
+	Die Fähigkeit des Menschen die Tiefe von Objekten in einer Szene schätzen zu können wird durch ein System ermöglicht,
+	das den Wert für die Tiefe auf unterschiedlichen Wegen bestimmt. Ein Weg besteht in der Schätzung der Entfernung über
+	die Epipolargeometrie. Bei der Betrachtung eines zweidimensionalen Bildes kann diese Variante lediglich die Bildschirmebene erfassen, jedoch nicht die Tiefe der abgebildeten Objekte. Die Objekttiefen in der Abbildung
+	kann der Mensch anhand von Überdeckungen und durch eine perspektivische Transformation der Objekte abschätzen.
+	Damit Überdeckungen erkannt und die abgebildeten Objekte von einander unterschieden werden können müssen sich diese
+	sich durch einen Kontrast voneinander unterscheiden, Schattierungen lösen dieses Problem. Zusätzlich wirkt ein Kugelglyph plastischer als wenn er durch einen einfarbiger Kreis darstellen werden würde. 	
+	Überdeckungen verhindern allerdings, das der Betrachte die dahinter liegenden Partikel sehen kann. 
+	Ganze Strukturformen zu denen beispielsweise Höhlen zählen können deshalb nicht erfasst werden.
+	Eine Möglichkeit dieses Problem zu lösen besteht darin die Partikel transparent abzubilden, damit trotz
+	der Überdeckung alle Strukturen sichtbar bleiben.
+	Die zuvor erwähnten Schattierungen ergeben sich in der realen Welt aus der Wechselwirkung zwischen Licht und
+	Materie. Ein weiter Weg zur Bestimmung von Objekttiefen die der Mensch nutzt, ist die Rekonstruktion von
+	Lichtwegen. 
+	
+	Lokale Beleuchtungsmodelle eigen sich zur Berechnung von Schattierung, unterstützen die Wahrnehmung der Tiefe jedoch nur bedingt.
+	Es existieren eine reihe von Beleuchtungsmodellen die die Szene global Beleuchten. 
+	Der Einsatz solcher Modelle stellt eine bessere Unterstützung der Wahrnehmung dar.
+	Existierenden Algorithmen müssen auf Grund einer hohe Rechenkomplexität, der globalen Beleuchtung an vielen stellen approximativ vereinfachen.
+	Insbesondere GPU-Implementierung sind auf diese angewiesen um die globale Beleuchtung in Echtzeit zur realisieren.
+	
+	Ziel dieser Arbeit ist die Entwicklung eines CPU-Renderes für Partikel, bei dem der Fokus auf der Genauigkeit und nicht auf der Geschwindigkeit der Berechnung liegt.
+	Die Partikel werden als mit Gas gefüllte Kugel interpretiert und mit einem Verfahren der direkten Volumen Darstellung
+	gezeichnet. Direkte Verfahren zerlegen die Daten nicht in einem Vorverarbeitungsschritt in Netze aus Polygonen,
+	sondern visualisieren die Daten in einem Schritt.
+	Die Grundlage des Verfahrens stellt ein Volumenintegral dar, dessen Lösung mit Hilfe eines Raycast-Algorithmus
+	dargestellt wird. Dabei handelt es sich um ein halb-analytisches Verfahren.
+	Vorteile analytischer Lösungen in der Genauigkeit und der Geschwindigkeit der Berechnung.  
+	Die erzeugten Bilder, dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen Implementierungen. Im Folgenden werden Verwandte Arbeiten und der Aufbau dieser Arbeit Vorgestellt.
 	
 \section{Verwandte Arbeiten}
 
-	Die Arbeit \cite{JSYR14} wurde verfasst, um den Leser einen Überblick über Techniken des
-	renderns von Volumendaten in Echtzeit zu geben.
-	Die in dieser Arbeit vorgestellten Algorithmen wurden mit Gütekriterien bewertet und klassifiziert.  
-	Diese Kriterien sollen die Auswahl des Verfahrens für den Entwickler erleichtern.
-	Alle vorgestellten Modelle sind Approximationen, sie generieren Optisch schöne Bilder, weichen jedoch weit von der Realität ab.
+	Die Arbeit \cite{JSYR14} fast verschiedenen Algorithmen zur Beleuchtung und interaktiven Darstellung
+	von Volumendaten in Echtzeit zusammen.
+	Vorgestellte Algorithmen werden hinsichtlich ihrer technischen Umsetzung, Performance und ihrer
+	Unterstützung für die menschliche Wahrnehmung klassifiziert.  
+	Diese Kriterien erleichtern die Auswahl des Verfahrens für den Entwickler in Abhängigkeit der Anwendung.
+	Bei den Verfahren handelt es sich um approximative Varianten mit dem Ziel interaktive Bildraten zu
+	gewährleisten.
 	
-	Die Arbeit von Nelson Max \cite{Max:1995:OMD:614258.614298}, beschreibt die Grundlagen des Emission und Absorptionsmodells, welches Grundlage vieler Arbeiten im Bereich des Direkten Volumenrenderns bildet.
-	Für die Rendergleichung entwickelt er in dieser Arbeit eine Allgemeine Lösung und beschreibt den Vorgang
-	der Lichtstreuung im Detail. Am ende der Arbeit werden einige Lösungsvorschläge zur Implementierung vorgestellt.
+	Die Grundlagen des Emission-Absorption-Modells werden von Nelson Max in der Arbeit \cite{Max:1995:OMD:614258.614298} beschrieben.
+	Das Volumenintegral des Emission-Absorption-Modells wird hergeleitet und Stück für Stück mit Effekten
+	angereichert. Neben der einfachen Streuung und der Schattenberechnung wird auch die Mehrfachstreuung vorgestellt.
+	Beendet wir die Arbeit mit der Vorstellung anwendbarer Lösungsverfahren.
 	
-	In der Publikation \cite{conf/pg/JungPP98} wird ein zum Teil Analytisches Verfahren vorgestellt.
-	Der Algorithmus wurde zum Rendern von Voxelgittern konzipiert. 
-	Jedem Voxel wird eine Dichte zu geordnet, aus welchem ein Wert für Transparenz abgeleitet wird.
-	Hinter dem Voxelgitter befindet sich eine Lichtquelle und deren Lichtintensität wird durch das Volumen unterschiedlich Stark abgeschwächt.	Die Integrale der Gleichungen werden streckenweise Analytisch gelöst,
-	wodurch ein Zuwachs an Genauigkeit erreicht wird. 
-
-	\textit{Photon Mapping} ist ein Verfahren zum erzeugen von Globaler Beleuchtung. Es werden Photonen in die
-	Szene geschossen, trifft ein Photon die Oberfläche, werden Informationen in der Photonenmap gespeichert.
-	Wenn das Photon noch genügend Energie besitzt, wird in Abhängigkeit der Reflektionsrichtung ein weiterer
-	Strahl verfolgt. Diese Vorgehensweise wiederholt sich das Photon seine Energie komplett an die Umgebung abgegeben hat, oder ein Abruchkriterium erfüllt wurde.
-	In einem zweiten Schritt wird das Bild mit einem Raycast verfahren erzeugt.
-	In der Arbeit \cite{JKRY12} wird die Photonenmap mit Histogrammen umgesetzt. Nach Parameteränderungen, werden
-	nur die Betroffenen Histogramme ersetzt. Dadurch wird dieses Verfahren Echtzeitfähig.
+	In der Publikation \cite{conf/pg/JungPP98} wird ein zum Teil Analytisches Verfahren vorgestellt. 
+	Der Algorithmus wird zur Darstellung von Voxelgittern eingesetzt.  
+	Jedem Voxel wird eine Dichte zu geordnet, aus welcher ein Wert für die Transparenz abgeleitet wird.
+	Hinter dem Voxelgitter befindet sich eine Lichtquelle und deren Lichtintensität wird durch das Volumen  unterschiedlich Stark abgeschwächt. 
+	Die Integrale der Gleichungen werden streckenweise Analytisch gelöst, wodurch ein Zuwachs an 
+	Genauigkeit erreicht wird. 
 	
 	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emission und Absorptionsmodell aufbaut, sondern von einem Punkt Stahlen in die umliegende Nachbarschaft verfolgt um den
 	Grad an Verdeckung an diesem Punkt zu bestimmen. Je mehr Segmente mit hoher Dichte in der Nachbarschaft liegen,
 	umso geringer ist der Anteil des Lichtes, welches eben jenen Punkt erreicht. Ein Geschwindigkeitszuwachs wird durch eine Vor-integrierte Transferfunktion erreicht. Ein Vorteil dieses Verfahrens, stellt die Güte der erzeugten
 	Schatten da.
 
-	Eine weitere Arbeit aufbauend auf dem Prinzip der Ambienten Verdeckung stellt die Arbeit \cite{journals/tvcg/KnissPHSM03} vor.
-	In dieser Arbeit hat Direktes und Indirektes Licht einen Einfluss auf das Ergebnis. 
-	Mit Hilfe des so genannten \textit{blurring} werden die Farbanteile des Indirekten Lichtes in einem Buffer gehalten. Dieses verfahren approximiert die Streuungseffekte, welche in Materialien auftreten können.
+	Photonen Mapping ist ein Verfahren zur Erzeugung von Globalen Beleuchtungseffekten, dieses kommt
+	in der Arbeit \cite{JKRY12} zur Beleuchtung von Volumendaten in Echtzeit zum Einsatz.
+	Die benötigte dazu benötigte Photonenmap wir dabei mit Histogrammen realisiert. 
+	Mit deren Hilfe können Änderungen in Interaktiven Bildwiederholungsraten ermöglicht werden,
+	da bei Parameteränderungen nur die betroffenen Histogramme neu erzeugt werden müssen.
 	
+	Die Monte Carlo Methode ist ein Verfahren zur nummerischen Approximation von Integralen, dieses
+	kommt zur Lösung der Volumengleichung in der Arbeit \cite{KPB12a} zum Einsatz. Der Fokus liegt
+	der Arbeit liegt auf der physikalischen Grundlage der Gleichung. Die Arbeit verspricht eine
+	Globale Beleuchtungsberechnung in Echtzeit und unterstützt unter anderen auch Mehrfachstreuungen.
+
+	Ambiente Verdeckung kommt in der Arbeit \cite{journals/tvcg/KnissPHSM03} zum Einsatz. 
+	Mit Hilfe des so genannten \textit{blurring} werden die Farbanteile des Indirekten Lichtes in einem Buffer gehalten. Dieses verfahren approximiert die Streuungseffekte, welche in Materialien auftreten können.
 	Eine Erweiterung dieses Verfahrens stellt die Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} dar, welche hier nur der Vollständigkeit halber erwähnt werden soll.
 	
 \section{Aufbau der Arbeit}
@@ -299,28 +314,19 @@ Bild"ubernahmen zitieren.}
 	
 \chapter{Rendergleichung}
 
-	In diesem Kapitel wird die Rendergleichung aufgestellt und die Grundlagen des Algorithmus hergeleitet,
-	welcher beim Zeichnen der Kugeln zum Einsatz kommt.
-	Zum Beginn wird das Emission und Absorptionsmodell aus der Arbeit von \cite{Max:1995:OMD:614258.614298}
-	genauer betrachtet. Als Grundannahme wird die Menge der Transferfunktionen auf lineare Funktionen beschränkt,
-	die Dichte soll im Volumen als konstant gelten. 
-	Diese Arbeit befasst sich mit der Frage, ob sich mit diesen Einschränkungen das entstehende Volumenintegral analytisch lösen lässt.
-	Gibt es eine analytische Lösung, lassen sich die Bilder effizient und sehr genau berechnen.
-	Tritt der Fall ein, dass sich keine analytische Lösung für die Gleichung finden lässt, 
-	werden die Integrale so weit es möglich analytisch gelöst und die restlichen Teile der Gleichung müssen 
-	folglich Nummerisch approximiert werden.
+	Die Basis der Beleuchtungsrechnung in dieser Arbeit bildet ein Volumenintegral, welches die Verteilung des Lichtes
+	in der Szene beschreibt. Die Gleichung fußt auf dem Emission und Absorptionsmodell von Nelson Max aus der Arbeit \cite{Max:1995:OMD:614258.614298}. 
 	
-\section{Das Optische Modell}
-
-	Aufbauend auf dem Modell von Nelsen Max aus der Arbeit \cite{Max:1995:OMD:614258.614298} werden zur Herleitung Partikel in Form
-	von Einheitskugeln betrachtet. Jede dieser Kugeln besitzt einen Radius $r$. Die Oberfläche eines Partikel $A$
-	bestimmt sich durch das Produkt der Kreiszahl $\pi$ und dem Radius. So das gilt $A = \pi \cdot r$.
-	Die Mittlere Dichte $\rho$ entspricht der Anzahl von Partikeln, welche sich in einem Einheitsvolumen befinden.
-	Betrachtet wird im folgenden ein Zylinder, welcher mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert wird. 
-	Das Volumen eines solchen Zylinders entspricht $V_z = E \cdot \delta s$ und es enthält in etwa $N$ Partikel, mit $N = \rho E \delta s$.
+	Grundlage der Herleitung bilden Partikel in Form von Einheitskugeln. Jede dieser Kugeln besitzt einen Radius $r = 1$. 
+	Die projizierte Oberfläche einer Kugel entspricht einem Kreis, und dessen Flächeninhalt lässt sich aus dem Produkt des 
+	quadrierten Radius mit der Kreiszahl $\pi$ bestimmen.
+	Die Anzahl von Partikeln, welche sich in einem Einheitsvolumen befinden wird mit $\rho$ bezeichnet.
+	Im folgenden soll ein Zylinder betrachtet werden, welcher mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert. 
+	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und es enthält in etwa $N = \rho E \delta s$ Partikel.
 	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
 	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt $\rho A \delta s$. 
-	Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen. Die Funktion $I(s)$ liefert die Intensität des Lichtes an der Distanz $s$. Wird die Lichtintensität
+	Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen. 
+	Die Funktion $I(s)$ liefert die Intensität des Lichtes an der Distanz $s$. Wird die Lichtintensität
 	$I(s)$ nach $s$ abgeleitet, ergibt sich die folgender Differenzialgleichung:
 		 
 	\begin{equation}
@@ -329,7 +335,7 @@ Bild"ubernahmen zitieren.}
 	\end{equation}
 	
 	Auf der rechten Seite der Gleichung \ref{eq:MAX95LSGgrundDG} steht die Funktion $\tau(s)$, diese beschreibt
-	die Abschwächung der Lichtintensität durch ein Volumen der Länge $s$. Wie in \ref{eq:MAX95EmissionDG} zusehen
+	die Abschwächung der Lichtintensität durch ein Volumen mit der Länge $s$. Wie in \ref{eq:MAX95EmissionDG} zusehen
 	ist definiert sich der Abschwächungskoeffizient als das negative Produkt der mittleren Dichte $\rho$ mit der
 	Oberfläche eines Partikels. Nelson Max hat die folgende Lösung für die Differenzialgleichung gefunden:
 	
@@ -373,6 +379,15 @@ Bild"ubernahmen zitieren.}
 	
 
 
+	$I = I_B + I_E$
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=10cm]{/home/josef/test.pdf}
+			\caption{Schematische Darstellung des Abbildungsvorgangs der \textit{camera obscura}}
+			\label{fig:dasdcameraObscura}
+		\end{figure}
+	
 
 \chapter{Implementation}
 
