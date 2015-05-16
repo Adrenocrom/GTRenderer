@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'standartAbsorption.pdf' (pdf, eps, ps)
+%% Accompanies image file 'exStandartAbsorption.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -48,8 +48,8 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.28115471)%
-    \put(0,0){\includegraphics[width=\unitlength]{images/standartAbsorption.pdf}}%
+  \begin{picture}(1,0.51798386)%
+    \put(0,0){\includegraphics[width=\unitlength]{images/exStandartAbsorption.pdf}}%
     \put(0.35741915,0.08544433){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t_n$}}}%
     \put(0.7442186,0.08297537){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t_f$}}}%
   \end{picture}%
