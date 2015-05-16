@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  14 MAY 2015 18:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  16 MAY 2015 17:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -684,43 +684,46 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              deprecated \float@addtolist interface .
 
 
+Overfull \hbox (6.63338pt too wide) in paragraph at lines 116--120
+\T1/ptm/m/n/10.95 Im Fol-gen-den wer-den Ver-wand-te Ar-bei-ten vor-ge-stellt g
+e-folgt von den Grund-la-gen des Raycast-Verfahrens,
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.123 
+l.120 
        [3
 
-]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 148.
-
-
-LaTeX Warning: Citation `KPB12a' on page 4 undefined on input line 148.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.121 \chapter
+              {Verwandte Arbeiten} [4]
+ 2.
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.167 
-       [4]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.5}) has been already used, duplicate ignored
+l.163 \chapter
+              {Grundlagen} [5
+
+]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.168 \chapter
-              {Grundlagen} [5]pdfTeX warning (ext4): destination with the same 
-identifier (name{page.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.168 \chapter
+l.163 \chapter
               {Grundlagen} [6
 
 ]
- 2.
+ 3.
 [7] (./images/cameraObscura.pdf_tex
-<images/cameraObscura.pdf, id=155, 318.81557pt x 242.98781pt>
+<images/cameraObscura.pdf, id=162, 318.81557pt x 242.98781pt>
 File: images/cameraObscura.pdf Graphic file (type pdf)
 
 <use images/cameraObscura.pdf>
@@ -729,94 +732,87 @@ Package pdftex.def Info: images/cameraObscura.pdf used on input line 52.
 ) [8 <./images/cameraObscura.pdf>] [9] [10
 
 ]
- 3.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 364.
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 364.
-
-
-Underfull \vbox (badness 2205) has occurred while \output is active []
-
- [11]
-</home/josef/test.pdf, id=199, 654.445pt x 223.83624pt>
-File: /home/josef/test.pdf Graphic file (type pdf)
-
-<use /home/josef/test.pdf>
-Package pdftex.def Info: /home/josef/test.pdf used on input line 388.
-(pdftex.def)             Requested size: 284.52756pt x 97.31332pt.
- [12 </home/josef/test.pdf>]
  4.
-[13
+[11] (./images/standartAbsorption.pdf_tex
+<images/standartAbsorption.pdf, id=204, 174.23665pt x 48.98746pt>
+File: images/standartAbsorption.pdf Graphic file (type pdf)
 
-] [14
+<use images/standartAbsorption.pdf>
+Package pdftex.def Info: images/standartAbsorption.pdf used on input line 52.
+(pdftex.def)             Requested size: 284.52756pt x 80.00357pt.
+) [12 <./images/standartAbsorption.pdf>]
+(./images/exStandartAbsorption.pdf_tex
+<images/exStandartAbsorption.pdf, id=216, 174.23665pt x 90.25177pt>
+File: images/exStandartAbsorption.pdf Graphic file (type pdf)
+
+<use images/exStandartAbsorption.pdf>
+Package pdftex.def Info: images/exStandartAbsorption.pdf used on input line 52.
+
+(pdftex.def)             Requested size: 284.52756pt x 147.39413pt.
+) [13 <./images/exStandartAbsorption.pdf>] [14]
+ 5.
+[15
+
+] [16
 
 ]
- 5.
-[15] [16
+ 6.
+[17] [18
 
-] (./grosserbeleg.bbl) [17
-
-] [18
-
-] [19
-
-
+] (./grosserbeleg.bbl) [19
 
 ] [20
 
 ] [21
 
 
+
 ] [22
 
+] [23
+
+
+] [24
+
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 490.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 490.
 
 (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 490.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 490.
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
-(rerunfilecheck)             Checksum: 4CFF7B716969630D8253F7E14607BBD9;785.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
+(rerunfilecheck)             Checksum: 8D0BA5D4E9046869F3AFD9CF6FB32E96;861.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 490.
  )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 70 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10223 strings out of 494976
- 149611 string characters out of 6179136
+ 10255 strings out of 494976
+ 150451 string characters out of 6179136
  306695 words of memory out of 5000000
- 13217 multiletter control sequences out of 15000+600000
- 55229 words of font info for 61 fonts, out of 8000000 for 9000
+ 13233 multiletter control sequences out of 15000+600000
+ 49696 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,11n,61p,412b,1416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,12n,61p,412b,1417s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (28 pages, 181599 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhv
+b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on grosserbeleg.pdf (30 pages, 168517 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 

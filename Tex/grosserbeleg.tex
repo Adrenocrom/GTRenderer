@@ -77,7 +77,7 @@ Bild"ubernahmen zitieren.}
 	Erst durch eine geeignete Darstellung lassen sich diese optimal auswerten und analysieren.
 	Das Ziel von Visualisierungen ist die Unterstützung der menschlichen Wahrnehmung bei der Auswertung
 	der erhobenen Daten.
-	Dabei geht nicht um eine bloße Optische Verschönerung der Darstellung, sondern darum kodierte Eigenschaften 
+	Dabei geht es nicht um eine bloße Optische Verschönerung der Darstellung, sondern darum kodierte Eigenschaften 
 	in den Fokus des Betrachter zu rücken und Tendenzen hervorzuheben.
 	Die Darstellung von dreidimensionalen Partikeln auf eine zweidimensionalen Ebene ist mit Problemen verbunden,
 	diese sollen im Folgenden näher betrachtet und werden.
@@ -87,7 +87,7 @@ Bild"ubernahmen zitieren.}
 	die Epipolargeometrie. Bei der Betrachtung eines zweidimensionalen Bildes kann diese Variante lediglich die Bildschirmebene erfassen, jedoch nicht die Tiefe der abgebildeten Objekte. Die Objekttiefen in der Abbildung
 	kann der Mensch anhand von Überdeckungen und durch eine perspektivische Transformation der Objekte abschätzen.
 	Damit Überdeckungen erkannt und die abgebildeten Objekte von einander unterschieden werden können müssen sich diese
-	sich durch einen Kontrast voneinander unterscheiden, Schattierungen lösen dieses Problem. Zusätzlich wirkt ein Kugelglyph plastischer als wenn er durch einen einfarbiger Kreis darstellen werden würde. 	
+	sich durch einen Kontrast voneinander abheben, Schattierungen lösen dieses Problem. Zusätzlich wirkt ein Kugelglyph plastischer als wenn er durch einen einfarbiger Kreis darstellen werden würde. 	
 	Überdeckungen verhindern allerdings, das der Betrachte die dahinter liegenden Partikel sehen kann. 
 	Ganze Strukturformen zu denen beispielsweise Höhlen zählen können deshalb nicht erfasst werden.
 	Eine Möglichkeit dieses Problem zu lösen besteht darin die Partikel transparent abzubilden, damit trotz
@@ -99,7 +99,7 @@ Bild"ubernahmen zitieren.}
 	Lokale Beleuchtungsmodelle eigen sich zur Berechnung von Schattierung, unterstützen die Wahrnehmung der Tiefe jedoch nur bedingt.
 	Es existieren eine reihe von Beleuchtungsmodellen die die Szene global Beleuchten. 
 	Der Einsatz solcher Modelle stellt eine bessere Unterstützung der Wahrnehmung dar.
-	Existierenden Algorithmen müssen auf Grund einer hohe Rechenkomplexität, der globalen Beleuchtung an vielen stellen approximativ vereinfachen.
+	Existierenden Algorithmen müssen auf Grund einer hohe Rechenkomplexität der globalen Beleuchtung an vielen stellen approximativ vereinfachen.
 	Insbesondere GPU-Implementierung sind auf diese angewiesen um die globale Beleuchtung in Echtzeit zur realisieren.
 	
 	Ziel dieser Arbeit ist die Entwicklung eines CPU-Renderes für Partikel, bei dem der Fokus auf der Genauigkeit und nicht auf der Geschwindigkeit der Berechnung liegt.
@@ -109,9 +109,16 @@ Bild"ubernahmen zitieren.}
 	Die Grundlage des Verfahrens stellt ein Volumenintegral dar, dessen Lösung mit Hilfe eines Raycast-Algorithmus
 	dargestellt wird. Dabei handelt es sich um ein halb-analytisches Verfahren.
 	Vorteile analytischer Lösungen in der Genauigkeit und der Geschwindigkeit der Berechnung.  
-	Die erzeugten Bilder, dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen Implementierungen. Im Folgenden werden Verwandte Arbeiten und der Aufbau dieser Arbeit Vorgestellt.
+	Die erzeugten Bilder, dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen Implementierungen. 
 	
-\section{Verwandte Arbeiten}
+\section{Struktur der Arbeit}
+	
+	Im Folgenden werden Verwandte Arbeiten vorgestellt gefolgt von den Grundlagen des Raycast-Verfahrens, das nach
+	der Einführung von Strahl und Kugelgleichungen mit der Herleitung der Perspektivischen Kamera schließt.
+	Das vierte Kapitel stellt das verwendete Beleuchtungsmodell vor. Details zur Implementierung sind im fünften Kapitel
+	zu finden. Beendet wird die Arbeit mit einer Auswertung des Verfahren in Abhängigkeit gewählter Parameter.
+	
+\chapter{Verwandte Arbeiten}
 
 	Die Arbeit \cite{JSYR14} fast verschiedenen Algorithmen zur Beleuchtung und interaktiven Darstellung
 	von Volumendaten in Echtzeit zusammen.
@@ -152,24 +159,14 @@ Bild"ubernahmen zitieren.}
 	Ambiente Verdeckung kommt in der Arbeit \cite{journals/tvcg/KnissPHSM03} zum Einsatz. 
 	Mit Hilfe des so genannten \textit{blurring} werden die Farbanteile des Indirekten Lichtes in einem Buffer gehalten. Dieses verfahren approximiert die Streuungseffekte, welche in Materialien auftreten können.
 	Eine Erweiterung dieses Verfahrens stellt die Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} dar, welche hier nur der Vollständigkeit halber erwähnt werden soll.
-	
-\section{Aufbau der Arbeit}
-
-	Die Arbeit ist folgendermaßen gegliedert. Zunächst werden im Grundlagen Kapitel die Technik des Raycastings erläutert und
-	die grundlegenden Gleichungen für Kugel und Strahl und deren Schnitt behandelt. 
-	Beendet wird das zweite Kapitel mit der Herleitung der Perspektivischen	Kamera anhand einer Lochkamera. 
-	Im dritten Kapitel wird die Rendergleichung aufbauend auf der Arbeit von Nelson Max hergeleitet und eine Lösung
-	dieser präsentiert werden.
-	Das vierte Kapitel wird die sich mit der Implementierung des Algorithmus beschäftigen und im fünften Kapitel werden die
-	Ergebnisse in Abhängigkeit der Parameter und der Rechenzeit evaluiert und anschließend im Fazit diskutiert werden.
-	
+		
 \chapter{Grundlagen}
 
-	Der Entwickelte Algorithmus basiert auf dem Verfahren des \textit{Raycasting}. Bei diesem Verfahren wird
-	der Sensor der Kamera, welche am ende dieses Kapitels definiert wird, diskretisiert und für jeden Pixel
-	wird mindestens ein Strahl in die Szene geschossen. 
-	Für jeden Strahl muss eine Schnittberechnung mit den in der Szene befindlichen Objekten durchgeführt werden. 
-	Wird ein Objekt vom Strahl geschnitten, muss die Rendergleichung für das dazugehörige Stahlsegment gelöst werden.
+	Der Betrachtete Algorithmus basiert auf dem Raycast-Verfahren. Grundlage ist das Modell einer Kamera,
+	diese Modell besitzt einen, in einzelne Bildpunkte aufgeteilten Sensor. Für jeden Pixel wird
+	ein Strahl in die Szene geschossen, für jeden Strahl wird ein Kollisionstest mit den Objekten durchgeführt.
+	Gibt es einen Schnitt von Objekt und Strahl, wird die Gleichung für das dazugehörige Stahlsegment gelöst.
+	Das Ergebnis der Gleichung sind Lichtintensitäten die sich auf der Sensorfläche aufsummieren.
 	
 	In dieser Arbeit wird die Menge der Objekte auf Kugeln reduziert. Jede Kugel repräsentiert ein mit Gas gefüllten
 	Partikel. Die Dichte im Inneren jedes Partikels wird als Konstant angenommen und die Menge der Transferfunktionen
@@ -187,7 +184,7 @@ Bild"ubernahmen zitieren.}
 	und einem Richtungsvektor $r$ bestimmt werden kann. Die Gleichung definiert sich wie folgt:
 	
 	\begin{equation}
-	  	\underline{p}(t) = \underline{o} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}_+
+	  	\underline{p}(t) = \underline{o} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}
 	  	\label{eq:Strahl}
 	\end{equation}
 	
@@ -292,8 +289,8 @@ Bild"ubernahmen zitieren.}
 	\begin{equation}
 		\vec{r}(x, y) = \left( 
 							\begin{array}{l}
-								(\frac{x}{W} \cdot 2 - 1) \cdot \frac{W}{H} \\
-								\frac{y}{H} \cdot (- 2) + 1 \\
+								(2 \frac{x}{W} - 1) \cdot \frac{W}{H} \\
+								-2 \frac{y}{H} + 1 \\
 								f
 							\end{array}							
 					 	\right)
@@ -312,82 +309,167 @@ Bild"ubernahmen zitieren.}
 	einer Rotationsmatrix mit den Richtungsvektoren bewerkstelligen. Die Position des Kameramodells ist frei Wählbar, es genügt den
 	Augpunkt zu verschieben. Mit Hilfe der Distanz $f$, der fokalen Länge kann ein Zoomeffekt der Kamera erzielt werden.
 	
-\chapter{Rendergleichung}
+\chapter{Beleuchtungsmodell}
 
-	Die Basis der Beleuchtungsrechnung in dieser Arbeit bildet ein Volumenintegral, welches die Verteilung des Lichtes
-	in der Szene beschreibt. Die Gleichung fußt auf dem Emission und Absorptionsmodell von Nelson Max aus der Arbeit \cite{Max:1995:OMD:614258.614298}. 
-	
-	Grundlage der Herleitung bilden Partikel in Form von Einheitskugeln. Jede dieser Kugeln besitzt einen Radius $r = 1$. 
-	Die projizierte Oberfläche einer Kugel entspricht einem Kreis, und dessen Flächeninhalt lässt sich aus dem Produkt des 
-	quadrierten Radius mit der Kreiszahl $\pi$ bestimmen.
-	Die Anzahl von Partikeln, welche sich in einem Einheitsvolumen befinden wird mit $\rho$ bezeichnet.
-	Im folgenden soll ein Zylinder betrachtet werden, welcher mit der Kreisfläche $E$ und einer Länge $\Delta s$ parametrisiert. 
-	Das Volumen des Zylinders entspricht $V_z = E \cdot \delta s$ und es enthält in etwa $N = \rho E \delta s$ Partikel.
-	Die von dem Zylinder verdeckte Grundfläche $B$ entspricht bei einem sehr klein gewählten $\delta s$ in etwa $NA$, mit $NA = \rho AE \delta s$.
-	Als Flussrichtung des Lichtes wird $\delta s$ gewählt. Der Anteil des Lichts, welcher mit Teilchen Wechselwirkt bis er $B$ erreicht beträgt $\rho A \delta s$. 
-	Wenn $\delta s$ gegen Null geht, sinkt die Wahrscheinlichkeit, das sich Gaspartikel entlang der Lichtrichtung überlappen. 
-	Die Funktion $I(s)$ liefert die Intensität des Lichtes an der Distanz $s$. Wird die Lichtintensität
-	$I(s)$ nach $s$ abgeleitet, ergibt sich die folgender Differenzialgleichung:
-		 
+	Der Ausgangspunkt dieses Kapitels ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkung des Lichtes auf die Absorption und die Emission beschränkt, die Streuung des Lichtes wird in
+	dieser Arbeit vernachlässigt.
+	Die Gleichung der Beleuchtungsberechnung unterteilt sich in zwei Summanden:
+
 	\begin{equation}
-		\frac{dI}{ds} = -\rho(s)AI(s) = -\tau(s)I(s)
-		\label{eq:MAX95grundDG}
-	\end{equation}
+		I = I_A + I_E
+		\label{eq:EAModell}
+ 	\end{equation}
 	
-	Auf der rechten Seite der Gleichung \ref{eq:MAX95LSGgrundDG} steht die Funktion $\tau(s)$, diese beschreibt
-	die Abschwächung der Lichtintensität durch ein Volumen mit der Länge $s$. Wie in \ref{eq:MAX95EmissionDG} zusehen
-	ist definiert sich der Abschwächungskoeffizient als das negative Produkt der mittleren Dichte $\rho$ mit der
-	Oberfläche eines Partikels. Nelson Max hat die folgende Lösung für die Differenzialgleichung gefunden:
+	Die Variable $I$ repräsentiert die von dem Sensor aufsummierte Licht Intensität, in der Gleichung \ref{eq:EAModell}. Der Term $I_A$ beschreibt die Abschwächung der Hintergrundbeleuchtung durch das mit Gas gefüllte Volumen
+	und $I_E$ die Emission.
+	Die Abschwächung entspricht dem Produkt des Hintergrundlichtes mit einem Wert für die Transparenz, dieser ist Abhängigkeit von der Streckenlänge $D \in \mathbb{R}_+$ die das Licht durch das Volumen zurücklegen muss. 
+	Dieser Zusammenhang wird in der folgenden Gleichung dargestellt:
 	
 	\begin{equation}
-		I(s) = I_0 \cdot e^{- \int\limits_{0}^{s} \tau(t) dt}
-		\label{eq:MAX95LSGgrundDG}
+		I_A = I_B \cdot T(D) 
+		\label{eq:AModell}
 	\end{equation}
 	
-	Der Parameter $I_0$ entspricht der Intensität an der Stelle $s = 0$, dabei handelt es sich um den Punkt,
-	an dem der Lichtstrahl auf das Volumen trifft. Bei den zweiten Teil des Terms handelt es sich um die Transparenz
-	des Mediums im Intervall $[0, s]$, welche durch $T(s) = exp(- \int_{0}^{l} \tau(t) dt)$ repräsentiert wird. 
-	Nelson Max definiert neben der Transparenz einen Wert für den Grad an Verdeckung durch das Volumen $\alpha$, der in 
-	der Englischen Literatur als \textit{opacity} bekannt ist.
+	Die Transparenz wird dabei durch die Funktion $T(D)$ ermittelt:
 	
 	\begin{equation}
-		\alpha = 1 - T(l) = 1 - e^{- \int\limits_{0}^{l} \tau(t) dt}
-		\label{eq:MAX95Opacity}
+		T(s) = exp(- \int\limits_{0}^{s} \tau(t) dt)
+		\label{eq:Transparenz}
 	\end{equation}
 	
-	Ist die Funktion $\tau$ innerhalb des Volumens konstant, vereinfacht sich der Term für die Verdeckung zur Gleichung $\alpha = 1 - exp(-\tau l) = \tau l - (\tau l)^2 / 2 + \cdots$. 
-	Im Rahmen dieser Arbeit ist der Begriff der Transferfunktion bereit mehr als einmal gefallen,
-	eine solche Funktion bildet den Materialwert auf die optischen Eigenschaften der Gleichung ab.
-	
-\subsection{Emission}
-
-	Wie in der Arbeit \cite{Max:1995:OMD:614258.614298} wird auch in dieser zuerst die Gleichung für die Emission
-	hergeleitet. Neben der Abschwächung der Lichtintensität durch ein Volumen, kann zusätzlich an jedem Punkt in diesem Licht emittiert werden. In Worten bedeutete es, das ein Lichtstrahl welcher durch das Volumen geschossen
-	wurde zusätzlich mit Licht angereichert wird. Zur Herleitung der Emission soll die Absorption zu nächst vernachlässigt werden. Betrachtet werden die Partikel aus dem vorhergehenden Abschnitt, jeder dieser Partikel
-	wird im Folgenden als Transparent angenommen. Zusätzlich emittiert jeder von ihnen diffuses Licht. Das bedeutet
-	jeder Partikel emittiert Licht, in alle Richtungen mit der gleichen Intensität $C$ über der projizierten Fläche $\rho A E \Delta s$. Dieser Effekt bewirkt eine Anreicherung des Lichtfluss $C \rho A E \Delta s$ welcher zur Basisfläche $E$ fließt.
-	Durch diesen Zusammenhang ergibt sich eine weitere Differenzialgleichung:
+	Der Grad der Abschwächung wird mit $\tau(t) = \sigma(\nu(t))$ bestimmt. Die Funktion $\tau(t)$ wird in dieser Funktion als Transferfunktion bezeichnet, die die Dichte des Volumens auf einen Wert für die Absorption abbildet.
+	Die Menge dieser Funktion wird in dieser Arbeit auf lineare Funktionen beschränkt. 
+	$\sigma(\nu(t)) = \lambda \nu$ skaliert mit einem konstanten Faktor $\lambda \in (0,1]$ den Wert für die Dichte des Volumens.
+	Diese wird mit der Funktion $\nu(t) = \kappa$ auf einen konstanten Faktor $\kappa$ abgebildet. Die Funktion $T$ aus der Gleichung \ref{eq:Transparenz} berechnet diese mit Hilfe einer Länge $s \in \mathbb{R}_+$, um die Formeln
+	zu Vereinfachen wird eine weitere Funktion definiert, welche die Länge aus der Differenz einer hinteren und einer 
+	vorderen Position berechnet:
 	
 	\begin{equation}
-		\frac{dI}{ds} = C(s)\rho(s)A = C(s)\tau(s) = g(s)
-		\label{eq:MAX95EmissionDG}
+		T'(t_n, t_f) = exp(- \int\limits_{t_n}^{t_f} (\lambda\kappa) dt)
+		\label{eq:ATransparenz}
 	\end{equation}
 	
-	Die Funktion $g(s)$ wird als Quellterm bezeichnet. Dieser Term beschreibt die Wechselwirkung des Lichtes mit dem
-	Volumen über der Länge $s$. Zu der Differenzialgleichung \ref{eq:MAX95EmissionDG} hat Nelson Max ebenfalls eine
-	Lösung gefunden welche sich wie folgt definiert:
+	In der Funktion \ref{eq:ATransparenz} steht die Variable $t_n$ den Eintrittspunkt in das Volumen und $t_f$ für den Austrittspunkt.
+	Das Produkt von $\lambda$ und $\kappa$ ist ein konstanter Wert aus diesem Grund lässt er sich aus dem Integral herausziehen und es existiert eine analytisch Lösung:
 	
+	\begin{equation}
+		T'(t_n, t_f) = exp(-\lambda\kappa \cdot \int\limits_{t_n}^{t_f} dt) = e^{-\lambda\kappa \cdot (t_f - t_n)}
+		\label{eq:ATransparenzSol}
+	\end{equation}
+	
+	Die Emission wird mit der Variable $I_E$ bezeichnet und wird zunächst sehr allgemein definiert:	
+	
+	\begin{equation}
+		I_E = \int\limits_{0}^{D} g(s) \cdot T'(s, D) ds
+		\label{eq:EModell}
+	\end{equation}
+	
+	Die Funktion $g(s)$ wird als Quellterm bezeichnet, dieser stellt eine beliebige Funktion, 
+	in Abhängigkeit einer Position $s$ dar. Das bei $s$ emittierte Licht wird auch durch das das Volumen abgeschwächt.
+	Wird die Formeln für die Absorption und die Emission in die Gleichung \ref{eq:EAModell} eingesetzt, dann hat die 
+	Formel für die komplette Beleuchtungsberechnung die folgende Form: 
+	
+	\begin{equation}
+		I = I_B \cdot T(D) + \int\limits_{0}^{D} g(s) \cdot T'(s, D) ds
+		\label{eq:CompEAModell}
+	\end{equation}
+	
+	Die Gleichung \ref{eq:CompEAModell} ist noch sehr allgemein. Es wird beschrieben wie sich das Hintergrundlicht durch
+	das Volumen abschwächt und unter der Beschränkung auf lineare Transferfunktion existiert eine analytische Lösung. 
+	Das Integral über den Quellterm wurde bisher noch nicht genauer definiert. In den nächsten beiden Absätzen
+	werden zwei verschiedene Funktionen für $g(s)$ definiert, beide werden für den eigentlichen Algorithmus benötigt.
+	
+\section{Einfaches Dichte Modell}
+	
+	Ein primärer Strahl, auf als Sichtstrahl bezeichnet wird vom Sensor aus in die Szene geschossen.
+	Die folgende Abbildung stellt diesen Vorgang schematisch dar. 
+	
+	\begin{figure}[h]
+		\centering
+		\def\svgwidth{10cm}
+		\input{images/standartAbsorption.pdf_tex}
+		\caption{Die Abbildung zeigt einen primären Sichtstrahl, der ein Partikel schneidet. Auf der rechten Seite der Abbildung symbolisiert eine kleine Sonne die Hintergrundbeleuchtung und auf der linken ein Auge den Sensor.}
+		\label{fig:eaSchematisch}
+	\end{figure}
+	
+	Der Sichtstrahl schneidet ein Partikel an den Positionen $t_n$ und $t_f$.
+	Es wird eine Hintergrundbeleuchtung $I_B$ mit einer konstanten Intensität definiert.
+	Diese wird entlang des Strahls durch das Gas im Volumen mit der bereits ermittelten Formel
+	$I_A = I_B \cdot exp(-\lambda\kappa(t_f - t_n))$ abgeschwächt. 
+	Die Transferfunktion für die Emission wird durch die Funktion $c(\nu(t)) = \lambda I_c \cdot \nu(t)$ beschrieben, wobei $I_c$ als konstante Lichtintensität gewählt wird und $\nu(t) = \kappa$ die Dichte auf den konstanten Wert
+	$\kappa$ abbildet. Zunächst wird die Emissionsgleichung mit den Eintritts und Austrittspunkten parametrisiert:
+	
+	\begin{equation}
+		I_E = \int\limits_{t_n}^{t_f} T'(t, t_f) \cdot g(t) dt
+		\label{eq:EModellEDM}
+	\end{equation}
+	
+	Die Quellfunktion wird in diesem Modell definiert als $g(t) = \lambda\kappa I_c$, so das die Formel für
+	die Emission ausgeschrieben der folgenden Form entspricht:
+	
+	\begin{equation}
+		I_E = \int\limits_{t_n}^{t_f} exp(-\lambda\kappa (t_f - t)) \cdot \lambda\kappa I_c dt
+		\label{eq:EModellEDMA}
+	\end{equation}
+	
+	Für die Gleichung \ref{eq:EModellEDMA} lässt sich mit Hilfe der Substitutionsregel eine analytische Lösung finden:
+	
+	\begin{align}
+		I_E &= I_C \cdot (1 - e^{-\lambda\kappa (t_f - t_n)}) = I_C \cdot (1 - T'(t_n, t_f)) \notag\\
+		I_E &= I_C \cdot \Theta(t_n, t_f)
+	\end{align} 
+	
+	Die gesamte Gleichung zur Beleuchtung eines Partikels entspricht der folgenden Form: 
+	
+	\begin{equation}
+		I = I_B \cdot T'(t_n, t_f) + I_C \cdot \Theta(t_n, t_f)
+	\end{equation}
+	
+\section{Erweitertes Dichte Modell}
 
+	Kern dieser Arbeit ist eine Erweiterung des eben vorgestellten Beleuchtungsmodells. Neben der Hintergrundbeleuchtung
+	wird die Beleuchtungsberechnung für eine beliebige Anzahl von Punkt und Richtungslichtquellen erweitert. Zur
+	Herleitung der Gleichung werden die Lichtquellen auf die Hintergrundbeleuchtung und eine Punktlichtquelle beschränkt.
+	Anschließend wird die gefundene Lösung wieder für beliebig viele Lichtquellen verallgemeinert.
+	Die folgende Abbildung soll zunächst die Vereinfachung veranschaulichen.
 
-	$I = I_B + I_E$
+	\begin{figure}[h]
+		\centering
+		\def\svgwidth{10cm}
+		\input{images/exStandartAbsorption.pdf_tex}
+		\caption{Die Notation ist die selbe wie in der Abbildung \ref{fig:eaSchematisch}. Diese Abbildung ergänzt das Modell um eine Punktlichtquelle und es werden die sekundäre Strahlen zu dieser dargestellt.}
+		\label{fig:exEaSchematisch}
+	\end{figure}
 	
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=10cm]{/home/josef/test.pdf}
-			\caption{Schematische Darstellung des Abbildungsvorgangs der \textit{camera obscura}}
-			\label{fig:dasdcameraObscura}
-		\end{figure}
+	Die Grundlage für dieses erweiterte Modell die selbe Gleichung \ref{eq:CompEAModell} wie für die vorherige.
+	Diese wird zur besseren Übersicht an dieser Stelle mit den Notationen aus dem vorhergehenden Abschnitt wiederholt:
 	
+	\begin{equation}
+		I = I_B \cdot T'(t_n, t_f) + \int\limits_{t_n}^{t_f} g(t) \cdot T'(t, t_f) dt
+		\label{eq:CompEAModellN}
+	\end{equation}
+	
+	Der erste Teil der Gleichung  beschreibt die Absorption und bleibt unverändert. Die Modelle unterscheiden sich nur durch die Quellfunktion $g(t)$. 
+	Diese berechnet die Kugelfarbe an jedem Punkt $t \in [t_n, t_f]$ entlang des Sichtstrahls und wird anschließend durch das Volumen abgeschwächt. 
+	Einfluss auf die Farbe der Kugeln hat die Intensität der Punktlichtquelle und die Emission des Gases. 
+	Die Funktion $l(t)$ liefert die Länge Schnittlänge des Sekundärstrahls mit dem Partikel. 
+	Ein Sekundärstrahl ist in diesem Zusammenhang ein Strahl, welcher ausgehend von der Position $t$ in die Richtung der Punktlichtquelle geschossen wird. 
+	Die Farbe an der Position $t$ bestimmt sich mit der Hilfe der Länge $l(t)$ und dem Modell aus dem vorherigen Abschnitt durch die folgende Rechenvorschrift:
+	
+	\begin{equation}
+		g(t) = I_L \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t))
+		\label{eq:quellfunktion}
+	\end{equation}
+	
+	Die Variable $I_L$ entspricht der Intensität der Punktlichtquelle.
+	Punkt und Richtungslichtquellen unterscheiden sich durch die Berechnung des Richtungsvektors für die Sekundärstrahlen.
+	Der Richtungsvektor der Sekundärstrahlen für Punktlichtquellen bestimmt sich aus der normierten Differenz zwischen der Position der Lichtquelle und der Position auf dem Sichtstrahl in Abhängigkeit von $t$. 
+	Richtungslichtquellen werden bereits mit einem normierten Richtungsvektor parametrisiert. Die Invertierung von diesem entspricht dem Richtungsvektor des Sekundärstrahls. Wird die Gleichung \ref{eq:quellfunktion} in die Gleichung \ref{eq:CompEAModellN} ergibt sich daraus ein Integral für das keine analytische Lösung existiert:
+	
+	\begin{equation}
+		I = I_B \cdot T'(t_n, t_f) + \int\limits_{t_n}^{t_f} ( I_L \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t)) ) \cdot T'(t, t_f) dt
+		\label{eq:CompEAModell1}
+	\end{equation}
 
 \chapter{Implementation}
 

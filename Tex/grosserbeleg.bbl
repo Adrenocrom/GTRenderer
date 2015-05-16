@@ -31,6 +31,14 @@
 \newblock {In: }\emph{Computer Graphics Forum}
 \newblock 33 (2014), Nr. 1, S. 27--51
 
+\bibitem[KPB12]{KPB12a}
+\textsc{Kroes}, Thomas ; \textsc{Post}, Frits~H.  ; \textsc{Botha}, Charl~P.:
+\newblock Exposure render: an interactive photo-realistic volume rendering
+  framework.
+\newblock {In: }\emph{PLoS ONE}
+\newblock 7 (2012), 07, Nr. 7. --
+\newblock 10.1371/journal.pone.0038586
+
 \bibitem[KPH{\etalchar{+}}03]{journals/tvcg/KnissPHSM03}
 \textsc{Kniss}, Joe ; \textsc{Premoze}, Simon ; \textsc{Hansen}, Charles~D. ;
   \textsc{Shirley}, Peter  ; \textsc{McPherson}, Allen:

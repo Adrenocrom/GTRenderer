@@ -1,5 +1,5 @@
-latex grosserbeleg
-latex grosserbeleg
+pdflatex grosserbeleg
+pdflatex grosserbeleg
 bibtex grosserbeleg
-latex grosserbeleg
-latex grosserbeleg
+pdflatex grosserbeleg
+pdflatex grosserbeleg
