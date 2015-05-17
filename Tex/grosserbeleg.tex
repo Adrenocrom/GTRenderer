@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg,final,twoside]{cgvpub}
+\documentclass[hyperref,german,beleg,final,lof]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -419,7 +419,8 @@ Bild"ubernahmen zitieren.}
 		I_E &= I_C \cdot \Theta(t_n, t_f)
 	\end{align} 
 	
-	Die gesamte Gleichung zur Beleuchtung eines Partikels entspricht der folgenden Form: 
+	Wird diese Lösung und die Lösung \ref{eq:ATransparenzSol} in die Gleichung \ref{eq:CompEAModell} eingesetzt,
+	dann ergibt sich die gesamte Gleichung zur Beleuchtung eines Partikels: 
 	
 	\begin{equation}
 		I = I_B \cdot T'(t_n, t_f) + I_C \cdot \Theta(t_n, t_f)
@@ -437,7 +438,7 @@ Bild"ubernahmen zitieren.}
 		\centering
 		\def\svgwidth{10cm}
 		\input{images/exStandartAbsorption.pdf_tex}
-		\caption{Die Notation ist die selbe wie in der Abbildung \ref{fig:eaSchematisch}. Diese Abbildung ergänzt das Modell um eine Punktlichtquelle und es werden die sekundäre Strahlen zu dieser dargestellt.}
+		\caption{Die Notation ist die selbe wie in der Abbildung \ref{fig:eaSchematisch}. Diese Abbildung ergänzt das Modell um eine Punktlichtquelle und es werden drei sekundäre Strahlen zu dieser dargestellt.}
 		\label{fig:exEaSchematisch}
 	\end{figure}
 	
@@ -470,8 +471,63 @@ Bild"ubernahmen zitieren.}
 		I = I_B \cdot T'(t_n, t_f) + \int\limits_{t_n}^{t_f} ( I_L \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t)) ) \cdot T'(t, t_f) dt
 		\label{eq:CompEAModell1}
 	\end{equation}
+	
+	Die Lösung der Gleichung wird mit Hilfe von Riemann Summe numerisch approximiert. Bevor die Lösung präsentiert
+	und die Quellfunktion für mehrere Lichtquellen angepasst wird, soll die numerische Approximation anhand einer
+	fiktiven Funktion $f$ beschrieben werden.
+	Dazu wird das Integral der Funktion $f$ zu einer Summe von skalierten Funktionswerten überführt:
+	
+	\begin{align}
+		\int\limits_{0}^{D} f(x) dx \approx \sum\limits_{i = 1}^{n} f(x_i) \Delta x
+	\end{align}
+	
+	Das Intervall von $0$ bis $D$ wird in $n$ kleinere Teile zerlegt, jedes dieser Teilintervalle besitzt die selbe Länge $\Delta x = \frac{D}{n}$. 
+	Aus jedem Intervall $i$ wird ein beliebiges Element $x_i$ aus diesem Intervall gewählt und der Funktionswert $f(x_i)$ mit $\Delta x$ skaliert und auf das Ergebnis aufsummiert. 
+
+	Demnach lässt sich die Formel \ref{eq:CompEAModellN} zu der Folgenden Gleichung vereinfachen:
+	
+	\begin{equation}
+		I = I_B \cdot T'(t_n, t_f) + \sum\limits_{t = t_n}^{t_f} g(t) \cdot T'(t, t_f) \Delta t
+		\label{eq:CompEAModellApprox1}
+	\end{equation}
+	
+	Es wird eine Anzahl von $n$ Stützpunkten zur Regulierung der Güte der Approximation definiert. Generell gilt,
+	je größer der Wert von $n$ ist um so besser wird das Integral approximiert. 
+	Der Wert für die Skalierung bestimmt sich als $\Delta t = \frac{t_f - t_n}{n}$.
+	
+	Im Folgenden entspricht die Menge $L = \{L_1, L_2, \cdots L_m\}$ der Menge der Lichtquellen, jede von ihnen wird über
+	den dazugehörigen Index identifiziert. 
+	Die Intensitäten der Lichtquellen werden mit dem Formelzeichen $I_{L_i}$ symbolisiert und $i$ entspricht dabei dem Index der dazugehörigen Lichtquelle.
+	Damit kann der Quellterm erweitert werden und die Formel für die Beleuchtungsberechnung entspricht:
+	
+	\begin{equation}
+		I = I_B \cdot T'(t_n, t_f) + \sum\limits_{t = t_n}^{t_f} ( \frac{1}{m} \cdot \sum\limits_{i=1}^{m}I_{L_i} \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t))) \cdot T'(t, t_f) \Delta t
+		\label{eq:CompEAModellApprox2}
+	\end{equation}
 
 \chapter{Implementation}
+
+	Die beschriebenen Beleuchtungsmodelle wurden für den Schnitt eines Strahls mit einem Partikel aufgestellt. 
+	In diesem Kapitel werden die Grundlagen und die beiden Beleuchtungsmodelle zusammengeführt und es wird
+	erläutert, wie die Bilder im Detail erzeugt werden.
+	
+	Die Auflösung eines Bildes wird mit der Breite $X$ und der Höhe $Y$ beschrieben.
+	Für jeden Bildpunkt $(x, y) \in X \times Y$ wird ein Strahl erzeugt und in einer Liste gespeichert. 
+	Der Ursprung jedes primären Strahlen entspricht der Kameraposition und die Richtungsvektoren lassen
+	sich in Abhängigkeit der Bildposition $(x, y)$ und der fokalen Länge $f$ anhand der Vorschrift \ref{eq:direction} bestimmen.
+	Die Kamera kann wie in den Grundlagen beschrieben, durch eine Rotation der Richtungsvektoren, 
+	jedes primären Strahlen gedreht werden.
+	Das Resultat dieses Schrittes ist eine Liste der primären Strahlen.
+	
+	Die zu Zeichnende Szene besteht aus einer Menge von Kugeln, 
+	welche entsprechen der Grundlagen sich durch eine Position und einen Radius parametrisiert werden.
+	Zusätzlich wird für jede Kugel ein Wert für die Maximale Verdeckung angegeben. 
+	Dieser Wert wird durch das Symbol $\Theta_{max}$ repräsentiert.
+	
+	
+	  
+	
+	
 
 \chapter{Evaluation und Diskussion}
 \section{Fazit}
