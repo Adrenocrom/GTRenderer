@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg,final,lof]{cgvpub}
+\documentclass[hyperref,german,beleg,final,lof, lot]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -12,7 +12,9 @@
 
 \usepackage{tabularx}
 \usepackage{listings}
-\usepackage{subfigure} 
+\usepackage{subfigure}
+\usepackage{colortbl}
+\usepackage{xcolor}
 
 \lstset{
 language=C,
@@ -593,7 +595,7 @@ Bild"ubernahmen zitieren.}
 	Im nächsten Kapitel wird der Einfluss, den diese Vereinfachung auf das Ergebnisbild
 	hat evaluiert.
 
-\chapter{Evaluation und Diskussion}
+\chapter{Evaluation}
 
 	Zu beginn der Arbeit wurden die Mathematischen Grundlagen der Raycast-Technik hergeleitet und 
 	im Anschluss zwei Lösungen für die Volumengleichung besprochen. Die Idee bestand darin die Gleichung,
@@ -658,11 +660,56 @@ Bild"ubernahmen zitieren.}
 	Die auftretenden Schwankungen bei den Messungen des 1UUN-Proteins kommen in der Abbildung \ref{fig:pdb.1UUNChart}
 	vermutlich auf Grund der wesentlich kleineren Zeitskala der Y-Achse mehr zur Geltung, als bei der Abbildung \ref{fig:cool_randomChart}.
 	
-	Zur Evaluation der Beschleunigten Variante, wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
+	Zur Evaluation der beschleunigten Variante, wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
 	Diese wurde mit Hilfe des \textit{structural similarity}-Index, kurz SSIM ermittelt. 
-	Dieser wurden nur für Bilderpaare mit 100 Stützpunkten ermittelt, da bei 
-	niedrigeren Anzahlen der Fehler, der Approximation das Ergebnis zu sehr verfälscht.
+	Dieser wurden nur für Bilderpaare mit 100 Stützpunkten bestimmt. 
+	Bei niedrigeren Anzahlen von Stützpunkten würde der Fehler, der Approximation das Ergebnis zu sehr verfälschen.
+	Dabei wird die Übereinstimmung der Ergebnisse, im Verhältnis zum Ground-Truth Bildes für jeden Farbkanal einzeln
+	in Prozent angeben. Die nachfolgenden Tabellen wurden um den Mittelwert der Übereinstimmung aller Farbkanäle ergänzt:
 	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\multicolumn{5}{|c|}{\cellcolor{lightgray}1UUN-Protein} \\
+			\hline
+			\hline
+			$N$ & Rot & Grün & Blau & Mittelwert \\
+			\hline
+			1 & 89.8914\% & 96.0094\% & 95.1042\% & 93.6683\% \\
+			2 & 98.8771\% & 99.6152\% & 99.505\%  & 99.3324\% \\ 
+			3 & 99.9335\% & 99.9758\% & 99.9708\% & 99.9601\% \\
+			5 & 99.9996\% & 99.9998\% & 99.9998\% & 99.9997\% \\
+			\hline
+		\end{tabular}
+		\caption{Die Tabelle stellt die ermittelten SSIM-Indizes für das 1UUN-Protein dar.}
+		\label{tab:1UUN-Protein}
+	\end{table}
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\multicolumn{5}{|c|}{\cellcolor{lightgray}cool random} \\
+			\hline
+			\hline
+			$N$ & Rot & Grün & Blau & Mittelwert \\
+			\hline
+			1  & 77.0101\% & 84.1127\% & 70.3878\% & 77.1702\% \\
+			2  & 92.3301\% & 95.1143\% & 88.0297\% & 91.8247\% \\ 
+			5  & 99.9073\% & 99.9413\% & 99.9012\% & 99.9166\% \\
+			10 & 99.9995\% & 99.9997\% & 99.9997\% & 99.9996\% \\
+			\hline
+		\end{tabular}
+		\caption{Die Tabelle stellt die ermittelten SSIM-Indizes für den zufällig generierten Datensatz dar.}
+		\label{tab:cool_random}
+	\end{table}
+	
+	Die Tabellen \ref{tab:1UUN-Protein} und \ref{tab:cool_random} zeigen deutlich,
+	dass die Ergebnisse der beschleunigten Variante des Algorithmus, 
+	ab einen gewissen $N$, sich kaum noch von den Ground-Truth Bildern unterscheiden.
+	Ein großer Unterschied besteht jedoch in der Geschwindigkeit der Beleuchtungsberechnung.
+
 \section{Fazit}
 
 %\chapter{title}

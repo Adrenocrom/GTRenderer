@@ -146,6 +146,8 @@ int main(int argc, char** argv)
 	cout << index_scalar.val[1] * 100 << "%" << endl ;
 	cout << index_scalar.val[0] * 100 << "%" << endl ;
 
+	cout << ((index_scalar.val[0] + index_scalar.val[1] + index_scalar.val[2]) / 3.0) * 100 << "%" << endl ;
+
 	// if you use this code within a program
 	// don't forget to release the IplImages
 	return 0;

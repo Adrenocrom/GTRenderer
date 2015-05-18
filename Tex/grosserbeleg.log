@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  18 MAY 2015 11:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  18 MAY 2015 12:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -554,23 +554,46 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@top=\skip71
 \subfig@bottom=\skip72
 )
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+\everycr=\toks27
+\minrowclearance=\skip73
+)
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
 (./grosserbeleg.aux)
 \openout1 = `grosserbeleg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -579,12 +602,12 @@ LaTeX Font Info:    ... okay on input line 84.
 \scratchbox=\box36
 \nofMPsegments=\count134
 \nofMParguments=\count135
-\everyMPshowfont=\toks27
+\everyMPshowfont=\toks28
 \MPscratchCnt=\count136
 \MPscratchDim=\dimen134
 \MPnumerator=\count137
 \makeMPintoPDFobject=\count138
-\everyMPtoPDFconversion=\toks28
+\everyMPtoPDFconversion=\toks29
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -601,7 +624,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 84.
+Package hyperref Info: Link coloring OFF on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -611,9 +634,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 84.
-LaTeX Info: Redefining \pageref on input line 84.
-LaTeX Info: Redefining \nameref on input line 84.
+LaTeX Info: Redefining \ref on input line 86.
+LaTeX Info: Redefining \pageref on input line 86.
+LaTeX Info: Redefining \nameref on input line 86.
 
 (./grosserbeleg.out) (./grosserbeleg.out)
 \@outlinefile=\write4
@@ -627,31 +650,31 @@ LaTeX Info: Redefining \nameref on input line 84.
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 84.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 84.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 86.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 84.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 84.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
 
-Overfull \hbox (9.9931pt too wide) in paragraph at lines 84--84
+Overfull \hbox (9.9931pt too wide) in paragraph at lines 86--86
 []\T1/ptm/m/n/10.95 Schrittweise Kon-zep-ti-on und Um-set-zung ei-ner er-weiter
 -ba-ren Ar-chi-tek-tur zum Er-zeu-gen von Ground-
  []
 
 [3] [4]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 84.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 86.
  [5
 
 
@@ -675,7 +698,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.84 \begin{document}
+l.86 \begin{document}
                       [1
 
 
@@ -683,7 +706,7 @@ l.84 \begin{document}
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.84 \begin{document}
+l.86 \begin{document}
                       [2
 
 ]
@@ -704,7 +727,7 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              deprecated \float@addtolist interface .
 
 
-Overfull \hbox (7.99197pt too wide) in paragraph at lines 133--137
+Overfull \hbox (7.99197pt too wide) in paragraph at lines 135--139
 \T1/ptm/m/n/10.95 Im Fol-gen-den wer-den ver-wand-te Ar-bei-ten vor-ge-stellt, 
 ge-folgt von den Grund-la-gen des Raycast-Verfahrens,
  []
@@ -716,34 +739,34 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.137 
+l.139 
        [3
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.138 \chapter
+l.140 \chapter
               {Verwandte Arbeiten} [4]
  2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.182 \chapter
+l.184 \chapter
               {Grundlagen} [5
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.182 \chapter
+l.184 \chapter
               {Grundlagen} [6
 
 ]
  3.
 [7] (./images/cameraObscura.pdf_tex
-<images/cameraObscura.pdf, id=167, 318.81557pt x 242.98781pt>
+<images/cameraObscura.pdf, id=172, 318.81557pt x 242.98781pt>
 File: images/cameraObscura.pdf Graphic file (type pdf)
 
 <use images/cameraObscura.pdf>
@@ -754,7 +777,7 @@ Package pdftex.def Info: images/cameraObscura.pdf used on input line 52.
 ]
  4.
 [11] (./images/standartAbsorption.pdf_tex
-<images/standartAbsorption.pdf, id=207, 174.23665pt x 48.98746pt>
+<images/standartAbsorption.pdf, id=212, 174.23665pt x 48.98746pt>
 File: images/standartAbsorption.pdf Graphic file (type pdf)
 
 <use images/standartAbsorption.pdf>
@@ -762,7 +785,7 @@ Package pdftex.def Info: images/standartAbsorption.pdf used on input line 52.
 (pdftex.def)             Requested size: 284.52756pt x 80.00357pt.
 ) [12 <./images/standartAbsorption.pdf>]
 (./images/exStandartAbsorption.pdf_tex
-<images/exStandartAbsorption.pdf, id=221, 174.23665pt x 90.25177pt>
+<images/exStandartAbsorption.pdf, id=226, 174.23665pt x 90.25177pt>
 File: images/exStandartAbsorption.pdf Graphic file (type pdf)
 
 <use images/exStandartAbsorption.pdf>
@@ -775,37 +798,37 @@ Package pdftex.def Info: images/exStandartAbsorption.pdf used on input line 52.
 
 ] [16]
  6.
-<images/512x512_samples_5_approx_1.png, id=259, 1027.84pt x 1027.84pt>
+<images/512x512_samples_5_approx_1.png, id=264, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_5_approx_1.png Graphic file (type png)
 
 <use images/512x512_samples_5_approx_1.png>
 Package pdftex.def Info: images/512x512_samples_5_approx_1.png used on input li
-ne 617.
+ne 619.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
-<images/512x512_samples_100_approx_100000.png, id=260, 1027.84pt x 1027.84pt>
+<images/512x512_samples_100_approx_100000.png, id=265, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_100_approx_100000.png Graphic file (type png)
 
 <use images/512x512_samples_100_approx_100000.png>
 Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
-nput line 618.
+nput line 620.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
  [17
 
  <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_samples
-_100_approx_100000.png (PNG copy)>] <images/pdb1UUN.pdf, id=270, 506.08914pt x 
+_100_approx_100000.png (PNG copy)>] <images/pdb1UUN.pdf, id=275, 506.08914pt x 
 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
-Package pdftex.def Info: images/pdb1UUN.pdf used on input line 635.
+Package pdftex.def Info: images/pdb1UUN.pdf used on input line 637.
 (pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
 
-<images/cool_random.pdf, id=272, 511.55208pt x 279.60521pt>
+<images/cool_random.pdf, id=277, 511.55208pt x 279.60521pt>
 File: images/cool_random.pdf Graphic file (type pdf)
 
 <use images/cool_random.pdf>
-Package pdftex.def Info: images/cool_random.pdf used on input line 650.
+Package pdftex.def Info: images/cool_random.pdf used on input line 652.
 (pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
  [18 <./images/pdb1UUN.pdf> <./images/cool_random.pdf
 
@@ -826,38 +849,52 @@ le pdfs with page group included in a single page
 ] [24
 
 ]
-[25
+(./grosserbeleg.lot)
+\tf@lot=\write7
+\openout7 = `grosserbeleg.lot'.
 
+ [25
 
 ] [26
 
 ] [27
 
-
 ] [28
 
+] [29
+
+
+] [30
+
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 679.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 679.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 726.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 726.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 679.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 679.
-Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
-(rerunfilecheck)             Checksum: EAB998F51318A9CA0798ED4E91D0B8A9;932.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 679.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 726.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 726.
+
+
+Package rerunfilecheck Warning: File `grosserbeleg.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `grosserbeleg.out':
+(rerunfilecheck)             Before: EB7B66E49DFEEAC4C389E6673E6BB3D3;988
+(rerunfilecheck)             After:  116036AD0B91BB2FC7E226AEB9E7ED8B;973.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 726.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 84 (\begingroup)
+### semi simple group (level 1) entered at line 86 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10491 strings out of 494976
- 154171 string characters out of 6179136
- 306651 words of memory out of 5000000
- 13432 multiletter control sequences out of 15000+600000
+ 10982 strings out of 494976
+ 160093 string characters out of 6179136
+ 306704 words of memory out of 5000000
+ 13905 multiletter control sequences out of 15000+600000
  54608 words of font info for 68 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,12n,61p,412b,1422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,12n,61p,412b,1450s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -871,10 +908,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 s/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (34 pages, 1288264 bytes).
+Output written on grosserbeleg.pdf (36 pages, 1291618 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 357 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 442 PDF objects out of 1000 (max. 8388607)
+ 375 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
