@@ -595,22 +595,41 @@ Bild"ubernahmen zitieren.}
 
 \chapter{Evaluation und Diskussion}
 
-	Da die Formeln zu Beleuchtungsberechnung hergeleitet und die Arbeitsweise des Algorithmus erklärt wurden,
-	muss dieser zum Schluss der Arbeit evaluiert werden. 
-	Zur Auswertung wurden mehrere Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
+	Zu beginn der Arbeit wurden die Mathematischen Grundlagen der Raycast-Technik hergeleitet und 
+	im Anschluss zwei Lösungen für die Volumengleichung besprochen. Die Idee bestand darin die Gleichung,
+	für die Beleuchtung, weitestgehend analytisch zu lösen. 
+	Das einfache Modell kann komplett analytisch gelöst werden.
+	Für das erweiterte ist eine numerische Approximation von Nöten, dazu wurde das Integral in Riemann Summen zerlegt. 
+	Es wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt, diese wird im Folgenden mit
+	Ergebnissen verglichen, die ohne Vereinfachung erzeugt worden sind.  
+	
+	Zur Auswertung wurden zwei Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
 	Die zur Evaluation erhoben Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die
-	Bilder mit einer Auflösung von $512 \times 512$ erzeugt.
+	Bilder mit einer Auflösung von $512 \times 512$ erzeugt. Bei dem ersten Datensatz handelt es sich
+	um das 1UUN-Protein, das mit 2758 Partikeln dargestellt wird. Der zweite Datensatz wurde mit
+	einem Zufallsgenerator generiert und besteht aus 73642 Partikeln.
+	Geschwindigkeit und Güte des Algorithmus werden in Abhängigkeit der Stützpunktanzahl und $N$ evaluiert.
+	Die Abkürzung GT steht im weiteren Textverlauf für Ground-Truth und bezeichnet eine Bildsynthese
+	ohne das Beschleunigungsverfahren.
 	
 	\begin{figure}[h]
 		\subfigure[5 Stützpunkte und $N$ = 1]{\includegraphics[width=0.49\textwidth]{images/512x512_samples_5_approx_1.png}}
 	    \subfigure[100 Stützpunkte und $N$ = GT]{\includegraphics[width=0.49\textwidth]{images/512x512_samples_100_approx_100000.png}}
-	\caption{Titel unterm gesamten Bild}
-	\end{figure} 
+		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
+		\label{fig:1UUN}
+	\end{figure}
+	
+	Es wird das 1UUN-Protein betrachtet, die Abbildung \ref{fig:1UUN} zweigt zwei Abbildungen des Proteins,
+	gezeichnet mit zwei unterschiedlichen Parameter Einstellungen. 
+	Das Bild auf der linken Seite wurde mit einer sehr niedrigen Anzahl von Stützpunkten generiert 
+	und verwendet nur für die erste, vom Sichtstrahl geschnittene Kugel, das erweiterte Beleuchtungsmodell.
+	Das zweite Bild auf der rechten Seite wurde mit 100 Stützpunkten je geschnittener Kugel generiert und verwendet für alle Kugeln, geschnitten vom Sichtstrahl, das erweiterte Beleuchtungsmodell.
+	Die zu diesen Datensatz erhobenen Rechenzeiten sind im Folgenden Diagramm abgebildet:
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=10cm]{images/pdb1UUN.pdf}
-		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}
+		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der gewählten Parmeter 1UUN-Proteins dar.}
 		\label{fig:pdb.1UUNChart}
 	\end{figure}
 	
@@ -620,6 +639,8 @@ Bild"ubernahmen zitieren.}
 		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}
 		\label{fig:cool_randomChart}
 	\end{figure}
+	
+	
 
 	
 \section{Fazit}
