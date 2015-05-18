@@ -10,6 +10,6 @@
 \contentsline {section}{\numberline {4.2}Erweitertes Beleuchtungs-Modell}{13}{section.4.2}
 \contentsline {chapter}{\numberline {5}Implementierung}{15}{chapter.5}
 \contentsline {chapter}{\numberline {6}Evaluation und Diskussion}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Fazit}{18}{section.6.1}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{19}{chapter*.4}
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{21}{chapter*.5}
+\contentsline {section}{\numberline {6.1}Fazit}{19}{section.6.1}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{21}{chapter*.4}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{23}{chapter*.5}

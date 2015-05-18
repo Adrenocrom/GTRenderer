@@ -600,15 +600,16 @@ Bild"ubernahmen zitieren.}
 	für die Beleuchtung, weitestgehend analytisch zu lösen. 
 	Das einfache Modell kann komplett analytisch gelöst werden.
 	Für das erweiterte ist eine numerische Approximation von Nöten, dazu wurde das Integral in Riemann Summen zerlegt. 
-	Es wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt, diese wird im Folgenden mit
-	Ergebnissen verglichen, die ohne Vereinfachung erzeugt worden sind.  
+	Es wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
+	Diese wird im Folgenden mit Ergebnissen verglichen, die ohne Vereinfachung erzeugt worden sind.  
 	
 	Zur Auswertung wurden zwei Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
 	Die zur Evaluation erhoben Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die
 	Bilder mit einer Auflösung von $512 \times 512$ erzeugt. Bei dem ersten Datensatz handelt es sich
 	um das 1UUN-Protein, das mit 2758 Partikeln dargestellt wird. Der zweite Datensatz wurde mit
 	einem Zufallsgenerator generiert und besteht aus 73642 Partikeln.
-	Geschwindigkeit und Güte des Algorithmus werden in Abhängigkeit der Stützpunktanzahl und $N$ evaluiert.
+	Geschwindigkeit und Güte des Algorithmus werden in Abhängigkeit der Stützpunktanzahl 
+	und dem Parameter $N$, für die beschleunigte Variante evaluiert.
 	Die Abkürzung GT steht im weiteren Textverlauf für Ground-Truth und bezeichnet eine Bildsynthese
 	ohne das Beschleunigungsverfahren.
 	
@@ -624,6 +625,9 @@ Bild"ubernahmen zitieren.}
 	Das Bild auf der linken Seite wurde mit einer sehr niedrigen Anzahl von Stützpunkten generiert 
 	und verwendet nur für die erste, vom Sichtstrahl geschnittene Kugel, das erweiterte Beleuchtungsmodell.
 	Das zweite Bild auf der rechten Seite wurde mit 100 Stützpunkten je geschnittener Kugel generiert und verwendet für alle Kugeln, geschnitten vom Sichtstrahl, das erweiterte Beleuchtungsmodell.
+	Die Anzahl der Lichtquellen ist ein Multiplikator der Sekundärstrahlanzahl, da für jeden Stützpunkt zu jeder Lichtquelle ein Sekundärstrahl in die Szene geschossen wird. Die Testszenen wurden mit jeweils zwei
+	Richtungslichtquellen gezeichnet. Die erste Strahlt grünes Licht von oben nach unten in die Szene und die zweite
+	blaues Licht von unten nach oben.
 	Die zu diesen Datensatz erhobenen Rechenzeiten sind im Folgenden Diagramm abgebildet:
 
 	\begin{figure}[h]
@@ -633,6 +637,14 @@ Bild"ubernahmen zitieren.}
 		\label{fig:pdb.1UUNChart}
 	\end{figure}
 	
+	In der Abbildung \ref{fig:pdb.1UUNChart} stellt die Y-Achse benötigte Rechenzeit in Sekunden dar und die
+	X-Achse bildet die Anzahl der verwendeten Stützpunkte ab. 
+	Die Szene wurde für verschiedene Stufen der Beschleunigungsvariante, in Abhängigkeit der Stützpunktanzahl gezeichnet.
+	Die Abbildung zeigt einen linearen Anstieg der Rechenzeiten in Abhängigkeit der Stützpunkanzahl.
+	Zudem steigt der Anstieg mit wachsendem $N$. Der Datensatz des 1UUN-Proteins umfasst nur wenige
+	Partikel, deshalb sind die Ground-Truth Ergebnisse mit $N = 5$ nahezu identisch. 
+	
+	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=10cm]{images/cool_random.pdf}
@@ -640,8 +652,16 @@ Bild"ubernahmen zitieren.}
 		\label{fig:cool_randomChart}
 	\end{figure}
 	
+	Die Abbildung \ref{fig:cool_randomChart} zeigt ein ähnliches Ergebnis für den Zufällig generierten Datensatz.
+	In diesem wurden wesentlich mehr Partikel betrachtet, weshalb die Unterschiede zwischen den einzelnen
+	Parametereinstellungen stärker zur Geltung kommen. 
+	Die auftretenden Schwankungen bei den Messungen des 1UUN-Proteins kommen in der Abbildung \ref{fig:pdb.1UUNChart}
+	vermutlich auf Grund der wesentlich kleineren Zeitskala der Y-Achse mehr zur Geltung, als bei der Abbildung \ref{fig:cool_randomChart}.
 	
-
+	Zur Evaluation der Beschleunigten Variante, wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
+	Diese wurde mit Hilfe des \textit{structural similarity}-Index, kurz SSIM ermittelt. 
+	Dieser wurden nur für Bilderpaare mit 100 Stützpunkten ermittelt, da bei 
+	niedrigeren Anzahlen der Fehler, der Approximation das Ergebnis zu sehr verfälscht.
 	
 \section{Fazit}
 

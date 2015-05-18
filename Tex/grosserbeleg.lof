@@ -10,5 +10,5 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{17}{figure.6.1}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{17}{figure.6.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{17}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}}{18}{figure.6.2}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der gew\"ahlten Parmeter 1UUN-Proteins dar.}}{18}{figure.6.2}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}}{18}{figure.6.3}
