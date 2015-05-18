@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  18 MAY 2015 07:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  18 MAY 2015 08:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,21 +791,31 @@ Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
 nput line 606.
 (pdftex.def)             Requested size: 223.0721pt x 223.07504pt.
 
-<images/pdb1UUN.pdf, id=261, 501.36601pt x 390.7417pt>
+<images/pdb1UUN.pdf, id=261, 506.08914pt x 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
 Package pdftex.def Info: images/pdb1UUN.pdf used on input line 612.
-(pdftex.def)             Requested size: 284.52756pt x 221.75323pt.
+(pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
+
+<images/cool_random.pdf, id=262, 511.55208pt x 279.60521pt>
+File: images/cool_random.pdf Graphic file (type pdf)
+
+<use images/cool_random.pdf>
+Package pdftex.def Info: images/cool_random.pdf used on input line 619.
+(pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17
+
+Underfull \vbox (badness 2707) has occurred while \output is active []
+
+ [17
 
  <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_samples
-_100_approx_100000.png (PNG copy)>] [18 <./images/pdb1UUN.pdf>]
-(./grosserbeleg.bbl) [19
+_100_approx_100000.png (PNG copy)> <./images/pdb1UUN.pdf>] [18 <./images/cool_r
+andom.pdf>] (./grosserbeleg.bbl) [19
 
 
 ] [20
@@ -830,24 +840,24 @@ _100_approx_100000.png (PNG copy)>] [18 <./images/pdb1UUN.pdf>]
 ] [26
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 631.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 631.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 638.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 638.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 631.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 631.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 638.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 638.
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
 (rerunfilecheck)             Checksum: EAB998F51318A9CA0798ED4E91D0B8A9;932.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 631.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 638.
  )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 84 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 10481 strings out of 494976
- 153993 string characters out of 6179136
+ 10488 strings out of 494976
+ 154147 string characters out of 6179136
  306651 words of memory out of 5000000
- 13426 multiletter control sequences out of 15000+600000
+ 13431 multiletter control sequences out of 15000+600000
  54608 words of font info for 68 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  43i,12n,61p,412b,1422s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -864,10 +874,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 s/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (32 pages, 518976 bytes).
+Output written on grosserbeleg.pdf (32 pages, 532032 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 338 compressed objects within 4 object streams
- 93 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 410 PDF objects out of 1000 (max. 8388607)
+ 347 compressed objects within 4 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
