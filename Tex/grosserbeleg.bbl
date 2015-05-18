@@ -1,11 +1,28 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{KPH{\etalchar{+}}03}
+\begin{thebibliography}{GKM{\etalchar{+}}15}
 
 \bibitem[ASW13]{journals/tvcg/AmentSW13}
 \textsc{Ament}, Marco ; \textsc{Sadlo}, Filip  ; \textsc{Weiskopf}, Daniel:
 \newblock Ambient Volume Scattering.
 \newblock {In: }\emph{IEEE Trans. Vis. Comput. Graph.}
 \newblock 19 (2013), Nr. 12, S. 2936--2945
+
+\bibitem[Bli82]{Blinn:1982:LRF:965145.801255}
+\textsc{Blinn}, James~F.:
+\newblock Light Reflection Functions for Simulation of Clouds and Dusty
+  Surfaces.
+\newblock {In: }\emph{SIGGRAPH Comput. Graph.}
+\newblock 16 (1982), Juli, Nr. 3, S. 21--29. --
+\newblock ISSN 0097--8930
+
+\bibitem[GKM{\etalchar{+}}15]{grottel2014megamol}
+\textsc{Grottel}, S. ; \textsc{Krone}, M. ; \textsc{Muller}, C. ;
+  \textsc{Reina}, G.  ; \textsc{Ertl}, T.:
+\newblock MegaMol---A Prototyping Framework for Particle-based Visualization.
+\newblock {In: }\emph{Visualization and Computer Graphics, IEEE Transactions
+  on}
+\newblock 21 (2015), Feb, Nr. 2, S. 201--214. --
+\newblock ISSN 1077--2626
 
 \bibitem[JKRY12]{JKRY12}
 \textsc{J{\"o}nsson}, Daniel ; \textsc{Kronander}, Joel ; \textsc{Ropinski},

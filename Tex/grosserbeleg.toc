@@ -4,11 +4,11 @@
 \contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.2}
 \contentsline {chapter}{\numberline {3}Grundlagen}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Strahl und Kugelgleichung}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Die Perspektivische Kamera}{8}{section.3.2}
+\contentsline {section}{\numberline {3.2}Die perspektivische Kamera}{8}{section.3.2}
 \contentsline {chapter}{\numberline {4}Beleuchtungsmodell}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Einfaches Dichte Modell}{12}{section.4.1}
-\contentsline {section}{\numberline {4.2}Erweitertes Dichte Modell}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}Implementation}{15}{chapter.5}
+\contentsline {section}{\numberline {4.1}Einfaches Beleuchtungs-Modell}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}Erweitertes Beleuchtungs-Modell}{13}{section.4.2}
+\contentsline {chapter}{\numberline {5}Implementierung}{15}{chapter.5}
 \contentsline {chapter}{\numberline {6}Evaluation und Diskussion}{17}{chapter.6}
 \contentsline {section}{\numberline {6.1}Fazit}{17}{section.6.1}
 \contentsline {chapter}{\nonumberline Literaturverzeichnis}{19}{chapter*.4}

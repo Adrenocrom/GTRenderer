@@ -4,6 +4,7 @@ rgbWxH image;
 
 void renderScene(string in,  string out); 
 void renderSceneEx(string in, string out);
+void evaluation(string in, string out, uint a);
 
 int main(int argc, char* argv[]) {
 	string in	= "scene.txt";
@@ -15,6 +16,9 @@ int main(int argc, char* argv[]) {
 	if(argc > 3) param 	= argv[3];
 
 	if(param == "-e") renderSceneEx(in, out);
+	else if(param == "-ev") {
+		evaluation(in, out, (uint)atoi(argv[4]));
+	}
 	else	renderScene(in, out);
 
 	return 0;
@@ -77,5 +81,34 @@ void renderSceneEx(string in, string out) {
 			//out += <<SI_WIDTH<<"x"<<SI_HEIGHT<<"_samples_"<<s<<"_approx_"<<a<<".pbm";
 			saveRgbWxHToPbm(image, name.c_str());
 		}
+	}
+}
+
+void evaluation(string in, string out, uint a) {
+	clock_t cbegin, cend;
+	time_t  tbegin, tend;
+	zikade zi;
+	cbegin = clock();
+	zi.loadScene(in.c_str());
+	cend	 = clock();
+	fprintf(stderr, "loaded in %.2f\n", ((float)(cend - cbegin)) / CLOCKS_PER_SEC);
+
+	uint samples;
+	for(uint s = 0; s <= 100; s += 5) {
+		if(s == 0) samples = 1;
+		else	   samples = s;	
+
+		//cerr<<"samples = "<<samples<<", alevel = "<<a<<endl;
+		printf("samples = %d, alevel = %d\n", samples, a);
+		time(&tbegin);
+		zi.setNumSamples(samples);
+		zi.setApproximationLevel(a);
+		zi.render(image);
+		time(&tend);
+		cerr<<samples<<" "<<difftime(tend, tbegin)<<endl;
+		printf("time in seconds: %.2f\n", difftime(tend, tbegin));
+		string name(out+to_string(SI_WIDTH)+"x"+to_string(SI_HEIGHT)+"_samples_"+to_string(samples)+"_approx_"+to_string(a)+".pbm");
+			//out += <<SI_WIDTH<<"x"<<SI_HEIGHT<<"_samples_"<<s<<"_approx_"<<a<<".pbm";
+		saveRgbWxHToPbm(image, name.c_str());
 	}
 }

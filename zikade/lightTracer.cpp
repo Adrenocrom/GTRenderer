@@ -363,8 +363,6 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 						hit.tf = 0.0;
 						ray s_r(o, -lights[l]->direction(o));
 						s->intersect(s_r, hit);
-						real3 po = s_r.o + hit.ft * s_r.d;
-						real3 n  = normalize(po - s.p);
 		
 						T = trans(s, 0, hit.tf);
 						C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
