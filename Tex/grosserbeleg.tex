@@ -91,7 +91,14 @@ Bild"ubernahmen zitieren.}
 
 \section{Motivation}
 	
-	Bei einer Vielzahl von Messvorgängen oder Simulationen ergeben sich partikelbasierte Datensätze.
+	Ein Partikel ist ein beliebiges geometrisches Objekt, das mindestens durch eine Position beschrieben wird.
+	Neben der Position sind beliebige weitere Attribute zur Beschreibung eines Partikels vorstellbar.
+	Mengen von Partikeln lassen sich zu Datensätzen zusammenfassen. 
+	In einen solchen, sind die einzelnen Partikel von einander unabhängig.
+	Anders verhält es sich bei Simulationen, in diesen werden Partikel zur Beschreibung physikalischer
+	Vorgänge verwendet und bedingen sich sehr wohl. 
+	Neben Simulationen entstehen partikelbasierte Datensätze in einer Vielzahl von Messvorgängen.
+	
 	Erst durch eine geeignete Darstellung lassen sich diese optimal auswerten und analysieren.
 	Das Ziel von Visualisierungen ist die Unterstützung der menschlichen Wahrnehmung bei der Auswertung
 	der erhobenen Daten.
@@ -126,16 +133,17 @@ Bild"ubernahmen zitieren.}
 	gezeichnet. Direkte Verfahren zerlegen die Daten nicht in einem Vorverarbeitungsschritt in Netze aus Polygonen,
 	sondern visualisieren die Daten in einem Schritt.
 	Die Grundlage des Verfahrens stellt ein Volumenintegral dar, dessen Lösung mit Hilfe eines Raycast-Algorithmus
-	dargestellt wird. Dabei handelt es sich um ein halb-analytisches Verfahren.
+	dargestellt wird. 
+	Dabei handelt es sich um ein halb-analytisches Verfahren, 
 	Vorteile analytischer Lösungen liegen in der Genauigkeit und der Geschwindigkeit der Berechnung.  
 	Die erzeugten Bilder dienen als \textit{Ground-Truth} Information zur Evaluation von approximativen Implementierungen. 
 	
-\section{Struktur der Arbeit}
-	
-	Im Folgenden werden verwandte Arbeiten vorgestellt, gefolgt von den Grundlagen des Raycast-Verfahrens, das nach
-	der Einführung von Strahl und Kugelgleichungen mit der Herleitung der Perspektivischen Kamera schließt.
-	Das vierte Kapitel stellt das verwendete Beleuchtungsmodell vor. Details zur Implementierung sind im fünften Kapitel
-	zu finden. Beendet wird die Arbeit mit einer Auswertung des Verfahren in Abhängigkeit gewählter Parameter.
+	Die Arbeit beginnt mit der Einführung der Grundlagen des Raycast-Verfahrens.
+	Anschließend werden weitere Darstellungsalgorithmen und das Volumenintegral erläutert.
+	Für dieses wird unter gewissen Einschränkungen, auf die später eingegangen wird, eine weitestgehend
+	analytische Lösung hergeleitet.
+	Nach dem Details zur eigentlichen Implementierung Vorgestellt worden, wird das Verfahren Qualitativ und
+	Quantitativ evaluiert und es wird auf mögliche Erweiterungen im Schlusswort eingegangen.
 	
 \chapter{Verwandte Arbeiten}
 
@@ -330,8 +338,22 @@ Bild"ubernahmen zitieren.}
 	einer Rotationsmatrix mit den Richtungsvektoren bewerkstelligen. Die Position des Kameramodells ist frei wählbar. 
 	Es genügt den Augpunkt zu verschieben. 
 	Mit Hilfe der Distanz $f$, der fokalen Länge, kann ein Zoomeffekt der Kamera erzielt werden.
+
+\chapter{Darstellungsmöglichkeiten}
+
+	Es gibt eine Reihe von Verfahren um mit Hilfe eines Computers geometrische Objekte auf eine Bildfläche abzubilden.
+	Die wohl am häufigsten in der Computergrafik eingesetzte Technik ist der Rasterizierung.
+	Um eine beliebige beschriebene geometrische Form mit Hilfe dieser Technik abzubilden ist eine Zerlegung
+	in ein polygonales Netz erforderlich. 
+	Das bedeutet, das die eigentliche Geometrie in Primitiven, wie Punkte, Linien oder Dreiecke zerlegt wird.
+	Diese werden dann auf die Bildschirmfläche abgebildet.
+	Im Anschluss werden die sogenannten Fragmente, die auf die Pixel abgebildeten Polygone, nach einem beliebigen
+	Verfahren zur eigentlichen Pixelfarbe verrechnet.
+	Ein großer Vorteil dieser Methode ist die Geschwindigkeit, mit der die Bilder aus der Geometrie erzeugt werden
+	können.
 	
-\chapter{Beleuchtungsmodell}
+
+\chapter{Beleuchtungsmodelle}
 
 	Der Ausgangspunkt dieses Kapitels ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. 
 	Die Streuung des Lichtes wird in dieser Arbeit vernachlässigt.
@@ -604,6 +626,58 @@ Bild"ubernahmen zitieren.}
 	Für das erweiterte ist eine numerische Approximation von Nöten, dazu wurde das Integral in Riemann Summen zerlegt. 
 	Es wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
 	Diese wird im Folgenden mit Ergebnissen verglichen, die ohne Vereinfachung erzeugt worden sind.  
+	
+\section{Qualitative Evaluation}
+\section{Quantitative Evaluation}
+
+\subsection{SSIM}
+
+	Der \textit{structural similarity} Index, kurz \textit{SSIM} ist eine Metrik, eine Abstandsfunktion.
+	Diese weist zwei Bildern einen nicht negativen reellen Wert zu, der als Ähnlichkeit der Bilder interpretiert wird.
+	
+	Ein solcher Gütewert, zur Abschätzung der Ähnlichkeit zweier Bilder kann auf verschiedene weisen erhoben werden.
+	Viele Ansätze basieren auf einem Quantitativen Vergleich der Bilder. 
+	Für jedes Paar von Pixeln wird ein Abstand bestimmt und der Betrag oder das Quadrat von diesem wird als Fehler aufsummiert.
+	Das Problem bei einem solchen vorgehen besteht darin, das ein solches Verfahren Kontext unabhängig sind.
+	
+	Beim SSIM dagegen wird der Fehler in einen Beleuchtungsterm $l(x, y)$, einen Kontrastterm $c(x, y)$ und 
+	in einen Term $s(x, y)$ zum Vergleich von Strukturen unterteilt. 
+	Zur Berechnung dieser Terme wird nicht ein einzelner Pixel, sondern ein kleines Fenster um einen Pixel
+	zur Auswertung herangezogen.
+	Diese drei Komponenten sind verhältnismäßig unabhängig voneinander. Eine Veränderung der Helligkeit des
+	Bildes, beeinflusst die Struktur dieses beispielsweise nicht.
+	$x$ und $y$ entsprechen dabei keinen Pixeln, sondern den beiden zu vergleichenden Signalen, in diesem
+	Fall den Bildern.
+	
+	Für die Berechnung des SSIM wird für jedes Signal der Mittelwert $\mu$ und die Standartabweichung $\sigma$ benötigt.
+	Der Mittelwert $\mu_x$ eines Signals $x$ ergibt sich dabei als
+	
+	\begin{equation}
+		\mu_x = \frac{1}{N} \sum\limits_{i = 1}^{N} x_i
+	\end{equation}
+	
+	und die Standartabweichung $\sigma_x$ eines Signals entspricht dem folgendem Term:
+	
+	\begin{equation}
+		\sigma_x = \sqrt{\frac{1}{N - 1} \sum\limits_{i = 1}^{N} (x_i - \mu_x)^2}
+	\end{equation}
+	
+	Zusätzlich wird zur Berechnung des SSIM eine weiterer Term  $\sigma_{xy}$ benötigt:
+	
+	\begin{equation}
+		\sigma_{xy} = \frac{1}{N - 1} \sum\limits_{i = 1}^{N} (x_i - \mu_x)(y_i - \mu_y)
+	\end{equation}
+	
+	\begin{equation}
+		SSIM(x, y) = l(x, y) \cdot c(x, y) \cdot s(x, y)
+	\end{equation}
+	
+	
+	\begin{equation}
+		SSIM(x, y) = \frac{(2\mu_x \mu_y + C_1)(2\sigma_{xy} + C_2)}{(\mu_x^2 + \mu_y^2 + C_1)(\sigma_x^2 + \sigma_y^2 + C_2)}
+	\end{equation}
+
+\subsection{Beispiel}
 	
 	Zur Auswertung wurden zwei Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
 	Die zur Evaluation erhoben Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die

@@ -7,45 +7,45 @@ Database file #1: literatur.bib.bib
 A bad cross reference---entry "conf/pg/JungPP98"
 refers to entry "conf/pg/1998", which doesn't exist
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 10 entries,
+You've used 12 entries,
             3183 wiz_defined-function locations,
-            728 strings with 6685 characters,
-and the built_in function-call counts, 7773 in all, are:
-= -- 849
-> -- 258
-< -- 266
-+ -- 313
-- -- 98
-* -- 636
-:= -- 1385
-add.period$ -- 10
-call.type$ -- 10
-change.case$ -- 64
-chr.to.int$ -- 10
-cite$ -- 10
-duplicate$ -- 180
-empty$ -- 406
-format.name$ -- 137
-if$ -- 1426
+            743 strings with 7018 characters,
+and the built_in function-call counts, 9237 in all, are:
+= -- 1013
+> -- 297
+< -- 314
++ -- 367
+- -- 116
+* -- 759
+:= -- 1632
+add.period$ -- 12
+call.type$ -- 12
+change.case$ -- 75
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 215
+empty$ -- 487
+format.name$ -- 159
+if$ -- 1696
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 19
-newline$ -- 69
-num.names$ -- 30
-pop$ -- 52
+missing$ -- 23
+newline$ -- 82
+num.names$ -- 36
+pop$ -- 61
 preamble$ -- 1
-purify$ -- 84
+purify$ -- 99
 quote$ -- 0
-skip$ -- 351
+skip$ -- 416
 stack$ -- 0
-substring$ -- 673
-swap$ -- 66
-text.length$ -- 49
-text.prefix$ -- 2
+substring$ -- 822
+swap$ -- 78
+text.length$ -- 58
+text.prefix$ -- 3
 top$ -- 0
-type$ -- 80
+type$ -- 96
 warning$ -- 0
-while$ -- 80
-width$ -- 13
-write$ -- 145
+while$ -- 95
+width$ -- 15
+write$ -- 173
 (There was 1 error message)

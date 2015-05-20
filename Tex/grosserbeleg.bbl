@@ -48,6 +48,13 @@
 \newblock {In: }\emph{Computer Graphics Forum}
 \newblock 33 (2014), Nr. 1, S. 27--51
 
+\bibitem[Kaj86]{Kajiya:1986:RE:15886.15902}
+\textsc{Kajiya}, James~T.:
+\newblock The Rendering Equation.
+\newblock {In: }\emph{SIGGRAPH Comput. Graph.}
+\newblock 20 (1986), August, Nr. 4, S. 143--150. --
+\newblock ISSN 0097--8930
+
 \bibitem[KPB12]{KPB12a}
 \textsc{Kroes}, Thomas ; \textsc{Post}, Frits~H.  ; \textsc{Botha}, Charl~P.:
 \newblock Exposure render: an interactive photo-realistic volume rendering
@@ -78,5 +85,13 @@
 \newblock {In: }\emph{Computer Graphics Forum}
 \newblock  (2009). --
 \newblock ISSN 1467--8659
+
+\bibitem[WBSS04]{Wang04imagequality}
+\textsc{Wang}, Zhou ; \textsc{Bovik}, Alan~C. ; \textsc{Sheikh}, Hamid~R.  ;
+  \textsc{Simoncelli}, Eero~P.:
+\newblock Image Quality Assessment: From Error Visibility to Structural
+  Similarity.
+\newblock {In: }\emph{IEEE TRANSACTIONS ON IMAGE PROCESSING}
+\newblock 13 (2004), Nr. 4, S. 600--612
 
 \end{thebibliography}
