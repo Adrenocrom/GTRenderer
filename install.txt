@@ -1,0 +1,53 @@
+# create develop tree
+mkdir develop
+cd develop
+mkdir build
+mkdir install
+cd build
+mkdir cgv
+mkdir renderer
+cd ..
+
+# checkout framework
+git clone https://gumhold@fusionforge.zih.tu-dresden.de/git/cgv/cgv.git
+git checkout develop
+
+# configure framework
+#
+# start cmake gui with cgv-dir as source and develop/build/cgv as build dir
+# press configure 
+# set CMAKE_INSTALL_PREFIX develop/install
+# set CMAKE_BUILD_TYPE Debug
+# press configure
+# press generate 
+#
+cd build/cgv
+cmake -DCMAKE_INSTALL_PREFIX=../../install -DCMAKE_BUILD_TYPE=Debug ../../cgv
+ 
+# build and install framework
+make install -j8
+cd ../..
+
+# checkout renderer
+svn checkout https://gumhold@fusionforge.zih.tu-dresden.de/svn/jointpose/trunk/projects/renderer
+
+# configure renderer
+#
+# start cmake gui with develop/renderer as source-dir and develop/build/renderer as build-dir
+# set CGV_FRAMEWORK_DIR develop/install/framework
+# set CGV_SOURCE_DIR develop/cgv
+# set CMAKE_INSTALL_PREFIX develop/install
+# set CMAKE_BUILD_TYPE Debug
+# press configure
+# press generate 
+#
+cd build/renderer
+cmake -DCGV_SOURCE_DIR=../../cgv -DCGV_FRAMEWORK_DIR=../../install/framework -DCMAKE_INSTALL_PREFIX=../../install -DCMAKE_BUILD_TYPE=Debug ../../renderer
+
+# make and install renderer projects
+make install -j8
+
+# configure kdevelop
+# add executable 
+#	path              = develop/build/renderer/build/bin/unix/renderer_test_d
+#	working directory = jointpose/projects/renderer
