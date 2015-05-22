@@ -77,6 +77,12 @@
 \newblock 1 (1995), Juni, Nr. 2, S. 99--108. --
 \newblock ISSN 1077--2626
 
+\bibitem[SGG15]{staib2015}
+\textsc{Staib}, Joachim ; \textsc{Grottel}, Sebastian  ; \textsc{Gumhold},
+  Stefan:
+\newblock Visualization of Particle-based Data with Transparency and Ambient
+  Occlusion, 2015, S. to appear
+
 \bibitem[SPH{\etalchar{+}}09]{10.1111:j.1467-8659.2009.01464.x}
 \textsc{Schott}, Mathias ; \textsc{Pegoraro}, Vincent ; \textsc{Hansen},
   Charles ; \textsc{Boulanger}, Kévin  ; \textsc{Bouatouch}, Kadi:
