@@ -92,16 +92,17 @@ Bild"ubernahmen zitieren.}
 \section{Motivation}
 	
 	Ein Partikel ist ein beliebiges geometrisches Objekt, das mindestens durch eine Position beschrieben wird.
-	Neben der Position sind beliebige weitere Attribute zur Beschreibung eines Partikels vorstellbar.
-	Mengen von Partikeln lassen sich zu Datensätzen zusammenfassen. 
-	In einen solchen, sind die einzelnen Partikel von einander unabhängig.
+	Neben dieser sind beliebige weitere Attribute zur Beschreibung vorstellbar.
+	Mengen von Partikeln lassen sich zu Datensätzen zusammenfassen.
+	In einen solchen, sind die einzelnen Partikel von einander unabhängige Objekte, die nicht miteinander wechselwirken.
 	Anders verhält es sich bei Simulationen, in diesen werden Partikel zur Beschreibung physikalischer
 	Vorgänge verwendet und bedingen sich sehr wohl. 
-	Neben Simulationen entstehen partikelbasierte Datensätze in einer Vielzahl von Messvorgängen.
+	Computergestütze Simulationen zählen zur größten Datenquelle für Partikeldaten, 
+	daneben werden diese bei Messungen, insbesondere in der Biologie und der Atomaren Physik erhoben.
+	Eine direkte und unverfälschte Darstellung dieser Daten ist dabei ein entscheidendes Ziel.
 	
-	Erst durch eine geeignete Darstellung lassen sich diese optimal auswerten und analysieren.
-	Das Ziel von Visualisierungen ist die Unterstützung der menschlichen Wahrnehmung bei der Auswertung
-	der erhobenen Daten.
+	Das Zweck von Visualisierungen besteht im allgemeinen, in der Unterstützung von der menschlichen Wahrnehmung, 
+	bei der Auswertung und Analyse der dargestellten Datenmenge. 
 	Dabei geht es nicht um eine bloße optische Verschönerung der Darstellung, sondern darum bestimmte Eigenschaften 
 	in den Fokus des Betrachters zu rücken und Tendenzen hervorzuheben.
 	Die Darstellung von dreidimensionalen Partikeln auf einer zweidimensionalen Ebene ist mit Problemen verbunden.
@@ -355,8 +356,6 @@ Bild"ubernahmen zitieren.}
 
 \chapter{Beleuchtungsmodelle}
 
-\section{title}
-
 	Der Ausgangspunkt dieses Kapitels ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. 
 	Die Streuung des Lichtes wird in dieser Arbeit vernachlässigt.
 	Die Gleichung der Beleuchtungsberechnung unterteilt sich in zwei Summanden:
@@ -460,15 +459,50 @@ Bild"ubernahmen zitieren.}
 		\label{eq:EModellEDMA}
 	\end{equation}
 	
-	Für die Gleichung \ref{eq:EModellEDMA} lässt sich mit Hilfe der Substitutionsregel eine analytische Lösung finden:
+	Für das Integral \ref{eq:EModellEDMA} existiert eine analytische Lösung. Dazu werden im ersten Schritt die Konstanten
+	aus dem Integral heraus gezogen
+	
+	\begin{equation}
+		I_E = \lambda\kappa I_c \cdot \int\limits_{t_n}^{t_f} exp(-\lambda\kappa (t_f - t)) dt
+	\end{equation}
+	
+	und als nächstes wird die Klammer im Exponenten aus multipliziert:
+	
+	\begin{equation}
+		I_E = \lambda\kappa I_c \cdot \int\limits_{t_n}^{t_f} exp(\lambda\kappa \cdot t - t_f \cdot \lambda\kappa ) dt
+		\label{eq:substitution1}
+	\end{equation}
+	
+	Die Stammfunktion des Integrands $e^x$ und dem dazugehörigen Differenzial $dx$, entspricht der Summe einer konstanten mit dem Integrand selbst: $e^x + C$. 
+	Der Integrand der Formel \ref{eq:substitution1} entspricht dieser Form nicht,
+	aufgrund der Subtraktion im Exponenten. 
+	Mit Hilfe einer geeigneten Substitution lässt sich die Form $e^x$ erzeugen und das Integral lösen.
+	Als erstes wird eine Variable $u = \lambda\kappa \cdot t - t_f \cdot \lambda\kappa$ eingeführt und
+	das Differenzial zu $du = \lambda\kappa dt$ umgeschrieben. 
+	Jetzt müssen noch die obere und untere Schranke angepasst werden und die Substituierte Formel definiert sich wie folgt:
+	
+	\begin{equation}
+		I_E = I_c \cdot \int\limits_{\lambda\kappa(t_n - t_f)}^{\lambda\kappa \cdot (t_f  - t_f)} e^u du
+	\end{equation}
+	
+	Es folgt die Auswertung des Integrals mit Hilfe der Stammfunktion $e^u$,
+	die Lösung ergibt sich als Differenz der in die Stammfunktion eingesetzten Intervallgrenzen:
+	
+	\begin{equation}
+		I_E = I_c \cdot (e^0 - e^{-\lambda\kappa (t_f - t_n)})
+	\end{equation}
+	
+	Der Term $e^0$ entspricht der Zahl $1$ und der Zweite Term $exp(-\lambda\kappa (t_f - t_n))$ entspricht der Transparenz $T'$.
+	Zum Schluss wird der gesamte Term durch das Formelzeichen $\Theta$ ersetzt, damit die Formel kurz und Übersichtlich bleibt.
 	
 	\begin{align}
 		I_E &= I_C \cdot (1 - e^{-\lambda\kappa (t_f - t_n)}) = I_C \cdot (1 - T'(t_n, t_f)) \notag\\
 		I_E &= I_C \cdot \Theta(t_n, t_f)
 	\end{align} 
 	
-	Wird diese Lösung und die Lösung \ref{eq:ATransparenzSol} in die Gleichung \ref{eq:CompEAModell} eingesetzt,
-	dann ergibt sich die gesamte Gleichung zur Beleuchtung eines Partikels: 
+	Für dieses Modell existiert somit eine analytische Lösung für den Absorptionsterm und für den Emissionsterm. 
+	Werden diese in die Gleichung \ref{eq:CompEAModell} eingesetzt,
+	dann ergibt sich die gesamte Gleichung zur Beleuchtung eines Partikels in einer kompakten Form wie folgt: 
 	
 	\begin{equation}
 		I = I_B \cdot T'(t_n, t_f) + I_C \cdot \Theta(t_n, t_f)
@@ -477,8 +511,19 @@ Bild"ubernahmen zitieren.}
 	
 \section{Erweitertes Beleuchtungs-Modell}
 
-	Kern dieser Arbeit ist eine Erweiterung des eben vorgestellten Beleuchtungsmodells. Neben der Hintergrundbeleuchtung
-	wird die Beleuchtungsberechnung für eine beliebige Anzahl von Punkt- und Richtungslichtquellen erweitert. Zur
+	Kern dieser Arbeit ist die Weiterentwicklung der eben eingeführten Volumengleichung.
+	Die einfache Variante entstammt der Arbeit \ref{}, in welcher zusätzlich eine Implementierung
+	der Ambienten Verdeckung zum Einsatz kommt, um die globale Beleuchtung zu approximieren.
+	Dieser Arbeit erweitert die Beleuchtung der Szene, neben der Hintergrundbeleuchtung 
+	werden eine Punkt- und Richtungslichtquellen eingesetzt.
+	Mit der Einführung dieser Lichtquellentypen gibt es einen Bruch mit der physikalischen Motivation der Gleichung.
+	Bei einer Punktlichtquelle handelt es sich um eine infinitesimale Kugellichtquelle, die im Gegensatz zu
+	dieser kein Volumen und keine wirkliche Oberfläche besitzt.
+	Daraus resultiert, dass die Wahrscheinlichkeit, das ein Sekundärstrahl eine solche Lichtquelle treffen könnte
+	unendlich klein wird und schließlich gegen 0 geht. 
+	Eine Richtungslichtquelle dagegen, kann als eine unendlich weit entfernte Kugellichtquelle interpretiert werden
+	und entspricht damit schon eher einem physikalischen Äquivalent.
+	
 	Herleitung der Gleichung werden die Lichtquellen auf die Hintergrundbeleuchtung und eine Punktlichtquelle beschränkt.
 	Anschließend wird die gefundene Lösung wieder für beliebig viele Lichtquellen verallgemeinert.
 	Die folgende Abbildung soll zunächst die Vereinfachung veranschaulichen.
@@ -554,6 +599,9 @@ Bild"ubernahmen zitieren.}
 		I = I_B \cdot T'(t_n, t_f) + \sum\limits_{t = t_n}^{t_f} ( \frac{1}{m} \cdot \sum\limits_{i=1}^{m}I_{L_i} \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t))) \cdot T'(t, t_f) \Delta t
 		\label{eq:CompEAModellApprox2}
 	\end{equation}
+	
+	
+	Herleitung:: $int exp(-( sqrt((a*t + b) - (c*t^2 + d*t + e)) - (a*t + b) )) dt$
 
 \chapter{Implementierung}
 
@@ -584,7 +632,7 @@ Bild"ubernahmen zitieren.}
 	
 	Ein großer Vorteil der Raycast-Technik besteht in der Möglichkeit die Berechnungen zu parallelisieren,
 	da die Beleuchtungsberechnung für jeden Strahl unabhängig voneinander durchgeführt werden kann. 
-	In der eigentlichen Implementierung wird die Parallelisierung mit Hilfe der OpenMP-Bibliothek umgesetzt.
+	In der eigentlichen Implementierung wird die Parallelisierung mit Hilfe der OpenMP-Bibliothek\footnote{http://openmp.org/wp/} umgesetzt.
 	
 	Für die Sichtstrahlen wird die Beleuchtung durch das erweiterte Beleuchtungsmodell berechnet. 
 	Dazu muss für jeden Strahl ein Schnittest mit allen Kugeln durchgeführt werden.

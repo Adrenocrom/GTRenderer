@@ -7,14 +7,14 @@
 \contentsline {chapter}{\numberline {4}Darstellungsm\"oglichkeiten}{11}{chapter.4}
 \contentsline {chapter}{\numberline {5}Beleuchtungsmodelle}{13}{chapter.5}
 \contentsline {section}{\numberline {5.1}Einfaches Beleuchtungs-Modell}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Erweitertes Beleuchtungs-Modell}{15}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{17}{chapter.6}
-\contentsline {chapter}{\numberline {7}Evaluation}{19}{chapter.7}
-\contentsline {section}{\numberline {7.1}Qualitative Evaluation}{19}{section.7.1}
-\contentsline {section}{\numberline {7.2}Quantitative Evaluation}{19}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}SSIM}{19}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Beispiel}{20}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Fazit}{22}{section.7.3}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{23}{chapter*.4}
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{25}{chapter*.5}
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{27}{chapter*.6}
+\contentsline {section}{\numberline {5.2}Erweitertes Beleuchtungs-Modell}{16}{section.5.2}
+\contentsline {chapter}{\numberline {6}Implementierung}{19}{chapter.6}
+\contentsline {chapter}{\numberline {7}Evaluation}{21}{chapter.7}
+\contentsline {section}{\numberline {7.1}Qualitative Evaluation}{21}{section.7.1}
+\contentsline {section}{\numberline {7.2}Quantitative Evaluation}{21}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}SSIM}{21}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Beispiel}{22}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Fazit}{24}{section.7.3}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{25}{chapter*.4}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{27}{chapter*.5}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{29}{chapter*.6}

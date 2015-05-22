@@ -5,11 +5,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Die Abbildung zeigt einen prim\"aren Sichtstrahl, der ein Partikel schneidet. Auf der rechten Seite der Abbildung symbolisiert eine kleine Sonne die Hintergrundbeleuchtung und auf der linken ein Auge den Sensor.}}{14}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Die Notation ist die selbe wie in der Abbildung \ref {fig:eaSchematisch}. Diese Abbildung erg\"anzt das Modell um eine Punktlichtquelle und es werden drei sekund\"are Strahlen zu dieser dargestellt.}}{15}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Die Notation ist die selbe wie in der Abbildung \ref {fig:eaSchematisch}. Diese Abbildung erg\"anzt das Modell um eine Punktlichtquelle und es werden drei sekund\"are Strahlen zu dieser dargestellt.}}{16}{figure.5.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{20}{figure.7.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{20}{figure.7.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{20}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der gew\"ahlten Parmeter 1UUN-Proteins dar.}}{21}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}}{21}{figure.7.3}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{22}{figure.7.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{22}{figure.7.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{22}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der gew\"ahlten Parmeter 1UUN-Proteins dar.}}{23}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}}{23}{figure.7.3}
