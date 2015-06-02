@@ -376,6 +376,8 @@ Bild"ubernahmen zitieren.}
 	
 	Neben der einfachen Emission- und Absorptionsgleichung, die eine starke eine Approximation der physikalischen
 	Grundlagen darstellt, geht Nelson Max auf diverse Erweiterungen zur Berechnung von Streuungseffekten und Schatten ein.
+	In dieser Arbeit werden die Effekte der Streuung nicht betrachtet,
+	da diese die Komplexität der Berechnung massiv erhöhen würden. 
 
 \subsection{Emission und Absorption}
 
@@ -588,6 +590,11 @@ Bild"ubernahmen zitieren.}
 		I = I_B \cdot T'(t_n, t_f) + \int\limits_{t_n}^{t_f} ( I_L \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t)) ) \cdot T'(t, t_f) dt
 		\label{eq:CompEAModell1}
 	\end{equation}
+	
+	Um zu zeigen, dass sich diese Gleichung nicht analytisch lösen lässt, wurde zu Beginn angenommen, dass nur eine Richtungslichtquelle vorhanden ist.
+	Die gesamte Gleichung ist dadurch kompakter, da der Richtungsvektor $\vec{d}$ der Richtungslichtquelle in der gesamten Szene konstant ist.
+	Der Richtungsvektor $\vec{d}$ wird benötigt, um die Länge der Sekundärstrahlen $l(t)$ in der Gleichung \ref{eq:CompEAModell1} zu bestimmen. Dazu wird der Strahl aus der Gleichung \ref{eq:Strahl} in die Lösungsformel
+	\ref{eq:Schnittpunkte} eingesetzt.
 	
 	Die Lösung der Gleichung wird mit Hilfe der Riemann Summe numerisch approximiert. Bevor die Lösung präsentiert
 	und die Quellfunktion für mehrere Lichtquellen angepasst wird, soll die numerische Approximation anhand einer
