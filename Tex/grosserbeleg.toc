@@ -1,20 +1,20 @@
 \contentsline {chapter}{\numberline {1}Einleitung}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivation}{3}{section.1.1}
 \contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.2}
 \contentsline {chapter}{\numberline {3}Grundlagen}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Strahl und Kugelgleichung}{7}{section.3.1}
 \contentsline {section}{\numberline {3.2}Die perspektivische Kamera}{8}{section.3.2}
-\contentsline {chapter}{\numberline {4}Darstellungsm\"oglichkeiten}{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Beleuchtungsmodelle}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Einfaches Beleuchtungs-Modell}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Erweitertes Beleuchtungs-Modell}{16}{section.5.2}
-\contentsline {chapter}{\numberline {6}Implementierung}{19}{chapter.6}
-\contentsline {chapter}{\numberline {7}Evaluation}{21}{chapter.7}
-\contentsline {section}{\numberline {7.1}Qualitative Evaluation}{21}{section.7.1}
-\contentsline {section}{\numberline {7.2}Quantitative Evaluation}{21}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}SSIM}{21}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Beispiel}{22}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Fazit}{24}{section.7.3}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{25}{chapter*.4}
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{27}{chapter*.5}
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{29}{chapter*.6}
+\contentsline {chapter}{\numberline {4}Beleuchtungsmethoden}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Rendergleichung}{11}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Emission und Absorption}{12}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Einfaches Beleuchtungs-Modell}{13}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Erweitertes Beleuchtungs-Modell}{14}{subsection.4.1.3}
+\contentsline {chapter}{\numberline {5}Implementierung}{17}{chapter.5}
+\contentsline {chapter}{\numberline {6}Evaluation}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Qualitative Evaluation}{19}{section.6.1}
+\contentsline {section}{\numberline {6.2}Quantitative Evaluation}{19}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}SSIM}{19}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Beispiel}{20}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Fazit}{22}{section.6.3}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{23}{chapter*.4}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{25}{chapter*.5}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{27}{chapter*.6}

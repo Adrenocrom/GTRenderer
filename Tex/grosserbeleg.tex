@@ -1,4 +1,4 @@
-\documentclass[hyperref,german,beleg,final,lof, lot]{cgvpub}
+\documentclass[hyperref,german,beleg,final,lof,lot,twoside]{cgvpub}
 %weitere Optionen zum Ergänzen (in eckigen Klammern):
 % 
 % female	weibliche Titelbezeichnung bei Diplom
@@ -89,20 +89,18 @@ Bild"ubernahmen zitieren.}
 
 \chapter{Einleitung}
 
-\section{Motivation}
-	
 	Ein Partikel ist ein beliebiges geometrisches Objekt, das mindestens durch eine Position beschrieben wird.
 	Neben dieser sind beliebige weitere Attribute zur Beschreibung vorstellbar.
 	Mengen von Partikeln lassen sich zu Datensätzen zusammenfassen.
 	In einen solchen, sind die einzelnen Partikel von einander unabhängige Objekte, die nicht miteinander wechselwirken.
-	Anders verhält es sich bei Simulationen, in diesen werden Partikel zur Beschreibung physikalischer
-	Vorgänge verwendet und bedingen sich sehr wohl. 
-	Computergestütze Simulationen zählen zur größten Datenquelle für Partikeldaten, 
-	daneben werden diese bei Messungen, insbesondere in der Biologie und der Atomaren Physik erhoben.
-	Eine direkte und unverfälschte Darstellung dieser Daten ist dabei ein entscheidendes Ziel.
+	Anders verhält es sich bei Simulationen, in diesen werden Partikel zur Beschreibung physikalischer	Vorgänge verwendet 
+	und bedingen sich in diesen sehr wohl. 
+	Physikalische Simulationen zählen zur größten Datenquelle für Partikeldaten. 
+	Alternative Quellen sind Messungen, insbesondere werden in der Biologie und der Atomaren Physik partikelbasierte Datensätze erhoben.
+	Eine direkte und unverfälschte Darstellung dieser Daten ist dabei ein entscheidendes Ziel für die Analyse.
 	
 	Das Zweck von Visualisierungen besteht im allgemeinen, in der Unterstützung von der menschlichen Wahrnehmung, 
-	bei der Auswertung und Analyse der dargestellten Datenmenge. 
+	für die Auswertung und Analyse der dargestellten Datenmenge. 
 	Dabei geht es nicht um eine bloße optische Verschönerung der Darstellung, sondern darum bestimmte Eigenschaften 
 	in den Fokus des Betrachters zu rücken und Tendenzen hervorzuheben.
 	Die Darstellung von dreidimensionalen Partikeln auf einer zweidimensionalen Ebene ist mit Problemen verbunden.
@@ -340,21 +338,46 @@ Bild"ubernahmen zitieren.}
 	Es genügt den Augpunkt zu verschieben. 
 	Mit Hilfe der Distanz $f$, der fokalen Länge, kann ein Zoomeffekt der Kamera erzielt werden.
 
-\chapter{Darstellungsmöglichkeiten}
-
-	Es gibt eine Reihe von Verfahren um mit Hilfe eines Computers geometrische Objekte auf eine Bildfläche abzubilden.
-	Die wohl am häufigsten in der Computergrafik eingesetzte Technik ist der Rasterizierung.
-	Um eine beliebige beschriebene geometrische Form mit Hilfe dieser Technik abzubilden ist eine Zerlegung
-	in ein polygonales Netz erforderlich. 
-	Das bedeutet, das die eigentliche Geometrie in Primitiven, wie Punkte, Linien oder Dreiecke zerlegt wird.
-	Diese werden dann auf die Bildschirmfläche abgebildet.
-	Im Anschluss werden die sogenannten Fragmente, die auf die Pixel abgebildeten Polygone, nach einem beliebigen
-	Verfahren zur eigentlichen Pixelfarbe verrechnet.
-	Ein großer Vorteil dieser Methode ist die Geschwindigkeit, mit der die Bilder aus der Geometrie erzeugt werden
-	können.
+\chapter{Beleuchtungsmethoden}	
 	
+	Zur Abbildung geometrischer Objekte auf die zweidimensionale Bildebene, existiert eine Vielzahl von Algorithmen.
+	Weit verbreitet ist die Technik der Rasterisierung, dazu werden die Objekte in polygonale Netze zerlegt und auf
+	die Bildebene Projeziert. Durch dieses Vorgehen entstehen Fragmente, welche einzeln Lokal beleuchtet werden.
+	Ein großer Vorteil dieses Verfahrens ist die Geschwindigkeit, es lassen sich ohne weiteres echtzeitfähige Bildwiederholungsraten erreichen.
+	Nachteilig ist, dass die Objekte erst in polygonale Strukturen zerlegt werden müssen und damit schon im Vorfeld die eigentliche Form approximiert werden muss. 
+	Ein zusätzliches Problem sind die begrenzten Möglichkeiten die Beleuchtungsberechnung durchzuführen. 
+	Da sich nur lokale Beleuchtungsmodelle anwendbar sind.
+	
+	Neben den Rasterisierungsalgorithmen existieren etliche weitere Verfahren, wie Raytracing, Pathtracing oder Photonenmapping.
+	Die drei zu letzt genannten Techniken, leiten sich allesamt aus der sogenannten Rendergleichung ab.
+	Unter diesem Namen wurde 1986 eine Integralgleichung in der Arbeit \cite{Kajiya:1986:RE:15886.15902}, von Jim Kajiya veröffentlicht. 
+	Ein Vorteil dieser Verfahren ist die physikalische Plausibilität und die damit einhergehende Güte der simulierten Licht und Schatteneffekte. Die Komplexität und die damit verbundene Berechnungsdauer, der bereits benannten Verfahren steht in
+	keinem Verhältnis zu den Rasterisierungsalgorithmen.
+	Bildwiederholungsraten in Echtzeit lassen sich mit diesen Algorithmen kaum erreichen. 
+	
+\section{Rendergleichung}
 
-\chapter{Beleuchtungsmodelle}
+	Die Rendergleichung, in Form einer Integralgleichung beschreibt die Energieerhaltung bei der Ausbreitung von Lichtstrahlen.
+	Grundlage dieser Gleichung, sind wie bereits erwähnt die physikalischen Modelle der Wechselwirkungen von Licht mit Materie.
+	Eine sinnvolle Beschränkung ist die Interpretation des Lichtes mit Hilfe der Strahlenoptik, da zum Beispiel Beugungseffekte nur dann eine Rolle spielen, wenn die betrachteten Objekte nicht wesentlich größer sind als die Wellenlänge des Lichtes.
+	Die Ausbreitung des Lichtes wir mit Lichtstrahlen beschrieben. 
+	Lichtstrahlen können in der Strahlenoptik Absorbiert, Reflektiert, Gestreut und Gebrochen werden.
+	Grundlegend gilt, dass Strahlen ihre Ausbreitungsrichtung nur auf Grund der Wechselwirkung mit der Materie ändern.
+	So können sich zwei Lichtstrahlen schneiden, ohne das die Kollision ihre Energie oder ihren Weg beeinflusst. 
+	Eine weitere Eigenschaft der Strahlenoptik besteht in der Umkehrbarkeit der betrachteten Lichtwege.
+	Die Gleichungen ändern sich durch die Änderung, der Lichtrichtung nicht.
+	Der in dieser Arbeit verwendete Raycast-Algorithmus basiert auf diesem Prinzip und verfolgt die Strahlen ausgehen vom Sensor zur Lichtquelle.
+	
+	Es existieren zwei Betrachtungsmöglichkeiten der Rendergleichung.
+	 Zum einen lässt sich sagen, dass diese angereichert mit allen Effekten aus der Natur heraus extrahiert 
+	und für die Verwendung vereinfacht wird. Zum anderen lässt sich die Rendergleichung von Grund auf herleiten und mit verschiedenen Effekten anreichern, so dass sie den Gegebenheiten in der Natur nahe kommt.
+	Nelson Max nutzt in seiner Arbeit \cite{Max:1995:OMD:614258.614298}, die zweite Variante.
+	Er reichert die Gleichung Schritt für Schritt mit verschiedenen physikalischen Effekten an.
+	
+	Neben der einfachen Emission- und Absorptionsgleichung, die eine starke eine Approximation der physikalischen
+	Grundlagen darstellt, geht Nelson Max auf diverse Erweiterungen zur Berechnung von Streuungseffekten und Schatten ein.
+
+\subsection{Emission und Absorption}
 
 	Der Ausgangspunkt dieses Kapitels ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. 
 	Die Streuung des Lichtes wird in dieser Arbeit vernachlässigt.
@@ -426,7 +449,7 @@ Bild"ubernahmen zitieren.}
 	werden zwei verschiedene Funktionen für $g(s)$ definiert.
 	Beide kommen im eigentlichen Algorithmus zum Einsatz.
 	
-\section{Einfaches Beleuchtungs-Modell}
+\subsection{Einfaches Beleuchtungs-Modell}
 	
 	Ein primärer Strahl, auch als Sichtstrahl bezeichnet, wird vom Sensor aus in die Szene geschossen.
 	Die folgende Abbildung stellt diesen Vorgang schematisch dar. 
@@ -509,10 +532,10 @@ Bild"ubernahmen zitieren.}
 		\label{eq:simpleEAModellANA}
 	\end{equation}
 	
-\section{Erweitertes Beleuchtungs-Modell}
+\subsection{Erweitertes Beleuchtungs-Modell}
 
 	Kern dieser Arbeit ist die Weiterentwicklung der eben eingeführten Volumengleichung.
-	Die einfache Variante entstammt der Arbeit \ref{}, in welcher zusätzlich eine Implementierung
+	Die einfache Variante entstammt der Arbeit \cite{staib2015}, in welcher zusätzlich eine Implementierung
 	der Ambienten Verdeckung zum Einsatz kommt, um die globale Beleuchtung zu approximieren.
 	Dieser Arbeit erweitert die Beleuchtung der Szene, neben der Hintergrundbeleuchtung 
 	werden eine Punkt- und Richtungslichtquellen eingesetzt.
