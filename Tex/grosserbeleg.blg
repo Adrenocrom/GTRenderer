@@ -4,57 +4,50 @@ The top-level auxiliary file: grosserbeleg.aux
 The style file: alphadin.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: literatur.bib.bib
-I was expecting a `,' or a `}'---line 195 of file literatur.bib.bib
- :  title 
- :        = {$\int exp(x^2) dx = ?$},
-I'm skipping whatever remains of this entry
 A bad cross reference---entry "conf/pg/JungPP98"
 refers to entry "conf/pg/1998", which doesn't exist
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--to sort, need author or key in title
+Warning--empty note in exp(x2)
 Warning--empty booktitle in staib2015
-Warning--empty author in title
-Warning--empty title in title
-Warning--Es gibt einen Jahrgang, aber kein Jahr in title
-You've used 14 entries,
+You've used 15 entries,
             3183 wiz_defined-function locations,
-            748 strings with 7196 characters,
-and the built_in function-call counts, 10226 in all, are:
-= -- 1121
-> -- 323
-< -- 343
-+ -- 401
-- -- 125
-* -- 827
-:= -- 1798
-add.period$ -- 12
-call.type$ -- 14
-change.case$ -- 84
-chr.to.int$ -- 14
-cite$ -- 20
-duplicate$ -- 244
-empty$ -- 554
-format.name$ -- 172
-if$ -- 1888
+            759 strings with 7427 characters,
+and the built_in function-call counts, 10990 in all, are:
+= -- 1211
+> -- 338
+< -- 365
++ -- 421
+- -- 130
+* -- 881
+:= -- 1932
+add.period$ -- 15
+call.type$ -- 15
+change.case$ -- 89
+chr.to.int$ -- 15
+cite$ -- 17
+duplicate$ -- 262
+empty$ -- 605
+format.name$ -- 182
+if$ -- 2040
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 25
-newline$ -- 89
-num.names$ -- 39
-pop$ -- 79
+missing$ -- 26
+newline$ -- 100
+num.names$ -- 45
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 119
 quote$ -- 0
-skip$ -- 467
+skip$ -- 498
 stack$ -- 0
-substring$ -- 899
-swap$ -- 82
-text.length$ -- 62
-text.prefix$ -- 3
+substring$ -- 980
+swap$ -- 88
+text.length$ -- 68
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 112
-warning$ -- 5
-while$ -- 102
-width$ -- 17
-write$ -- 191
-(There were 2 error messages)
+type$ -- 120
+warning$ -- 2
+while$ -- 111
+width$ -- 18
+write$ -- 214
+(There was 1 error message)

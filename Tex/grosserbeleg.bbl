@@ -7,6 +7,13 @@
 \newblock {In: }\emph{IEEE Trans. Vis. Comput. Graph.}
 \newblock 19 (2013), Nr. 12, S. 2936--2945
 
+\bibitem[Bli77]{Blinn:1977:MLR:965141.563893}
+\textsc{Blinn}, James~F.:
+\newblock Models of Light Reflection for Computer Synthesized Pictures.
+\newblock {In: }\emph{SIGGRAPH Comput. Graph.}
+\newblock 11 (1977), Juli, Nr. 2, S. 192--198. --
+\newblock ISSN 0097--8930
+
 \bibitem[Bli82]{Blinn:1982:LRF:965145.801255}
 \textsc{Blinn}, James~F.:
 \newblock Light Reflection Functions for Simulation of Clouds and Dusty
@@ -23,6 +30,13 @@
   on}
 \newblock 21 (2015), Feb, Nr. 2, S. 201--214. --
 \newblock ISSN 1077--2626
+
+\bibitem[Hub96]{exp(x2)}
+\textsc{Huber}, Martin:
+\newblock Warum ist denn exp (x2) nicht elementar integrierbar?
+\newblock  / Univerit{\"a}t Z{\"u}rich.
+\newblock 1996.
+\newblock  -- Forschungsbericht
 
 \bibitem[JKRY12]{JKRY12}
 \textsc{J{\"o}nsson}, Daniel ; \textsc{Kronander}, Joel ; \textsc{Ropinski},
@@ -91,9 +105,6 @@
 \newblock {In: }\emph{Computer Graphics Forum}
 \newblock  (2009). --
 \newblock ISSN 1467--8659
-
-\bibitem[tit]{title}
-
 
 \bibitem[WBSS04]{Wang04imagequality}
 \textsc{Wang}, Zhou ; \textsc{Bovik}, Alan~C. ; \textsc{Sheikh}, Hamid~R.  ;
