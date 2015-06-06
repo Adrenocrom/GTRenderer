@@ -1,3 +1,5 @@
+#phong										  // use the phong light model
+#local										  // calculate just the local illumination
 #camera         real3 real real real  // position pitch yaw focallength
 #lookat         real3 real3 real      // position lookat focallength
 #lookatcom      real3 real            // position focallength - looks at the center of mass
@@ -16,15 +18,19 @@
 
 ###############################################################
 
+phong
+local
+
 kdtree 25
 lambda 1.0
-samples 3
-setApproxLevel 1
+samples 15
+setApproxLevel 4
 
 #lookatcom -1200.0 -100.0 1200.0 22.0 // exp2mill.siff
-lookatcom 200.0 0.0 200.0 6.0
+lookatcom 200.0 0.0 200.0 20.0
+#lookat 0.0 0.0 -300.0 0.0 0.0 0.0 50.0
 
-setk 0.7
+setk 0.6
 setRadius 0.8
 #setColor 60.0 60.0 60.0
 setbg 10.0 10.0 10.0
@@ -32,19 +38,19 @@ setbg 10.0 10.0 10.0
 #pointlight 451.414 403.237 403.850 200.0 00.0 0.0
 #pointlight 157.338 155.263 156.352 0.0 255.0 0.0
 
-directional 0.0 -1.0 0.0 0.0 255.0 0.0
-directional 0.0  1.0 0.0 0.0 0.0 255.0
+directional 0.0 -1.0 0.0 0.0 200.0 0.0
+#directional 0.0  1.0 0.0 0.0 0.0 255.0
 #directional  0.0  0.0 1.0 0.0 0.0 255.0
 #directional  1.0  0.0 0.0 255.0 0.0 0.0
 #directional -1.0  0.0 0.0 0.0 255.0 0.0
 
-#loadSiff data/pdb.2BT9.siff
-loadSiff data/cool_random.siff
+loadSiff data/pdb.2BT9.siff
+#loadSiff data/cool_random.siff
 #loadSiff data/pdb.1UUN.siff
 #loadSiff data/chkpt.raw.siff
 #loadSiff data/exp2mill.siff
 #loadSiff data/nial.siff
 
 #sphere 0.0 -3.0 0.0 1.0 100.0 100.0 100.0 0.8
-#sphere 0.0  0.0 0.0 1.0 100.0 100.0 100.0 0.8
-#sphere 0.0  3.0 0.0 1.0 100.0 100.0 100.0 0.2
+#sphere 0.0 0.0 0.0 1.0 100.0 100.0 100.0 0.8
+#sphere 0.0 3.0 0.0 1.0 100.0 100.0 100.0 0.8

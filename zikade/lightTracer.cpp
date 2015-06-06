@@ -24,6 +24,8 @@ void zikade::init() {
 	rays	  = NULL;
 	kd		  = NULL;
 
+	state	 = 1;
+	global = true;
 	lambda = 1.0;
 	aspect = (real)SI_WIDTH / (real)SI_HEIGHT;
 
@@ -121,6 +123,10 @@ void zikade::readLine(stringstream& line) {
 	if(entry == "lambda") {
 		line >> lambda;
 		return;
+	}else if(entry == "phong") {
+		state = 0;
+	}else if(entry == "local") {
+		global = false;
 	}else if(entry == "sphere") {
 		sphere s;
 		line >> s.p.x; line >> s.p.y; line >> s.p.z;
@@ -282,17 +288,33 @@ void zikade::convert(rgbWxH& image) {
 
 void zikade::render(rgbWxH& image) {
 	uint cnt = 0;
-	
-	#pragma omp parallel for schedule(static, 1)
-	for(uint i = 0; i < numRays; ++i) {
-		sensor[i] = trace(rays[i], std_bg);
-		cnt++;
-		
-		#ifdef winbuild
-			printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
-		#else
-			printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
-		#endif
+	switch(state) {
+		case 0:{
+			#pragma omp parallel for schedule(static, 1)
+			for(uint i = 0; i < numRays; ++i) {
+				sensor[i] = localIllumination(rays[i], std_bg);
+				cnt++;
+				  
+				#ifdef winbuild
+					printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
+				#else
+					printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+				#endif
+			}
+		}break;
+		case 1:{
+			#pragma omp parallel for schedule(static, 1)
+			for(uint i = 0; i < numRays; ++i) {
+				sensor[i] = trace(rays[i], std_bg);
+				cnt++;
+				  
+				#ifdef winbuild
+					printf("\rRender: [%.2f %%]", ((float)cnt / (float)numRays) * 100.0f);
+				#else
+					printf("\rRender: [\033[31m%.2f %%\033[0m]", ((float)cnt / (float)numRays) * 100.0f);
+				#endif
+			}
+		}break;
 	}
 	
 	printf("\n");
@@ -332,6 +354,55 @@ real3 zikade::radiance(const ray& r, uint depth, ushort* xi) {
 	return real3();
 }
 
+real3 zikade::localIllumination(const ray& r, real3 Ib) {
+	list<hitInfo> hits;
+	kd->hit(r, hits, -1);
+	hits.sort(compareHits);
+	hitInfo hit;
+	real n = 30;
+
+	if(!hits.empty()) {
+		hit = hits.back();
+		sphere* s = &spheres[hit.id];
+
+		if(numLights) {
+			real 	invNumLights = (1.0 / (real)numLights) * 0.5;
+			real3 IL;
+			real	alpha	= 1.0 / (real)(numLights + 1);
+			
+			for(uint l = 0; l < numLights; ++l) {
+				real3 position = r.o + hit.tn * r.d;
+				real3 power		= lights[l]->power;
+
+				if(global) {
+					ray   sray(position, -lights[l]->direction(s->p));
+					hits.clear();
+					kd->hit(sray, hits, hit.id);
+
+					if(!hits.empty())
+						power = real3();
+				}
+
+				real3 normal	= normalize(position - s->p);
+				real 	diffuse 	= dot(-lights[l]->direction(s->p), normal);
+				if(diffuse >= 0) {
+					real3 V			= normalize(r.o - position);
+					real3 half		= normalize(V + -lights[l]->direction(s->p));
+					real  specular = dot(half, normal);
+
+					IL += ((0.95 * diffuse + 0.05 * ((n+2.0)/(2.0*PI)) * pow(specular, n)) * power);
+				}
+			}
+
+			Ib = s->c * alpha + invNumLights * IL * (1-alpha);
+		} else {
+			Ib = s->c;
+		}
+	}
+
+	return Ib;
+}
+
 real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 	list<hitInfo> hits;
 	kd->hit(r, hits, id);
@@ -365,7 +436,10 @@ real3 zikade::trace(const ray& r, real3 Ib, uint d, int id) {
 						s->intersect(s_r, hit);
 		
 						T = trans(s, 0, hit.tf);
-						C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
+						if(global)
+							C += T * trace(s_r, lights[l]->power, d-1, h.id) + (1 - T) * s->c;
+						else
+							C += T * lights[l]->power + (1 - T) * s->c;
 					}
 					C /= (real)numLights;
 	

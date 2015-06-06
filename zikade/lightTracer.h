@@ -21,6 +21,8 @@ class zikade {
 		ray*				 rays;
 		real3*			 sensor;
 		
+		uint				 state;
+		bool				 global;
 		real				 lambda;
 		real				 aspect;
 		bool				 cam_com;
@@ -50,6 +52,7 @@ class zikade {
 		inline real	trans(const sphere* s, const real& tn, const real& tf) {return exp( -(s->k * (tf-tn)) );}
 		real3	trace(const ray& r, real3 Ib, uint d = 1, int id = -1);
 		real3 radiance(const ray& r, uint d, ushort* xi = NULL);
+		real3 localIllumination(const ray& r, real3 Ib);
 	
 	public:	
 		zikade() {init();}

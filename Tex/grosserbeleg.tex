@@ -653,22 +653,76 @@ Optional:
 	
 	Die zu zeichnende Szene besteht aus einer Menge von Partikeln, dargestellt als Kugeln.
 	Jede Kugel wird durch ihre Position und einen Radius parametrisiert. 
-	Zusätzlich wird für jede Kugel ein Material definiert, welches sich aus einer Farbe und ein Wert für die maximale Durchlässigkeit zusammensetzt. 
-	Die maximale Durchlässigkeit wird dabei durch das Symbol $\Theta_{max} \in [0, 1]$ repräsentiert.
-	Aus $\Theta_{max}$ wird für jede Kugel der Wert für $\kappa$ nach der folgenden Vorschrift berechnen:
+	Zusätzlich wird für jede Kugel ein Material definiert, welches sich aus einer Farbe und ein Wert für die maximale Lichtundurchlässigkeit zusammensetzt. 
+	Für die Beleuchtungsberechnung, wird für jede Kugel der Parameter $\kappa$ benötigt, denn dieser beschreibt die Lichtundurchlässigkeit und damit die Transparenz für die entsprechende Kugel.
+	Dieser Parameter wird jedoch nicht direkt gesetzt, 
+	sondern berechnet sich aus der angegeben maximalen Lichtundurchlässigkeit $\Theta_{max} \in [0, 1]$ in Abhängigkeit
+	des Radius $r$.
+	Um den Wert von $\kappa$ zu bestimmen, wird $\kappa$ in die Gleichung für $\Theta$ eingesetzt:
 	
 	\begin{equation}
-		\kappa = -\frac{1}{\lambda \cdot 2r} \ln(1-\Theta_{max})
+		\Theta(t_n, t_f) = 1 - e^{-\lambda\kappa(t_f - t_n)}
 		\label{eq:maxOpacity}
 	\end{equation}
 	
-	Der Parameter $\lambda$ wird für alle Kugeln global gewählt und liegt im Intervall $(0,1]$. 
-	Neben der Hintergrundbeleuchtung gibt es die Möglichkeit beliebig viele Punkt- und Richtungslichtquellen zu definieren.
-	Eine Punktlichtquelle besitzt neben ihrer Position eine Farbe. 
-	Eine Richtungslichtquelle besitzt keine Position, sondern einen normierten Richtungsvektor und eine Farbe als Parameter.
+	Wird $\Theta_{max}$ in die Formel \ref{eq:maxOpacity} eingesetzt, dann lässt diese sich nach $\kappa$
+	auflösen.
+	Zusätzlich wird die größte mögliche Distanz $2 \cdot r$ für die Länge $t_f - t_n$ gesetzt und
+	es ergibt sich folgende Lösung für $\kappa$:
 	
-	Die Auflösung eines Bildes entspricht $W \times H$. 
-	Für jeden Bildpunkt $(x, y) \in W \times H$ wird ein primärer Strahl erzeugt, dessen Ursprung der Kameraposition entspricht.
+	\begin{equation}
+		\kappa = -\frac{1}{\lambda \cdot 2r} \ln(1-\Theta_{max})
+		\label{eq:kappa}
+	\end{equation}
+	
+	Der Parameter $\lambda$ wird für alle Kugeln global gewählt und liegt im Intervall $(0,1]$, mit diesem
+	Parameter kann die Transparenz der Kugeln global beeinflusst werden.
+	
+	Das Programm unterstützt eine Vielzahl von Einstellungsmöglichkeiten, diese werden in einer externen
+	Textdatei gesetzt. Deren Aufbau und mögliche Parameter werden im Folgenden Abschnitt erläutert.
+
+\section{Szenenbeschreibung}
+
+	Wie oben beschrieben, lässt sich die Szene und die Programmparameter durch eine Textdatei definieren.
+	Die Datei wird Zeilenweise eingelesen, jede Zeile bietet die Möglichkeit einen Befehl zu setzten.
+	Für die Platzierung und Ausrichtung der Kamera existieren zum Beispiel drei verschiedene Varianten.
+	In allen Varianten wird die Kamera durch die Angabe eines Vektors positioniert. 
+	Die Blickrichtung kann entweder	mit zwei Drehwinkeln beeinflusst werden oder es wird ein Punkt gewählt,
+	auf den die Kamera blicken soll.
+	Dieser Blickpunkt kann auch als Massenzentrum gewählt werden, sodass die Kamera auf den Schwerpunkt
+	der Szene ausgerichtet wird.
+	
+	Um die Szene mit Kugeln anzureichern, existieren zwei Möglichkeiten. 
+	Zum einen können die Kugeln direkt in der Textdatei definiert werden und zum anderen wird das laden von SIFF-Dateien unterstützt.
+	In SIFF-Dateien können die Kugeln durch ihrer Position, ihren Radius und ihrer Farbe ebenfalls Zeilenweise beschrieben werden.
+	
+	Um die Anzahl der Kollisionstests auf ein Minimum zu reduzieren, wird eine Beschleunigungsdatenstruktur in Form
+	eines KD-Baums eingesetzt. Dieser wird direkt nach dem Laden der Szene konstruiert und es
+	lässt sich eine maximale Baumtiefe angeben. 
+	Dieser Wert, sollte in Abhängigkeit von der Anzahl der gesetzten Partikel gewählt werden.
+		 
+	Weitere globale Parameter, wie $\lambda$ und die Anzahl von Stützpunkten lassen sich ebenfalls setzten.
+	Der Parameter $\Theta_{max}$ lässt sich für jede Kugel einzeln setzen, aber auch global für alle Kugeln festlegen.
+	Das gleiche gilt für die Farbe und die Größe der Kugeln.
+	Es existiert ein weiterer globaler Parameter, welcher den Approximationsgrad bestimmt.
+	Was es mit diesen Parameter auf sich hat, wird später beschrieben.
+	
+	Neben der Hintergrundbeleuchtung gibt es die Möglichkeit beliebig viele Punkt- und Richtungslichtquellen zu definieren.
+	Beide Typen von Lichtquellen besitzen einen Farbvektor als Parameter.
+	Die Punktlichtquellen besitzen zusätzlich eine Position
+	und Richtungslichtquellen besitzt anstatt der Position einen normierten Richtungsvektor.
+	
+	Die Beleuchtungsbrechung lässt sich neben dem erläuterten Emission- und Absorptionsmodell auch mit dem
+	Phong-Beleuchtungsmodell berechnen.
+	Beide Varianten, können entweder mit oder ohne globale Schatteneffekte berechnet werden.
+	Transparenzeffekte werden mit dem Phong-Beleuchtungsmodell nicht unterstützt.
+	
+\section{Details zum Algorithmus}
+	
+	Im folgenden wird beschrieben, wie der Raycast-Algorithmus arbeitet und wann welches Beleuchtungsmodell zum Einsatz
+	kommt.
+	Grundlegend gilt, das die Auflösung, des zu erzeugenden Bildes $W \times H$ entspricht.
+	Unabhängig vom Beleuchtungsmodell, wird für jeden Bildpunkt $(x, y) \in W \times H$ wird ein primärer Strahl erzeugt, dessen Ursprung der Kameraposition entspricht.
 	Der Richtungsvektor lässt sich anhand der Vorschrift \ref{eq:direction} bestimmen.
 	Das Resultat dieses Schrittes ist eine Liste der primären Strahlen.
 	
@@ -676,10 +730,20 @@ Optional:
 	da die Beleuchtungsberechnung für jeden Strahl unabhängig voneinander durchgeführt werden kann. 
 	In der eigentlichen Implementierung wird die Parallelisierung mit Hilfe der OpenMP-Bibliothek\footnote{http://openmp.org/wp/} umgesetzt.
 	
+	Für jeden Primärstrahl, Sichtstrahl wird der Schnitt mit allen in der Szene befindlichen Kugeln berechnet
+	und die Beleuchtungsberechnung durchgeführt.
+
+	Im Fall des Phong-Beleuchtungsmodells ist allerdings nur der erste Schnittpunkt, ausgehend vom Sensor von
+	Interesse. An der Schnittposition wird die Normale berechnet, um einen Wert für die diffusen und für
+	die spekularen Reflektionsanteile zu bestimmen. 
+	Das genaue Modell wird in der Arbeit \cite{Blinn:1977:MLR:965141.563893} erläutert.
+	Zur Erzeugung der globalen Schatten, müssen ausgehend des Schnittpunktes Sekundärstrahlen zu jeder Lichtquelle
+	geschossen werden und wenn ein Sekundärstrahl dabei eine andere Kugel schneidet, dann wird die Farbe
+	der Lichtquelle mit dem Nullvektor ersetzt.
+	
+	Die Bildsynthese für das Emission- und Absorptionsmodell ist etwas aufwendiger.
 	Für die Sichtstrahlen wird die Beleuchtung durch das erweiterte Beleuchtungsmodell berechnet. 
-	Dazu muss für jeden Strahl ein Schnittest mit allen Kugeln durchgeführt werden.
-	Um die Anzahl der Kollisionstests auf ein Minimum zu reduzieren, wird eine Beschleunigungsdatenstruktur in Form
-	eines KD-Baums eingesetzt. Dieser wird direkt nach dem Laden der Szene konstruiert.
+	Dazu muss ebenfalls für jeden Strahl ein Schnittest mit allen Kugeln durchgeführt werden.
 	Sobald alle Kugeln bestimmt worden sind, die von einem Sichtstrahl geschnitten worden, müssen diese entlang
 	des Strahls sortiert werden.
 	Anschließend wird für jede von diesen Kugeln, die erweiterte Beleuchtungsberechnung durchgeführt.
@@ -690,24 +754,28 @@ Optional:
 	
 	Da sich für die erweiterte Beleuchtungsberechnung keine analytische Lösung finden ließ,
 	muss für jeden Stützpunkt ein neuer Strahl in Richtung jeder Lichtquelle geschossen werden.
-	Diese werden als Sekundärstrahlen bezeichnet. 
 	Für jeden Sekundärstrahl wird das Licht, der entsprechenden Lichtquelle, als Hintergrundbeleuchtung betrachtet.
-	Die Intensität dieses Lichtes wird entlang des Strahls wiederum durch Partikel, 
-	aber dieses mal nach dem vereinfachten Beleuchtungsmodell abgeschwächt.
-	Um dies zu bewerkstelligen ist es nötig für jeden Sekundärstrahl abermals den Schnitt mit allen Kugeln zu bestimmen 
-	und es wieder ist eine Sortierung der Ergebnismenge entlang des Strahls erforderlich. 
+	Werden globale Schatten verwendet werden, dann wird dieses Licht entlang des Strahls wiederum durch die vom
+	Sekundärstrahl geschnittenen Partikel abgeschwächt. 
+	Diese Abschwächung wird mit vereinfachten Beleuchtungsmodell berechnet.
+	Für jeden Sekundärstrahl ist ein erneuter Schnittest mit allen Kugeln nötigt, 
+	sowie eine Sortierung der Ergebnismenge entlang des Sekundärstrahls. 
 	
-	Die Geschwindigkeit des Algorithmus hängt entscheidend von der Auflösung des Bildes und der damit verbunden Anzahl von Primärstrahlen ab.
-	Entscheidend für Berechnungsdauer ist die Wahl der Stützpunktanzahl, da für jeden ein Sekundärstrahl ein Schnitt mit allen Kugeln
-	geprüft werden muss.
+	Die Geschwindigkeit des Algorithmus hängt von der Auflösung des Bildes und der damit verbunden Anzahl von Primärstrahlen ab.
+	Entscheidend für Berechnungsdauer ist die Wahl der Stützpunktanzahl, 
+	da für jeden ein Sekundärstrahl Szene geschossen werden muss und für jeden ein Schnitttest und eine anschließende
+	Sortierung erforderlich ist.
 	
-	An dieser Stelle wird ein weiterer Parameter $N$ eingeführt. 
+	An dieser Stelle wird bereits angesprochene Approximationsgrad als ein neuer Parameter $N$ eingeführt. 
 	Der Wert von $N$ bestimmt, für wie viele Kugeln entlang des Primärstrahls, aber dieses mal ausgehend von dem Ursprung des Strahls, 
 	die Beleuchtung mit der erweiterten Formel bestimmt werden soll.
 	Mit Hilfe dieser Approximation lässt sich die Anzahl der zu erzeugenden Sekundärstrahlen drastisch reduzieren und dadurch die Dauer
 	der Berechnung verringern.
-	Im nächsten Kapitel wird der Einfluss, den diese Vereinfachung auf das Ergebnisbild
-	hat evaluiert.
+	Eine weitere Möglichkeit die Anzahl der Sekundärstrahlen zu reduzieren, lässt sich durch eine adaptive Wahl
+	der Stützpunktanzahl realisieren. Das bedeutet, dass für jede verdeckte Kugel, in Abhängigkeit des Verdeckungsgrades
+	Stützpunktanzahl reduziert wird, bis schließlich das Vereinfachte Modell zum Einsatz kommt.
+	In diesen Programm wurde die Anzahl nicht adaptiv gewählt, sondern nur die einfache Approximation implementiert.
+	Der Einfluss und die Güte dieser Approximation wird im folgenden Kapitel anhand von Beispielen evaluiert.
 
 \chapter{Auswertung und Fazit}
 
