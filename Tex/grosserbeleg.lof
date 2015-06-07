@@ -23,8 +23,11 @@
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von St\"utzpunkten.}}{25}{figure.6.4}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\Theta _{max} = 0.0$}}}{25}{figure.6.4}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\Theta _{max} = 1.0$}}}{25}{figure.6.4}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{27}{figure.6.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{27}{figure.6.5}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{27}{figure.6.5}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes 1UUN-Proteins dar.}}{27}{figure.6.6}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes cool\_random dar.}}{28}{figure.6.7}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Abbildungen des 2BT9-Proteins, links mit dem Phong und rechts mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.}}{29}{figure.6.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Phong-Beleuchtungsmodell mit Schatten}}}{29}{figure.6.5}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Erweitertes Emissions- und Absorptionsmodell}}}{29}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{29}{figure.6.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{29}{figure.6.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{29}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes 1UUN-Proteins dar.}}{30}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes cool\_random dar.}}{30}{figure.6.8}

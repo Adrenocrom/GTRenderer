@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 JUN 2015 16:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 JUN 2015 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -891,49 +891,78 @@ File: images/ng_s50_O1.png Graphic file (type png)
 <use images/ng_s50_O1.png>
 Package pdftex.def Info: images/ng_s50_O1.png used on input line 901.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+
+<images/shadowPhong.png, id=404, 1027.84pt x 1027.84pt>
+File: images/shadowPhong.png Graphic file (type png)
+
+<use images/shadowPhong.png>
+Package pdftex.def Info: images/shadowPhong.png used on input line 912.
+(pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
+
+<images/shadowEEA.png, id=405, 1027.84pt x 1027.84pt>
+File: images/shadowEEA.png Graphic file (type png)
+
+<use images/shadowEEA.png>
+Package pdftex.def Info: images/shadowEEA.png used on input line 913.
+(pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
  [25 <./images/ng_s0.png (PNG copy)> <./images/ng_s1.png (PNG copy)> <./images/
 ng_s2.png (PNG copy)> <./images/ng_s50_O0.png (PNG copy)> <./images/ng_s50_O1.p
 ng (PNG copy)>]
-<images/512x512_samples_5_approx_1.png, id=419, 1027.84pt x 1027.84pt>
+<images/512x512_samples_5_approx_1.png, id=421, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_5_approx_1.png Graphic file (type png)
 
 <use images/512x512_samples_5_approx_1.png>
 Package pdftex.def Info: images/512x512_samples_5_approx_1.png used on input li
-ne 980.
+ne 988.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
-<images/512x512_samples_100_approx_100000.png, id=420, 1027.84pt x 1027.84pt>
+<images/512x512_samples_100_approx_100000.png, id=422, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_100_approx_100000.png Graphic file (type png)
 
 <use images/512x512_samples_100_approx_100000.png>
 Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
-nput line 981.
+nput line 989.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26] <images/pdb1UUN.pdf, id=430, 506.08914pt x 276.58925pt>
+[26] <images/pdb1UUN.pdf, id=432, 506.08914pt x 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
-Package pdftex.def Info: images/pdb1UUN.pdf used on input line 998.
+Package pdftex.def Info: images/pdb1UUN.pdf used on input line 1006.
 (pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
- [27 <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_sam
-ples_100_approx_100000.png (PNG copy)> <./images/pdb1UUN.pdf>] <images/cool_ran
-dom.pdf, id=448, 511.55208pt x 279.60521pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/cool_random.pdf, id=434, 511.55208pt x 279.60521pt>
 File: images/cool_random.pdf Graphic file (type pdf)
 
 <use images/cool_random.pdf>
-Package pdftex.def Info: images/cool_random.pdf used on input line 1013.
+Package pdftex.def Info: images/cool_random.pdf used on input line 1021.
 (pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
- [28 <./images/cool_random.pdf>] [29] [30
 
-]
-(./grosserbeleg.bbl
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 3240) has occurred while \output is active []
+
+ [27]
+[28] [29 <./images/shadowPhong.png (PNG copy)> <./images/shadowEEA.png (PNG cop
+y)> <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_samp
+les_100_approx_100000.png (PNG copy)>] [30 <./images/pdb1UUN.pdf> <./images/coo
+l_random.pdf
+
+pdfTeX warning: pdflatex (file ./images/cool_random.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>] (./grosserbeleg.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31
+
 
 ])
 [32] (./grosserbeleg.lof)
@@ -959,25 +988,25 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [38
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1092.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1092.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1100.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1100.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1092.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1092.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1100.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1100.
 
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
 (rerunfilecheck)             Checksum: 67014893AFE4EE48E82F43D9EE0FB7FF;1266.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1092.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1100.
  )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 79 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11107 strings out of 494976
- 162305 string characters out of 6179136
- 308783 words of memory out of 5000000
- 13972 multiletter control sequences out of 15000+600000
+ 11121 strings out of 494976
+ 162589 string characters out of 6179136
+ 311783 words of memory out of 5000000
+ 13981 multiletter control sequences out of 15000+600000
  56764 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  43i,12n,61p,411b,1539s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -995,10 +1024,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (44 pages, 3560686 bytes).
+Output written on grosserbeleg.pdf (44 pages, 4234669 bytes).
 PDF statistics:
- 621 PDF objects out of 1000 (max. 8388607)
- 522 compressed objects within 6 object streams
- 145 named destinations out of 1000 (max. 500000)
- 256 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 627 PDF objects out of 1000 (max. 8388607)
+ 526 compressed objects within 6 object streams
+ 148 named destinations out of 1000 (max. 500000)
+ 266 words of extra memory for PDF output out of 10000 (max. 10000000)
 
