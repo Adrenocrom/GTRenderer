@@ -3,18 +3,17 @@
 \contentsline {chapter}{\numberline {3}Grundlagen}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Strahl und Kugelgleichung}{7}{section.3.1}
 \contentsline {section}{\numberline {3.2}Die perspektivische Kamera}{8}{section.3.2}
-\contentsline {chapter}{\numberline {4}Volumenintegral}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Rendergleichung}{11}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Emission und Absorption}{12}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Einfaches Beleuchtungs-Modell}{13}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Erweitertes Beleuchtungs-Modell}{14}{subsection.4.1.3}
+\contentsline {chapter}{\numberline {4}Rendergleichung}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Emission und Absorption}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}Einfaches Beleuchtungs-Modell}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Erweitertes Beleuchtungs-Modell}{14}{section.4.3}
 \contentsline {chapter}{\numberline {5}Implementierung}{19}{chapter.5}
 \contentsline {section}{\numberline {5.1}Szenenbeschreibung}{19}{section.5.1}
 \contentsline {section}{\numberline {5.2}Details zum Algorithmus}{20}{section.5.2}
 \contentsline {chapter}{\numberline {6}Auswertung und Fazit}{23}{chapter.6}
 \contentsline {section}{\numberline {6.1}SSIM}{23}{section.6.1}
-\contentsline {section}{\numberline {6.2}quantitative Evaluation}{24}{section.6.2}
-\contentsline {section}{\numberline {6.3}Fazit}{26}{section.6.3}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{27}{chapter*.4}
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{29}{chapter*.5}
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{31}{chapter*.6}
+\contentsline {section}{\numberline {6.2}Quantitative Evaluation}{25}{section.6.2}
+\contentsline {section}{\numberline {6.3}Fazit}{28}{section.6.3}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{29}{chapter*.4}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{31}{chapter*.5}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{33}{chapter*.6}

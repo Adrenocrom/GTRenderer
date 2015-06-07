@@ -362,7 +362,7 @@ real3 zikade::localIllumination(const ray& r, real3 Ib) {
 	real n = 30;
 
 	if(!hits.empty()) {
-		hit = hits.back();
+		hit = hits.front();
 		sphere* s = &spheres[hit.id];
 
 		if(numLights) {

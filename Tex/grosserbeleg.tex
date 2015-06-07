@@ -37,16 +37,15 @@ showstringspaces=false
 \betreuer{Dipl-MedienInf. Joachim Staib}
 \bibfiles{literatur.bib}
 \problem{
-Die Darstellung von Partikeldaten mittels Kugelglyphen ist in wissenschaftlichen Visualisierung
+Die Darstellung von Partikeldaten mittels Kugelglyphen ist in der wissenschaftlichen Visualisierung
 inzwischen etabliert. Gerade bei dichten Datensätzen stellen kompakte Anordnungen von sehr vielen
-Kugeln jedoch ein Problem für die Erkennbarkeit der zu visualisierenden Vorgänge dar. Eine Möglichkeit, diesem Problem zu begegnen ist es, über Blinn-Phong-Beleuchtung hinausgehende Effekte wie
+Kugeln jedoch ein Problem für die Erkennbarkeit der zu visualisierenden Vorgänge dar. Eine Möglichkeit, diesem Problem zu begegnen, ist es, über Blinn-Phong-Beleuchtung hinausgehende Effekte wie
 globale Schatten oder den Einsatz von Methoden aus dem Volume-Rendering zu integrieren. Durch
-deren Komplexität muss in Echtzeitvisualisierungen jedoch auf teilweise grobe Approximationen zu-
-rückgegriffen werden. Die Einschätzung der Approximationsqualität fällt häufig schwer, da keine Visualisierung des exakten Verfahrens verfügbar ist.
+deren Komplexität muss in Echtzeitvisualisierungen jedoch auf teilweise grobe Approximationen zurückgegriffen werden. Die Einschätzung der Approximationsqualität fällt häufig schwer, da keine Visualisierung des exakten Verfahrens verfügbar ist.
 Ziel dieser Belegarbeit ist die Umsetzung eines CPU-Renderers für Partikeldaten, der eine Reihe
 von erweiterten Visualisierungseffekten unterstützt. Er soll die Grundlage für Ground-Truth-
 Visualisierungen bieten.
-Zunächst soll eine geeignete Softwarearchitektur konzipiert und umgesetzt werden. Die Partikel sollen als mit lichtemittierendem und ?absorbierendem Gas gefüllte Kugeln interpretiert werden. Es sollen anschließend Methoden entwickelt werden, um einen physikalisch plausiblen globalen Schattenwurf und Lichttransport für eine beliebige Anzahl an Punkt- und Richtungslichtquellen zu ermöglichen.
+Zunächst soll eine geeignete Softwarearchitektur konzipiert und umgesetzt werden. Die Partikel sollen als mit lichtemittierendem und absorbierendem Gas gefüllte Kugeln interpretiert werden. Es sollen anschließend Methoden entwickelt werden, um einen physikalisch plausiblen globalen Schattenwurf und Lichttransport für eine beliebige Anzahl an Punkt- und Richtungslichtquellen zu ermöglichen.
 Die dafür notwendigen Gleichungen für Kugeln mit konstanter Dichte und Emission, sowie linearer
 Absorption, sollen soweit wie möglich analytisch bestimmt und, sobald nicht mehr möglich, mittels
 möglichst exakter numerischer Integratoren ausgewertet werden.
@@ -67,7 +66,6 @@ Die Teilaufgaben umfassen:
 \item Unterstützung für ein Standardformat wie VRML
 \item Evaluation in Bezug auf Korrektheit, Bildartefakte und (numerische) Grenzfälle
 \end{itemize}
-\newpage
 Optional:
 \begin{itemize}
 \item Unterstützung für Refraktionseffekte
@@ -84,9 +82,9 @@ Optional:
 
 \chapter{Einleitung}
 
-	Ein Partikel ist ein beliebiges geometrisches Objekt. Diesem wird eine Position im Raum, als Attribut zugeordnet.
+	Ein Partikel ist ein beliebiges geometrisches Objekt. Diesem wird eine Position im Raum, als Attribut, zugeordnet.
 	Zusätzliche weitere Attribute, wie zum Beispiel ein Geschwindigkeitsvektor sind optional.
-	In Computersimulationen, werden Partikel zur Beschreibung physikalischer Vorgänge verwendet.
+	In Computersimulationen werden Partikel zur Beschreibung physikalischer Vorgänge verwendet.
 	Innerhalb eines solchen Kontextes wechselwirken die Partikel und es ergeben sich analysierbare Strukturen.
 	Neben Computersimulationen, der größten Quelle für Partikeldaten, sind es Messvorgänge, vorwiegend in der 
 	Biologie und Kernphysik, in denen Partikeldaten  erhoben werden.
@@ -95,29 +93,29 @@ Optional:
 	Eine direkte und unverfälschte Darstellung ist für die Analyse und Auswertung notwendig.
 	Visualisierungen sollen menschlichen Wahrnehmung bei dieser Aufgabe unterstützen. 
 	Eine bloße optische Verschönerung der Darstellung ist nicht das Ziel einer wissenschaftlichen Visualisierung, 
-	vielmehr geht es darum bestimmte Eigenschaften, in den Fokus des Betrachters zu rücken und Tendenzen hervorzuheben.
+	vielmehr geht es darum, bestimmte Eigenschaften in den Fokus des Betrachters zu rücken und Tendenzen hervorzuheben.
 	
-	Die Abbildung von dreidimensionalen Partikeln, auf eine zweidimensionale Ebene, lässt sich nicht ohne Kompromisse
+	Die Abbildung von dreidimensionalen Partikeln auf eine zweidimensionale Ebene lässt sich nicht ohne Kompromisse
 	bewerkstelligen. 
-	Die Fähigkeit des Menschen die Tiefe von Objekten in einer Szene schätzen zu können wird durch ein System ermöglicht,
+	Die Fähigkeit des Menschen, die Tiefe von Objekten in einer Szene schätzen zu können, wird durch ein System ermöglicht,
 	das den Wert für die Tiefe auf unterschiedlichen Wegen bestimmt. 
-	Ein Weg die Tiefe zu ermitteln, besteht in der Schätzung der Epipolargeometrie.
+	Ein Weg, die Tiefe zu ermitteln, besteht in der Schätzung der Epipolargeometrie.
 	Bei der Betrachtung eines zweidimensionalen Bildes kann diese Variante lediglich die Bildschirmebene erfassen, jedoch nicht die Tiefe der abgebildeten Objekte. 
 	Die Objekttiefen in der Abbildung kann der Mensch anhand von Überdeckungen und durch eine perspektivische Transformation der Objekte abschätzen.
 	Damit Überdeckungen erkannt und die abgebildeten Objekte von einander unterschieden werden können, müssen sich diese
-	sich durch einen Kontrast voneinander abheben. Schattierungen lösen dieses Problem. 
+	durch einen Kontrast voneinander abheben. Schattierungen lösen dieses Problem. 
 	Zudem wirkt ein Kugelgylph im Vergleich zur Darstellung durch einen einfarbigen Kreis plastischer. 	
 	Überdeckungen verhindern allerdings, dass der Betrachter die dahinterliegenden Partikel sehen kann. 
 	Ganze Strukturen, zu denen beispielsweise Höhlen zählen, können deshalb nicht erfasst werden.
-	Eine Möglichkeit dieses Problem zu lösen besteht darin die Partikel transparent abzubilden, damit trotz
+	Eine Möglichkeit, dieses Problem zu lösen, besteht darin, die Partikel transparent abzubilden, damit trotz
 	der Überdeckung alle Strukturen sichtbar bleiben.
 	Die zuvor erwähnten Schattierungen ergeben sich in der realen Welt aus der Wechselwirkung zwischen Licht und
 	Materie. 
 	Lokale Beleuchtungsmodelle eignen sich zur Berechnung von Schattierung, unterstützen die Wahrnehmung der Tiefe jedoch nur bedingt.
 	Eine weitere vom Menschen, zur Bestimmung von Objekttiefen genutzte Möglichkeit, ist die der Rekonstruktion von Lichtwegen.
 	Zur Umsetzung wird eine globale Beleuchtung nötig, es existiert eine Reihe von Beleuchtungsmodellen, die die Wahrnehmungsunterstützung möglich machen. 
-	Existierenden Algorithmen müssen auf Grund einer hohe Rechenkomplexität der globalen Beleuchtung an vielen stellen approximativ vereinfachen.
-	Insbesondere GPU-Implementierungen sind auf diese angewiesen um die globale Beleuchtung in Echtzeit zur realisieren.
+	Existierende Algorithmen müssen auf Grund einer hohe Rechenkomplexität der globalen Beleuchtung an vielen Stellen approximativ vereinfachen.
+	Insbesondere GPU-Implementierungen sind auf diese angewiesen, um die globale Beleuchtung in Echtzeit zur realisieren.
 	
 	Ziel dieser Arbeit ist die Entwicklung eines CPU-Renderes für Partikel, bei dem der Fokus auf der Genauigkeit und nicht auf der Geschwindigkeit der Berechnung liegt.
 	Die Partikel werden als mit Gas gefüllte Kugeln interpretiert und mit einem Verfahren der direkten Volumen-Darstellung
@@ -132,17 +130,17 @@ Optional:
 	Anschließend werden weitere Darstellungsalgorithmen und das Volumenintegral erläutert.
 	Für dieses wird unter gewissen Einschränkungen, auf die später eingegangen wird, eine weitestgehend
 	analytische Lösung hergeleitet.
-	Nach dem Details zur eigentlichen Implementierung Vorgestellt worden, wird das Verfahren Qualitativ und
-	Quantitativ evaluiert und es wird auf mögliche Erweiterungen im Schlusswort eingegangen.
+	Nach dem Details zur eigentlichen Implementierung vorgestellt wurden, wird das Verfahren qualitativ und
+	quantitativ evaluiert und im Schlusswort wird auf mögliche Erweiterungen eingegangen.
 	
 \chapter{Verwandte Arbeiten}
 
-	Die Arbeit \cite{JSYR14} fast verschiedenen Algorithmen zur Beleuchtung und interaktiven Darstellung
+	Die Arbeit \cite{JSYR14} fasst verschiedene Algorithmen zur Beleuchtung und interaktiven Darstellung
 	von Volumendaten in Echtzeit zusammen.
 	Vorgestellte Algorithmen werden hinsichtlich ihrer technischen Umsetzung, Performance und ihrer
 	Unterstützung für die menschliche Wahrnehmung klassifiziert.  
 	Diese Kriterien erleichtern die Auswahl des Verfahrens für den Entwickler in Abhängigkeit der Anwendung.
-	Bei den Verfahren handelt es sich um approximative Varianten mit dem Ziel interaktive Bildraten zu
+	Bei den Verfahren handelt es sich um approximative Varianten mit dem Ziel, interaktive Bildraten zu
 	gewährleisten.
 	
 	Die Grundlagen des Emission-Absorption-Modells werden von Nelson Max in der Arbeit \cite{Max:1995:OMD:614258.614298} beschrieben.
@@ -152,13 +150,13 @@ Optional:
 	
 	In der Publikation \cite{conf/pg/JungPP98} wird ein zum Teil analytisches Verfahren vorgestellt. 
 	Der Algorithmus wird zur Darstellung von Voxelgittern eingesetzt.  
-	Hierbei wird jedem Voxel wird eine Dichte zu geordnet, aus welcher ein Wert für die Transparenz abgeleitet wird.
+	Hierbei wird jedem Voxel eine Dichte zu geordnet, aus welcher ein Wert für die Transparenz abgeleitet wird.
 	Hinter dem Voxelgitter befindet sich eine Lichtquelle, deren Lichtintensität durch das Volumen unterschiedlich stark abgeschwächt wird. 
 	Die Integrale der Gleichungen werden streckenweise analytisch gelöst, wodurch ein Zuwachs an 
 	Genauigkeit erreicht wird. 
 	
 	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emission- und Absorptionsmodell aufbaut, 
-	sondern von einem Punkt aus Stahlen in die umliegende Nachbarschaft verfolgt um den
+	sondern von einem Punkt aus Stahlen in die umliegende Nachbarschaft verfolgt, um den
 	Grad an Verdeckung an diesem Punkt zu bestimmen. Je mehr Segmente mit hoher Dichte in der Nachbarschaft liegen,
 	umso geringer ist der Anteil des Lichtes, welches eben jenen Punkt erreicht. Ein Geschwindigkeitszuwachs wird durch eine im Vorfeld integrierte Transferfunktion erreicht. 
 	Ein Vorteil dieses Verfahrens stellt die Güte der erzeugten Schatten da.
@@ -201,8 +199,8 @@ Optional:
 \section{Strahl und Kugelgleichung}
 
 	Es wird mit der Definition des Strahls begonnen, der das zentrale Element des Algorithmus bildet. Die Formel
-	beschreibt wie jeder Punkt auf dem Strahl in Abhängigkeit eines skalaren Wertes $t$, eines Stützpunktes $\underline{o}$
-	und einem Richtungsvektor $r$ bestimmt werden kann. Die Gleichung definiert sich wie folgt:
+	beschreibt, wie jeder Punkt auf dem Strahl in Abhängigkeit eines skalaren Wertes $t$, eines Stützpunktes $\underline{o}$
+	und eines Richtungsvektors $r$ bestimmt werden kann. Die Gleichung definiert sich wie folgt:
 	
 	\begin{equation}
 	  	\underline{p}(t) = \underline{o} + t \cdot \vec{r} \text{, mit } t \in \mathbb{R}
@@ -225,7 +223,7 @@ Optional:
 		\label{eq:KugelR3}
 	\end{equation}
 	
-	Jeder Punkt $\underline{p} = (x, y, z)$ der die Formel \ref{eq:KugelR3} erfüllt, liegt auf der Oberfläche der Kugel.
+	Jeder Punkt $\underline{p} = (x, y, z)$, der die Formel \ref{eq:KugelR3} erfüllt, liegt auf der Oberfläche der Kugel.
 	Die Kugelgleichung \ref{eq:KugelR3} lässt sich auf beliebige $\mathbb{R}^n\text{, mit } n \in \mathbb{N}_+$ erweitern.
 	Die Beschreibung ist für alle $n$ äquivalent:
 	
@@ -262,13 +260,13 @@ Optional:
 
 \section{Die perspektivische Kamera}
 
-	Um in der realen Welt Bilder aufzunehmen wird eine Kamera benötigt. Hier wird eine Simulation durchgeführt
-	und für diese wird das Modell einer Kamera benötigt welches sich von der \textit{camera obscura} ableitet.
+	Um in der realen Welt Bilder aufzunehmen, wird eine Kamera benötigt. Hier wird eine Simulation durchgeführt
+	und für diese wird das Modell einer Kamera benötigt, welches sich von der \textit{camera obscura} ableitet.
 	Dabei handelt es sich um das Modell einer Lochkamera, diese besteht aus einem Kasten. Auf der einen Seite
-	befindet sich ein lichtempfindliches Material, welches den Sensor bildet und auf der an gegenüberliegenden
+	befindet sich ein lichtempfindliches Material, welches den Sensor bildet, und auf der gegenüberliegenden
 	Seite befindet sich ein schmales Loch. Das Licht wird von der Oberfläche der abzubildenden Objekte reflektiert
 	und fällt durch das Loch auf den Sensor. Bei dem Vorgang der Abbildung findet eine vertikale und horizontale
-	Spiegelung der Szene statt. Das führt dazu, dass das Bild der Szene wird spiegelverkehrt aufgenommen wird.
+	Spiegelung der Szene statt. Das führt dazu, dass das Bild der Szene spiegelverkehrt aufgenommen wird.
 	
 	\begin{figure}[h]
 		\centering
@@ -279,7 +277,7 @@ Optional:
 	\end{figure}
 	
 	Die Abbildung \ref{fig:cameraObscura} zeigt den Aufbau der \textit{Camera obscura} schematisch.
-	Auf der Linken Seite der Abbildung befindet sich die Bildebene, auf welche die Szene abgebildet wird.
+	Auf der linken Seite der Abbildung befindet sich die Bildebene, auf welche die Szene abgebildet wird.
 	In der Mitte der Abbildung \ref{fig:cameraObscura} befindet sich die Wand mit dem kleinen Loch.
 	Hier wird die erste Abstraktion durchgeführt, denn in der Realität kann das Loch eine gewisse Größe nicht
 	unterschreiten, da andernfalls kein Licht mehr durch das Loch dringen würde. Auf Grund dieser minimalen Größe kommt
@@ -290,10 +288,10 @@ Optional:
 	welche durch die Punkte $A$ und $B$ begrenzt wird. Der Punkt $B$ befindet sich mit der Sensormitte und dem
 	Loch genau auf einer Ebene und wird auf den Punkt $B'$ abgebildet. 
 	Der zweite Punkt $A$ wird auf dem Punkt $A'$ abgebildet. Genauer zeigt die Abbildung \ref{fig:cameraObscura} den
-	Strahlensatz der in diesem Zusammenhang gilt. 
+	Strahlensatz, der in diesem Zusammenhang gilt. 
 		 
-	Die Distanz zwischen dem Sensor und dem Loch der Kamera wird mit der Variable $f$ bezeichnet. Da es sich wie
-	oben bereits erwähnt um eine Computersimulation handelt kann das Modell weiter abstrahiert werden.
+	Die Distanz zwischen dem Sensor und dem Loch der Kamera wird mit der Variable $f$ bezeichnet. Da es sich- wie
+	oben bereits erwähnt- um eine Computersimulation handelt, kann das Modell weiter abstrahiert werden.
 	In der im Computer simulierten Welt kann der Sensor auch vor dem Loch positioniert werden, was zur Folge hat,
 	dass die Abbildung entspiegelt wird. 
 	
@@ -328,15 +326,15 @@ Optional:
 	
 	Die Kamera kann an dieser Stelle nur entlang der z-Achse blicken. Eine Rotation im Raum lässt sich durch die Multiplikation
 	einer Rotationsmatrix mit den Richtungsvektoren bewerkstelligen. Die Position des Kameramodells ist frei wählbar. 
-	Es genügt den Augpunkt zu verschieben. 
+	Es genügt, den Augpunkt zu verschieben. 
 	Mit Hilfe der Distanz $f$, der fokalen Länge, kann ein Zoomeffekt der Kamera erzielt werden.
 
-\chapter{Volumenintegral}	
+\chapter{Rendergleichung}	
 	
 	Die Algorithmen, zur Abbildung geometrischer Objekte auf die zweidimensionale Bildebene, lassen sich in zwei Gruppen unterteilen.
-	Die erste Gruppe umfasst die Technik der Rasterisierung. Die Objekte auf die Bildebene Projiziert. 
+	Die erste Gruppe umfasst die Technik der Rasterisierung, die Objekte auf die Bildebene projiziert. 
 	Durch dieses Vorgehen entstehen Fragmente, deren Farbe nach einem beliebigen Vorgehen bestimmt werden kann.
-	Geometrische Objekte werden in einen Vorverarbeitungsschritt, meist in polygonale Netze zerlegt.
+	Geometrische Objekte werden in einem Vorverarbeitungsschritt, meist in polygonale Netze zerlegt.
 	Ein großer Vorteil dieses Verfahrens ist die Geschwindigkeit, es lassen sich ohne weiteres echtzeitfähige Bildwiederholungsraten erreichen.
 	Nachteilig ist die Zerlegung der Objekte in polygonale Strukturen, weil damit schon im Vorfeld die eigentliche Form approximiert wird. 
 	
@@ -347,34 +345,32 @@ Optional:
 	Bildwiederholungsraten in Echtzeit lassen sich mit diesen Algorithmen kaum erreichen.
 	Algorithmen dieser Gruppe werden meistens zur Lösung der Rendergleichung verwendet.
 	Unter diesem Namen wurde 1986 eine Integralgleichung in der Arbeit \cite{Kajiya:1986:RE:15886.15902}, von Jim Kajiya veröffentlicht. 
-	
-\section{Rendergleichung}
 
-	Die Rendergleichung, in Form einer Integralgleichung beschreibt die Energieerhaltung bei der Ausbreitung von Lichtstrahlen.
-	Grundlage dieser Gleichung, sind physikalischen Modelle, die die Wechselwirkungen von Licht mit Materie beschreiben.
+	Die Rendergleichung, in Form einer Integralgleichung, beschreibt die Energieerhaltung bei der Ausbreitung von Lichtstrahlen.
+	Grundlage dieser Gleichung, sind physikalische Modelle, die die Wechselwirkungen von Licht mit Materie beschreiben.
 	Eine sinnvolle Beschränkung ist die Interpretation des Lichtes mit Hilfe der Strahlenoptik, da zum Beispiel Beugungseffekte nur dann eine Rolle spielen, wenn die betrachteten Objekte nicht wesentlich größer sind als die Wellenlänge des Lichtes.
-	Die Ausbreitung des Lichtes wir mit Lichtstrahlen beschrieben. 
+	Die Ausbreitung des Lichtes wird mit Lichtstrahlen beschrieben. 
 	Diese Lichtstrahlen können in der Strahlenoptik absorbiert, reflektiert, gestreut oder gebrochen werden.
 	Grundlegend gilt, dass Strahlen ihre Ausbreitungsrichtung nur auf Grund der Wechselwirkung mit der Materie ändern.
-	So können sich zwei Lichtstrahlen schneiden, ohne das die Kollision ihre Energie oder ihren Weg beeinflusst. 
+	So können sich zwei Lichtstrahlen schneiden, ohne dass die Kollision ihre Energie oder ihren Weg beeinflusst. 
 	Eine weitere Eigenschaft der Strahlenoptik besteht in der Umkehrbarkeit der betrachteten Lichtwege.
 	Die Gleichungen ändern sich nicht, wenn die Lichtrichtung umgekehrt wird.
 	
-	Es existieren zwei Möglichkeiten die Rendergleichung zu betrachten.
+	Es existieren zwei Möglichkeiten, die Rendergleichung zu betrachten.
 	Zum einen lässt sich sagen, dass diese angereichert mit allen Effekten aus der Natur heraus extrahiert 
 	und für die Verwendung vereinfacht wird. 
 	Zum anderen lässt sich die Rendergleichung von Grund auf herleiten und mit verschiedenen Effekten anreichern, so dass sie die Effekte aus der Natur abbildet.
-	Nelson Max nutzt in seiner Arbeit \cite{Max:1995:OMD:614258.614298}, die zweite Variante.
+	Nelson Max nutzt in seiner Arbeit \cite{Max:1995:OMD:614258.614298} die zweite Variante.
 	Er reichert die Gleichung Schritt für Schritt mit verschiedenen physikalischen Effekten an.
 	
-	Neben der einfachen Emission- und Absorptionsgleichung, die eine starke eine Approximation der physikalischen
+	Neben der einfachen Emission- und Absorptionsgleichung, die eine starke Approximation der physikalischen
 	Grundlagen darstellt, geht Nelson Max auf diverse Erweiterungen zur Berechnung von Streuungseffekten und Schatten ein.
-	Der Begriff Albedo bezeichnet ein Maß für das Rückstrahlvermögen, das bedeutet das die Oberflächen das eingestrahlte Licht nur diffuse reflektieren.
+	Der Begriff Albedo bezeichnet ein Maß für das Rückstrahlvermögen, das bedeutet, dass die Oberflächen das eingestrahlte Licht nur diffuse reflektieren.
 	Es wird definiert, das dieser Effekt für die betrachteten Volumen vernachlässigbar klein ist, und deshalb die Rendergleichung auf die 
 	Emission und Absorption beschränkt werden kann.
-	Auf eine Phasenfunktion, beziehungsweise eine bidirektionale Reflektanzverteilungsfunktion wir ebenfalls vernachlässigt.
+	Auf eine Phasenfunktion, beziehungsweise eine bidirektionale Reflektanzverteilungsfunktion, wird ebenfalls vernachlässigt.
 	
-\subsection{Emission und Absorption}
+\section{Emission und Absorption}
 
 	Ausgangspunkt ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. Die Streuung des Lichtes wird wie oben beschrieben vernachlässigt.
 	Die Gleichung der Beleuchtungsberechnung unterteilt sich in zwei Summanden:
@@ -386,7 +382,7 @@ Optional:
 	
 	Die Variable $I$ repräsentiert die von dem Sensor aufsummierte Intensität des Lichtes. 
 	Der Term $I_A$ beschreibt die Abschwächung der Hintergrundbeleuchtung durch das mit Gas gefüllte Volumen und $I_E$ die Emission des Gases.
-	Die Abschwächung entspricht dem Produkt des Hintergrundlichtes mit einem Wert für die Transparenz, welcher in Abhängigkeit zur Streckenlänge $D \in \mathbb{R}_+$ die das Licht durch das Volumen zurücklegen muss, steht. 
+	Die Abschwächung entspricht dem Produkt des Hintergrundlichtes mit einem Wert für die Transparenz, welcher in Abhängigkeit zur Streckenlänge $D \in \mathbb{R}_+$, die das Licht durch das Volumen zurücklegen muss, steht. 
 	Dieser Zusammenhang wird in der folgenden Gleichung dargestellt:
 	
 	\begin{equation}
@@ -439,13 +435,13 @@ Optional:
 		\label{eq:CompEAModell}
 	\end{equation}
 	
-	Die Gleichung \ref{eq:CompEAModell} ist noch sehr allgemein. Es wird beschrieben wie sich das Hintergrundlicht durch
+	Die Gleichung \ref{eq:CompEAModell} ist noch sehr allgemein. Es wird beschrieben, wie sich das Hintergrundlicht durch
 	das Volumen abschwächt. Unter der Beschränkung auf lineare Transferfunktion existiert eine analytische Lösung. 
 	Das Integral über den Quellterm wurde bisher noch nicht genauer definiert. In den nächsten beiden Absätzen
 	werden zwei verschiedene Funktionen für $g(s)$ definiert.
 	Beide kommen im eigentlichen Algorithmus zum Einsatz.
 	
-\subsection{Einfaches Beleuchtungs-Modell}
+\section{Einfaches Beleuchtungs-Modell}
 	
 	Ein primärer Strahl, auch als Sichtstrahl bezeichnet, wird vom Sensor aus in die Szene geschossen.
 	Die folgende Abbildung stellt diesen Vorgang schematisch dar. 
@@ -470,7 +466,7 @@ Optional:
 		\label{eq:EModellEDM}
 	\end{equation}
 	
-	Die Quellfunktion wird in diesem Modell als $g(t) = \lambda\kappa I_c$ definiert, so das die Formel für
+	Die Quellfunktion wird in diesem Modell als $g(t) = \lambda\kappa I_c$ definiert, so dass die Formel für
 	die Emission ausgeschrieben der folgenden Form entspricht:
 	
 	\begin{equation}
@@ -512,7 +508,7 @@ Optional:
 	\end{equation}
 	
 	Der Term $e^0$ entspricht der Zahl $1$ und der Zweite Term $\exp(-\lambda\kappa (t_f - t_n))$ entspricht der Transparenz $T'$.
-	Zum Schluss wird der gesamte Term durch das Formelzeichen $\Theta$ ersetzt, damit die Formel kurz und Übersichtlich bleibt.
+	Zum Schluss wird der gesamte Term durch das Formelzeichen $\Theta$ ersetzt, damit die Formel kurz und übersichtlich bleibt.
 	
 	\begin{align}
 		I_E &= I_C \cdot (1 - e^{-\lambda\kappa (t_f - t_n)}) = I_C \cdot (1 - T'(t_n, t_f)) \notag\\
@@ -528,19 +524,19 @@ Optional:
 		\label{eq:simpleEAModellANA}
 	\end{equation}
 	
-\subsection{Erweitertes Beleuchtungs-Modell}
+\section{Erweitertes Beleuchtungs-Modell}
 
 	Kern dieser Arbeit ist die Weiterentwicklung der eben eingeführten Volumengleichung.
 	Die einfache Variante entstammt der Arbeit \cite{staib2015}, in welcher zusätzlich eine Implementierung
-	der Ambienten Verdeckung zum Einsatz kommt, um die globale Beleuchtung zu approximieren.
-	Dieser Arbeit erweitert die Beleuchtung der Szene. 
+	der ambienten Verdeckung zum Einsatz kommt, um die globale Beleuchtung zu approximieren.
+% %	Diese Arbeit erweitert die Beleuchtung der Szene. 
 	Neben der Hintergrundbeleuchtung werden weitere Punkt- und Richtungslichtquellen zur Beleuchtung eingesetzt.
 	Mit der Einführung dieser Lichtquellentypen gibt es einen Bruch mit der physikalischen Motivation der Gleichung.
 	Bei einer Punktlichtquelle handelt es sich um eine infinitesimale Kugellichtquelle, die im Gegensatz zu
 	dieser kein Volumen und keine wirkliche Oberfläche besitzt.
-	Daraus resultiert, dass die Wahrscheinlichkeit, das ein Sekundärstrahl eine solche Lichtquelle treffen könnte
+	Daraus resultiert, dass die Wahrscheinlichkeit, dass ein Sekundärstrahl eine solche Lichtquelle treffen könnte,
 	unendlich klein wird und schließlich gegen 0 geht. 
-	Eine Richtungslichtquelle dagegen, kann als eine unendlich weit entfernte Kugellichtquelle interpretiert werden
+	Eine Richtungslichtquelle dagegen kann als eine unendlich weit entfernte Kugellichtquelle interpretiert werden
 	und entspricht damit schon eher einem physikalischen Äquivalent.
 	
 	Zur Herleitung der Gleichung werden die Lichtquellen auf die Hintergrundbeleuchtung und eine Richtungslichtquelle beschränkt.
@@ -551,11 +547,11 @@ Optional:
 		\centering
 		\def\svgwidth{10cm}
 		\input{images/exStandartAbsorption.pdf_tex}
-		\caption{Die Notation ist die selbe wie in der Abbildung \ref{fig:eaSchematisch}. Diese Abbildung ergänzt das Modell um eine Punktlichtquelle und es werden drei sekundäre Strahlen zu dieser dargestellt.}
+		\caption{Die Notation ist dieselbe wie in der Abbildung \ref{fig:eaSchematisch}. Diese Abbildung ergänzt das Modell um eine Punktlichtquelle und es werden drei sekundäre Strahlen zu dieser dargestellt.}
 		\label{fig:exEaSchematisch}
 	\end{figure}
 	
-	Die Grundlage für das erweiterte Beleuchtungs-Modell ist selbe Gleichung \ref{eq:CompEAModell}, wie für das vorherige.
+	Die Grundlage für das erweiterte Beleuchtungs-Modell ist dieselbe Gleichung \ref{eq:CompEAModell}, wie für das vorherige Modell.
 	Diese wird zur besseren Übersicht an dieser Stelle mit den Notationen aus dem vorhergehenden Abschnitt wiederholt:
 	
 	\begin{equation}
@@ -590,14 +586,14 @@ Optional:
 	Der Richtungsvektor $\vec{d}$ wird benötigt, um die Länge der Sekundärstrahlen $l(t)$ in der Gleichung \ref{eq:CompEAModell1} zu bestimmen. Dazu wird der Strahl aus der Gleichung \ref{eq:Strahl} in die Lösungsformel
 	\ref{eq:Schnittpunkte} eingesetzt. Der Ursprung des Strahls liegt im Inneren der Kugel, deshalb wird nur
 	der Schnittpunkt $t_1$ benötigt und dessen Wert entspricht der gesuchten Länge $l(t)$. 
-	Diese lässt sich durch die folgende Vorschrift berechnet:
+	Diese lässt sich durch die folgende Vorschrift berechnen:
 	
 	\begin{equation}
 		l(t) = \frac{-2 \cdot \langle \underline{p}(t), \vec{d} \rangle + \sqrt{4 \cdot \langle \underline{p}(t), \vec{d} \rangle^2 - 4 \cdot \langle \underline{p}(t), \underline{p}(t) \rangle \cdot \langle \vec{d}, \vec{d} \rangle}}{2 \cdot \langle \vec{d}, \vec{d} \rangle}.
 		\label{eq:längeLT}
 	\end{equation}
 	
-	Wird in die Gleichung \ref{eq:längeLT} der Strahl \ref{eq:Strahl} eingesetzt und die gesamte Gleichung aus multipliziert, dann lässt sich Renderintegral für die Absorption durch die folgende Gleichung vereinfacht repräsentieren:
+	Wird in die Gleichung \ref{eq:längeLT} der Strahl \ref{eq:Strahl} eingesetzt und die gesamte Gleichung aus multipliziert, dann lässt sich das Renderintegral für die Absorption durch die folgende Gleichung vereinfacht repräsentieren:
 	
 	\begin{equation}
 		F(x) = \int I \cdot \exp(a \cdot x + b + \sqrt{c \cdot x^2 + d \cdot x + e} dx
@@ -606,8 +602,8 @@ Optional:
 	Dieses Integral lässt sich nicht elementar integrieren. Mehr Informationen zur Integrierbarkeit von Funktionen
 	und warum sich einige Funktionen nicht elementar integrieren lassen, können der Arbeit von Martin Huber \cite{exp(x2)} entnommen werden.
 	
-	Da keine analytische Lösung für die Gleichung \ref{eq:CompEAModell1} existiert muss an dieser stelle nummerisch
-	approximiert werden. Dazu dieser wird das Integral in Riemann Summen zerlegt.
+	Da keine analytische Lösung für die Gleichung \ref{eq:CompEAModell1} existiert, muss an dieser Stelle nummerisch
+	approximiert werden. Dazu wird das Integral in Riemann Summen zerlegt.
 	Bevor die Lösung präsentiert und die Quellfunktion für mehrere Lichtquellen angepasst wird, 
 	soll die numerische Approximation anhand einer fiktiven Funktion $f$ beschrieben werden.
 	Dazu wird das Integral der Funktion $f$ zu einer Summe von skalierten Funktionswerten überführt:
@@ -627,7 +623,7 @@ Optional:
 	\end{equation}
 	
 	Nun wird eine Anzahl von $n$ Stützpunkten zur Regulierung der Güte der Approximation definiert. 
-	Generell gilt, dass	je größer der Wert von $n$ ist um so besser wird das Integral approximiert. 
+	Generell gilt, dass	je größer der Wert von $n$ ist, um so besser wird das Integral approximiert. 
 	Der Wert für die Skalierung bestimmt sich als $\Delta t = \frac{t_f - t_n}{n}$.
 	
 	Im Folgenden entspricht die Menge $L = \{L_1, L_2, \cdots L_m\}$ der Menge der Lichtquellen. 
@@ -780,14 +776,32 @@ Optional:
 \chapter{Auswertung und Fazit}
 
 	Zu beginn der Arbeit wurden die Mathematischen Grundlagen der Raycast-Technik hergeleitet und 
-	im Anschluss zwei Lösungen für die Volumengleichung besprochen. Die Idee bestand darin die Gleichung,
-	für die Beleuchtung, weitestgehend analytisch zu lösen. 
-	Das einfache Modell kann komplett analytisch gelöst werden.
-	Für das erweiterte ist eine numerische Approximation von Nöten, dazu wurde das Integral in Riemann Summen zerlegt. 
-	Es wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
-	Diese wird im Folgenden mit Ergebnissen verglichen, die ohne Vereinfachung erzeugt worden sind.  
+	im Anschluss zwei Lösungen für die Volumengleichung besprochen. 
+	Die Idee bestand darin die Gleichung, für die Beleuchtung, weitestgehend analytisch zu lösen. 
+	Für das einfache Beleuchtungsmodell existiert eine analytische Lösung, aber zur Berechnung
+	des erweiterten Modells ist eine numerische Approximation von Nöten. 
+	Dazu wird das Integral in Riemann Summen zerlegt, damit die Lösung näherungsweise berechnet werden kann.
+	Aufgrund der Komplexität des Verfahrens, wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
 	
+	In diesem Kapitel werden zunächst qualitative unterscheide in Abhängigkeit der gewählten Parameter erläutert
+	und im Anschluss wird die beschleunigte Variante des Algorithmus evaluiert.
 	
+	\begin{figure}[h]
+		\centering
+		\subfigure[Phong Beleuchtung ohne Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_local.png}}
+		\subfigure[Phong Beleuchtung mit Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_global.png}}
+		\subfigure[Einfaches EA-Modell]{\includegraphics[width=0.29\textwidth]{images/em_easy.png}}
+		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
+		\label{fig:vergleich1}
+	\end{figure}
+	
+	\begin{figure}[ph]
+		\centering
+		\subfigure[Phong Beleuchtungsmodell ohne Schatten]{\includegraphics[width=0.49\textwidth]{images/em_local.png}}
+		\subfigure[Phong Beleuchtungsmodell mit Schatten]{\includegraphics[width=0.49\textwidth]{images/em_global.png}}
+		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
+		\label{fig:vergleich2}
+	\end{figure}
 
 	Bevor der Algorithmus quantitativ untersucht werden kann ist es nötig, 
 	zwei Bilder miteinander vergleichen zu können. 
@@ -845,7 +859,7 @@ Optional:
 	
 	Der SSIM wird in dieser Arbeit zur Evaluation der verwendeten Approximationen genutzt.
 
-\section{quantitative Evaluation}
+\section{Quantitative Evaluation}
 	
 	Zur Auswertung wurden zwei Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
 	Die zur Evaluation erhoben Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die
@@ -858,6 +872,7 @@ Optional:
 	ohne das Beschleunigungsverfahren.
 	
 	\begin{figure}[h]
+		\centering
 		\subfigure[5 Stützpunkte und $N$ = 1]{\includegraphics[width=0.49\textwidth]{images/512x512_samples_5_approx_1.png}}
 	    \subfigure[100 Stützpunkte und $N$ = GT]{\includegraphics[width=0.49\textwidth]{images/512x512_samples_100_approx_100000.png}}
 		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
@@ -877,7 +892,7 @@ Optional:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=10cm]{images/pdb1UUN.pdf}
-		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der gewählten Parmeter 1UUN-Proteins dar.}
+		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes 1UUN-Proteins dar.}
 		\label{fig:pdb.1UUNChart}
 	\end{figure}
 	
@@ -892,7 +907,7 @@ Optional:
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=10cm]{images/cool_random.pdf}
-		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes pdb.1UUN dar.}
+		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes cool\_random dar.}
 		\label{fig:cool_randomChart}
 	\end{figure}
 	
@@ -953,6 +968,13 @@ Optional:
 	Ein großer Unterschied besteht jedoch in der Geschwindigkeit der Beleuchtungsberechnung.
 
 \section{Fazit}
+
+	Ein Problem der Implementierung besteht darin, dass es zu Artefakten kommt, wenn sich Kugeln überlappen.
+	Um dieses Problem zu lösen, könnten alle Überlappenden Kugeln zu Objekten zusammengefasst werden.
+	Bei einem Schnitt mit einem solchen Objekt, müsste die Berechnung an den Schnittebenen der Kugeln
+	einzeln durchgeführt werden.
+	
+	Auf die Implementierung von Brechungseffekten wurde aus zwei folgenden Gründen bewusst verzichtet.
 
 %\chapter{title}
 %
