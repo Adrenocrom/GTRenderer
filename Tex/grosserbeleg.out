@@ -10,10 +10,11 @@
 \BOOKMARK [0][-]{chapter.5}{5 Implementierung}{}% 10
 \BOOKMARK [1][-]{section.5.1}{5.1 Szenenbeschreibung}{chapter.5}% 11
 \BOOKMARK [1][-]{section.5.2}{5.2 Details zum Algorithmus}{chapter.5}% 12
-\BOOKMARK [0][-]{chapter.6}{6 Auswertung und Fazit}{}% 13
-\BOOKMARK [1][-]{section.6.1}{6.1 SSIM}{chapter.6}% 14
-\BOOKMARK [1][-]{section.6.2}{6.2 Quantitative Evaluation}{chapter.6}% 15
-\BOOKMARK [1][-]{section.6.3}{6.3 Fazit}{chapter.6}% 16
-\BOOKMARK [0][-]{chapter*.4}{Literaturverzeichnis}{}% 17
-\BOOKMARK [0][-]{chapter*.5}{Abbildungsverzeichnis}{}% 18
-\BOOKMARK [0][-]{chapter*.6}{Tabellenverzeichnis}{}% 19
+\BOOKMARK [1][-]{section.5.3}{5.3 Aufbau des Programms}{chapter.5}% 13
+\BOOKMARK [0][-]{chapter.6}{6 Auswertung und Fazit}{}% 14
+\BOOKMARK [1][-]{section.6.1}{6.1 SSIM}{chapter.6}% 15
+\BOOKMARK [1][-]{section.6.2}{6.2 Quantitative Evaluation}{chapter.6}% 16
+\BOOKMARK [1][-]{section.6.3}{6.3 Fazit}{chapter.6}% 17
+\BOOKMARK [0][-]{chapter*.4}{Literaturverzeichnis}{}% 18
+\BOOKMARK [0][-]{chapter*.5}{Abbildungsverzeichnis}{}% 19
+\BOOKMARK [0][-]{chapter*.6}{Tabellenverzeichnis}{}% 20

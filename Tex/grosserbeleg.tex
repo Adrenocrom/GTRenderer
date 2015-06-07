@@ -771,7 +771,36 @@ Optional:
 	der Stützpunktanzahl realisieren. Das bedeutet, dass für jede verdeckte Kugel, in Abhängigkeit des Verdeckungsgrades
 	Stützpunktanzahl reduziert wird, bis schließlich das Vereinfachte Modell zum Einsatz kommt.
 	In diesen Programm wurde die Anzahl nicht adaptiv gewählt, sondern nur die einfache Approximation implementiert.
-	Der Einfluss und die Güte dieser Approximation wird im folgenden Kapitel anhand von Beispielen evaluiert.
+	Der Einfluss und die Güte dieser Approximation wird im nachfolgenden Kapitel anhand von Beispielen evaluiert.
+	
+\section{Aufbau des Programms}
+
+	Im folgenden wird der Aufbau des eigentlichen Programms anhand des UML-Diagramms \ref{fig:UMLZikade} erläutert.
+	Die Hauptklasse hat den selben Namen wie das Programm, sie heißt \textit{zikade} und besteht im
+	wesentlichen aus zwei Methoden. Die Methode \textit{loadScene} ließt die Textdatei ein, welche
+	die Szene beschreibt und initialisiert damit alle für den Zeichenvorgang nötigen Variablen.
+	In der zweite Methode \textit{render} ist der eigentliche Algorithmus zum Berechnen des Bildes
+	implementiert. 
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{images/UMLZikade.pdf}
+		\caption{UML-Diagramm des Programms, die Hauptklasse heißt \textit{zikade}.}
+		\label{fig:UMLZikade}
+	\end{figure}
+	
+	Im Diagramm tauchen Variablen vom Typ \textit{real} auf. Dieser Bezeichner kapselt den dahinter liegenden
+	Gleitkommazahl-Typ und entspricht in dieser Implementierung dem Typ \textit{double}.
+	Variablen vom \textit{real3} entsprechen dreidimensionalen Vektoren, deren einzelne Einträge dem
+	Typ \textit{real} entsprechen.
+	Die Klasse \textit{lightSource} ist eine abstrakte Klasse, von der sich die spezialisierten Klassen
+	\textit{directionLight} und \textit{pointLight} ableiten. Die Variable \textit{power} entspricht der
+	Farbe des Lichtes und die Methode \textit{direction} liefert die Richtung des Lichtes zurück.
+	Die Klasse \textit{ray} repräsentiert den Strahl aus dem Grundlagenkapitel und die Klasse \textit{sphere}
+	entsprechend die Kugel. 
+	Weiterhin existiert eine Klasse die den KD-Baum abbildet. 
+	Da diese die Berechnung zwar beschleunigt, aber für den Algorithmus nicht erforderlich ist, 
+	wird auf ihre Repräsentation im Diagramm verzichtet.
 
 \chapter{Auswertung und Fazit}
 
@@ -791,9 +820,14 @@ Optional:
 		\subfigure[Phong Beleuchtung ohne Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_local.png}}
 		\subfigure[Phong Beleuchtung mit Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_global.png}}
 		\subfigure[Einfaches EA-Modell]{\includegraphics[width=0.29\textwidth]{images/em_easy.png}}
-		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
+		\caption{Abbildungen einer einfachen Szene gezeichnet mit dem Phong-Beleuchtungsmodell,
+				 einmal ohne und einmal mit globalen Schatteneffekten. Zusätzlich, wird die
+				 selbe Szene, gezeichnet mit dem einfachen Emissions- und Absorptionsmodell dargestellt.}
 		\label{fig:vergleich1}
 	\end{figure}
+	
+	Die Abbildungen \ref{fig:vergleich1} und \ref{fig:vergleich2} zeigen eine sehr einfache Szene
+	bestehend aus vier Kugeln.
 	
 	\begin{figure}[ph]
 		\centering
