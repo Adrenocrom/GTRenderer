@@ -143,8 +143,8 @@ Optional:
 	Bei den Verfahren handelt es sich um approximative Varianten mit dem Ziel, interaktive Bildraten zu
 	gewährleisten.
 	
-	Die Grundlagen des Emission-Absorption-Modells werden von Nelson Max in der Arbeit \cite{Max:1995:OMD:614258.614298} beschrieben.
-	Das Volumenintegral des Emission-Absorption-Modells wird hergeleitet und Stück für Stück mit Effekten
+	Die Grundlagen des Emissions- und Absorption-Modells werden von Nelson Max in der Arbeit \cite{Max:1995:OMD:614258.614298} beschrieben.
+	Das Volumenintegral des Emissions- und Absorption-Modells wird hergeleitet und Stück für Stück mit Effekten
 	angereichert. Neben der einfachen Streuung und der Schattenberechnung wird auch die Mehrfachstreuung vorgestellt.
 	Beendet wir die Arbeit mit der Vorstellung anwendbarer Lösungsverfahren.
 	
@@ -155,7 +155,7 @@ Optional:
 	Die Integrale der Gleichungen werden streckenweise analytisch gelöst, wodurch ein Zuwachs an 
 	Genauigkeit erreicht wird. 
 	
-	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emission- und Absorptionsmodell aufbaut, 
+	In der Arbeit \cite{journals/tvcg/AmentSW13} geht es um einen alternativen Ansatz, welcher nicht auf dem Emissions- und Absorptionsmodell aufbaut, 
 	sondern von einem Punkt aus Stahlen in die umliegende Nachbarschaft verfolgt, um den
 	Grad an Verdeckung an diesem Punkt zu bestimmen. Je mehr Segmente mit hoher Dichte in der Nachbarschaft liegen,
 	umso geringer ist der Anteil des Lichtes, welches eben jenen Punkt erreicht. Ein Geschwindigkeitszuwachs wird durch eine im Vorfeld integrierte Transferfunktion erreicht. 
@@ -363,7 +363,7 @@ Optional:
 	Nelson Max nutzt in seiner Arbeit \cite{Max:1995:OMD:614258.614298} die zweite Variante.
 	Er reichert die Gleichung Schritt für Schritt mit verschiedenen physikalischen Effekten an.
 	
-	Neben der einfachen Emission- und Absorptionsgleichung, die eine starke Approximation der physikalischen
+	Neben der einfachen Emissions- und Absorptionsgleichung, die eine starke Approximation der physikalischen
 	Grundlagen darstellt, geht Nelson Max auf diverse Erweiterungen zur Berechnung von Streuungseffekten und Schatten ein.
 	Der Begriff Albedo bezeichnet ein Maß für das Rückstrahlvermögen, das bedeutet, dass die Oberflächen das eingestrahlte Licht nur diffuse reflektieren.
 	Es wird definiert, das dieser Effekt für die betrachteten Volumen vernachlässigbar klein ist, und deshalb die Rendergleichung auf die 
@@ -372,7 +372,7 @@ Optional:
 	
 \section{Emission und Absorption}
 
-	Ausgangspunkt ist das Emission-Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. Die Streuung des Lichtes wird wie oben beschrieben vernachlässigt.
+	Ausgangspunkt ist das Emissions- und Absorption-Modell von Nelson Max. In diesem werden die Wechselwirkungen des Lichtes auf die Absorption und die Emission beschränkt. Die Streuung des Lichtes wird wie oben beschrieben vernachlässigt.
 	Die Gleichung der Beleuchtungsberechnung unterteilt sich in zwei Summanden:
 
 	\begin{equation}
@@ -639,7 +639,14 @@ Optional:
 	
 	Die Gleichung \ref{eq:CompEAModellApprox2} bildet die Grundlage der Beleuchtungsberechnung.
 	Wie und wann diese Gleichung im Raycast-Algorithmus zum Einsatz kommt, wird im folgenden Kapitel
-	beschrieben.
+	beschrieben. Die folgende Abbildung zeigt die Abbildung eines Datensatzes, die mit dem erweiterten Emissions- und Absorptionsmodell erzeugt wurde. Das grüne Licht entstammt einer Richtungslichtquelle.
+	
+	\begin{figure}[ph]
+		\centering
+		\includegraphics[width=\textwidth]{images/chkpt.png}
+		\caption{Dieses Bild wurde durch das erweiterten Emissions- und Absorptionsmodell erzeugt.}
+		\label{fig:chkpt}
+	\end{figure}
 
 \chapter{Implementierung}
 
@@ -708,7 +715,7 @@ Optional:
 	Die Punktlichtquellen besitzen zusätzlich eine Position
 	und Richtungslichtquellen besitzt anstatt der Position einen normierten Richtungsvektor.
 	
-	Die Beleuchtungsbrechung lässt sich neben dem erläuterten Emission- und Absorptionsmodell auch mit dem
+	Die Beleuchtungsbrechung lässt sich neben dem erläuterten Emissions- und Absorptionsmodell auch mit dem
 	Phong-Beleuchtungsmodell berechnen.
 	Beide Varianten, können entweder mit oder ohne globale Schatteneffekte berechnet werden.
 	Transparenzeffekte werden mit dem Phong-Beleuchtungsmodell nicht unterstützt.
@@ -737,7 +744,7 @@ Optional:
 	geschossen werden und wenn ein Sekundärstrahl dabei eine andere Kugel schneidet, dann wird die Farbe
 	der Lichtquelle mit dem Nullvektor ersetzt.
 	
-	Die Bildsynthese für das Emission- und Absorptionsmodell ist etwas aufwendiger.
+	Die Bildsynthese für das Emissions- und Absorptionsmodell ist etwas aufwendiger.
 	Für die Sichtstrahlen wird die Beleuchtung durch das erweiterte Beleuchtungsmodell berechnet. 
 	Dazu muss ebenfalls für jeden Strahl ein Schnittest mit allen Kugeln durchgeführt werden.
 	Sobald alle Kugeln bestimmt worden sind, die von einem Sichtstrahl geschnitten worden, müssen diese entlang
@@ -907,7 +914,7 @@ Optional:
 	Lichtundurchlässigkeit die Grenzfälle annimmt. Im Bild (a) wird $\Theta_{max} = 0.0$ gesetzt
 	und im Bild (b) auf $1.0$, so dass die Kugel überhaupt kein Licht mehr durchlässt.
 	
-	\begin{figure}[ph]
+	\begin{figure}[h]
 		\centering
 		\subfigure[Phong-Beleuchtungsmodell mit Schatten]{\includegraphics[width=0.49\textwidth]{images/shadowPhong.png}}
   		\subfigure[Erweitertes Emissions- und Absorptionsmodell]{\includegraphics[width=0.49\textwidth]{images/shadowEEA.png}}
@@ -1079,12 +1086,24 @@ Optional:
 
 \section{Fazit}
 
-	Ein Problem der Implementierung besteht darin, dass es zu Artefakten kommt, wenn sich Kugeln überlappen.
-	Um dieses Problem zu lösen, könnten alle Überlappenden Kugeln zu Objekten zusammengefasst werden.
+	Ein Problem der Implementierung besteht darin, dass Artefakte entstehen, wenn sich Kugeln überlappen.
+	Es wird angenommen, das die Kugeln hintereinander liegen und das Licht durch die gesamten
+	Kugeln abgeschwächt wird.
+	Um dieses Problem zu lösen, könnten alle überlappenden Kugeln zu Objekten zusammengefasst werden.
 	Bei einem Schnitt mit einem solchen Objekt, müsste die Berechnung an den Schnittebenen der Kugeln
 	einzeln durchgeführt werden.
+	Dazu müsste eine weitere abstrakte Klasse eingeführt werden, von der die anderen Objekte abgeleitet werden,
+	also die Kugeln und die Objekte, die die überlappenden Kugeln repräsentieren.
+	Ein weiterer Vorteil dieser Vorgehensweise besteht darin, dass sich das Programm sehr einfach
+	auf beliebige Objekte erweitern ließe.	
+	Auf die Implementierung von Brechungseffekten wurde aus den zwei folgenden Gründen bewusst verzichtet,
+	zum einen würde die Berechnungsdauer stark ansteigen und zum anderen, weil der Fokus dieser Arbeit
+	auf der Sichtbarmachung von Informationen liegt, die Brechung würde dieses Ziel negativ beeinflussen, da die Sichtstrahlen durch die Brechung abgelenkt werden.
+	Zur Berechnung der Brechung muss bei jedem Eintritt und Austritt der Strahlen
+	in und aus eine Kugel, eine neuer Strahl generiert werden.
+	Dieser muss anschließend wieder auf eine Kollision mit allen Kugeln getestet werden, gefolgt von einer Sortierung der Ergebnismenge.
 	
-	Auf die Implementierung von Brechungseffekten wurde aus zwei folgenden Gründen bewusst verzichtet.
+	
 
 %\chapter{title}
 %

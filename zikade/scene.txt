@@ -18,13 +18,13 @@
 
 ###############################################################
 
-phong
+#phong
 #local
 
 kdtree 25
 lambda 1.0
 samples 100
-setApproxLevel 5
+setApproxLevel 0
 
 #lookatcom 600.0 -100.0 1200.0 5.0 // exp2mill.siff
 lookatcom 200.0 0.0 200.0 12.0
