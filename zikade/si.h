@@ -4,7 +4,7 @@
 #pragma once
 
 #define SI_WIDTH 	1024
-#define SI_HEIGHT 2048
+#define SI_HEIGHT 1024
 
 typedef double real;
 typedef unsigned int uint;

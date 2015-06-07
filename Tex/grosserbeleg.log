@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 JUN 2015 14:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 JUN 2015 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,123 +823,161 @@ File: images/em_easy.png Graphic file (type png)
 Package pdftex.def Info: images/em_easy.png used on input line 822.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-<images/em_local.png, id=370, 1027.84pt x 2055.68pt>
+[23
+
+ <./images/phong_local.png (PNG copy)> <./images/phong_global.png (PNG copy)> <
+./images/em_easy.png (PNG copy)>]
+<images/em_local.png, id=382, 1027.84pt x 2055.68pt>
 File: images/em_local.png Graphic file (type png)
  <use images/em_local.png>
-Package pdftex.def Info: images/em_local.png used on input line 834.
-(pdftex.def)             Requested size: 223.0721pt x 446.13441pt.
+Package pdftex.def Info: images/em_local.png used on input line 860.
+(pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-<images/em_global.png, id=371, 1027.84pt x 2055.68pt>
+Underfull \hbox (badness 7273) in paragraph at lines 860--860
+[]\T1/ptm/m/n/9 (a) Er-wei-ter-tes EA-Modell oh-ne
+ []
+
+<images/em_global.png, id=383, 1027.84pt x 2055.68pt>
 File: images/em_global.png Graphic file (type png)
 
 <use images/em_global.png>
-Package pdftex.def Info: images/em_global.png used on input line 835.
-(pdftex.def)             Requested size: 223.0721pt x 446.13441pt.
+Package pdftex.def Info: images/em_global.png used on input line 861.
+(pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 861--861
+[]\T1/ptm/m/n/9 (b) Er-wei-ter-tes EA-Modell mit
+ []
 
- [23
+<images/em_low.png, id=384, 1027.84pt x 2055.68pt>
+File: images/em_low.png Graphic file (type png)
+ <use images/em_low.png>
+Package pdftex.def Info: images/em_low.png used on input line 862.
+(pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
- <./images/phong_local.png (PNG copy)> <./images/phong_global.png (PNG copy)> <
-./images/em_easy.png (PNG copy)>] [24 <./images/em_local.png (PNG copy)> <./ima
-ges/em_global.png (PNG copy)>] [25]
-<images/512x512_samples_5_approx_1.png, id=396, 1027.84pt x 1027.84pt>
+Underfull \hbox (badness 10000) in paragraph at lines 862--862
+[]\T1/ptm/m/n/9 (c) Er-wei-ter-tes EA-Modell mit
+ []
+
+[24 <./images/em_local.png (PNG copy)> <./images/em_global.png (PNG copy)> <./i
+mages/em_low.png (PNG copy)>]
+<images/ng_s0.png, id=396, 1027.84pt x 1027.84pt>
+File: images/ng_s0.png Graphic file (type png)
+ <use images/ng_s0.png>
+Package pdftex.def Info: images/ng_s0.png used on input line 884.
+(pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+
+<images/ng_s1.png, id=397, 1027.84pt x 1027.84pt>
+File: images/ng_s1.png Graphic file (type png)
+ <use images/ng_s1.png>
+Package pdftex.def Info: images/ng_s1.png used on input line 885.
+(pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+
+<images/ng_s2.png, id=398, 1027.84pt x 1027.84pt>
+File: images/ng_s2.png Graphic file (type png)
+ <use images/ng_s2.png>
+Package pdftex.def Info: images/ng_s2.png used on input line 886.
+(pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+
+<images/ng_s50_O0.png, id=401, 1027.84pt x 1027.84pt>
+File: images/ng_s50_O0.png Graphic file (type png)
+
+<use images/ng_s50_O0.png>
+Package pdftex.def Info: images/ng_s50_O0.png used on input line 900.
+(pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+
+<images/ng_s50_O1.png, id=402, 1027.84pt x 1027.84pt>
+File: images/ng_s50_O1.png Graphic file (type png)
+
+<use images/ng_s50_O1.png>
+Package pdftex.def Info: images/ng_s50_O1.png used on input line 901.
+(pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
+ [25 <./images/ng_s0.png (PNG copy)> <./images/ng_s1.png (PNG copy)> <./images/
+ng_s2.png (PNG copy)> <./images/ng_s50_O0.png (PNG copy)> <./images/ng_s50_O1.p
+ng (PNG copy)>]
+<images/512x512_samples_5_approx_1.png, id=419, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_5_approx_1.png Graphic file (type png)
 
 <use images/512x512_samples_5_approx_1.png>
 Package pdftex.def Info: images/512x512_samples_5_approx_1.png used on input li
-ne 910.
+ne 980.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
-<images/512x512_samples_100_approx_100000.png, id=397, 1027.84pt x 1027.84pt>
+<images/512x512_samples_100_approx_100000.png, id=420, 1027.84pt x 1027.84pt>
 File: images/512x512_samples_100_approx_100000.png Graphic file (type png)
 
 <use images/512x512_samples_100_approx_100000.png>
 Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
-nput line 911.
+nput line 981.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
-<images/pdb1UUN.pdf, id=399, 506.08914pt x 276.58925pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[26] <images/pdb1UUN.pdf, id=430, 506.08914pt x 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
-Package pdftex.def Info: images/pdb1UUN.pdf used on input line 928.
+Package pdftex.def Info: images/pdb1UUN.pdf used on input line 998.
 (pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<images/cool_random.pdf, id=401, 511.55208pt x 279.60521pt>
+ [27 <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_sam
+ples_100_approx_100000.png (PNG copy)> <./images/pdb1UUN.pdf>] <images/cool_ran
+dom.pdf, id=448, 511.55208pt x 279.60521pt>
 File: images/cool_random.pdf Graphic file (type pdf)
 
 <use images/cool_random.pdf>
-Package pdftex.def Info: images/cool_random.pdf used on input line 943.
+Package pdftex.def Info: images/cool_random.pdf used on input line 1013.
 (pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
+ [28 <./images/cool_random.pdf>] [29] [30
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[26 <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_samp
-les_100_approx_100000.png (PNG copy)>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 5862) has occurred while \output is active []
-
- [27 <./images/pdb1UUN.pdf> <./images/cool_random.pdf
-
-pdfTeX warning: pdflatex (file ./images/cool_random.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
->] [28] (./grosserbeleg.bbl
+]
+(./grosserbeleg.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [29
-
-
-])
-[30] (./grosserbeleg.lof)
-\tf@lof=\write6
-\openout6 = `grosserbeleg.lof'.
 
  [31
 
+])
+[32] (./grosserbeleg.lof)
+\tf@lof=\write6
+\openout6 = `grosserbeleg.lof'.
 
-] [32
+ [33
+
+
+] [34
 
 ] (./grosserbeleg.lot)
 \tf@lot=\write7
 \openout7 = `grosserbeleg.lot'.
 
- [33
+ [35
 
-] [34
+] [36
 
-] [35
-
-]
-[36
+] [37
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1024.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1024.
+[38
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1092.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1092.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1024.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1024.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1092.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1092.
 
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
 (rerunfilecheck)             Checksum: 67014893AFE4EE48E82F43D9EE0FB7FF;1266.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1024.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1092.
  )
 (\end occurred inside a group at level 1)
 
 ### semi simple group (level 1) entered at line 79 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11065 strings out of 494976
- 161530 string characters out of 6179136
- 307783 words of memory out of 5000000
- 13946 multiletter control sequences out of 15000+600000
+ 11107 strings out of 494976
+ 162305 string characters out of 6179136
+ 308783 words of memory out of 5000000
+ 13972 multiletter control sequences out of 15000+600000
  56764 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  43i,12n,61p,411b,1539s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -951,15 +989,16 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbol
-s/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (42 pages, 2465826 bytes).
+sfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on grosserbeleg.pdf (44 pages, 3560686 bytes).
 PDF statistics:
- 575 PDF objects out of 1000 (max. 8388607)
- 487 compressed objects within 5 object streams
- 135 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 621 PDF objects out of 1000 (max. 8388607)
+ 522 compressed objects within 6 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
 

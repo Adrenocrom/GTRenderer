@@ -827,15 +827,85 @@ Optional:
 	\end{figure}
 	
 	Die Abbildungen \ref{fig:vergleich1} und \ref{fig:vergleich2} zeigen eine sehr einfache Szene
-	bestehend aus vier Kugeln.
+	bestehend aus vier Kugeln. 
+	Drei dieser Kugeln sind vertikal verschoben, aber in der gleichen tiefe platziert. 
+	Die vierte Kugel ist etwas weiter nach hinten verschoben und so positioniert, 
+	dass eine Verdeckung durch die Kugel in der Mitte entsteht, damit die Transparenzeffekte
+	deutlich sichtbar werden.
+	Die Szene wird von drei Lichtquellen beleuchtet. 
+	Von oben- nach unten strahlt eine grüne Richtungslichtquelle und von unten- nach oben 
+	wird die Szene von einer blauen Richtungslichtquelle beleuchtet.
+	Auf der linken Seite und auf der Höhe der beiden mittleren Kugeln,
+	ist eine rot leuchtende Punktlichtquelle platziert.
+	
+	In den Abbildungen \ref{fig:vergleich1} (a) und (b) wurde die Szene mit dem Phong-Beleuchtungsmodell
+	beleuchtet. 
+	Wobei die linke Abbildung keine Schatteneffekte zeigt, das Licht wird im Gegensatz zur mittleren
+	Abbildung nicht durch die Kugeln verdeckt.
+	Ein Problem dieses Modells wird besonders in der mittleren Abbildung deutlich. 
+	Denn die Kugel in der Mitte, der Abbildung \ref{fig:vergleich1}.c wird nur durch die rote Punktlichtquelle beleuchtet, da die anderen Lichtquellen verdeckt werden. 
+	Dort wo kein Licht auf die Kugel fällt entsteht keine Tiefenwirkung, da die Oberfläche der Kugel nicht
+	schattiert wird.
+	Anders verhält es sich im dritten Bild (c) der Abbildungen \ref{fig:vergleich1}, dort wird die gleiche Szene durch das einfachen Emissions- und Absorptionsmodell dargestellt. 
+	Dieses unterstützt Transparenzeffekte, so dass der verdeckte Teil der nach hinten verschobenen
+	Kugel ebenfalls sichtbar wird.
+	Das einfache Emissions- und Absorptionsmodell berechnet keine Wechselwirkungen mit anderen Lichtquellen,
+	außer dem Hintergrundlicht. 
+	Dieses wird durch die Kugeln abgeschwächt und gleichzeitig emittiert
+	jede Kugel entsprechend ihrer Kugelfarbe eigenes Licht.
+	Die Kugeln wirken auf Grund der unterschiedlichen langen Strecken, die das Licht durch die Kugeln zurücklegen muss weitaus plastischer als jene, die mit dem Phong-Beleuchtungsmodell gezeichnet wurden.
 	
 	\begin{figure}[ph]
 		\centering
-		\subfigure[Phong Beleuchtungsmodell ohne Schatten]{\includegraphics[width=0.49\textwidth]{images/em_local.png}}
-		\subfigure[Phong Beleuchtungsmodell mit Schatten]{\includegraphics[width=0.49\textwidth]{images/em_global.png}}
-		\caption{Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}
+		\subfigure[Erweitertes EA-Modell ohne Schatten]{\includegraphics[width=0.29\textwidth]{images/em_local.png}}
+		\subfigure[Erweitertes EA-Modell mit Schatten]{\includegraphics[width=0.29\textwidth]{images/em_global.png}}
+		\subfigure[Erweitertes EA-Modell mit Schatten]{\includegraphics[width=0.29\textwidth]{images/em_low.png}}
+		\caption{Die Abbildung zeigt die selbe Szene wie die Abbildung \ref{fig:vergleich1},
+				 gezeichnet mit dem erweiterten Emissions- und Absorptionsmodell}
 		\label{fig:vergleich2}
 	\end{figure}
+	
+	Die Bilder (a) und (b) in der Abbildung \ref{fig:vergleich2} zeigt die gleiche Szene wie zuvor,
+	dieses mal wurde die Szene mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.
+	Transparenzeffekte werden ebenso wie weitere Lichtquellen unterstützt, so dass verdeckte Inhalte
+	für den Betrachter weiterhin sichtbar bleiben.
+	Das Licht aller Lichtquellen flutet durch das innere der Kugeln, dadurch sind die Schatteneffekte
+	weitaus weniger endgültig als bei dem Phong-Beleuchtungsmodell mit Schatten.
+	Bei dem Bild (c) aus der Abbildung \ref{fig:vergleich2} wurde auf die rote Punktlichtquelle verzichtet
+	und $\Theta_{max} = 0.4$ gewählt. Das Licht der beiden Richtungslichtquellen wird durch die
+	Kugeln abgeschwächt, trotzdem reicht die Lichtintensität aus um die mittlere Kugel zu beleuchten.
+	
+	\newpage
+	
+	Bevor dir Geschwindigkeit des Algorithmus betrachtet wird, werden numerische Grenzfälle betrachtet.
+	
+	\begin{figure}[ph]
+		\centering
+		\subfigure[0 Stützpunkte]{\includegraphics[width=0.29\textwidth]{images/ng_s0.png}}
+		\subfigure[1 Stützpunkt]{\includegraphics[width=0.29\textwidth]{images/ng_s1.png}}
+		\subfigure[2 Stützpunkte]{\includegraphics[width=0.29\textwidth]{images/ng_s2.png}}
+		\caption{Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von Stützpunkten.}
+		\label{fig:numerischeGrenzfälle1}
+	\end{figure}
+	
+	Dazu wurden in der Abbildung \ref{fig:numerischeGrenzfälle1} wesentlich weniger Stützpunkte
+	gewählt, als in den bereits gezeigten Abbildungen. Im Fall des Bildes (a) aus der Abbildung  \ref{fig:numerischeGrenzfälle1} wird gar kein Stützpunkt verwendet, was zur folge hat,
+	dass das Licht aus den Lichtquellen keinen Einfluss auf die Farbe der Kugel hat.
+	In den Bildern (a) und (b) der gleichen Abbildung, zeigt sich eine deutliche Verbesserung
+	der Lichtverteilung in der Kugel. Als Lichtquellen wurden wieder die gleichen Lichtquellen verwendet
+	wie zuvor.
+	
+	\begin{figure}[ph]
+		\centering
+		\subfigure[$\Theta_{max} = 0.0$]{\includegraphics[width=0.29\textwidth]{images/ng_s50_O0.png}}
+		\subfigure[$\Theta_{max} = 1.0$]{\includegraphics[width=0.29\textwidth]{images/ng_s50_O1.png}}
+		\caption{Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von Stützpunkten.}
+		\label{fig:numerischeGrenzfälle2}
+	\end{figure}
+	
+	Die Abbildung \ref{fig:numerischeGrenzfälle2} zeigt, was passiert wenn der Wert für die maximale
+	Lichtundurchlässigkeit die Grenzfälle annimmt. Im Bild (a) wird $\Theta_{max} = 0.0$ gesetzt
+	und im Bild (b) auf $1.0$, so dass die Kugel überhaupt kein Licht mehr durchlässt.
 
 	Bevor der Algorithmus quantitativ untersucht werden kann ist es nötig, 
 	zwei Bilder miteinander vergleichen zu können. 
@@ -952,9 +1022,7 @@ Optional:
 	vermutlich auf Grund der wesentlich kleineren Zeitskala der Y-Achse mehr zur Geltung, als bei der Abbildung \ref{fig:cool_randomChart}.
 	
 	Zur Evaluation der beschleunigten Variante, wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
-	Diese wurde mit Hilfe des \textit{structural similarity}-Index, kurz SSIM ermittelt. 
-	Dieser wurden nur für Bilderpaare mit 100 Stützpunkten bestimmt. 
-	Bei niedrigeren Anzahlen von Stützpunkten würde der Fehler, der Approximation das Ergebnis zu sehr verfälschen.
+	Diese wurde mit Hilfe des bereits vorgestellten \textit{structural similarity}-Index, kurz SSIM ermittelt. 
 	Dabei wird die Übereinstimmung der Ergebnisse, im Verhältnis zum Ground-Truth Bildes für jeden Farbkanal einzeln
 	in Prozent angeben. Die nachfolgenden Tabellen wurden um den Mittelwert der Übereinstimmung aller Farbkanäle ergänzt:
 	
