@@ -59,7 +59,7 @@ Die Teilaufgaben umfassen:
 	\begin{enumerate}
 		\item Zunächst als Raytracer für opake Kugeln, der globale Schatteneffekte von frei
 		positionierbaren Punkt- und Richtungslichtquellen unterstützt
-		\item Umsetzung eines Renderers, der Kugeln als Volumen nach dem Emissions-Absorptions-Modell rendert, dabei analytische Bestimmung des Volume-Rendering-Integrals, einschließlich Integration direkter Beleuchtung unverdeckter Lichtquellen
+		\item Umsetzung eines Renderers, der Kugeln als Volumen nach dem Emissions- und Absorptions-Modell rendert, dabei analytische Bestimmung des Volume-Rendering-Integrals, einschließlich Integration direkter Beleuchtung unverdeckter Lichtquellen
 		\item Erweiterung zu verdeckten Lichtquellen und Bestimmung der Lichtstärke- und Farbe
 		für Lichtstrahlen durch verdeckende Kugeln
 	\end{enumerate}
@@ -1103,10 +1103,26 @@ Optional:
 	
 \newpage	
 	
-\section{Fazit}
-	
+\section{Zusammenfassung}
 
-%\chapter{title}
+	Das Ziel der Arbeit bestand in der Entwicklung eines CPU-Renderes zur Darstellung von Partikeldaten.
+	Dieser sollte die Partikel mit Hilfe einer Rendergleichung zeichnen, 
+	die auf dem Emissions- und Absorptions-Modell basiert und eine beliebige Anzahl von Punkt- und Richtungslichtquellen
+	unterstützt.
+	Unter der Annahme konstanter Dichten und linearen Transferfunktionen, 
+	sollte die Gleichung weitestgehend analytisch gelöst werden.
+
+	Zu beginn der Arbeit wurden die Grundlagen der Raycast-Technik erläutert und alle grundlegenden Gleichungen hergeleitet. Im Anschluss daran wurde eine einfache Variante des Emissions- und Absorptions-Modell aus einer bestehenden Arbeit
+	für diesen Zweck erweitert.
+	Da für die resultierende Gleichung keine analytische Lösung existiert, wurde das Integral in Riemannsummen zerlegt.
+	Die auf diese Weise entstandene Formel wurde implementiert und Bilder mit verschiedenen Datensätzen generiert.
+	
+	Mit Hilfe einer einfachen Szene, wurden Ergebnisse erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
+	Zusätzlich wurde eine beschleunigte Variante des Verfahrens implementiert und die Ergebnisse dieser wurden hinsichtlich
+	ihrer Güte untersucht. Dazu wurden zuerst Ground-Truth Bilder erzeugt, welche mit Hilfe des SSIM-Index
+	mit den anderen Ergebnissen verglichen wurden.
+
+%\chapter{title}	
 %
 %\chapter{ein kapitel}
 %\section{eine Grafik}
