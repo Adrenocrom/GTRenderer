@@ -50,9 +50,9 @@
   \makeatother%
   \begin{picture}(1,0.76215788)%
     \put(0,0){\includegraphics[width=\unitlength]{images/cameraObscura.pdf}}%
-    \put(0.83194152,0.63294877){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$A$}}}%
-    \put(0.83194152,0.33070507){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B$}}}%
-    \put(0.00070000,0.36848554){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B'$}}}%
-    \put(0.00070000,0.19217671){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$A'$}}}%
+    \put(0.81194152,0.63294877){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$A$}}}%
+    \put(0.81194152,0.31070507){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B$}}}%
+    \put(-0.05070000,0.36848554){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$B'$}}}%
+    \put(-0.05070000,0.17217671){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$A'$}}}%
   \end{picture}%
 \endgroup%
