@@ -45,7 +45,7 @@ deren Komplexität muss in Echtzeitvisualisierungen jedoch auf teilweise grobe Ap
 Ziel dieser Belegarbeit ist die Umsetzung eines CPU-Renderers für Partikeldaten, der eine Reihe
 von erweiterten Visualisierungseffekten unterstützt. Er soll die Grundlage für Ground-Truth-
 Visualisierungen bieten.
-Zunächst soll eine geeignete Softwarearchitektur konzipiert und umgesetzt werden. Die Partikel sollen als mit lichtemittierendem und absorbierendem Gas gefüllte Kugeln interpretiert werden. Es sollen anschließend Methoden entwickelt werden, um einen physikalisch plausiblen globalen Schattenwurf und Lichttransport für eine beliebige Anzahl an Punkt- und Richtungslichtquellen zu ermöglichen.
+Zunächst soll eine geeignete Softwarearchitektur konzipiert und umgesetzt werden. Die Partikel sollen als mit lichtemittierendem und absorbierendem Gas gefüllte Kugeln interpretiert werden. Es sind anschließend Methoden zu entwickeln,  um einen physikalisch plausiblen globalen Schattenwurf und Lichttransport für eine beliebige Anzahl an Punkt- und Richtungslichtquellen zu ermöglichen.
 Die dafür notwendigen Gleichungen für Kugeln mit konstanter Dichte und Emission, sowie linearer
 Absorption, sollen soweit wie möglich analytisch bestimmt und, sobald nicht mehr möglich, mittels
 möglichst exakter numerischer Integratoren ausgewertet werden.
@@ -1121,7 +1121,9 @@ Optional:
 	Mit Hilfe einer einfachen Szene wurden Bilder erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
 	Ein Vorteil der implementierten Lösung gegenüber dem Phong-Beleuchtungsmodell ist die Transparenz,
 	denn durch diese werden die sonst verdeckten Informationen sichtbar und 
-	zwar ohne das die plastische Wirkung der dargestellten Kugeln verloren geht. 
+	zwar ohne das die plastische Wirkung der dargestellten Kugeln verloren geht.
+	Die Schatteneffekte ergeben sich als Resultat der Lichtabschwächung durch das Volumen,
+	auf diese Weise entstehen weiche Schattenübergänge was die optische Qualität der Bilder verbessert. 
 	Zusätzlich wurde eine beschleunigte Variante des Verfahrens implementiert und die Ergebnisse dieser wurden hinsichtlich
 	ihrer Güte mit Hilfe von Ground-Truth Bildern und dem SSIM-Index evaluiert.
 	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, aber der Geschwindigkeitszuwachs enorm ist.
