@@ -1121,14 +1121,14 @@ Optional:
 	Mit Hilfe einer einfachen Szene wurden Bilder erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
 	Ein Vorteil der implementierten Lösung gegenüber dem Phong-Beleuchtungsmodell ist die Transparenz,
 	denn durch diese werden die sonst verdeckten Informationen sichtbar und 
-	zwar ohne das die plastische Wirkung der dargestellten Kugeln verloren geht.
-	Die Schatteneffekte ergeben sich als Resultat der Lichtabschwächung durch das Volumen,
-	auf diese Weise entstehen weiche Schattenübergänge was die optische Qualität der Bilder verbessert. 
+	zwar ohne,dass die plastische Wirkung der dargestellten Kugeln verloren geht.
+	Die Schatteneffekte ergeben sich als Resultat der Lichtabschwächung durch das Volumen.
+	Auf diese Weise entstehen weiche Schattenübergänge und somit die optische Qualität der Bilder verbessert. 
 	Zusätzlich wurde eine beschleunigte Variante des Verfahrens implementiert und die Ergebnisse dieser wurden hinsichtlich
 	ihrer Güte mit Hilfe von Ground-Truth Bildern und dem SSIM-Index evaluiert.
-	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, aber der Geschwindigkeitszuwachs enorm ist.
+	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, der Geschwindigkeitszuwachs ist allerdings enorm.
 	
-	Interessant wäre es den Algorithmus auf die GPU zu portieren und diesen damit, falls möglich derart zu
+	Interessant wäre es den Algorithmus auf die GPU zu portieren und diesen damit, falls möglich, derart zu
 	beschleunigen, dass echtzeitfähige Bildwiederholungsraten möglich werden.
 	Zusätzlich könnte eine Phasenfunktion implementiert und die Streuung mit in die Rendergleichung einbezogen werden.
 	
