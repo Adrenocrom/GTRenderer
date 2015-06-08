@@ -559,12 +559,12 @@ Optional:
 		\label{eq:CompEAModellN}
 	\end{equation}
 	
-	Der erste Teil der Gleichung  beschreibt die Absorption und bleibt unverändert. Die Modelle unterscheiden sich nur durch die Quellfunktion $g(t)$. 
+	Der erste Teil der Gleichung beschreibt die Absorption und bleibt unverändert. Die Modelle unterscheiden sich nur durch die Quellfunktion $g(t)$. 
 	Diese berechnet die Kugelfarbe an jedem Punkt $t \in [t_n, t_f]$ entlang des Sichtstrahls und wird anschließend durch das Volumen abgeschwächt. 
 	Einfluss auf die Farbe der Kugeln hat die Intensität der Punktlichtquelle und die Emission des Gases. 
 	Die Funktion $l(t)$ liefert die Schnittlänge des Sekundärstrahls mit dem Partikel. 
 	Ein Sekundärstrahl ist in diesem Zusammenhang ein Strahl, welcher ausgehend von der Position $t$ in die Richtung der Richtungslichtquelle geschossen wird. 
-	Die Farbe an der Position $t$ bestimmt sich mit der Hilfe der Länge $l(t)$ und dem Modell aus dem vorherigen Abschnitt durch die folgende Rechenvorschrift:
+	Die Farbe an der Position $t$ bestimmt sich mit Hilfe der Länge $l(t)$ und dem Modell aus dem vorherigen Abschnitt durch die folgende Rechenvorschrift:
 	
 	\begin{equation}
 		g(t) = I_L \cdot T'(0, l(t)) + I_c \cdot \Theta(0, l(t))
@@ -593,7 +593,7 @@ Optional:
 		\label{eq:längeLT}
 	\end{equation}
 	
-	Wird in die Gleichung \ref{eq:längeLT} der Strahl \ref{eq:Strahl} eingesetzt und die gesamte Gleichung aus multipliziert, dann lässt sich das Renderintegral für die Absorption durch die folgende Gleichung vereinfacht repräsentieren:
+	Wird in die Gleichung \ref{eq:längeLT} der Strahl \ref{eq:Strahl} eingesetzt und die gesamte Gleichung ausmultipliziert, dann lässt sich das Renderintegral für die Absorption durch die folgende Gleichung vereinfacht repräsentieren:
 	
 	\begin{equation}
 		F(x) = \int I \cdot \exp(a \cdot x + b + \sqrt{c \cdot x^2 + d \cdot x + e} dx
@@ -639,12 +639,12 @@ Optional:
 	
 	Die Gleichung \ref{eq:CompEAModellApprox2} bildet die Grundlage der Beleuchtungsberechnung.
 	Wie und wann diese Gleichung im Raycast-Algorithmus zum Einsatz kommt, wird im folgenden Kapitel
-	beschrieben. Die folgende Abbildung zeigt die Abbildung eines Datensatzes, die mit dem erweiterten Emissions- und Absorptionsmodell erzeugt wurde. Das grüne Licht entstammt einer Richtungslichtquelle.
+	beschrieben. Die folgende Abbildung zeigt die Darstellung eines Datensatzes, die mit dem erweiterten Emissions- und Absorptionsmodell erzeugt wurde. Das grüne Licht entstammt einer Richtungslichtquelle.
 	
 	\begin{figure}[ph]
 		\centering
 		\includegraphics[width=\textwidth]{images/chkpt.png}
-		\caption{Dieses Bild wurde durch das erweiterten Emissions- und Absorptionsmodell erzeugt.}
+		\caption{Dieses Bild wurde durch das erweiterte Emissions- und Absorptionsmodell erzeugt.}
 		\label{fig:chkpt}
 	\end{figure}
 
@@ -654,13 +654,13 @@ Optional:
 	In diesem Kapitel werden die Grundlagen und die beiden Beleuchtungsmodelle zusammengeführt.
 	Es wird erläutert, wie die Bilder im Detail erzeugt werden und welche Vereinfachungen die Berechnung beschleunigen.
 	
-	Die zu zeichnende Szene besteht aus einer Menge von Partikeln, dargestellt als Kugeln.
+	Die zu zeichnende Szene besteht aus einer Menge von Partikeln, die als Kugeln dargestellt werden.
 	Jede Kugel wird durch ihre Position und einen Radius parametrisiert. 
-	Zusätzlich wird für jede Kugel ein Material definiert, welches sich aus einer Farbe und ein Wert für die maximale Lichtundurchlässigkeit zusammensetzt. 
-	Für die Beleuchtungsberechnung, wird für jede Kugel der Parameter $\kappa$ benötigt, denn dieser beschreibt die Lichtundurchlässigkeit und damit die Transparenz für die entsprechende Kugel.
+	Zusätzlich wird für jede Kugel ein Material definiert, welches sich aus einer Farbe und einem Wert für die maximale Lichtundurchlässigkeit zusammensetzt. 
+	Für die Beleuchtungsberechnung wird für jede Kugel der Parameter $\kappa$ benötigt, denn dieser beschreibt die Lichtundurchlässigkeit und damit die Transparenz für die entsprechende Kugel.
 	Dieser Parameter wird jedoch nicht direkt gesetzt, 
-	sondern berechnet sich aus der angegeben maximalen Lichtundurchlässigkeit $\Theta_{max} \in [0, 1]$ in Abhängigkeit
-	des Radius $r$.
+	sondern berechnet sich aus der angegebenen maximalen Lichtundurchlässigkeit $\Theta_{max} \in [0, 1]$ in Abhängigkeit
+	vom Radius $r$.
 	Um den Wert von $\kappa$ zu bestimmen, wird $\kappa$ in die Gleichung für $\Theta$ eingesetzt:
 	
 	\begin{equation}
@@ -670,7 +670,7 @@ Optional:
 	
 	Wird $\Theta_{max}$ in die Formel \ref{eq:maxOpacity} eingesetzt, dann lässt diese sich nach $\kappa$
 	auflösen.
-	Zusätzlich wird die größte mögliche Distanz $2 \cdot r$ für die Länge $t_f - t_n$ gesetzt und
+	Für die Länge $t_f - t_n$ wird die größte mögliche Distanz $2 \cdot r$ eingesetzt und
 	es ergibt sich folgende Lösung für $\kappa$:
 	
 	\begin{equation}
@@ -678,16 +678,16 @@ Optional:
 		\label{eq:kappa}
 	\end{equation}
 	
-	Der Parameter $\lambda$ wird für alle Kugeln global gewählt und liegt im Intervall $(0,1]$, mit diesem
+	Der Parameter $\lambda$ wird für alle Kugeln global gewählt und liegt im Intervall $(0,1]$. Mit diesem
 	Parameter kann die Transparenz der Kugeln global beeinflusst werden.
 	
-	Das Programm unterstützt eine Vielzahl von Einstellungsmöglichkeiten, diese werden in einer externen
-	Textdatei gesetzt. Deren Aufbau und mögliche Parameter werden im Folgenden Abschnitt erläutert.
+	Das Programm unterstützt eine Vielzahl von Einstellungsmöglichkeiten, welche in einer externen
+	Textdatei gesetzt werden. Deren Aufbau und mögliche Parameter werden im folgenden Abschnitt erläutert.
 
 \section{Szenenbeschreibung}
 
-	Wie oben beschrieben, lässt sich die Szene und die Programmparameter durch eine Textdatei definieren.
-	Die Datei wird Zeilenweise eingelesen, jede Zeile bietet die Möglichkeit einen Befehl zu setzten.
+	Wie oben beschrieben, lassen sich die Szene und die Programmparameter durch eine Textdatei definieren.
+	Die Datei wird zeilenweise eingelesen, jede Zeile bietet die Möglichkeit einen Befehl zu setzten.
 	Für die Platzierung und Ausrichtung der Kamera existieren zum Beispiel drei verschiedene Varianten.
 	In allen Varianten wird die Kamera durch die Angabe eines Vektors positioniert. 
 	Die Blickrichtung kann entweder	mit zwei Drehwinkeln beeinflusst werden oder es wird ein Punkt gewählt,
@@ -696,95 +696,95 @@ Optional:
 	der Szene ausgerichtet wird.
 	
 	Um die Szene mit Kugeln anzureichern, existieren zwei Möglichkeiten. 
-	Zum einen können die Kugeln direkt in der Textdatei definiert werden und zum anderen wird das laden von SIFF-Dateien unterstützt.
-	In SIFF-Dateien können die Kugeln durch ihrer Position, ihren Radius und ihrer Farbe ebenfalls Zeilenweise beschrieben werden.
+	Zum einen können die Kugeln direkt in der Textdatei definiert werden und zum anderen wird das Laden von SIFF-Dateien unterstützt.
+	In SIFF-Dateien können die Kugeln durch ihre Position, ihren Radius und ihre Farbe ebenfalls zeilenweise beschrieben werden.
 	
 	Um die Anzahl der Kollisionstests auf ein Minimum zu reduzieren, wird eine Beschleunigungsdatenstruktur in Form
 	eines KD-Baums eingesetzt. Dieser wird direkt nach dem Laden der Szene konstruiert und es
 	lässt sich eine maximale Baumtiefe angeben. 
-	Dieser Wert, sollte in Abhängigkeit von der Anzahl der gesetzten Partikel gewählt werden.
+	Dieser Wert sollte in Abhängigkeit von der Anzahl der gesetzten Partikel gewählt werden.
 		 
-	Weitere globale Parameter, wie $\lambda$ und die Anzahl von Stützpunkten lassen sich ebenfalls setzten.
+	Weitere globale Parameter, wie $\lambda$ und die Anzahl von Stützpunkten, lassen sich ebenfalls setzen.
 	Der Parameter $\Theta_{max}$ lässt sich für jede Kugel einzeln setzen, aber auch global für alle Kugeln festlegen.
 	Das gleiche gilt für die Farbe und die Größe der Kugeln.
 	Es existiert ein weiterer globaler Parameter, welcher den Approximationsgrad bestimmt.
-	Was es mit diesen Parameter auf sich hat, wird später beschrieben.
+	Was es mit diesem Parameter auf sich hat, wird später beschrieben.
 	
-	Neben der Hintergrundbeleuchtung gibt es die Möglichkeit beliebig viele Punkt- und Richtungslichtquellen zu definieren.
+	Neben der Hintergrundbeleuchtung gibt es die Möglichkeit, beliebig viele Punkt- und Richtungslichtquellen zu definieren.
 	Beide Typen von Lichtquellen besitzen einen Farbvektor als Parameter.
 	Die Punktlichtquellen besitzen zusätzlich eine Position
 	und Richtungslichtquellen besitzt anstatt der Position einen normierten Richtungsvektor.
 	
 	Die Beleuchtungsbrechung lässt sich neben dem erläuterten Emissions- und Absorptionsmodell auch mit dem
 	Phong-Beleuchtungsmodell berechnen.
-	Beide Varianten, können entweder mit oder ohne globale Schatteneffekte berechnet werden.
+	Beide Varianten können entweder mit oder ohne globale Schatteneffekte berechnet werden.
 	Transparenzeffekte werden mit dem Phong-Beleuchtungsmodell nicht unterstützt.
 	
 \section{Details zum Algorithmus}
 	
-	Im folgenden wird beschrieben, wie der Raycast-Algorithmus arbeitet und wann welches Beleuchtungsmodell zum Einsatz
+	Im Folgenden wird beschrieben, wie der Raycast-Algorithmus arbeitet und wann welches Beleuchtungsmodell zum Einsatz
 	kommt.
-	Grundlegend gilt, das die Auflösung, des zu erzeugenden Bildes $W \times H$ entspricht.
-	Unabhängig vom Beleuchtungsmodell, wird für jeden Bildpunkt $(x, y) \in W \times H$ wird ein primärer Strahl erzeugt, dessen Ursprung der Kameraposition entspricht.
+	Grundlegend gilt, dass die Auflösung des zu erzeugenden Bildes $W \times H$ entspricht.
+	Unabhängig vom Beleuchtungsmodell wird für jeden Bildpunkt $(x, y) \in W \times H$ ein primärer Strahl erzeugt, dessen Ursprung der Kameraposition entspricht.
 	Der Richtungsvektor lässt sich anhand der Vorschrift \ref{eq:direction} bestimmen.
 	Das Resultat dieses Schrittes ist eine Liste der primären Strahlen.
 	
-	Ein großer Vorteil der Raycast-Technik besteht in der Möglichkeit die Berechnungen zu parallelisieren,
+	Ein großer Vorteil der Raycast-Technik besteht in der Möglichkeit, die Berechnungen zu parallelisieren,
 	da die Beleuchtungsberechnung für jeden Strahl unabhängig voneinander durchgeführt werden kann. 
 	In der eigentlichen Implementierung wird die Parallelisierung mit Hilfe der OpenMP-Bibliothek\footnote{http://openmp.org/wp/} umgesetzt.
 	
-	Für jeden Primärstrahl, Sichtstrahl wird der Schnitt mit allen in der Szene befindlichen Kugeln berechnet
+	Für jeden Primärstrahl beziehungsweise Sichtstrahl wird der Schnitt mit allen in der Szene befindlichen Kugeln berechnet
 	und die Beleuchtungsberechnung durchgeführt.
 
-	Im Fall des Phong-Beleuchtungsmodells ist allerdings nur der erste Schnittpunkt, ausgehend vom Sensor von
+	Im Fall des Phong-Beleuchtungsmodells ist allerdings nur der erste Schnittpunkt, ausgehend vom Sensor, von
 	Interesse. An der Schnittposition wird die Normale berechnet, um einen Wert für die diffusen und für
 	die spekularen Reflektionsanteile zu bestimmen. 
 	Das genaue Modell wird in der Arbeit \cite{Blinn:1977:MLR:965141.563893} erläutert.
 	Zur Erzeugung der globalen Schatten, müssen ausgehend des Schnittpunktes Sekundärstrahlen zu jeder Lichtquelle
-	geschossen werden und wenn ein Sekundärstrahl dabei eine andere Kugel schneidet, dann wird die Farbe
+	geschossen werden. Wenn ein Sekundärstrahl dabei eine andere Kugel schneidet, dann wird die Farbe
 	der Lichtquelle mit dem Nullvektor ersetzt.
 	
 	Die Bildsynthese für das Emissions- und Absorptionsmodell ist etwas aufwendiger.
 	Für die Sichtstrahlen wird die Beleuchtung durch das erweiterte Beleuchtungsmodell berechnet. 
-	Dazu muss ebenfalls für jeden Strahl ein Schnittest mit allen Kugeln durchgeführt werden.
-	Sobald alle Kugeln bestimmt worden sind, die von einem Sichtstrahl geschnitten worden, müssen diese entlang
+	Dazu muss ebenfalls für jeden Strahl ein Schnitttest mit allen Kugeln durchgeführt werden.
+	Sobald alle Kugeln bestimmt wurden sind, die von einem Sichtstrahl geschnitten worden, müssen diese entlang
 	des Strahls sortiert werden.
-	Anschließend wird für jede von diesen Kugeln, die erweiterte Beleuchtungsberechnung durchgeführt.
+	Anschließend wird für jede von diesen Kugeln die erweiterte Beleuchtungsberechnung durchgeführt.
 	Dabei wird mit der Kugel begonnen, die am weitesten vom Ursprung des Strahls entfernt liegt. 
-	Das Resultat der Beleuchtungsberechnung, für diese Kugel, wird als neue Hintergrundbeleuchtung für die nächste eingesetzt. 
+	Das Resultat der Beleuchtungsberechnung für diese Kugel, wird als neue Hintergrundbeleuchtung für die nächste eingesetzt. 
 	Dieser Vorgang wird wiederholt, bis alle Kugeln entlang des Strahls abgearbeitet wurden.
 	Am Sensor wird die Intensität der letzten Beleuchtungsberechnung gespeichert und anschließend normiert.
 	
 	Da sich für die erweiterte Beleuchtungsberechnung keine analytische Lösung finden ließ,
 	muss für jeden Stützpunkt ein neuer Strahl in Richtung jeder Lichtquelle geschossen werden.
-	Für jeden Sekundärstrahl wird das Licht, der entsprechenden Lichtquelle, als Hintergrundbeleuchtung betrachtet.
-	Werden globale Schatten verwendet werden, dann wird dieses Licht entlang des Strahls wiederum durch die vom
+	Für jeden Sekundärstrahl wird das Licht der entsprechenden Lichtquelle als Hintergrundbeleuchtung betrachtet.
+	Werden globale Schatten verwendet, dann wird dieses Licht entlang des Strahls wiederum durch die vom
 	Sekundärstrahl geschnittenen Partikel abgeschwächt. 
-	Diese Abschwächung wird mit vereinfachten Beleuchtungsmodell berechnet.
-	Für jeden Sekundärstrahl ist ein erneuter Schnittest mit allen Kugeln nötigt, 
+	Diese Abschwächung wird mit dem vereinfachten Beleuchtungsmodell berechnet.
+	Für jeden Sekundärstrahl ist ein erneuter Schnitttest mit allen Kugeln nötig, 
 	sowie eine Sortierung der Ergebnismenge entlang des Sekundärstrahls. 
 	
-	Die Geschwindigkeit des Algorithmus hängt von der Auflösung des Bildes und der damit verbunden Anzahl von Primärstrahlen ab.
-	Entscheidend für Berechnungsdauer ist die Wahl der Stützpunktanzahl, 
+	Die Geschwindigkeit des Algorithmus hängt von der Auflösung des Bildes und der damit verbundenen Anzahl von Primärstrahlen ab.
+	Entscheidend für die Berechnungsdauer ist die Wahl der Stützpunktanzahl, 
 	da für jeden ein Sekundärstrahl Szene geschossen werden muss und für jeden ein Schnitttest und eine anschließende
 	Sortierung erforderlich ist.
 	
-	An dieser Stelle wird bereits angesprochene Approximationsgrad als ein neuer Parameter $N$ eingeführt. 
-	Der Wert von $N$ bestimmt, für wie viele Kugeln entlang des Primärstrahls, aber dieses mal ausgehend von dem Ursprung des Strahls, 
+	An dieser Stelle wird der bereits angesprochene Approximationsgrad als ein neuer Parameter $N$ eingeführt. 
+	Der Wert von $N$ bestimmt, für wieviele Kugeln entlang des Primärstrahls, aber dieses mal ausgehend von dem Ursprung des Strahls, 
 	die Beleuchtung mit der erweiterten Formel bestimmt werden soll.
 	Mit Hilfe dieser Approximation lässt sich die Anzahl der zu erzeugenden Sekundärstrahlen drastisch reduzieren und dadurch die Dauer
 	der Berechnung verringern.
-	Eine weitere Möglichkeit die Anzahl der Sekundärstrahlen zu reduzieren, lässt sich durch eine adaptive Wahl
-	der Stützpunktanzahl realisieren. Das bedeutet, dass für jede verdeckte Kugel, in Abhängigkeit des Verdeckungsgrades
-	Stützpunktanzahl reduziert wird, bis schließlich das Vereinfachte Modell zum Einsatz kommt.
-	In diesen Programm wurde die Anzahl nicht adaptiv gewählt, sondern nur die einfache Approximation implementiert.
+	Eine weitere Möglichkeit, die Anzahl der Sekundärstrahlen zu reduzieren, lässt sich durch eine adaptive Wahl
+	der Stützpunktanzahl realisieren. Das bedeutet, dass für jede verdeckte Kugel in Abhängigkeit des Verdeckungsgrades
+	die Stützpunktanzahl reduziert wird, bis schließlich das vereinfachte Modell zum Einsatz kommt.
+	In diesem Programm wurde die Anzahl nicht adaptiv gewählt, sondern nur die einfache Approximation implementiert.
 	Der Einfluss und die Güte dieser Approximation wird im nachfolgenden Kapitel anhand von Beispielen evaluiert.
 	
 \section{Aufbau des Programms}
 
-	Im folgenden wird der Aufbau des eigentlichen Programms anhand des UML-Diagramms \ref{fig:UMLZikade} erläutert.
-	Die Hauptklasse hat den selben Namen wie das Programm, sie heißt \textit{zikade} und besteht im
-	wesentlichen aus zwei Methoden. Die Methode \textit{loadScene} ließt die Textdatei ein, welche
+	Im Folgenden wird der Aufbau des eigentlichen Programms anhand des UML-Diagramms \ref{fig:UMLZikade} erläutert.
+	Die Hauptklasse hat denselben Namen wie das Programm. Sie heißt \textit{zikade} und besteht im
+	Wesentlichen aus zwei Methoden. Die Methode \textit{loadScene} liest die Textdatei ein, welche
 	die Szene beschreibt und initialisiert damit alle für den Zeichenvorgang nötigen Variablen.
 	In der zweite Methode \textit{render} ist der eigentliche Algorithmus zum Berechnen des Bildes
 	implementiert. 
@@ -798,7 +798,7 @@ Optional:
 	
 	Im Diagramm tauchen Variablen vom Typ \textit{real} auf. Dieser Bezeichner kapselt den dahinter liegenden
 	Gleitkommazahl-Typ und entspricht in dieser Implementierung dem Typ \textit{double}.
-	Variablen vom \textit{real3} entsprechen dreidimensionalen Vektoren, deren einzelne Einträge dem
+	Variablen vom Typ \textit{real3} entsprechen dreidimensionalen Vektoren, deren einzelne Einträge dem
 	Typ \textit{real} entsprechen.
 	Die Klasse \textit{lightSource} ist eine abstrakte Klasse, von der sich die spezialisierten Klassen
 	\textit{directionLight} und \textit{pointLight} ableiten. Die Variable \textit{power} entspricht der
@@ -811,15 +811,15 @@ Optional:
 
 \chapter{Auswertung und Fazit}
 
-	Zu beginn der Arbeit wurden die Mathematischen Grundlagen der Raycast-Technik hergeleitet und 
+	Zu Beginn der Arbeit wurden die mathematischen Grundlagen der Raycast-Technik hergeleitet und 
 	im Anschluss zwei Lösungen für die Volumengleichung besprochen. 
-	Die Idee bestand darin die Gleichung, für die Beleuchtung, weitestgehend analytisch zu lösen. 
+	Die Idee bestand darin, die Gleichung für die Beleuchtung weitestgehend analytisch zu lösen. 
 	Für das einfache Beleuchtungsmodell existiert eine analytische Lösung, aber zur Berechnung
 	des erweiterten Modells ist eine numerische Approximation von Nöten. 
 	Dazu wird das Integral in Riemann Summen zerlegt, damit die Lösung näherungsweise berechnet werden kann.
-	Aufgrund der Komplexität des Verfahrens, wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
+	Aufgrund der Komplexität des Verfahrens wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
 	
-	In diesem Kapitel werden zunächst qualitative unterscheide in Abhängigkeit der gewählten Parameter erläutert
+	In diesem Kapitel werden zunächst qualitative Unterschiede in Abhängigkeit der gewählten Parameter erläutert
 	und im Anschluss wird die beschleunigte Variante des Algorithmus evaluiert.
 	
 	\begin{figure}[h]
@@ -827,90 +827,89 @@ Optional:
 		\subfigure[Phong Beleuchtung ohne Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_local.png}}
 		\subfigure[Phong Beleuchtung mit Schatten]{\includegraphics[width=0.29\textwidth]{images/phong_global.png}}
 		\subfigure[Einfaches EA-Modell]{\includegraphics[width=0.29\textwidth]{images/em_easy.png}}
-		\caption{Abbildungen einer einfachen Szene gezeichnet mit dem Phong-Beleuchtungsmodell,
-				 einmal ohne und einmal mit globalen Schatteneffekten. Zusätzlich, wird die
-				 selbe Szene, gezeichnet mit dem einfachen Emissions- und Absorptionsmodell dargestellt.}
+		\caption{Abbildungen einer einfachen Szene, gezeichnet mit dem Phong-Beleuchtungsmodell,
+				 einmal ohne und einmal mit globalen Schatteneffekten. Zusätzlich wird dieselbe Szene gezeichnet mit dem einfachen Emissions- und Absorptionsmodell dargestellt.}
 		\label{fig:vergleich1}
 	\end{figure}
 	
-	Die Abbildungen \ref{fig:vergleich1} und \ref{fig:vergleich2} zeigen eine sehr einfache Szene
+	Die Abbildungen \ref{fig:vergleich1} und \ref{fig:vergleich2} zeigen eine sehr einfache Szene,
 	bestehend aus vier Kugeln. 
-	Drei dieser Kugeln sind vertikal verschoben, aber in der gleichen tiefe platziert. 
+	Drei dieser Kugeln sind vertikal verschoben, aber in der gleichen Tiefe platziert. 
 	Die vierte Kugel ist etwas weiter nach hinten verschoben und so positioniert, 
 	dass eine Verdeckung durch die Kugel in der Mitte entsteht, damit die Transparenzeffekte
 	deutlich sichtbar werden.
 	Die Szene wird von drei Lichtquellen beleuchtet. 
-	Von oben- nach unten strahlt eine grüne Richtungslichtquelle und von unten- nach oben 
+	Von oben nach unten strahlt eine grüne Richtungslichtquelle und von unten nach oben 
 	wird die Szene von einer blauen Richtungslichtquelle beleuchtet.
-	Auf der linken Seite und auf der Höhe der beiden mittleren Kugeln,
+	Auf der linken Seite und auf der Höhe der beiden mittleren Kugeln
 	ist eine rot leuchtende Punktlichtquelle platziert.
 	
 	In den Abbildungen \ref{fig:vergleich1} (a) und (b) wurde die Szene mit dem Phong-Beleuchtungsmodell
 	beleuchtet. 
-	Wobei die linke Abbildung keine Schatteneffekte zeigt, das Licht wird im Gegensatz zur mittleren
+	Wobei die linke Abbildung keine Schatteneffekte zeigt. Das Licht wird im Gegensatz zur mittleren
 	Abbildung nicht durch die Kugeln verdeckt.
 	Ein Problem dieses Modells wird besonders in der mittleren Abbildung deutlich. 
-	Denn die Kugel in der Mitte, der Abbildung \ref{fig:vergleich1}.c wird nur durch die rote Punktlichtquelle beleuchtet, da die anderen Lichtquellen verdeckt werden. 
-	Dort wo kein Licht auf die Kugel fällt entsteht keine Tiefenwirkung, da die Oberfläche der Kugel nicht
+	Denn die Kugel in der Mitte der Abbildung \ref{fig:vergleich1}.c wird nur durch die rote Punktlichtquelle beleuchtet, da die anderen Lichtquellen verdeckt werden. 
+	Dort wo kein Licht auf die Kugel fällt, entsteht keine Tiefenwirkung, da die Oberfläche der Kugel nicht
 	schattiert wird.
-	Anders verhält es sich im dritten Bild (c) der Abbildungen \ref{fig:vergleich1}, dort wird die gleiche Szene durch das einfachen Emissions- und Absorptionsmodell dargestellt. 
+	Anders verhält es sich im dritten Bild (c) der Abbildungen \ref{fig:vergleich1}, dort wird die gleiche Szene durch das einfache Emissions- und Absorptionsmodell dargestellt. 
 	Dieses unterstützt Transparenzeffekte, so dass der verdeckte Teil der nach hinten verschobenen
 	Kugel ebenfalls sichtbar wird.
 	Das einfache Emissions- und Absorptionsmodell berechnet keine Wechselwirkungen mit anderen Lichtquellen,
 	außer dem Hintergrundlicht. 
 	Dieses wird durch die Kugeln abgeschwächt und gleichzeitig emittiert
 	jede Kugel entsprechend ihrer Kugelfarbe eigenes Licht.
-	Die Kugeln wirken auf Grund der unterschiedlichen langen Strecken, die das Licht durch die Kugeln zurücklegen muss weitaus plastischer als jene, die mit dem Phong-Beleuchtungsmodell gezeichnet wurden.
+	Die Kugeln wirken auf Grund der unterschiedlichen langen Strecken, die das Licht durch die Kugeln zurücklegen muss, weitaus plastischer als jene, die mit dem Phong-Beleuchtungsmodell gezeichnet wurden.
 	
 	\begin{figure}[ph]
 		\centering
 		\subfigure[Erweitertes EA-Modell ohne Schatten]{\includegraphics[width=0.29\textwidth]{images/em_local.png}}
 		\subfigure[Erweitertes EA-Modell mit Schatten]{\includegraphics[width=0.29\textwidth]{images/em_global.png}}
 		\subfigure[Erweitertes EA-Modell mit Schatten]{\includegraphics[width=0.29\textwidth]{images/em_low.png}}
-		\caption{Die Abbildung zeigt die selbe Szene wie die Abbildung \ref{fig:vergleich1},
+		\caption{Die Abbildung zeigt dieselbe Szene wie die Abbildung \ref{fig:vergleich1},
 				 gezeichnet mit dem erweiterten Emissions- und Absorptionsmodell}
 		\label{fig:vergleich2}
 	\end{figure}
 	
-	Die Bilder (a) und (b) in der Abbildung \ref{fig:vergleich2} zeigt die gleiche Szene wie zuvor,
-	dieses mal wurde die Szene mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.
+	Die Bilder (a) und (b) in der Abbildung \ref{fig:vergleich2} zeigen die gleiche Szene wie zuvor.
+	Dieses mal wurde die Szene mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.
 	Transparenzeffekte werden ebenso wie weitere Lichtquellen unterstützt, so dass verdeckte Inhalte
 	für den Betrachter weiterhin sichtbar bleiben.
-	Das Licht aller Lichtquellen flutet durch das innere der Kugeln, dadurch sind die Schatteneffekte
-	weitaus weniger endgültig als bei dem Phong-Beleuchtungsmodell mit Schatten.
+	Das Licht aller Lichtquellen flutet durch das Innere der Kugeln, dadurch sind die Schatteneffekte
+	weitaus weniger endgültig, als bei dem Phong-Beleuchtungsmodell mit Schatten.
 	Bei dem Bild (c) aus der Abbildung \ref{fig:vergleich2} wurde auf die rote Punktlichtquelle verzichtet
 	und $\Theta_{max} = 0.4$ gewählt. Das Licht der beiden Richtungslichtquellen wird durch die
-	Kugeln abgeschwächt, trotzdem reicht die Lichtintensität aus um die mittlere Kugel zu beleuchten.
+	Kugeln abgeschwächt, trotzdem reicht die Lichtintensität aus, um die mittlere Kugel zu beleuchten.
 	
 	\newpage
 	
-	Bevor dir Geschwindigkeit des Algorithmus betrachtet wird, werden numerische Grenzfälle betrachtet.
+	Bevor die Geschwindigkeit des Algorithmus betrachtet wird, werden numerische Grenzfälle betrachtet.
 	
 	\begin{figure}[ph]
 		\centering
 		\subfigure[0 Stützpunkte]{\includegraphics[width=0.29\textwidth]{images/ng_s0.png}}
 		\subfigure[1 Stützpunkt]{\includegraphics[width=0.29\textwidth]{images/ng_s1.png}}
 		\subfigure[2 Stützpunkte]{\includegraphics[width=0.29\textwidth]{images/ng_s2.png}}
-		\caption{Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von Stützpunkten.}
+		\caption{Die Abbildung zeigt jeweils eine Kugel mit sehr niedrigen Anzahlen von Stützpunkten.}
 		\label{fig:numerischeGrenzfälle1}
 	\end{figure}
 	
 	Dazu wurden in der Abbildung \ref{fig:numerischeGrenzfälle1} wesentlich weniger Stützpunkte
-	gewählt, als in den bereits gezeigten Abbildungen. Im Fall des Bildes (a) aus der Abbildung  \ref{fig:numerischeGrenzfälle1} wird gar kein Stützpunkt verwendet, was zur folge hat,
+	gewählt, als in den bereits gezeigten Abbildungen. Im Fall des Bildes (a) aus der Abbildung  \ref{fig:numerischeGrenzfälle1} wird gar kein Stützpunkt verwendet, was zurfolge hat,
 	dass das Licht aus den Lichtquellen keinen Einfluss auf die Farbe der Kugel hat.
-	In den Bildern (a) und (b) der gleichen Abbildung, zeigt sich eine deutliche Verbesserung
-	der Lichtverteilung in der Kugel. Als Lichtquellen wurden wieder die gleichen Lichtquellen verwendet
+	In den Bildern (a) und (b) der gleichen Abbildung zeigt sich eine deutliche Verbesserung
+	der Lichtverteilung in der Kugel. Als Lichtquellen wurden wieder die gleichen Lichtquellen verwendet,
 	wie zuvor.
 	
 	\begin{figure}[ph]
 		\centering
 		\subfigure[$\Theta_{max} = 0.0$]{\includegraphics[width=0.29\textwidth]{images/ng_s50_O0.png}}
 		\subfigure[$\Theta_{max} = 1.0$]{\includegraphics[width=0.29\textwidth]{images/ng_s50_O1.png}}
-		\caption{Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von Stützpunkten.}
+		\caption{Die Abbildung zeigt jeweils eine Kugel mit sehr niedrigen Anzahlen von Stützpunkten.}
 		\label{fig:numerischeGrenzfälle2}
 	\end{figure}
 	
-	Die Abbildung \ref{fig:numerischeGrenzfälle2} zeigt, was passiert wenn der Wert für die maximale
+	Die Abbildung \ref{fig:numerischeGrenzfälle2} zeigt, was passiert, wenn der Wert für die maximale
 	Lichtundurchlässigkeit die Grenzfälle annimmt. Im Bild (a) wird $\Theta_{max} = 0.0$ gesetzt
 	und im Bild (b) auf $1.0$, so dass die Kugel überhaupt kein Licht mehr durchlässt.
 	
@@ -922,31 +921,31 @@ Optional:
 		\label{fig:2BT9}
 	\end{figure}
 
-	Bevor der Algorithmus quantitativ untersucht werden kann ist es nötig, 
+	Bevor der Algorithmus quantitativ untersucht werden kann, ist es nötig, 
 	zwei Bilder miteinander vergleichen zu können. 
 	Ein Gütewert muss die Übereinstimmung der beiden Bilder widerspiegeln.
 	Wie ein solcher Gütewert erhoben wird, stellt der folgende Abschnitt vor.
 
 \section{SSIM}
 
-	Der \textit{structural similarity} Index, kurz \textit{SSIM} ist eine Metrik, eine Abstandsfunktion.
+	Der \textit{structural similarity} Index, kurz \textit{SSIM}, ist eine Metrik, eine Abstandsfunktion.
 	Diese weist zwei Bildern einen nicht negativen reellen Wert zu, der als Ähnlichkeit der Bilder interpretiert wird.
 	
-	Ein solcher Gütewert, zur Abschätzung der Ähnlichkeit zweier Bilder kann auf verschiedene weisen erhoben werden.
+	Ein solcher Gütewert zur Abschätzung der Ähnlichkeit zweier Bilder, kann auf verschiedene Weisen erhoben werden.
 	Ein möglicher Ansatz besteht darin, eine Abstandsfunktion auf jedes Pixelpaar anzuwenden.
 	Für jedes dieser Paare wird ein Abstand bestimmt und der Betrag oder das Quadrat von diesem wird als Fehler aufsummiert.
-	Das Problem  besteht darin, das diese Verfahren Kontext unabhängig sind.
-	Als Beispiel, wird eines der Bilder um wenige Pixel auf der X- oder Y-Achse verschoben, 
-	dann entsprechen die Pixelpaare keinen wirklichen Korrespondenzpunkten mehr. 
-	Der Fehler steigt drastisch an und die beiden Bilder als vollkommen unterschiedlich klassifizieren, 
+	Das Problem besteht darin, dass diese Verfahren kontextunabhängig sind.
+	Als Beispiel wird eines der Bilder um wenige Pixel auf der X- oder Y-Achse verschoben. 
+	Dann entsprechen die Pixelpaare keinen wirklichen Korrespondenzpunkten mehr. 
+	Der Fehler steigt drastisch an und die beiden Bilder werden als vollkommen unterschiedlich klassifiziert, 
 	obwohl sie sich im Prinzip nur geringfügig unterscheiden.
 
-	Beim SSIM dagegen wird der Fehler in einen Beleuchtungsterm $l(x, y)$, einen Kontrastterm $c(x, y)$ und 
+	Beim SSIM dagegen, wird der Fehler in einen Beleuchtungsterm $l(x, y)$, einen Kontrastterm $c(x, y)$ und 
 	in einen Term $s(x, y)$ zum Vergleich von Strukturen unterteilt. 
 	Zur Berechnung dieser Terme wird nicht ein einzelner Pixel, sondern ein kleines Fenster um einen Pixel
 	zur Auswertung herangezogen.
 	Diese drei Komponenten sind verhältnismäßig unabhängig voneinander. Eine Veränderung der Helligkeit des
-	Bildes, beeinflusst die Struktur dieses beispielsweise nicht.
+	Bildes beeinflusst die Struktur dieses beispielsweise nicht.
 	$x$ und $y$ entsprechen dabei keinen Pixeln, sondern den beiden zu vergleichenden Signalen, in diesem
 	Fall den Bildern.
 	
@@ -969,7 +968,7 @@ Optional:
 		\sigma_{xy} = \frac{1}{N - 1} \sum\limits_{i = 1}^{N} (x_i - \mu_x)(y_i - \mu_y)
 	\end{equation}
 	
-	Das letztliche Maß lässt durch die folgende Gleichung errechnen:
+	Das eigentliche Maß lässt sich durch die folgende Gleichung errechnen:
 	
 	\begin{align}
 		SSIM(x, y) &= l(x, y) \cdot c(x, y) \cdot s(x, y) \notag\\
@@ -981,12 +980,12 @@ Optional:
 \section{Quantitative Evaluation}
 	
 	Zur Auswertung wurden zwei Datensätze in verschiedenen Szenen gezeichnet und die Rechenzeiten erhoben.
-	Die zur Evaluation erhoben Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die
+	Die zur Evaluation erhobenen Daten wurden mit einem Core i7-4700HQ CPU (2.40GHz x 8) berechnet und die
 	Bilder mit einer Auflösung von $512 \times 512$ erzeugt. Bei dem ersten Datensatz handelt es sich
 	um das 1UUN-Protein, das mit 2758 Partikeln dargestellt wird. Der zweite Datensatz wurde mit
 	einem Zufallsgenerator generiert und besteht aus 73642 Partikeln.
 	Geschwindigkeit und Güte des Algorithmus werden in Abhängigkeit der Stützpunktanzahl 
-	und dem Parameter $N$, für die beschleunigte Variante evaluiert.
+	und dem Parameter $N$, für die beschleunigte Variante, evaluiert.
 	Die Abkürzung GT steht im weiteren Textverlauf für Ground-Truth und bezeichnet eine Bildsynthese
 	ohne das Beschleunigungsverfahren.
 	
@@ -998,26 +997,26 @@ Optional:
 		\label{fig:1UUN}
 	\end{figure}
 	
-	Es wird das 1UUN-Protein betrachtet, die Abbildung \ref{fig:1UUN} zweigt zwei Abbildungen des Proteins,
-	gezeichnet mit zwei unterschiedlichen Parameter Einstellungen. 
+	Es wird das 1UUN-Protein betrachtet. Die Abbildung \ref{fig:1UUN} zeigt zwei Abbildungen des Proteins,
+	gezeichnet mit zwei unterschiedlichen Parametereinstellungen. 
 	Das Bild auf der linken Seite wurde mit einer sehr niedrigen Anzahl von Stützpunkten generiert 
 	und verwendet nur für die erste, vom Sichtstrahl geschnittene Kugel, das erweiterte Beleuchtungsmodell.
 	Das zweite Bild auf der rechten Seite wurde mit 100 Stützpunkten je geschnittener Kugel generiert und verwendet für alle Kugeln, geschnitten vom Sichtstrahl, das erweiterte Beleuchtungsmodell.
 	Die Anzahl der Lichtquellen ist ein Multiplikator der Sekundärstrahlanzahl, da für jeden Stützpunkt zu jeder Lichtquelle ein Sekundärstrahl in die Szene geschossen wird. Die Testszenen wurden mit jeweils zwei
-	Richtungslichtquellen gezeichnet. Die erste Strahlt grünes Licht von oben nach unten in die Szene und die zweite
+	Richtungslichtquellen gezeichnet. Die Erste strahlt grünes Licht von oben nach unten in die Szene und die Zweite
 	blaues Licht von unten nach oben.
-	Die zu diesen Datensatz erhobenen Rechenzeiten sind im Folgenden Diagramm abgebildet:
+	Die zu diesem Datensatz erhobenen Rechenzeiten sind im folgenden Diagramm abgebildet:
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=10cm]{images/pdb1UUN.pdf}
-		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$, des Datensatzes 1UUN-Proteins dar.}
+		\caption{Das Diagramm stellt die Renderzeiten in Abhängigkeit der Stützpunkanzahl und $N$ des Datensatzes 1UUN-Proteins dar.}
 		\label{fig:pdb.1UUNChart}
 	\end{figure}
 	
 	In der Abbildung \ref{fig:pdb.1UUNChart} stellt die Y-Achse benötigte Rechenzeit in Sekunden dar und die
 	X-Achse bildet die Anzahl der verwendeten Stützpunkte ab. 
-	Die Szene wurde für verschiedene Stufen der Beschleunigungsvariante, in Abhängigkeit der Stützpunktanzahl gezeichnet.
+	Die Szene wurde für verschiedene Stufen der Beschleunigungsvariante, in Abhängigkeit der Stützpunktanzahl, gezeichnet.
 	Die Abbildung zeigt einen linearen Anstieg der Rechenzeiten in Abhängigkeit der Stützpunkanzahl.
 	Zudem steigt der Anstieg mit wachsendem $N$. Der Datensatz des 1UUN-Proteins umfasst nur wenige
 	Partikel, deshalb sind die Ground-Truth Ergebnisse mit $N = 5$ nahezu identisch. 
@@ -1030,16 +1029,16 @@ Optional:
 		\label{fig:cool_randomChart}
 	\end{figure}
 	
-	Die Abbildung \ref{fig:cool_randomChart} zeigt ein ähnliches Ergebnis für den Zufällig generierten Datensatz.
+	Die Abbildung \ref{fig:cool_randomChart} zeigt ein ähnliches Ergebnis für den zufällig generierten Datensatz.
 	In diesem wurden wesentlich mehr Partikel betrachtet, weshalb die Unterschiede zwischen den einzelnen
 	Parametereinstellungen stärker zur Geltung kommen. 
 	Die auftretenden Schwankungen bei den Messungen des 1UUN-Proteins kommen in der Abbildung \ref{fig:pdb.1UUNChart}
 	vermutlich auf Grund der wesentlich kleineren Zeitskala der Y-Achse mehr zur Geltung, als bei der Abbildung \ref{fig:cool_randomChart}.
 	
-	Zur Evaluation der beschleunigten Variante, wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
-	Diese wurde mit Hilfe des bereits vorgestellten \textit{structural similarity}-Index, kurz SSIM ermittelt. 
-	Dabei wird die Übereinstimmung der Ergebnisse, im Verhältnis zum Ground-Truth Bildes für jeden Farbkanal einzeln
-	in Prozent angeben. Die nachfolgenden Tabellen wurden um den Mittelwert der Übereinstimmung aller Farbkanäle ergänzt:
+	Zur Evaluation der beschleunigten Variante wurden die erzeugten Bilder hinsichtlich ihrer Ähnlichkeit untersucht.
+	Diese wurde mit Hilfe des bereits vorgestellten \textit{structural similarity}-Index, kurz SSIM, ermittelt. 
+	Dabei wird die Übereinstimmung der Ergebnisse im Verhältnis zum Ground-Truth Bild für jeden Farbkanal einzeln
+	in Prozent angegeben. Die nachfolgenden Tabellen wurden um den Mittelwert der Übereinstimmung aller Farbkanäle ergänzt:
 	
 	\begin{table}[h]
 		\centering
@@ -1080,14 +1079,14 @@ Optional:
 	\end{table}
 	
 	Die Tabellen \ref{tab:1UUN-Protein} und \ref{tab:cool_random} zeigen deutlich,
-	dass die Ergebnisse der beschleunigten Variante des Algorithmus, 
+	dass die Ergebnisse der beschleunigten Variante des Algorithmus 
 	ab einen gewissen $N$ sich kaum noch von den Ground-Truth Bildern unterscheiden.
 	Ein großer Unterschied besteht jedoch in der Geschwindigkeit der Beleuchtungsberechnung.
 
-\section{Fazit}
+\section{Verbesserungsmöglichkeiten}
 
 	Ein Problem der Implementierung besteht darin, dass Artefakte entstehen, wenn sich Kugeln überlappen.
-	Es wird angenommen, das die Kugeln hintereinander liegen und das Licht durch die gesamten
+	Es wird angenommen, dass die Kugeln hintereinander liegen und das Licht durch die gesamten
 	Kugeln abgeschwächt wird.
 	Um dieses Problem zu lösen, könnten alle überlappenden Kugeln zu Objekten zusammengefasst werden.
 	Bei einem Schnitt mit einem solchen Objekt, müsste die Berechnung an den Schnittebenen der Kugeln

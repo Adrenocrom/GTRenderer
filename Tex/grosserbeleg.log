@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  7 JUN 2015 17:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  8 JUN 2015 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,10 +837,10 @@ Package pdftex.def Info: images/em_easy.png used on input line 829.
 <images/em_local.png, id=384, 1027.84pt x 2055.68pt>
 File: images/em_local.png Graphic file (type png)
  <use images/em_local.png>
-Package pdftex.def Info: images/em_local.png used on input line 867.
+Package pdftex.def Info: images/em_local.png used on input line 866.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 7273) in paragraph at lines 867--867
+Underfull \hbox (badness 7273) in paragraph at lines 866--866
 []\T1/ptm/m/n/9 (a) Er-wei-ter-tes EA-Modell oh-ne
  []
 
@@ -848,20 +848,20 @@ Underfull \hbox (badness 7273) in paragraph at lines 867--867
 File: images/em_global.png Graphic file (type png)
 
 <use images/em_global.png>
-Package pdftex.def Info: images/em_global.png used on input line 868.
+Package pdftex.def Info: images/em_global.png used on input line 867.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 868--868
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\T1/ptm/m/n/9 (b) Er-wei-ter-tes EA-Modell mit
  []
 
 <images/em_low.png, id=386, 1027.84pt x 2055.68pt>
 File: images/em_low.png Graphic file (type png)
  <use images/em_low.png>
-Package pdftex.def Info: images/em_low.png used on input line 869.
+Package pdftex.def Info: images/em_low.png used on input line 868.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 869--869
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 []\T1/ptm/m/n/9 (c) Er-wei-ter-tes EA-Modell mit
  []
 
@@ -870,47 +870,47 @@ mages/em_low.png (PNG copy)>]
 <images/ng_s0.png, id=398, 1027.84pt x 1027.84pt>
 File: images/ng_s0.png Graphic file (type png)
  <use images/ng_s0.png>
-Package pdftex.def Info: images/ng_s0.png used on input line 891.
+Package pdftex.def Info: images/ng_s0.png used on input line 890.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s1.png, id=399, 1027.84pt x 1027.84pt>
 File: images/ng_s1.png Graphic file (type png)
  <use images/ng_s1.png>
-Package pdftex.def Info: images/ng_s1.png used on input line 892.
+Package pdftex.def Info: images/ng_s1.png used on input line 891.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s2.png, id=400, 1027.84pt x 1027.84pt>
 File: images/ng_s2.png Graphic file (type png)
  <use images/ng_s2.png>
-Package pdftex.def Info: images/ng_s2.png used on input line 893.
+Package pdftex.def Info: images/ng_s2.png used on input line 892.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s50_O0.png, id=403, 1027.84pt x 1027.84pt>
 File: images/ng_s50_O0.png Graphic file (type png)
 
 <use images/ng_s50_O0.png>
-Package pdftex.def Info: images/ng_s50_O0.png used on input line 907.
+Package pdftex.def Info: images/ng_s50_O0.png used on input line 906.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s50_O1.png, id=404, 1027.84pt x 1027.84pt>
 File: images/ng_s50_O1.png Graphic file (type png)
 
 <use images/ng_s50_O1.png>
-Package pdftex.def Info: images/ng_s50_O1.png used on input line 908.
+Package pdftex.def Info: images/ng_s50_O1.png used on input line 907.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/shadowPhong.png, id=406, 1027.84pt x 1027.84pt>
 File: images/shadowPhong.png Graphic file (type png)
 
 <use images/shadowPhong.png>
-Package pdftex.def Info: images/shadowPhong.png used on input line 919.
+Package pdftex.def Info: images/shadowPhong.png used on input line 918.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 <images/shadowEEA.png, id=407, 1027.84pt x 1027.84pt>
 File: images/shadowEEA.png Graphic file (type png)
 
 <use images/shadowEEA.png>
-Package pdftex.def Info: images/shadowEEA.png used on input line 920.
+Package pdftex.def Info: images/shadowEEA.png used on input line 919.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 
@@ -928,7 +928,7 @@ File: images/512x512_samples_5_approx_1.png Graphic file (type png)
 
 <use images/512x512_samples_5_approx_1.png>
 Package pdftex.def Info: images/512x512_samples_5_approx_1.png used on input li
-ne 995.
+ne 994.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 <images/512x512_samples_100_approx_100000.png, id=433, 1027.84pt x 1027.84pt>
@@ -936,7 +936,7 @@ File: images/512x512_samples_100_approx_100000.png Graphic file (type png)
 
 <use images/512x512_samples_100_approx_100000.png>
 Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
-nput line 996.
+nput line 995.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
  [27 <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_sam
 ples_100_approx_100000.png (PNG copy)>] <images/pdb1UUN.pdf, id=444, 506.08914p
@@ -944,14 +944,14 @@ t x 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
-Package pdftex.def Info: images/pdb1UUN.pdf used on input line 1013.
+Package pdftex.def Info: images/pdb1UUN.pdf used on input line 1012.
 (pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
 
 <images/cool_random.pdf, id=446, 511.55208pt x 279.60521pt>
 File: images/cool_random.pdf Graphic file (type pdf)
 
 <use images/cool_random.pdf>
-Package pdftex.def Info: images/cool_random.pdf used on input line 1028.
+Package pdftex.def Info: images/cool_random.pdf used on input line 1027.
 (pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
  [28 <./images/pdb1UUN.pdf> <./images/cool_random.pdf
 
@@ -988,15 +988,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [38
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1117.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1118.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1118.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1118.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1118.
 
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
 (rerunfilecheck)             Checksum: 67014893AFE4EE48E82F43D9EE0FB7FF;1266.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1118.
  )
 (\end occurred inside a group at level 1)
 
@@ -1024,7 +1024,7 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (44 pages, 7278770 bytes).
+Output written on grosserbeleg.pdf (44 pages, 7278864 bytes).
 PDF statistics:
  630 PDF objects out of 1000 (max. 8388607)
  528 compressed objects within 6 object streams

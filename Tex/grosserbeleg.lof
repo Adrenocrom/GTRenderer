@@ -9,19 +9,19 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces UML-Diagramm des Programms, die Hauptklasse hei\IeC {\ss }t \textit {zikade}.}}{21}{figure.5.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Abbildungen einer einfachen Szene gezeichnet mit dem Phong-Beleuchtungsmodell, einmal ohne und einmal mit globalen Schatteneffekten. Zus\"atzlich, wird die selbe Szene, gezeichnet mit dem einfachen Emissions- und Absorptionsmodell dargestellt.}}{23}{figure.6.1}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Abbildungen einer einfachen Szene, gezeichnet mit dem Phong-Beleuchtungsmodell, einmal ohne und einmal mit globalen Schatteneffekten. Zus\"atzlich wird dieselbe Szene gezeichnet mit dem einfachen Emissions- und Absorptionsmodell dargestellt.}}{23}{figure.6.1}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Phong Beleuchtung ohne Schatten}}}{23}{figure.6.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Phong Beleuchtung mit Schatten}}}{23}{figure.6.1}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Einfaches EA-Modell}}}{23}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Die Abbildung zeigt die selbe Szene wie die Abbildung \ref {fig:vergleich1}, gezeichnet mit dem erweiterten Emissions- und Absorptionsmodell}}{24}{figure.6.2}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Die Abbildung zeigt dieselbe Szene wie die Abbildung \ref {fig:vergleich1}, gezeichnet mit dem erweiterten Emissions- und Absorptionsmodell}}{24}{figure.6.2}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Erweitertes EA-Modell ohne Schatten}}}{24}{figure.6.2}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Erweitertes EA-Modell mit Schatten}}}{24}{figure.6.2}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Erweitertes EA-Modell mit Schatten}}}{24}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von St\"utzpunkten.}}{25}{figure.6.3}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Die Abbildung zeigt jeweils eine Kugel mit sehr niedrigen Anzahlen von St\"utzpunkten.}}{25}{figure.6.3}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {0 St\"utzpunkte}}}{25}{figure.6.3}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {1 St\"utzpunkt}}}{25}{figure.6.3}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {2 St\"utzpunkte}}}{25}{figure.6.3}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Die Abbildung zeigt jeweils eine Kugel, mit sehr niedrigen Anzahlen von St\"utzpunkten.}}{25}{figure.6.4}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Die Abbildung zeigt jeweils eine Kugel mit sehr niedrigen Anzahlen von St\"utzpunkten.}}{25}{figure.6.4}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\Theta _{max} = 0.0$}}}{25}{figure.6.4}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\Theta _{max} = 1.0$}}}{25}{figure.6.4}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Abbildungen des 2BT9-Proteins, links mit dem Phong und rechts mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.}}{26}{figure.6.5}
@@ -30,5 +30,5 @@
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Abbildungen des 1UUN-Proteins, die mit verschiedenen Parametern erzeugt wurden.}}{27}{figure.6.6}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {5 St\"utzpunkte und $N$ = 1}}}{27}{figure.6.6}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {100 St\"utzpunkte und $N$ = GT}}}{27}{figure.6.6}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes 1UUN-Proteins dar.}}{28}{figure.6.7}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$ des Datensatzes 1UUN-Proteins dar.}}{28}{figure.6.7}
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Das Diagramm stellt die Renderzeiten in Abh\"angigkeit der St\"utzpunkanzahl und $N$, des Datensatzes cool\_random dar.}}{28}{figure.6.8}
