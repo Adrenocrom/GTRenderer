@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  8 JUN 2015 13:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.30)  8 JUN 2015 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -580,20 +580,20 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 (./grosserbeleg.aux)
 \openout1 = `grosserbeleg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -624,7 +624,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 79.
+Package hyperref Info: Link coloring OFF on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -634,9 +634,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 79.
-LaTeX Info: Redefining \pageref on input line 79.
-LaTeX Info: Redefining \nameref on input line 79.
+LaTeX Info: Redefining \ref on input line 80.
+LaTeX Info: Redefining \pageref on input line 80.
+LaTeX Info: Redefining \nameref on input line 80.
 
 (./grosserbeleg.out) (./grosserbeleg.out)
 \@outlinefile=\write4
@@ -650,24 +650,24 @@ LaTeX Info: Redefining \nameref on input line 79.
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+phv on input line 79.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 80.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 79.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 80.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
 
-Overfull \hbox (9.9931pt too wide) in paragraph at lines 79--79
+Overfull \hbox (9.9931pt too wide) in paragraph at lines 80--80
 []\T1/ptm/m/n/10.95 Schrittweise Kon-zep-ti-on und Um-set-zung ei-ner er-weiter
 -ba-ren Ar-chi-tek-tur zum Er-zeu-gen von Ground-
  []
@@ -676,7 +676,7 @@ Overfull \hbox (9.9931pt too wide) in paragraph at lines 79--79
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 80.
  [5
 
 ] [6
@@ -699,7 +699,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.79 \begin{document}
+l.80 \begin{document}
                       [1
 
 
@@ -707,7 +707,7 @@ l.79 \begin{document}
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.79 \begin{document}
+l.80 \begin{document}
                       [2
 
 ]
@@ -734,28 +734,28 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.135 
+l.136 
        [3
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.136 \chapter
+l.137 \chapter
               {Verwandte Arbeiten} [4]
  2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.180 \chapter
+l.181 \chapter
               {Grundlagen} [5
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.180 \chapter
+l.181 \chapter
               {Grundlagen} [6
 
 ]
@@ -795,7 +795,7 @@ Package pdftex.def Info: images/exStandartAbsorption.pdf used on input line 52.
 .2pt x 1084.05pt>
 File: images/chkpt.png Graphic file (type png)
  <use images/chkpt.png>
-Package pdftex.def Info: images/chkpt.png used on input line 646.
+Package pdftex.def Info: images/chkpt.png used on input line 647.
 (pdftex.def)             Requested size: 455.24408pt x 256.07509pt.
 
 [17 <./images/chkpt.png (PNG copy)>] [18
@@ -806,7 +806,7 @@ Package pdftex.def Info: images/chkpt.png used on input line 646.
 File: images/UMLZikade.pdf Graphic file (type pdf)
 
 <use images/UMLZikade.pdf>
-Package pdftex.def Info: images/UMLZikade.pdf used on input line 793.
+Package pdftex.def Info: images/UMLZikade.pdf used on input line 794.
 (pdftex.def)             Requested size: 455.24408pt x 180.3274pt.
  [21 <./images/UMLZikade.pdf>] [22]
  6.
@@ -814,20 +814,20 @@ Package pdftex.def Info: images/UMLZikade.pdf used on input line 793.
 File: images/phong_local.png Graphic file (type png)
 
 <use images/phong_local.png>
-Package pdftex.def Info: images/phong_local.png used on input line 826.
+Package pdftex.def Info: images/phong_local.png used on input line 827.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
 <images/phong_global.png, id=373, 1027.84pt x 2055.68pt>
 File: images/phong_global.png Graphic file (type png)
 
 <use images/phong_global.png>
-Package pdftex.def Info: images/phong_global.png used on input line 827.
+Package pdftex.def Info: images/phong_global.png used on input line 828.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
 <images/em_easy.png, id=374, 1027.84pt x 2055.68pt>
 File: images/em_easy.png Graphic file (type png)
  <use images/em_easy.png>
-Package pdftex.def Info: images/em_easy.png used on input line 828.
+Package pdftex.def Info: images/em_easy.png used on input line 829.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
 [23
@@ -837,10 +837,10 @@ Package pdftex.def Info: images/em_easy.png used on input line 828.
 <images/em_local.png, id=389, 1027.84pt x 2055.68pt>
 File: images/em_local.png Graphic file (type png)
  <use images/em_local.png>
-Package pdftex.def Info: images/em_local.png used on input line 865.
+Package pdftex.def Info: images/em_local.png used on input line 866.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 7273) in paragraph at lines 865--865
+Underfull \hbox (badness 7273) in paragraph at lines 866--866
 []\T1/ptm/m/n/9 (a) Er-wei-ter-tes EA-Modell oh-ne
  []
 
@@ -848,20 +848,20 @@ Underfull \hbox (badness 7273) in paragraph at lines 865--865
 File: images/em_global.png Graphic file (type png)
 
 <use images/em_global.png>
-Package pdftex.def Info: images/em_global.png used on input line 866.
+Package pdftex.def Info: images/em_global.png used on input line 867.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--866
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\T1/ptm/m/n/9 (b) Er-wei-ter-tes EA-Modell mit
  []
 
 <images/em_low.png, id=391, 1027.84pt x 2055.68pt>
 File: images/em_low.png Graphic file (type png)
  <use images/em_low.png>
-Package pdftex.def Info: images/em_low.png used on input line 867.
+Package pdftex.def Info: images/em_low.png used on input line 868.
 (pdftex.def)             Requested size: 132.01772pt x 264.01697pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 867--867
+Underfull \hbox (badness 10000) in paragraph at lines 868--868
 []\T1/ptm/m/n/9 (c) Er-wei-ter-tes EA-Modell mit
  []
 
@@ -870,47 +870,47 @@ mages/em_low.png (PNG copy)>]
 <images/ng_s0.png, id=403, 1027.84pt x 1027.84pt>
 File: images/ng_s0.png Graphic file (type png)
  <use images/ng_s0.png>
-Package pdftex.def Info: images/ng_s0.png used on input line 889.
+Package pdftex.def Info: images/ng_s0.png used on input line 890.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s1.png, id=404, 1027.84pt x 1027.84pt>
 File: images/ng_s1.png Graphic file (type png)
  <use images/ng_s1.png>
-Package pdftex.def Info: images/ng_s1.png used on input line 890.
+Package pdftex.def Info: images/ng_s1.png used on input line 891.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s2.png, id=405, 1027.84pt x 1027.84pt>
 File: images/ng_s2.png Graphic file (type png)
  <use images/ng_s2.png>
-Package pdftex.def Info: images/ng_s2.png used on input line 891.
+Package pdftex.def Info: images/ng_s2.png used on input line 892.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s50_O0.png, id=408, 1027.84pt x 1027.84pt>
 File: images/ng_s50_O0.png Graphic file (type png)
 
 <use images/ng_s50_O0.png>
-Package pdftex.def Info: images/ng_s50_O0.png used on input line 905.
+Package pdftex.def Info: images/ng_s50_O0.png used on input line 906.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/ng_s50_O1.png, id=409, 1027.84pt x 1027.84pt>
 File: images/ng_s50_O1.png Graphic file (type png)
 
 <use images/ng_s50_O1.png>
-Package pdftex.def Info: images/ng_s50_O1.png used on input line 906.
+Package pdftex.def Info: images/ng_s50_O1.png used on input line 907.
 (pdftex.def)             Requested size: 132.01772pt x 132.00848pt.
 
 <images/shadowPhong.png, id=411, 1027.84pt x 1027.84pt>
 File: images/shadowPhong.png Graphic file (type png)
 
 <use images/shadowPhong.png>
-Package pdftex.def Info: images/shadowPhong.png used on input line 917.
+Package pdftex.def Info: images/shadowPhong.png used on input line 918.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 <images/shadowEEA.png, id=412, 1027.84pt x 1027.84pt>
 File: images/shadowEEA.png Graphic file (type png)
 
 <use images/shadowEEA.png>
-Package pdftex.def Info: images/shadowEEA.png used on input line 918.
+Package pdftex.def Info: images/shadowEEA.png used on input line 919.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 
@@ -928,7 +928,7 @@ File: images/512x512_samples_5_approx_1.png Graphic file (type png)
 
 <use images/512x512_samples_5_approx_1.png>
 Package pdftex.def Info: images/512x512_samples_5_approx_1.png used on input li
-ne 993.
+ne 994.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
 
 <images/512x512_samples_100_approx_100000.png, id=438, 1027.84pt x 1027.84pt>
@@ -936,7 +936,7 @@ File: images/512x512_samples_100_approx_100000.png Graphic file (type png)
 
 <use images/512x512_samples_100_approx_100000.png>
 Package pdftex.def Info: images/512x512_samples_100_approx_100000.png used on i
-nput line 994.
+nput line 995.
 (pdftex.def)             Requested size: 223.0721pt x 223.0672pt.
  [27 <./images/512x512_samples_5_approx_1.png (PNG copy)> <./images/512x512_sam
 ples_100_approx_100000.png (PNG copy)>] <images/pdb1UUN.pdf, id=449, 506.08914p
@@ -944,14 +944,14 @@ t x 276.58925pt>
 File: images/pdb1UUN.pdf Graphic file (type pdf)
 
 <use images/pdb1UUN.pdf>
-Package pdftex.def Info: images/pdb1UUN.pdf used on input line 1011.
+Package pdftex.def Info: images/pdb1UUN.pdf used on input line 1012.
 (pdftex.def)             Requested size: 284.52756pt x 155.5051pt.
 
 <images/cool_random.pdf, id=451, 511.55208pt x 279.60521pt>
 File: images/cool_random.pdf Graphic file (type pdf)
 
 <use images/cool_random.pdf>
-Package pdftex.def Info: images/cool_random.pdf used on input line 1026.
+Package pdftex.def Info: images/cool_random.pdf used on input line 1027.
 (pdftex.def)             Requested size: 284.52756pt x 155.51976pt.
  [28 <./images/pdb1UUN.pdf> <./images/cool_random.pdf
 
@@ -987,19 +987,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [38
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1145.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1145.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1147.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1147.
  (./grosserbeleg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1145.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1145.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1147.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1147.
 
 Package rerunfilecheck Info: File `grosserbeleg.out' has not changed.
 (rerunfilecheck)             Checksum: 74052A64C2F5F389F2A3ABD4F566EBA8;1346.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1145.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1147.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 79 (\begingroup)
+### semi simple group (level 1) entered at line 80 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
  11130 strings out of 494976
@@ -1023,7 +1023,7 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on grosserbeleg.pdf (44 pages, 7294447 bytes).
+Output written on grosserbeleg.pdf (44 pages, 7294614 bytes).
 PDF statistics:
  635 PDF objects out of 1000 (max. 8388607)
  533 compressed objects within 6 object streams
