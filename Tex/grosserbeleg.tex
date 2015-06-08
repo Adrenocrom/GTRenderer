@@ -1103,24 +1103,33 @@ Optional:
 	
 \newpage	
 	
-\section{Zusammenfassung}
+\section{Fazit}
 
-	Das Ziel der Arbeit bestand in der Entwicklung eines CPU-Renderes zur Darstellung von Partikeldaten.
+	Das Ziel der Arbeit bestand in der Entwicklung eines CPU-Renderers zur Darstellung von Partikeldaten.
 	Dieser sollte die Partikel mit Hilfe einer Rendergleichung zeichnen, 
 	die auf dem Emissions- und Absorptions-Modell basiert und eine beliebige Anzahl von Punkt- und Richtungslichtquellen
 	unterstützt.
-	Unter der Annahme konstanter Dichten und linearen Transferfunktionen, 
+	Unter der Annahme konstanter Dichten und linearen Transferfunktionen
 	sollte die Gleichung weitestgehend analytisch gelöst werden.
 
-	Zu beginn der Arbeit wurden die Grundlagen der Raycast-Technik erläutert und alle grundlegenden Gleichungen hergeleitet. Im Anschluss daran wurde eine einfache Variante des Emissions- und Absorptions-Modell aus einer bestehenden Arbeit
+	Zu Beginn der Arbeit wurden die Grundlagen der Raycast-Technik erläutert und alle grundlegenden Gleichungen hergeleitet. Im Anschluss daran wurde eine einfache Variante des Emissions- und Absorptions-Modells aus einer bestehenden Arbeit
 	für diesen Zweck erweitert.
 	Da für die resultierende Gleichung keine analytische Lösung existiert, wurde das Integral in Riemannsummen zerlegt.
 	Die auf diese Weise entstandene Formel wurde implementiert und Bilder mit verschiedenen Datensätzen generiert.
 	
-	Mit Hilfe einer einfachen Szene, wurden Ergebnisse erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
+	Mit Hilfe einer einfachen Szene wurden Bilder erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
+	Ein Vorteil der implementierten Lösung gegenüber dem Phong-Beleuchtungsmodell ist die Transparenz,
+	denn durch diese werden die sonst verdeckten Informationen sichtbar und 
+	zwar ohne das die plastische Wirkung der dargestellten Kugeln verloren geht. 
 	Zusätzlich wurde eine beschleunigte Variante des Verfahrens implementiert und die Ergebnisse dieser wurden hinsichtlich
-	ihrer Güte untersucht. Dazu wurden zuerst Ground-Truth Bilder erzeugt, welche mit Hilfe des SSIM-Index
-	mit den anderen Ergebnissen verglichen wurden.
+	ihrer Güte mit Hilfe von Ground-Truth Bildern und dem SSIM-Index evaluiert.
+	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, aber der Geschwindigkeitszuwachs enorm ist.
+	
+	Interessant wäre es den Algorithmus auf die GPU zu portieren und diesen damit, falls möglich derart zu
+	beschleunigen, dass echtzeitfähige Bildwiederholungsraten möglich werden.
+	Zusätzlich könnte eine Phasenfunktion implementiert und die Streuung mit in die Rendergleichung einbezogen werden.
+	
+	
 
 %\chapter{title}	
 %
