@@ -687,7 +687,7 @@ Optional:
 \section{Szenenbeschreibung}
 
 	Wie oben beschrieben, lassen sich die Szene und die Programmparameter durch eine Textdatei definieren.
-	Die Datei wird zeilenweise eingelesen, jede Zeile bietet die Möglichkeit einen Befehl zu setzten.
+	Die Datei wird zeilenweise eingelesen. Jede Zeile bietet die Möglichkeit einen Befehl zu setzten.
 	Für die Platzierung und Ausrichtung der Kamera existieren zum Beispiel drei verschiedene Varianten.
 	In allen Varianten wird die Kamera durch die Angabe eines Vektors positioniert. 
 	Die Blickrichtung kann entweder	mit zwei Drehwinkeln beeinflusst werden oder es wird ein Punkt gewählt,
@@ -712,8 +712,7 @@ Optional:
 	
 	Neben der Hintergrundbeleuchtung gibt es die Möglichkeit, beliebig viele Punkt- und Richtungslichtquellen zu definieren.
 	Beide Typen von Lichtquellen besitzen einen Farbvektor als Parameter.
-	Die Punktlichtquellen besitzen zusätzlich eine Position
-	und Richtungslichtquellen besitzt anstatt der Position einen normierten Richtungsvektor.
+	Die Punktlichtquellen besitzen zusätzlich eine Position, während die Richtungslichtquellen anstatt der Position einen normierten Richtungsvektor besitzen.
 	
 	Die Beleuchtungsbrechung lässt sich neben dem erläuterten Emissions- und Absorptionsmodell auch mit dem
 	Phong-Beleuchtungsmodell berechnen.
@@ -740,7 +739,7 @@ Optional:
 	Interesse. An der Schnittposition wird die Normale berechnet, um einen Wert für die diffusen und für
 	die spekularen Reflektionsanteile zu bestimmen. 
 	Das genaue Modell wird in der Arbeit \cite{Blinn:1977:MLR:965141.563893} erläutert.
-	Zur Erzeugung der globalen Schatten, müssen ausgehend des Schnittpunktes Sekundärstrahlen zu jeder Lichtquelle
+	Zur Erzeugung der globalen Schatten müssen ausgehend des Schnittpunktes Sekundärstrahlen zu jeder Lichtquelle
 	geschossen werden. Wenn ein Sekundärstrahl dabei eine andere Kugel schneidet, dann wird die Farbe
 	der Lichtquelle mit dem Nullvektor ersetzt.
 	
@@ -755,10 +754,10 @@ Optional:
 	Dieser Vorgang wird wiederholt, bis alle Kugeln entlang des Strahls abgearbeitet wurden.
 	Am Sensor wird die Intensität der letzten Beleuchtungsberechnung gespeichert und anschließend normiert.
 	
-	Da sich für die erweiterte Beleuchtungsberechnung keine analytische Lösung finden ließ,
-	muss für jeden Stützpunkt ein neuer Strahl in Richtung jeder Lichtquelle geschossen werden.
-	Für jeden Sekundärstrahl wird das Licht der entsprechenden Lichtquelle als Hintergrundbeleuchtung betrachtet.
-	Werden globale Schatten verwendet, dann wird dieses Licht entlang des Strahls wiederum durch die vom
+	Da sich für die erweiterte Beleuchtungsberechnung keine analytische Lösung finden ließ und die Lösung numerisch approximiert werden muss, wird eine Menge von Stützpunkten gewählt.
+	Ausgehend von jedem Stützpunkt wird in Richtung jeder Lichtquelle ein Sekundärstrahl in die Szene geschossen.
+	Für jeden dieser Strahlen wird das Licht der entsprechenden Lichtquelle als Hintergrundbeleuchtung betrachtet.
+	Werden globale Schatten verwendet, wird das Licht entlang des Strahls wiederum durch die vom
 	Sekundärstrahl geschnittenen Partikel abgeschwächt. 
 	Diese Abschwächung wird mit dem vereinfachten Beleuchtungsmodell berechnet.
 	Für jeden Sekundärstrahl ist ein erneuter Schnitttest mit allen Kugeln nötig, 
@@ -766,11 +765,11 @@ Optional:
 	
 	Die Geschwindigkeit des Algorithmus hängt von der Auflösung des Bildes und der damit verbundenen Anzahl von Primärstrahlen ab.
 	Entscheidend für die Berechnungsdauer ist die Wahl der Stützpunktanzahl, 
-	da für jeden ein Sekundärstrahl Szene geschossen werden muss und für jeden ein Schnitttest und eine anschließende
-	Sortierung erforderlich ist.
+	da für jeden einzelnen ein Sekundärstrahl in die Szene geschossen werden muss und für jeden ein Schnitttest und eine anschließende
+	Sortierung erforderlich sind.
 	
 	An dieser Stelle wird der bereits angesprochene Approximationsgrad als ein neuer Parameter $N$ eingeführt. 
-	Der Wert von $N$ bestimmt, für wieviele Kugeln entlang des Primärstrahls, aber dieses mal ausgehend von dem Ursprung des Strahls, 
+	Der Wert von $N$ bestimmt, für wieviele Kugeln entlang des Primärstrahls, aber dieses Mal ausgehend von dem Ursprung des Strahls, 
 	die Beleuchtung mit der erweiterten Formel bestimmt werden soll.
 	Mit Hilfe dieser Approximation lässt sich die Anzahl der zu erzeugenden Sekundärstrahlen drastisch reduzieren und dadurch die Dauer
 	der Berechnung verringern.
@@ -820,7 +819,7 @@ Optional:
 	Aufgrund der Komplexität des Verfahrens wurde eine Vereinfachung zur Beschleunigung der Bildsynthese vorgestellt.
 	
 	In diesem Kapitel werden zunächst qualitative Unterschiede in Abhängigkeit der gewählten Parameter erläutert
-	und im Anschluss wird die beschleunigte Variante des Algorithmus evaluiert.
+	und im Anschluss wird die beschleunigte Variante von dem Algorithmus evaluiert.
 	
 	\begin{figure}[h]
 		\centering
@@ -845,14 +844,14 @@ Optional:
 	ist eine rot leuchtende Punktlichtquelle platziert.
 	
 	In den Abbildungen \ref{fig:vergleich1} (a) und (b) wurde die Szene mit dem Phong-Beleuchtungsmodell
-	beleuchtet. 
-	Wobei die linke Abbildung keine Schatteneffekte zeigt. Das Licht wird im Gegensatz zur mittleren
+	beleuchtet, 
+	wobei die linke Abbildung keine Schatteneffekte zeigt. Das Licht wird im Gegensatz zur mittleren
 	Abbildung nicht durch die Kugeln verdeckt.
 	Ein Problem dieses Modells wird besonders in der mittleren Abbildung deutlich. 
 	Denn die Kugel in der Mitte der Abbildung \ref{fig:vergleich1}.c wird nur durch die rote Punktlichtquelle beleuchtet, da die anderen Lichtquellen verdeckt werden. 
 	Dort wo kein Licht auf die Kugel fällt, entsteht keine Tiefenwirkung, da die Oberfläche der Kugel nicht
 	schattiert wird.
-	Anders verhält es sich im dritten Bild (c) der Abbildungen \ref{fig:vergleich1}, dort wird die gleiche Szene durch das einfache Emissions- und Absorptionsmodell dargestellt. 
+	Anders verhält es sich im dritten Bild (c) der Abbildungen \ref{fig:vergleich1}. Dort wird die gleiche Szene durch das einfache Emissions- und Absorptionsmodell dargestellt. 
 	Dieses unterstützt Transparenzeffekte, so dass der verdeckte Teil der nach hinten verschobenen
 	Kugel ebenfalls sichtbar wird.
 	Das einfache Emissions- und Absorptionsmodell berechnet keine Wechselwirkungen mit anderen Lichtquellen,
@@ -872,18 +871,18 @@ Optional:
 	\end{figure}
 	
 	Die Bilder (a) und (b) in der Abbildung \ref{fig:vergleich2} zeigen die gleiche Szene wie zuvor.
-	Dieses mal wurde die Szene mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.
+	Dieses Mal wurde die Szene mit dem erweiterten Emissions- und Absorptionsmodell beleuchtet.
 	Transparenzeffekte werden ebenso wie weitere Lichtquellen unterstützt, so dass verdeckte Inhalte
 	für den Betrachter weiterhin sichtbar bleiben.
 	Das Licht aller Lichtquellen flutet durch das Innere der Kugeln, dadurch sind die Schatteneffekte
 	weitaus weniger endgültig, als bei dem Phong-Beleuchtungsmodell mit Schatten.
 	Bei dem Bild (c) aus der Abbildung \ref{fig:vergleich2} wurde auf die rote Punktlichtquelle verzichtet
 	und $\Theta_{max} = 0.4$ gewählt. Das Licht der beiden Richtungslichtquellen wird durch die
-	Kugeln abgeschwächt, trotzdem reicht die Lichtintensität aus, um die mittlere Kugel zu beleuchten.
+	Kugeln abgeschwächt. Trotzdem reicht die Lichtintensität aus, um die mittlere Kugel zu beleuchten.
 	
 	\newpage
 	
-	Bevor die Geschwindigkeit des Algorithmus betrachtet wird, werden numerische Grenzfälle betrachtet.
+	Bevor die Geschwindigkeit des Algorithmus evaluiert wird, werden numerische Grenzfälle betrachtet.
 	
 	\begin{figure}[ph]
 		\centering
@@ -909,9 +908,9 @@ Optional:
 		\label{fig:numerischeGrenzfälle2}
 	\end{figure}
 	
-	Die Abbildung \ref{fig:numerischeGrenzfälle2} zeigt, was passiert, wenn der Wert für die maximale
+	Die Abbildung \ref{fig:numerischeGrenzfälle2} zeigt was passiert, wenn der Wert für die maximale
 	Lichtundurchlässigkeit die Grenzfälle annimmt. Im Bild (a) wird $\Theta_{max} = 0.0$ gesetzt
-	und im Bild (b) auf $1.0$, so dass die Kugel überhaupt kein Licht mehr durchlässt.
+	und im Bild (b) auf $1.0$, sodass die Kugel überhaupt kein Licht mehr durchlässt.
 	
 	\begin{figure}[h]
 		\centering
@@ -1079,8 +1078,8 @@ Optional:
 	\end{table}
 	
 	Die Tabellen \ref{tab:1UUN-Protein} und \ref{tab:cool_random} zeigen deutlich,
-	dass die Ergebnisse der beschleunigten Variante des Algorithmus 
-	ab einen gewissen $N$ sich kaum noch von den Ground-Truth Bildern unterscheiden.
+	dass sich die Ergebnisse der beschleunigten Variante des Algorithmus 
+	ab einen gewissen $N$ kaum noch von den Ground-Truth Bildern unterscheiden.
 	Ein großer Unterschied besteht jedoch in der Geschwindigkeit der Beleuchtungsberechnung.
 
 \section{Verbesserungsmöglichkeiten}
@@ -1089,19 +1088,22 @@ Optional:
 	Es wird angenommen, dass die Kugeln hintereinander liegen und das Licht durch die gesamten
 	Kugeln abgeschwächt wird.
 	Um dieses Problem zu lösen, könnten alle überlappenden Kugeln zu Objekten zusammengefasst werden.
-	Bei einem Schnitt mit einem solchen Objekt, müsste die Berechnung an den Schnittebenen der Kugeln
+	Bei einem Schnitt mit einem solchen Objekt müsste die Berechnung an den Schnittebenen der Kugeln
 	einzeln durchgeführt werden.
 	Dazu müsste eine weitere abstrakte Klasse eingeführt werden, von der die anderen Objekte abgeleitet werden,
 	also die Kugeln und die Objekte, die die überlappenden Kugeln repräsentieren.
 	Ein weiterer Vorteil dieser Vorgehensweise besteht darin, dass sich das Programm sehr einfach
 	auf beliebige Objekte erweitern ließe.	
-	Auf die Implementierung von Brechungseffekten wurde aus den zwei folgenden Gründen bewusst verzichtet,
-	zum einen würde die Berechnungsdauer stark ansteigen und zum anderen, weil der Fokus dieser Arbeit
-	auf der Sichtbarmachung von Informationen liegt, die Brechung würde dieses Ziel negativ beeinflussen, da die Sichtstrahlen durch die Brechung abgelenkt werden.
+	Auf die Implementierung von Brechungseffekten wurde aus den zwei folgenden Gründen bewusst verzichtet.
+	Zum einen würde die Berechnungsdauer stark ansteigen und zum anderen, da der Fokus dieser Arbeit
+	auf der Sichtbarmachung von Informationen liegt, würde die Brechung dieses Ziel negativ beeinflussen, da die Sichtstrahlen durch die Brechung abgelenkt werden.
 	Zur Berechnung der Brechung muss bei jedem Eintritt und Austritt der Strahlen
 	in und aus eine Kugel, eine neuer Strahl generiert werden.
 	Dieser muss anschließend wieder auf eine Kollision mit allen Kugeln getestet werden, gefolgt von einer Sortierung der Ergebnismenge.
 	
+\newpage	
+	
+\section{Fazit}
 	
 
 %\chapter{title}

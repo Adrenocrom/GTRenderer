@@ -14,7 +14,8 @@
 \contentsline {chapter}{\numberline {6}Auswertung und Fazit}{23}{chapter.6}
 \contentsline {section}{\numberline {6.1}SSIM}{25}{section.6.1}
 \contentsline {section}{\numberline {6.2}Quantitative Evaluation}{27}{section.6.2}
-\contentsline {section}{\numberline {6.3}Fazit}{29}{section.6.3}
+\contentsline {section}{\numberline {6.3}Verbesserungsm\"oglichkeiten}{29}{section.6.3}
+\contentsline {section}{\numberline {6.4}Fazit}{30}{section.6.4}
 \contentsline {chapter}{\nonumberline Literaturverzeichnis}{31}{chapter*.4}
 \contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{33}{chapter*.5}
 \contentsline {chapter}{\nonumberline Tabellenverzeichnis}{35}{chapter*.6}
