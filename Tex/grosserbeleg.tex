@@ -173,10 +173,13 @@ Optional:
 	Der Fokus der Arbeit liegt auf der physikalischen Grundlage dieses Verfahrens. Die Arbeit verspricht eine
 	globale Beleuchtungsberechnung in Echtzeit und unterstützt unter anderem auch Mehrfachstreuungen.
 
-	Ambiente Verdeckung kommt in der Arbeit \cite{journals/tvcg/KnissPHSM03} zum Einsatz. 
-	Mit Hilfe des sogenannten \textit{blurring} werden die Farbanteile des indirekten Lichtes in einem Buffer gehalten. 
-	Dieses Verfahren approximiert die Streuungseffekte, welche in Materialien auftreten können.
-	Eine Erweiterung dieses Verfahrens stellt die Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} dar, welche hier nur der Vollständigkeit halber erwähnt werden soll.
+	Die Arbeit \cite{journals/tvcg/KnissPHSM03} beschreibt ein einfaches Schattierungsmodell. 
+	Es kommt eine nicht normierte Phasenfunktion zum Einsatz. Schatten, die bei der direkten
+	Beleuchtung entstehen, werden in einem Vorverarbeitungsschritt berechnet und in Texturen zwischengespeichert. 
+	Das Verfahren approximiert Vorwärtsstreuung und erweitert die Transferfunktion um einen Term,
+	der die Abschwächung der indirekten Beleuchtung beschreibt.
+	Das Modell wird in Arbeit \cite{10.1111:j.1467-8659.2009.01464.x} erweitert, sodass Effekte der Umgebungsverdeckung
+	simuliert werden.
 		
 \chapter{Grundlagen}
 
@@ -537,7 +540,7 @@ Optional:
 	dieser kein Volumen und keine wirkliche Oberfläche besitzt.
 	Daraus resultiert, dass die Wahrscheinlichkeit, dass ein Sekundärstrahl eine solche Lichtquelle treffen könnte,
 	unendlich klein wird und schließlich gegen 0 geht. 
-	Eine Richtungslichtquelle dagegen kann als eine unendlich weit entfernte Kugellichtquelle interpretiert werden
+	Eine Richtungslichtquelle dagegen kann als eine unverhältnismäßig weit entfernte Kugellichtquelle interpretiert werden
 	und entspricht damit schon eher einem physikalischen Äquivalent.
 	
 	Zur Herleitung der Gleichung werden die Lichtquellen auf die Hintergrundbeleuchtung und eine Richtungslichtquelle beschränkt.
@@ -1001,6 +1004,8 @@ Optional:
 	gezeichnet mit zwei unterschiedlichen Parametereinstellungen. 
 	Das Bild auf der linken Seite wurde mit einer sehr niedrigen Anzahl von Stützpunkten generiert 
 	und verwendet nur für die erste, vom Sichtstrahl geschnittene Kugel, das erweiterte Beleuchtungsmodell.
+	Das Rauschen lässt sich durch die unterschiedlich starke Abschwächung des Lichtes entlang der Sekundärstrahlen erklären.
+	Dieser Effekt entsteht bei der Beleuchtung einer einzelnen Kugel nicht.
 	Das zweite Bild auf der rechten Seite wurde mit 100 Stützpunkten je geschnittener Kugel generiert und verwendet für alle Kugeln, geschnitten vom Sichtstrahl, das erweiterte Beleuchtungsmodell.
 	Die Anzahl der Lichtquellen ist ein Multiplikator der Sekundärstrahlanzahl, da für jeden Stützpunkt zu jeder Lichtquelle ein Sekundärstrahl in die Szene geschossen wird. Die Testszenen wurden mit jeweils zwei
 	Richtungslichtquellen gezeichnet. Die Erste strahlt grünes Licht von oben nach unten in die Szene und die Zweite
@@ -1110,25 +1115,25 @@ Optional:
 	Dieser sollte die Partikel mit Hilfe einer Rendergleichung zeichnen, 
 	die auf dem Emissions- und Absorptions-Modell basiert und eine beliebige Anzahl von Punkt- und Richtungslichtquellen
 	unterstützt.
-	Unter der Annahme konstanter Dichten und linearen Transferfunktionen
+	Unter der Annahme konstanter Dichten und linearer Transferfunktionen
 	sollte die Gleichung weitestgehend analytisch gelöst werden.
 
-	Zu Beginn der Arbeit wurden die Grundlagen der Raycast-Technik erläutert und alle grundlegenden Gleichungen hergeleitet. Im Anschluss daran wurde eine einfache Variante des Emissions- und Absorptions-Modells aus einer bestehenden Arbeit
+	Zu Beginn der Arbeit wurden die Raycast-Technik erläutert und alle grundlegenden Gleichungen hergeleitet. Im Anschluss daran wurde eine einfache Variante des Emissions- und Absorptions-Modells aus einer bestehenden Arbeit
 	für diesen Zweck erweitert.
 	Da für die resultierende Gleichung keine analytische Lösung existiert, wurde das Integral in Riemannsummen zerlegt.
 	Die auf diese Weise entstandene Formel wurde implementiert und Bilder mit verschiedenen Datensätzen generiert.
 	
-	Mit Hilfe einer einfachen Szene wurden Bilder erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptions-Modell verglichen werden konnte.
+	Mit Hilfe einer einfachen Szene wurden Bilder erzeugt, sodass die Qualität des Algorithmus mit dem Phong-Beleuchtungsmodell und dem einfachen Emissions- und Absorptionsmodell verglichen werden konnte.
 	Ein Vorteil der implementierten Lösung gegenüber dem Phong-Beleuchtungsmodell ist die Transparenz,
 	denn durch diese werden die sonst verdeckten Informationen sichtbar und 
-	zwar ohne,dass die plastische Wirkung der dargestellten Kugeln verloren geht.
+	zwar ohne dass die plastische Wirkung der dargestellten Kugeln verloren geht.
 	Die Schatteneffekte ergeben sich als Resultat der Lichtabschwächung durch das Volumen.
-	Auf diese Weise entstehen weiche Schattenübergänge und somit die optische Qualität der Bilder verbessert. 
+	Auf diese Weise entstehen weiche Schattenübergänge und somit wird die optische Qualität der Bilder verbessert. 
 	Zusätzlich wurde eine beschleunigte Variante des Verfahrens implementiert und die Ergebnisse dieser wurden hinsichtlich
 	ihrer Güte mit Hilfe von Ground-Truth Bildern und dem SSIM-Index evaluiert.
-	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, der Geschwindigkeitszuwachs ist allerdings enorm.
+	Es hat sich gezeigt, dass sich die Ergebnisse dieser Approximation fast gar nicht von den Ground-Truth Bildern unterscheiden, der Geschwindigkeitszuwachs allerdings ist enorm.
 	
-	Interessant wäre es den Algorithmus auf die GPU zu portieren und diesen damit, falls möglich, derart zu
+	Interessant wäre es, den Algorithmus auf die GPU zu portieren und diesen damit, falls möglich, derart zu
 	beschleunigen, dass echtzeitfähige Bildwiederholungsraten möglich werden.
 	Zusätzlich könnte eine Phasenfunktion implementiert und die Streuung mit in die Rendergleichung einbezogen werden.
 	
