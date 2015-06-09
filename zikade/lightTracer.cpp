@@ -359,20 +359,30 @@ real3 zikade::localIllumination(const ray& r, real3 Ib) {
 	kd->hit(r, hits, -1);
 	hits.sort(compareHits);
 	hitInfo hit;
-	real n = 30;
+	real 	n 				 = 30.0;
+	real 	invNumLights = 0.0;
+	real	alpha			 = 1.0 / (real)(numLights + 1);
+	real 	diffuse 		 = 0.0;
+	real  specular		 = 0.0;
+	real3 position;
+	real3 normal;
+	real3 power;
+	real3 V;
+	real3 half;
+	
+	if(numLights)
+		invNumLights = (1.0 / (real)numLights) * 0.5;
 
 	if(!hits.empty()) {
 		hit = hits.front();
 		sphere* s = &spheres[hit.id];
 
 		if(numLights) {
-			real 	invNumLights = (1.0 / (real)numLights) * 0.5;
 			real3 IL;
-			real	alpha	= 1.0 / (real)(numLights + 1);
 			
 			for(uint l = 0; l < numLights; ++l) {
-				real3 position = r.o + hit.tn * r.d;
-				real3 power		= lights[l]->power;
+				position = r.o + hit.tn * r.d;
+				power		= lights[l]->power;
 
 				if(global) {
 					ray   sray(position, -lights[l]->direction(s->p));
@@ -383,12 +393,12 @@ real3 zikade::localIllumination(const ray& r, real3 Ib) {
 						power = real3();
 				}
 
-				real3 normal	= normalize(position - s->p);
-				real 	diffuse 	= dot(-lights[l]->direction(s->p), normal);
+				normal 	= normalize(position - s->p);
+				diffuse 	= dot(-lights[l]->direction(s->p), normal);
 				if(diffuse >= 0) {
-					real3 V			= normalize(r.o - position);
-					real3 half		= normalize(V + -lights[l]->direction(s->p));
-					real  specular = dot(half, normal);
+					V			= normalize(r.o - position);
+					half		= normalize(V + -lights[l]->direction(s->p));
+					specular = dot(half, normal);
 
 					IL += ((0.95 * diffuse + 0.05 * ((n+2.0)/(2.0*PI)) * pow(specular, n)) * power);
 				}
